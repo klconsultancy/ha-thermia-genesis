@@ -1,17 +1,15 @@
 """The entity descriptions cover the library's fields, as docs/design.md (Entities) requires."""
 
+import asyncio
+import json
 from enum import IntEnum, IntFlag
+from pathlib import Path
 
 import pytest
 from homeassistant.components.sensor import SensorDeviceClass
+from modbus_connection.mock import MockModbusConnection
+from thermia_genesis import ThermiaGenesis
 from thermia_genesis.subsystem import Field, Subsystem
-from thermia_genesis.v17_1.cooling import Cooling
-from thermia_genesis.v17_1.electric_meter import ElectricMeter
-from thermia_genesis.v17_1.heat import Heat, MixValve1
-from thermia_genesis.v17_1.heat_pump_unit import HeatPumpUnit
-from thermia_genesis.v17_1.pool import Pool
-from thermia_genesis.v17_1.status import Status
-from thermia_genesis.v17_1.tap_water import Hgw, TapWater
 
 from custom_components.thermia_genesis.binary_sensor import BINARY_SENSORS
 from custom_components.thermia_genesis.const import PARTS
@@ -20,18 +18,27 @@ from custom_components.thermia_genesis.sensor import SENSORS, UNITS
 # The parts whose every field has an entity; it grows with each part's pull request.
 COMPLETE = ["status"]
 
-# The library's class of each part; the optional ones are None on an unread pump.
-CLASSES: dict[str, type[Subsystem]] = {
-    "heat_pump": HeatPumpUnit,
-    "heat": Heat,
-    "mix_valve_1": MixValve1,
-    "tap_water": TapWater,
-    "hgw": Hgw,
-    "cooling": Cooling,
-    "pool": Pool,
-    "electric_meter": ElectricMeter,
-    "status": Status,
-}
+# The "Enable ..." coils of the optional parts (mix valve 1, HGW, cooling, pool, meter).
+ENABLE_COILS = (11, 6, 10, 28, 26)
+
+
+async def _read_every_part() -> dict[str, type[Subsystem]]:
+    """The library's class of each part, from a pump that has every optional part."""
+    unit = MockModbusConnection().for_unit(1)
+    for address in ENABLE_COILS:
+        unit.coil[address] = True
+    pump = ThermiaGenesis(unit)
+    await pump.async_update()
+    return {name: type(value) for name, value in vars(pump).items() if isinstance(value, Subsystem)}
+
+
+CLASSES = asyncio.run(_read_every_part())
+
+STRINGS = json.loads(
+    (
+        Path(__file__).parent.parent / "custom_components" / "thermia_genesis" / "strings.json"
+    ).read_text(encoding="utf-8")
+)
 
 
 def fields(part: str) -> dict[str, Field[object]]:
@@ -91,6 +98,7 @@ def test_sensor_units_match_the_library(part: str) -> None:
     library = fields(part)
     for description in SENSORS[part]:
         unit = library[description.field or description.key].field.unit  # type: ignore[union-attr]
+        assert unit is None or unit in UNITS, unit
         assert description.native_unit_of_measurement == UNITS.get(unit), description.key
 
 
@@ -115,3 +123,24 @@ def test_binary_sensors_are_bits(part: str) -> None:
             assert field.space in {"coil", "discrete"}, description.key
         else:
             assert isinstance(description.member, convert(field)), description.key  # type: ignore[arg-type]
+
+
+def test_a_shared_translation_key_means_the_same_kind_of_sensor() -> None:
+    kinds: dict[str | None, tuple[object, ...]] = {}
+    for descriptions in SENSORS.values():
+        for description in descriptions:
+            kind = (
+                description.device_class,
+                description.options,
+                description.native_unit_of_measurement,
+            )
+            assert kinds.setdefault(description.translation_key, kind) == kind, description.key
+
+
+@pytest.mark.parametrize("part", sorted(SENSORS))
+def test_every_enum_option_has_a_translation(part: str) -> None:
+    sensors = STRINGS["entity"]["sensor"]
+    for description in SENSORS[part]:
+        if description.options is not None:
+            states = sensors[description.translation_key]["state"]
+            assert set(description.options) <= set(states), description.key
