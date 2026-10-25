@@ -61,9 +61,14 @@ def temporary_unit(pump_unit: MockModbusUnit) -> Iterator[MagicMock]:
 
 
 @pytest.fixture
+def unit(pump_unit: MockModbusUnit) -> Iterator[MagicMock]:
+    """Serve the pump to the entry's setup in place of the modbus integration's unit."""
+    with patch("custom_components.thermia_genesis.async_get_unit", return_value=pump_unit) as mock:
+        yield mock
+
+
+@pytest.fixture
 def mock_setup_entry() -> Iterator[AsyncMock]:
     """Keep a created entry from being set up."""
-    with patch(
-        "custom_components.thermia_genesis.async_setup_entry", return_value=True, create=True
-    ) as mock:
+    with patch("custom_components.thermia_genesis.async_setup_entry", return_value=True) as mock:
         yield mock

@@ -33,5 +33,48 @@
       "already_configured": "Device is already configured",
       "reconfigure_successful": "Reconfiguration was successful"
     }
+  },
+  "device": {
+    "heat_pump": {
+      "name": "Heat pump unit"
+    },
+    "heat": {
+      "name": "Heating"
+    },
+    "mix_valve_1": {
+      "name": "Mix valve 1"
+    },
+    "tap_water": {
+      "name": "Tap water"
+    },
+    "hgw": {
+      "name": "Hot gas heat recovery"
+    },
+    "cooling": {
+      "name": "Cooling"
+    },
+    "pool": {
+      "name": "Pool"
+    },
+    "electric_meter": {
+      "name": "Electric meter"
+    }
+  },
+  "exceptions": {
+    "connection_in_use": {
+      "message": "Another integration already uses this address with different connection settings."
+    },
+    "update_failed": {
+      "message": "The heat pump does not answer."
+    },
+    "no_register_space_answered": {
+      "message": "The heat pump refused every read."
+    }
+  },
+  "issues": {
+    "unsupported_firmware": {
+      "title": "Unsupported heat pump firmware",
+      "description": "{title} runs Genesis firmware {version}, but this integration is written for firmware 17.1. It reads the pump as if it were 17.1, so some values may be wrong or missing.\n\nPlease open an issue in the thermia-genesis repository with the diagnostics of this entry, so support for this firmware can be added."
+    }
   }
 }

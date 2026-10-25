@@ -33,5 +33,48 @@
       "already_configured": "Apparaat is al geconfigureerd",
       "reconfigure_successful": "Herconfiguratie was succesvol"
     }
+  },
+  "device": {
+    "heat_pump": {
+      "name": "Warmtepompunit"
+    },
+    "heat": {
+      "name": "Verwarming"
+    },
+    "mix_valve_1": {
+      "name": "Mengklep 1"
+    },
+    "tap_water": {
+      "name": "Tapwater"
+    },
+    "hgw": {
+      "name": "Heetgaswarmteterugwinning"
+    },
+    "cooling": {
+      "name": "Koeling"
+    },
+    "pool": {
+      "name": "Zwembad"
+    },
+    "electric_meter": {
+      "name": "Elektriciteitsmeter"
+    }
+  },
+  "exceptions": {
+    "connection_in_use": {
+      "message": "Een andere integratie gebruikt dit adres al met andere verbindingsinstellingen."
+    },
+    "update_failed": {
+      "message": "De warmtepomp antwoordt niet."
+    },
+    "no_register_space_answered": {
+      "message": "De warmtepomp weigerde elke leesopdracht."
+    }
+  },
+  "issues": {
+    "unsupported_firmware": {
+      "title": "Niet-ondersteunde firmware van de warmtepomp",
+      "description": "{title} draait Genesis-firmware {version}, maar deze integratie is geschreven voor firmware 17.1. Ze leest de pomp alsof het 17.1 is, dus sommige waarden kunnen fout zijn of ontbreken.\n\nOpen een issue in de thermia-genesis-repository met de diagnostiek van deze entry, zodat ondersteuning voor deze firmware kan worden toegevoegd."
+    }
   }
 }
