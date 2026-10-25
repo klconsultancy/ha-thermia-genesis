@@ -65,18 +65,32 @@ entities.
 - One sub-device per subsystem the pump has (heat pump unit, heat, mix valve 1, tap water,
   HGW, cooling, pool, electric meter), linked with `via_device` to the main device, all on
   one level. An optional part the pump doesn't have gets no sub-device.
-- Device identifiers are `(DOMAIN, f"{entry_id}_{subsystem}")`.
+- The pump's device identifier is `(DOMAIN, entry_id)`, a part's
+  `(DOMAIN, f"{entry_id}_{part}")`, with the part named as its attribute on
+  `ThermiaGenesis`.
+- Setup registers the devices itself, after the first read, so a part's device exists
+  before its entities and names its `via_device`. Part names are translated
+  (`translation_key`). A part the pump no longer has (detected again on every setup) loses
+  its device.
 
 ## Updates
 
 - One `DataUpdateCoordinator` calls `ThermiaGenesis.async_update()` every 30 seconds. The
   interval is not configurable; `homeassistant.update_entity` refreshes on demand. A full
   read takes about 0.4 s.
-- A lost connection or a timeout raises `UpdateFailed`, so every entity is unavailable.
+- The coordinator polls only while it has listeners, so only once entities exist.
+- A lost connection or a timeout raises `UpdateFailed`, so every entity is unavailable. So
+  does an update in which no register space answers.
+- A register space that starts failing is logged once as a warning, and once as info when
+  it answers again.
 - A register space that failed in the `UpdateReport` makes only the entities of that space
   unavailable; the others keep their fresh values.
 - A firmware other than 17.1 still loads with the 17.1 map and raises a warning repair
-  issue that names the version found.
+  issue that names the version found. Setup with a supported firmware removes the issue,
+  and so does removing the entry. A first read that misses the firmware leaves both the
+  issue and the device's software version as they were.
+- When the first read fails, setup raises `ConfigEntryNotReady` (through the coordinator's
+  first refresh) and Home Assistant retries.
 
 ## Entities
 

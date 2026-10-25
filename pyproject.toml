@@ -54,6 +54,8 @@ known-third-party = ["thermia_genesis"]
 [tool.ruff.lint.per-file-ignores]
 "tests/**" = [
   "D",       # test names document themselves
+  "PLR0913", # a test takes the fixtures it needs as arguments
+  "PLR0917", # idem
   "PLR2004", # magic values are expected in assertions
   "S101",    # assert is how pytest works
 ]
