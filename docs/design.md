@@ -133,9 +133,10 @@ entities.
   water top temperature, and the electric meter's power and kWh. The refrigerant circuit
   (liquid line, suction gas, dew and bubble points, superheat, subcooling, pressures) is
   disabled by default.
+  Everything else (queued demands, PID values, flags, settings, individual alarms) is
+  disabled by default.
 - Coils and holding registers (settings) and the alarm inputs have entity category
-  `diagnostic`; a setting has no state class, so it stays out of the long-term statistics. Everything else (queued demands, PID
-  values, flags, settings, individual alarms) is disabled by default.
+  `diagnostic`; a setting has no state class, so it stays out of the long-term statistics.
 - Entity names come from translations (`has_entity_name`), in English and Dutch.
 
 ## Diagnostics
