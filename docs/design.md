@@ -39,6 +39,10 @@ entities.
   That does no I/O, so a pump that is off doesn't block setup. The `modbus` integration owns
   the connection and reopens it on the next request; the entry is never reloaded because
   the link dropped.
+- Both functions raise `HomeAssistantError` when another integration already uses the
+  endpoint with different link settings. The config flow and the reconfigure step show the
+  error `connection_in_use`; setup raises `ConfigEntryError`, because retrying doesn't
+  resolve the conflict.
 - A reconfigure step changes host and port in place, so a new IP address keeps the entry
   and with it every entity and its history.
 
@@ -74,10 +78,11 @@ entities.
 
 ## Entities
 
-- Every field of the library becomes one entity. A hand-written entity description per
-  field sets its translation key, device class, state class, entity category and whether it
-  is enabled by default. A test requires exactly one description per library field and a
-  unit that matches the library's.
+- Every field of the library becomes an entity: one per field, except a flags field, which
+  becomes one per member. A hand-written entity description per field (per member for
+  flags) sets its translation key, device class, state class, entity category and whether
+  it is enabled by default. A test requires that the descriptions cover every library field
+  exactly once (every member of a flags field) with a unit that matches the library's.
 - Platforms:
   - coils and discrete inputs: `binary_sensor`; alarms get device class `problem`;
   - enums: `sensor` with device class `enum` and translated options;
@@ -88,6 +93,11 @@ entities.
 - State classes: `measurement` for temperatures, power, gears and percentages;
   `total_increasing` for operating hours (device class `duration`) and the electric meter's
   kWh (device class `energy`, usable in the energy dashboard).
+- The electric meter reports its energy twice. `kwh_total` (input 83–84, 32-bit) is the
+  energy sensor enabled by default: it practically never wraps. Its LSB-first word order
+  comes from the community (CJNE #292), not from the protocol document, and the reference
+  pump has no meter to confirm it. `meter_value` (input 81, 16-bit) wraps after 65535 kWh,
+  which `total_increasing` reads as a reset; it is disabled by default.
 - One derived `binary_sensor` "Alarm" (device class `problem`) on the main device is on when
   any alarm input is on, for notifications.
 - Enabled by default: the measured temperatures, operational mode, running demand 1,
