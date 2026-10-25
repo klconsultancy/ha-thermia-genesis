@@ -2,7 +2,7 @@
 
 from thermia_genesis.v17_1.enums import Demand, OperationalMode, RunningDemands
 
-from custom_components.thermia_genesis.descriptions import (
+from ..descriptions import (
     BinarySensor,
     Sensor,
     enumeration,

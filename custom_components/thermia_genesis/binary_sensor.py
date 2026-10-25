@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING
 from homeassistant.components.binary_sensor import BinarySensorEntity
 
 from .entity import ThermiaGenesisEntity
-from .parts import heat_pump, status
+from .parts import BINARY_SENSORS
 
 if TYPE_CHECKING:
     from homeassistant.core import HomeAssistant
@@ -16,13 +16,6 @@ if TYPE_CHECKING:
 
 # Coordinator-based: the entities never update on their own.
 PARALLEL_UPDATES = 0
-
-
-# The binary sensors of each part, by the part's attribute on ThermiaGenesis.
-BINARY_SENSORS: dict[str, tuple[ThermiaGenesisBinarySensorEntityDescription, ...]] = {
-    "heat_pump": heat_pump.BINARY_SENSORS,
-    "status": status.BINARY_SENSORS,
-}
 
 
 async def async_setup_entry(

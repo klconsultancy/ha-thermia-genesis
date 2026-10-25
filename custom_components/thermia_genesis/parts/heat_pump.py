@@ -3,7 +3,7 @@
 from homeassistant.components.sensor import SensorDeviceClass
 from thermia_genesis.v17_1.enums import ImmersionHeater, OutdoorTemperatureSource, SmartGridMode
 
-from custom_components.thermia_genesis.descriptions import (
+from ..descriptions import (
     BinarySensor,
     Sensor,
     alarm,

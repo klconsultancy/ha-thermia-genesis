@@ -44,6 +44,7 @@ ignore = [
   "CPY",    # no per-file copyright headers; the license is in LICENSE
   "D203",   # incompatible with D211
   "D213",   # incompatible with D212
+  "TID252", # relative imports within the integration, as in Home Assistant core
 ]
 
 [tool.ruff.lint.isort]

@@ -83,13 +83,14 @@ def measurement(  # noqa: PLR0913
     enabled: bool = False,
     diagnostic: bool = False,
 ) -> Sensor:
-    """Describe a value the pump measures or calculates, kept in the statistics."""
+    """Describe a value the pump measures or calculates."""
     return ThermiaGenesisSensorEntityDescription(
         key=key,
         translation_key=key,
         native_unit_of_measurement=None if unit is None else UNITS[unit],
         device_class=device_class,
-        state_class=SensorStateClass.MEASUREMENT,
+        # A diagnostic value (a count, a version) has no use in the long-term statistics.
+        state_class=None if diagnostic else SensorStateClass.MEASUREMENT,
         suggested_display_precision=precision,
         entity_registry_enabled_default=enabled,
         entity_category=EntityCategory.DIAGNOSTIC if diagnostic else None,
