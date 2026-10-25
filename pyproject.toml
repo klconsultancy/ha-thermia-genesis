@@ -1,0 +1,70 @@
+[project]
+name = "ha-thermia-genesis"
+version = "0.0.0"
+description = "Home Assistant integration for Thermia heat pumps on the Genesis platform via Modbus"
+readme = "README.md"
+license = "MIT"
+authors = [{ name = "Kristof Lemmens" }]
+# Home Assistant's own requirement; the integration runs inside it.
+requires-python = ">=3.14.2"
+dependencies = []
+
+[dependency-groups]
+dev = [
+  "mypy",
+  "prek",
+  # Pins the matching homeassistant, pytest, pytest-asyncio, pytest-cov and syrupy.
+  "pytest-homeassistant-custom-component==0.13.375",
+  "ruff",
+]
+
+[tool.uv]
+required-version = "==0.13.5"
+# Not a Python package: Home Assistant loads custom_components/ from its config directory.
+package = false
+
+[tool.ruff]
+target-version = "py314"
+line-length = 100
+src = ["custom_components", "tests"]
+extend-exclude = [".worktrees"]
+
+[tool.ruff.lint]
+select = ["ALL"]
+ignore = [
+  "COM812", # conflicts with the formatter
+  "CPY",    # no per-file copyright headers; the license is in LICENSE
+  "D203",   # incompatible with D211
+  "D213",   # incompatible with D212
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["custom_components"]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/**" = [
+  "D",       # test names document themselves
+  "PLR2004", # magic values are expected in assertions
+  "S101",    # assert is how pytest works
+]
+
+[tool.mypy]
+python_version = "3.14"
+strict = true
+files = ["custom_components", "tests"]
+explicit_package_bases = true
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+addopts = "--strict-markers --cov --cov-report=term-missing"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["custom_components"]
+
+[tool.coverage.report]
+fail_under = 100
+show_missing = true
+skip_covered = true

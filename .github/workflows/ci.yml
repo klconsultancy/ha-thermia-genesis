@@ -1,0 +1,97 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  merge_group:
+  # HACS and hassfest validate against rules that change without a commit here.
+  schedule:
+    - cron: "41 3 * * 1"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  # Superseded PR runs are cancelled; every push to main is checked.
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  lint:
+    name: Lint & type-check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      # Dependabot bumps these separately; fail until they are aligned in the same PR.
+      - name: uv version is pinned consistently
+        run: |
+          docker=$(sed -nE 's|^FROM ghcr.io/astral-sh/uv:([0-9.]+)@.*|\1|p' .devcontainer/Dockerfile)
+          pyproject=$(sed -nE 's|^required-version = "==([0-9.]+)"$|\1|p' pyproject.toml)
+          hook=$(grep -A1 'astral-sh/uv-pre-commit' .pre-commit-config.yaml | sed -nE 's|^ *rev: ([0-9.]+)$|\1|p')
+          echo "Dockerfile: $docker, pyproject.toml: $pyproject, .pre-commit-config.yaml: $hook"
+          if [ -z "$docker" ] || [ "$docker" != "$pyproject" ] || [ "$docker" != "$hook" ]; then
+            echo "::error::uv versions differ: Dockerfile '$docker', pyproject.toml '$pyproject', .pre-commit-config.yaml '$hook'"
+            exit 1
+          fi
+      - uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
+        with:
+          python-version: "3.14" # same as the devcontainer
+      - run: uv sync --locked
+      - run: uv run ruff format --check
+      - run: uv run ruff check --output-format=github
+      - run: uv run mypy
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: astral-sh/setup-uv@07a047e608db84b3d8c06cd9a7c7dcc9c355c18e # v10.3.2
+        with:
+          python-version: "3.14"
+      - run: uv sync --locked
+      - run: uv run pytest
+
+  hassfest:
+    name: hassfest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: home-assistant/actions/hassfest@cd6f3635a740c84d8a14f6121a90068b8ece6bf6 # master
+
+  hacs:
+    name: HACS
+    runs-on: ubuntu-latest
+    steps:
+      - uses: hacs/action@1ebf01c408f29afcb6406bd431bc98fd8cbb15aa # main
+        with:
+          category: integration
+          comment: false
+          # The brand icon comes with the release (#8).
+          ignore: brands
+
+  dependency-review:
+    name: Dependency review
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/dependency-review-action@a1d282b36b6f3519aa1f3fc636f609c47dddb294 # v5.0.0
+        with:
+          fail-on-severity: moderate
+
+  # Single required status check for the branch ruleset.
+  ci-success:
+    name: CI success
+    if: always()
+    needs: [lint, test, hassfest, hacs, dependency-review]
+    runs-on: ubuntu-latest
+    steps:
+      - if: contains(needs.*.result, 'failure') || contains(needs.*.result, 'cancelled')
+        run: exit 1
