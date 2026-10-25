@@ -1,0 +1,1 @@
+"""The Thermia Genesis integration."""

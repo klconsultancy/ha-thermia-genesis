@@ -1,0 +1,12 @@
+{
+  "domain": "thermia_genesis",
+  "name": "Thermia Genesis",
+  "codeowners": ["@kristoflemmens"],
+  "dependencies": ["modbus"],
+  "documentation": "https://github.com/klconsultancy/ha-thermia-genesis",
+  "integration_type": "device",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/klconsultancy/ha-thermia-genesis/issues",
+  "requirements": [],
+  "version": "0.0.0"
+}

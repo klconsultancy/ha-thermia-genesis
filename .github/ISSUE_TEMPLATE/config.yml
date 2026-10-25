@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Wrong or missing register
+    url: https://github.com/klconsultancy/python-thermia-genesis/issues
+    about: A value that is decoded wrong, a missing register or an unsupported firmware belongs in the library repository.
