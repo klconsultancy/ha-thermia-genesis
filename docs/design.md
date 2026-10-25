@@ -103,8 +103,11 @@ entities.
   pull request adds its part.
 - Each part declares its entities in its own module, `parts/<part>.py` (`SENSORS`,
   `BINARY_SENSORS`), with the helpers of `descriptions.py` (`temperature`, `setting`,
-  `alarm`, `running`, ...), so a part reads as one list. The field name is the `key` and
-  the translation key. A key is shared by
+  `alarm`, `running`, ...), so a part reads as one list; `parts/__init__.py` registers
+  each part once for both platforms. The field name is the `key` and the translation key.
+- A diagnostic measurement (a count, a version) and every setting have no state class, so
+  they stay out of the long-term statistics; tests enforce that settings are diagnostic,
+  except the operational mode, which belongs on the dashboard. A key is shared by
   parts with a field of the same name ("Supply line temperature"); the device name tells
   them apart.
 - An entity is unavailable while its field's register space fails. A field the pump
