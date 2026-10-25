@@ -22,6 +22,9 @@ dev = [
 required-version = "==0.13.5"
 # Not a Python package: Home Assistant loads custom_components/ from its config directory.
 package = false
+# homeassistant pins Pillow 12.3.0, which has open advisories. This environment only runs the
+# tests (Home Assistant brings its own Pillow at runtime), so take the fixed release here.
+override-dependencies = ["pillow>=13.0.0"]
 
 [tool.ruff]
 target-version = "py314"
