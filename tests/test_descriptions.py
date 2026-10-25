@@ -13,10 +13,11 @@ from thermia_genesis.subsystem import Field, Subsystem
 
 from custom_components.thermia_genesis.binary_sensor import BINARY_SENSORS
 from custom_components.thermia_genesis.const import PARTS
-from custom_components.thermia_genesis.sensor import SENSORS, UNITS
+from custom_components.thermia_genesis.descriptions import UNITS
+from custom_components.thermia_genesis.sensor import SENSORS
 
 # The parts whose every field has an entity; it grows with each part's pull request.
-COMPLETE = ["status"]
+COMPLETE = ["heat_pump", "status"]
 
 
 async def _read_every_part() -> dict[str, type[Subsystem]]:

@@ -75,6 +75,21 @@ async def test_enabled_by_default(
         if not entity.disabled
     )
     assert enabled == [
+        "binary_sensor.heat_pump_unit_compressor",
+        "binary_sensor.heat_pump_unit_external_additional_heater",
+        "sensor.heat_pump_unit_brine_in_temperature",
+        "sensor.heat_pump_unit_brine_out_temperature",
+        "sensor.heat_pump_unit_compressor_gear",
+        "sensor.heat_pump_unit_compressor_operating_hours",
+        "sensor.heat_pump_unit_compressor_speed",
+        "sensor.heat_pump_unit_condenser_in_temperature",
+        "sensor.heat_pump_unit_condenser_out_temperature",
+        "sensor.heat_pump_unit_discharge_pipe_temperature",
+        "sensor.heat_pump_unit_heat_output",
+        "sensor.heat_pump_unit_immersion_heater_step",
+        "sensor.heat_pump_unit_outdoor_temperature",
+        "sensor.heat_pump_unit_power_consumption",
+        "sensor.heat_pump_unit_room_temperature",
         "sensor.thermia_genesis_operational_mode",
         "sensor.thermia_genesis_running_demand_1",
     ]

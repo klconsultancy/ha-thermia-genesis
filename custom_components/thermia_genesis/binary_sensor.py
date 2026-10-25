@@ -1,56 +1,27 @@
 """Binary sensors: the coils, discrete inputs and flags of the pump."""
 
-from dataclasses import dataclass
 from typing import TYPE_CHECKING
 
-from homeassistant.components.binary_sensor import (
-    BinarySensorEntity,
-    BinarySensorEntityDescription,
-)
-from thermia_genesis.v17_1.enums import RunningDemands
+from homeassistant.components.binary_sensor import BinarySensorEntity
 
-from .entity import ThermiaGenesisEntity, ThermiaGenesisEntityDescription
+from .entity import ThermiaGenesisEntity
+from .parts import heat_pump, status
 
 if TYPE_CHECKING:
-    from enum import IntFlag
-
     from homeassistant.core import HomeAssistant
     from homeassistant.helpers.entity_platform import AddConfigEntryEntitiesCallback
 
     from .coordinator import ThermiaGenesisConfigEntry
+    from .descriptions import ThermiaGenesisBinarySensorEntityDescription
 
 # Coordinator-based: the entities never update on their own.
 PARALLEL_UPDATES = 0
 
 
-@dataclass(frozen=True, kw_only=True)
-class ThermiaGenesisBinarySensorEntityDescription(
-    ThermiaGenesisEntityDescription, BinarySensorEntityDescription
-):
-    """A binary sensor for a bit of a part, or for one member of a flags field."""
-
-    member: IntFlag | None = None
-
-
-def _members(
-    field: str, flags: type[IntFlag]
-) -> tuple[ThermiaGenesisBinarySensorEntityDescription, ...]:
-    """One binary sensor per member of a flags field, disabled by default."""
-    return tuple(
-        ThermiaGenesisBinarySensorEntityDescription(
-            key=f"{field}_{member.name.lower()}",  # type: ignore[union-attr]
-            translation_key=f"{field}_{member.name.lower()}",  # type: ignore[union-attr]
-            field=field,
-            member=member,
-            entity_registry_enabled_default=False,
-        )
-        for member in flags
-    )
-
-
 # The binary sensors of each part, by the part's attribute on ThermiaGenesis.
 BINARY_SENSORS: dict[str, tuple[ThermiaGenesisBinarySensorEntityDescription, ...]] = {
-    "status": _members("running_demands", RunningDemands),
+    "heat_pump": heat_pump.BINARY_SENSORS,
+    "status": status.BINARY_SENSORS,
 }
 
 
