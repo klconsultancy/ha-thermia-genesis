@@ -76,5 +76,180 @@
       "title": "Niet-ondersteunde firmware van de warmtepomp",
       "description": "{title} draait Genesis-firmware {version}, maar deze integratie is geschreven voor firmware 17.1. Ze leest de pomp alsof het 17.1 is, dus sommige waarden kunnen fout zijn of ontbreken.\n\nOpen een issue in de thermia-genesis-repository met de diagnostiek van deze entry, zodat ondersteuning voor deze firmware kan worden toegevoegd."
     }
+  },
+  "entity": {
+    "binary_sensor": {
+      "running_demands_manual_operation": {
+        "name": "Handbediening actief"
+      },
+      "running_demands_defrost": {
+        "name": "Ontdooien actief"
+      },
+      "running_demands_hot_water": {
+        "name": "Warm water actief"
+      },
+      "running_demands_heat": {
+        "name": "Verwarming actief"
+      },
+      "running_demands_active_cooling": {
+        "name": "Actieve koeling actief"
+      },
+      "running_demands_pool": {
+        "name": "Zwembad actief"
+      },
+      "running_demands_anti_legionella": {
+        "name": "Antilegionella actief"
+      },
+      "running_demands_passive_cooling": {
+        "name": "Passieve koeling actief"
+      },
+      "running_demands_standby": {
+        "name": "Stand-by actief"
+      },
+      "running_demands_no_demand": {
+        "name": "Geen vraag actief"
+      },
+      "running_demands_off": {
+        "name": "Uit actief"
+      }
+    },
+    "sensor": {
+      "operational_mode": {
+        "name": "Bedrijfsmodus",
+        "state": {
+          "off": "Uit",
+          "standby": "Stand-by",
+          "on_auto": "Aan (auto)"
+        }
+      },
+      "running_demand_1": {
+        "name": "Lopende vraag 1",
+        "state": {
+          "manual_operation": "Handbediening",
+          "defrost": "Ontdooien",
+          "hot_water": "Warm water",
+          "heat": "Verwarming",
+          "active_cooling": "Actieve koeling",
+          "pool": "Zwembad",
+          "anti_legionella": "Antilegionella",
+          "passive_cooling": "Passieve koeling",
+          "standby": "Stand-by",
+          "no_demand": "Geen vraag",
+          "off": "Uit"
+        }
+      },
+      "running_demand_2": {
+        "name": "Lopende vraag 2",
+        "state": {
+          "manual_operation": "Handbediening",
+          "defrost": "Ontdooien",
+          "hot_water": "Warm water",
+          "heat": "Verwarming",
+          "active_cooling": "Actieve koeling",
+          "pool": "Zwembad",
+          "anti_legionella": "Antilegionella",
+          "passive_cooling": "Passieve koeling",
+          "standby": "Stand-by",
+          "no_demand": "Geen vraag",
+          "off": "Uit"
+        }
+      },
+      "running_demand_3": {
+        "name": "Lopende vraag 3",
+        "state": {
+          "manual_operation": "Handbediening",
+          "defrost": "Ontdooien",
+          "hot_water": "Warm water",
+          "heat": "Verwarming",
+          "active_cooling": "Actieve koeling",
+          "pool": "Zwembad",
+          "anti_legionella": "Antilegionella",
+          "passive_cooling": "Passieve koeling",
+          "standby": "Stand-by",
+          "no_demand": "Geen vraag",
+          "off": "Uit"
+        }
+      },
+      "queued_demand_1": {
+        "name": "Vraag in wachtrij 1",
+        "state": {
+          "manual_operation": "Handbediening",
+          "defrost": "Ontdooien",
+          "hot_water": "Warm water",
+          "heat": "Verwarming",
+          "active_cooling": "Actieve koeling",
+          "pool": "Zwembad",
+          "anti_legionella": "Antilegionella",
+          "passive_cooling": "Passieve koeling",
+          "standby": "Stand-by",
+          "no_demand": "Geen vraag",
+          "off": "Uit"
+        }
+      },
+      "queued_demand_2": {
+        "name": "Vraag in wachtrij 2",
+        "state": {
+          "manual_operation": "Handbediening",
+          "defrost": "Ontdooien",
+          "hot_water": "Warm water",
+          "heat": "Verwarming",
+          "active_cooling": "Actieve koeling",
+          "pool": "Zwembad",
+          "anti_legionella": "Antilegionella",
+          "passive_cooling": "Passieve koeling",
+          "standby": "Stand-by",
+          "no_demand": "Geen vraag",
+          "off": "Uit"
+        }
+      },
+      "queued_demand_3": {
+        "name": "Vraag in wachtrij 3",
+        "state": {
+          "manual_operation": "Handbediening",
+          "defrost": "Ontdooien",
+          "hot_water": "Warm water",
+          "heat": "Verwarming",
+          "active_cooling": "Actieve koeling",
+          "pool": "Zwembad",
+          "anti_legionella": "Antilegionella",
+          "passive_cooling": "Passieve koeling",
+          "standby": "Stand-by",
+          "no_demand": "Geen vraag",
+          "off": "Uit"
+        }
+      },
+      "queued_demand_4": {
+        "name": "Vraag in wachtrij 4",
+        "state": {
+          "manual_operation": "Handbediening",
+          "defrost": "Ontdooien",
+          "hot_water": "Warm water",
+          "heat": "Verwarming",
+          "active_cooling": "Actieve koeling",
+          "pool": "Zwembad",
+          "anti_legionella": "Antilegionella",
+          "passive_cooling": "Passieve koeling",
+          "standby": "Stand-by",
+          "no_demand": "Geen vraag",
+          "off": "Uit"
+        }
+      },
+      "queued_demand_5": {
+        "name": "Vraag in wachtrij 5",
+        "state": {
+          "manual_operation": "Handbediening",
+          "defrost": "Ontdooien",
+          "hot_water": "Warm water",
+          "heat": "Verwarming",
+          "active_cooling": "Actieve koeling",
+          "pool": "Zwembad",
+          "anti_legionella": "Antilegionella",
+          "passive_cooling": "Passieve koeling",
+          "standby": "Stand-by",
+          "no_demand": "Geen vraag",
+          "off": "Uit"
+        }
+      }
+    }
   }
 }

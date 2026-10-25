@@ -99,6 +99,14 @@ entities.
   flags) sets its translation key, device class, state class, entity category and whether
   it is enabled by default. A test requires that the descriptions cover every library field
   exactly once (every member of a flags field) with a unit that matches the library's.
+  Like the library's consistency test, it lists the parts it holds complete; each part's
+  pull request adds its part.
+- The descriptions live in the platform modules, grouped per part (`SENSORS`,
+  `BINARY_SENSORS`), with the field name as `key` and translation key. A key is shared by
+  parts with a field of the same name ("Supply line temperature"); the device name tells
+  them apart.
+- An entity is unavailable while its field's register space fails. A field the pump
+  refuses, or an enum value the library doesn't know, reads as unknown.
 - Platforms:
   - coils and discrete inputs: `binary_sensor`; alarms get device class `problem`;
   - enums: `sensor` with device class `enum` and translated options;

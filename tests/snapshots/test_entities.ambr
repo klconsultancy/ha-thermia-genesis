@@ -1,0 +1,1237 @@
+# serializer version: 1
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_active_cooling_running-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': None,
+    'entity_id': 'binary_sensor.thermia_genesis_active_cooling_running',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Active cooling running',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Active cooling running',
+    'platform': 'thermia_genesis',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'running_demands_active_cooling',
+    'unique_id': '01JTHERMIAGENESIS000000000_status_running_demands_active_cooling',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_active_cooling_running-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Active cooling running',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.thermia_genesis_active_cooling_running',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_anti_legionella_running-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': None,
+    'entity_id': 'binary_sensor.thermia_genesis_anti_legionella_running',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Anti-legionella running',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Anti-legionella running',
+    'platform': 'thermia_genesis',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'running_demands_anti_legionella',
+    'unique_id': '01JTHERMIAGENESIS000000000_status_running_demands_anti_legionella',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_anti_legionella_running-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Anti-legionella running',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.thermia_genesis_anti_legionella_running',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_defrost_running-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': None,
+    'entity_id': 'binary_sensor.thermia_genesis_defrost_running',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Defrost running',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Defrost running',
+    'platform': 'thermia_genesis',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'running_demands_defrost',
+    'unique_id': '01JTHERMIAGENESIS000000000_status_running_demands_defrost',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_defrost_running-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Defrost running',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.thermia_genesis_defrost_running',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_heating_running-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': None,
+    'entity_id': 'binary_sensor.thermia_genesis_heating_running',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Heating running',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Heating running',
+    'platform': 'thermia_genesis',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'running_demands_heat',
+    'unique_id': '01JTHERMIAGENESIS000000000_status_running_demands_heat',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_heating_running-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Heating running',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.thermia_genesis_heating_running',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_hot_water_running-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': None,
+    'entity_id': 'binary_sensor.thermia_genesis_hot_water_running',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Hot water running',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Hot water running',
+    'platform': 'thermia_genesis',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'running_demands_hot_water',
+    'unique_id': '01JTHERMIAGENESIS000000000_status_running_demands_hot_water',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_hot_water_running-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Hot water running',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.thermia_genesis_hot_water_running',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_manual_operation_running-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': None,
+    'entity_id': 'binary_sensor.thermia_genesis_manual_operation_running',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Manual operation running',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Manual operation running',
+    'platform': 'thermia_genesis',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'running_demands_manual_operation',
+    'unique_id': '01JTHERMIAGENESIS000000000_status_running_demands_manual_operation',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_manual_operation_running-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Manual operation running',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.thermia_genesis_manual_operation_running',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_no_demand_running-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': None,
+    'entity_id': 'binary_sensor.thermia_genesis_no_demand_running',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'No demand running',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'No demand running',
+    'platform': 'thermia_genesis',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'running_demands_no_demand',
+    'unique_id': '01JTHERMIAGENESIS000000000_status_running_demands_no_demand',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_no_demand_running-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis No demand running',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.thermia_genesis_no_demand_running',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'on',
+  })
+# ---
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_off_running-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': None,
+    'entity_id': 'binary_sensor.thermia_genesis_off_running',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Off running',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Off running',
+    'platform': 'thermia_genesis',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'running_demands_off',
+    'unique_id': '01JTHERMIAGENESIS000000000_status_running_demands_off',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_off_running-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Off running',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.thermia_genesis_off_running',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_passive_cooling_running-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': None,
+    'entity_id': 'binary_sensor.thermia_genesis_passive_cooling_running',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Passive cooling running',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Passive cooling running',
+    'platform': 'thermia_genesis',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'running_demands_passive_cooling',
+    'unique_id': '01JTHERMIAGENESIS000000000_status_running_demands_passive_cooling',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_passive_cooling_running-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Passive cooling running',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.thermia_genesis_passive_cooling_running',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_pool_running-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': None,
+    'entity_id': 'binary_sensor.thermia_genesis_pool_running',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Pool running',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Pool running',
+    'platform': 'thermia_genesis',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'running_demands_pool',
+    'unique_id': '01JTHERMIAGENESIS000000000_status_running_demands_pool',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_pool_running-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Pool running',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.thermia_genesis_pool_running',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_standby_running-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': None,
+    'entity_id': 'binary_sensor.thermia_genesis_standby_running',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Standby running',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Standby running',
+    'platform': 'thermia_genesis',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'running_demands_standby',
+    'unique_id': '01JTHERMIAGENESIS000000000_status_running_demands_standby',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_standby_running-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Standby running',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.thermia_genesis_standby_running',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
+# name: test_entities[sensor][sensor.thermia_genesis_operational_mode-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      <SensorEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+        'off',
+        'standby',
+        'on_auto',
+      ]),
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.thermia_genesis_operational_mode',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Operational mode',
+    'options': dict({
+    }),
+    'original_device_class': <SensorDeviceClass.ENUM: 'enum'>,
+    'original_icon': None,
+    'original_name': 'Operational mode',
+    'platform': 'thermia_genesis',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'operational_mode',
+    'unique_id': '01JTHERMIAGENESIS000000000_status_operational_mode',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[sensor][sensor.thermia_genesis_operational_mode-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'enum',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Operational mode',
+      <SensorEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+        'off',
+        'standby',
+        'on_auto',
+      ]),
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.thermia_genesis_operational_mode',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'on_auto',
+  })
+# ---
+# name: test_entities[sensor][sensor.thermia_genesis_queued_demand_1-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      <SensorEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+        'manual_operation',
+        'defrost',
+        'hot_water',
+        'heat',
+        'active_cooling',
+        'pool',
+        'anti_legionella',
+        'passive_cooling',
+        'standby',
+        'no_demand',
+        'off',
+      ]),
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.thermia_genesis_queued_demand_1',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Queued demand 1',
+    'options': dict({
+    }),
+    'original_device_class': <SensorDeviceClass.ENUM: 'enum'>,
+    'original_icon': None,
+    'original_name': 'Queued demand 1',
+    'platform': 'thermia_genesis',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'queued_demand_1',
+    'unique_id': '01JTHERMIAGENESIS000000000_status_queued_demand_1',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[sensor][sensor.thermia_genesis_queued_demand_1-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'enum',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Queued demand 1',
+      <SensorEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+        'manual_operation',
+        'defrost',
+        'hot_water',
+        'heat',
+        'active_cooling',
+        'pool',
+        'anti_legionella',
+        'passive_cooling',
+        'standby',
+        'no_demand',
+        'off',
+      ]),
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.thermia_genesis_queued_demand_1',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'no_demand',
+  })
+# ---
+# name: test_entities[sensor][sensor.thermia_genesis_queued_demand_2-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      <SensorEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+        'manual_operation',
+        'defrost',
+        'hot_water',
+        'heat',
+        'active_cooling',
+        'pool',
+        'anti_legionella',
+        'passive_cooling',
+        'standby',
+        'no_demand',
+        'off',
+      ]),
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.thermia_genesis_queued_demand_2',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Queued demand 2',
+    'options': dict({
+    }),
+    'original_device_class': <SensorDeviceClass.ENUM: 'enum'>,
+    'original_icon': None,
+    'original_name': 'Queued demand 2',
+    'platform': 'thermia_genesis',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'queued_demand_2',
+    'unique_id': '01JTHERMIAGENESIS000000000_status_queued_demand_2',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[sensor][sensor.thermia_genesis_queued_demand_2-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'enum',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Queued demand 2',
+      <SensorEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+        'manual_operation',
+        'defrost',
+        'hot_water',
+        'heat',
+        'active_cooling',
+        'pool',
+        'anti_legionella',
+        'passive_cooling',
+        'standby',
+        'no_demand',
+        'off',
+      ]),
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.thermia_genesis_queued_demand_2',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'no_demand',
+  })
+# ---
+# name: test_entities[sensor][sensor.thermia_genesis_queued_demand_3-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      <SensorEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+        'manual_operation',
+        'defrost',
+        'hot_water',
+        'heat',
+        'active_cooling',
+        'pool',
+        'anti_legionella',
+        'passive_cooling',
+        'standby',
+        'no_demand',
+        'off',
+      ]),
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.thermia_genesis_queued_demand_3',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Queued demand 3',
+    'options': dict({
+    }),
+    'original_device_class': <SensorDeviceClass.ENUM: 'enum'>,
+    'original_icon': None,
+    'original_name': 'Queued demand 3',
+    'platform': 'thermia_genesis',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'queued_demand_3',
+    'unique_id': '01JTHERMIAGENESIS000000000_status_queued_demand_3',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[sensor][sensor.thermia_genesis_queued_demand_3-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'enum',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Queued demand 3',
+      <SensorEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+        'manual_operation',
+        'defrost',
+        'hot_water',
+        'heat',
+        'active_cooling',
+        'pool',
+        'anti_legionella',
+        'passive_cooling',
+        'standby',
+        'no_demand',
+        'off',
+      ]),
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.thermia_genesis_queued_demand_3',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'no_demand',
+  })
+# ---
+# name: test_entities[sensor][sensor.thermia_genesis_queued_demand_4-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      <SensorEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+        'manual_operation',
+        'defrost',
+        'hot_water',
+        'heat',
+        'active_cooling',
+        'pool',
+        'anti_legionella',
+        'passive_cooling',
+        'standby',
+        'no_demand',
+        'off',
+      ]),
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.thermia_genesis_queued_demand_4',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Queued demand 4',
+    'options': dict({
+    }),
+    'original_device_class': <SensorDeviceClass.ENUM: 'enum'>,
+    'original_icon': None,
+    'original_name': 'Queued demand 4',
+    'platform': 'thermia_genesis',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'queued_demand_4',
+    'unique_id': '01JTHERMIAGENESIS000000000_status_queued_demand_4',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[sensor][sensor.thermia_genesis_queued_demand_4-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'enum',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Queued demand 4',
+      <SensorEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+        'manual_operation',
+        'defrost',
+        'hot_water',
+        'heat',
+        'active_cooling',
+        'pool',
+        'anti_legionella',
+        'passive_cooling',
+        'standby',
+        'no_demand',
+        'off',
+      ]),
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.thermia_genesis_queued_demand_4',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'no_demand',
+  })
+# ---
+# name: test_entities[sensor][sensor.thermia_genesis_queued_demand_5-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      <SensorEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+        'manual_operation',
+        'defrost',
+        'hot_water',
+        'heat',
+        'active_cooling',
+        'pool',
+        'anti_legionella',
+        'passive_cooling',
+        'standby',
+        'no_demand',
+        'off',
+      ]),
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.thermia_genesis_queued_demand_5',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Queued demand 5',
+    'options': dict({
+    }),
+    'original_device_class': <SensorDeviceClass.ENUM: 'enum'>,
+    'original_icon': None,
+    'original_name': 'Queued demand 5',
+    'platform': 'thermia_genesis',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'queued_demand_5',
+    'unique_id': '01JTHERMIAGENESIS000000000_status_queued_demand_5',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[sensor][sensor.thermia_genesis_queued_demand_5-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'enum',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Queued demand 5',
+      <SensorEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+        'manual_operation',
+        'defrost',
+        'hot_water',
+        'heat',
+        'active_cooling',
+        'pool',
+        'anti_legionella',
+        'passive_cooling',
+        'standby',
+        'no_demand',
+        'off',
+      ]),
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.thermia_genesis_queued_demand_5',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'no_demand',
+  })
+# ---
+# name: test_entities[sensor][sensor.thermia_genesis_running_demand_1-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      <SensorEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+        'manual_operation',
+        'defrost',
+        'hot_water',
+        'heat',
+        'active_cooling',
+        'pool',
+        'anti_legionella',
+        'passive_cooling',
+        'standby',
+        'no_demand',
+        'off',
+      ]),
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.thermia_genesis_running_demand_1',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Running demand 1',
+    'options': dict({
+    }),
+    'original_device_class': <SensorDeviceClass.ENUM: 'enum'>,
+    'original_icon': None,
+    'original_name': 'Running demand 1',
+    'platform': 'thermia_genesis',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'running_demand_1',
+    'unique_id': '01JTHERMIAGENESIS000000000_status_running_demand_1',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[sensor][sensor.thermia_genesis_running_demand_1-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'enum',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Running demand 1',
+      <SensorEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+        'manual_operation',
+        'defrost',
+        'hot_water',
+        'heat',
+        'active_cooling',
+        'pool',
+        'anti_legionella',
+        'passive_cooling',
+        'standby',
+        'no_demand',
+        'off',
+      ]),
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.thermia_genesis_running_demand_1',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'no_demand',
+  })
+# ---
+# name: test_entities[sensor][sensor.thermia_genesis_running_demand_2-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      <SensorEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+        'manual_operation',
+        'defrost',
+        'hot_water',
+        'heat',
+        'active_cooling',
+        'pool',
+        'anti_legionella',
+        'passive_cooling',
+        'standby',
+        'no_demand',
+        'off',
+      ]),
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.thermia_genesis_running_demand_2',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Running demand 2',
+    'options': dict({
+    }),
+    'original_device_class': <SensorDeviceClass.ENUM: 'enum'>,
+    'original_icon': None,
+    'original_name': 'Running demand 2',
+    'platform': 'thermia_genesis',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'running_demand_2',
+    'unique_id': '01JTHERMIAGENESIS000000000_status_running_demand_2',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[sensor][sensor.thermia_genesis_running_demand_2-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'enum',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Running demand 2',
+      <SensorEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+        'manual_operation',
+        'defrost',
+        'hot_water',
+        'heat',
+        'active_cooling',
+        'pool',
+        'anti_legionella',
+        'passive_cooling',
+        'standby',
+        'no_demand',
+        'off',
+      ]),
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.thermia_genesis_running_demand_2',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'no_demand',
+  })
+# ---
+# name: test_entities[sensor][sensor.thermia_genesis_running_demand_3-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      <SensorEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+        'manual_operation',
+        'defrost',
+        'hot_water',
+        'heat',
+        'active_cooling',
+        'pool',
+        'anti_legionella',
+        'passive_cooling',
+        'standby',
+        'no_demand',
+        'off',
+      ]),
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.thermia_genesis_running_demand_3',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Running demand 3',
+    'options': dict({
+    }),
+    'original_device_class': <SensorDeviceClass.ENUM: 'enum'>,
+    'original_icon': None,
+    'original_name': 'Running demand 3',
+    'platform': 'thermia_genesis',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'running_demand_3',
+    'unique_id': '01JTHERMIAGENESIS000000000_status_running_demand_3',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[sensor][sensor.thermia_genesis_running_demand_3-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'enum',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Running demand 3',
+      <SensorEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+        'manual_operation',
+        'defrost',
+        'hot_water',
+        'heat',
+        'active_cooling',
+        'pool',
+        'anti_legionella',
+        'passive_cooling',
+        'standby',
+        'no_demand',
+        'off',
+      ]),
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.thermia_genesis_running_demand_3',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'no_demand',
+  })
+# ---

@@ -13,7 +13,7 @@ from thermia_genesis import ThermiaGenesis
 from .const import CONF_UNIT_ID, DOMAIN, MANUFACTURER, MODEL, PARTS
 from .coordinator import ThermiaGenesisConfigEntry, ThermiaGenesisCoordinator
 
-PLATFORMS: list[Platform] = []
+PLATFORMS: list[Platform] = [Platform.BINARY_SENSOR, Platform.SENSOR]
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ThermiaGenesisConfigEntry) -> bool:
