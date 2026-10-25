@@ -18,14 +18,12 @@ from custom_components.thermia_genesis.sensor import SENSORS, UNITS
 # The parts whose every field has an entity; it grows with each part's pull request.
 COMPLETE = ["status"]
 
-# The "Enable ..." coils of the optional parts (mix valve 1, HGW, cooling, pool, meter).
-ENABLE_COILS = (11, 6, 10, 28, 26)
-
 
 async def _read_every_part() -> dict[str, type[Subsystem]]:
     """The library's class of each part, from a pump that has every optional part."""
     unit = MockModbusConnection().for_unit(1)
-    for address in ENABLE_COILS:
+    # Every coil on, so every "Enable ..." coil is, whichever the library reads.
+    for address in range(10000):
         unit.coil[address] = True
     pump = ThermiaGenesis(unit)
     await pump.async_update()
