@@ -86,7 +86,9 @@ entities.
 - A register space that failed in the `UpdateReport` makes only the entities of that space
   unavailable; the others keep their fresh values.
 - A firmware other than 17.1 still loads with the 17.1 map and raises a warning repair
-  issue that names the version found. Setup with a supported firmware removes the issue.
+  issue that names the version found. Setup with a supported firmware removes the issue,
+  and so does removing the entry. A first read that misses the firmware leaves both the
+  issue and the device's software version as they were.
 - When the first read fails, setup raises `ConfigEntryNotReady` (through the coordinator's
   first refresh) and Home Assistant retries.
 

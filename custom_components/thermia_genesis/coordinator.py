@@ -57,7 +57,7 @@ class ThermiaGenesisCoordinator(DataUpdateCoordinator[UpdateReport]):
         for name, error in report.failed.items():
             if name not in self._failing:
                 _LOGGER.warning(
-                    "%s: %s failed to refresh and keeps its previous values: %s",
+                    "%s: %s failed to refresh; its entities are unavailable: %s",
                     self.name,
                     name,
                     error,

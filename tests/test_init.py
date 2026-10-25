@@ -247,7 +247,9 @@ async def test_logs_a_failing_register_space_once_and_its_return(
         await next_update(hass, freezer)
 
     assert entry.runtime_data.last_update_success
-    assert caplog.text.count("holding_registers failed to refresh") == 1
+    assert (
+        caplog.text.count("holding_registers failed to refresh; its entities are unavailable") == 1
+    )
 
     pump_unit.fail_read(0, None, register_type="holding")
     await next_update(hass, freezer)
@@ -265,4 +267,33 @@ async def test_leaves_out_the_firmware_the_pump_does_not_report(
     await setup(hass, entry)
 
     assert devices(hass, entry)[""].sw_version is None
+    assert not ir.async_get(hass).issues
+
+
+async def test_keeps_the_firmware_and_its_issue_when_a_read_misses_it(
+    hass: HomeAssistant, entry: MockConfigEntry, unit: MagicMock, pump_unit: MockModbusUnit
+) -> None:
+    del unit
+    pump_unit.input[311] = 18
+    await setup(hass, entry)
+    await hass.config_entries.async_unload(entry.entry_id)
+    for address in (311, 312, 313):
+        pump_unit.fail_read(address, IllegalDataAddressError(), register_type="input")
+
+    await setup(hass, entry)
+
+    assert devices(hass, entry)[""].sw_version == "18.1.11"
+    issues = ir.async_get(hass)
+    assert issues.async_get_issue(DOMAIN, f"unsupported_firmware_{entry.entry_id}") is not None
+
+
+async def test_removing_the_entry_removes_its_repair_issue(
+    hass: HomeAssistant, entry: MockConfigEntry, unit: MagicMock, pump_unit: MockModbusUnit
+) -> None:
+    del unit
+    pump_unit.input[311] = 18
+    await setup(hass, entry)
+
+    await hass.config_entries.async_remove(entry.entry_id)
+
     assert not ir.async_get(hass).issues

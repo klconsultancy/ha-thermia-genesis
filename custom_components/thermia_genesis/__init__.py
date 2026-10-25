@@ -6,6 +6,7 @@ from homeassistant.core import HomeAssistant, callback
 from homeassistant.exceptions import ConfigEntryError, HomeAssistantError
 from homeassistant.helpers import device_registry as dr
 from homeassistant.helpers import issue_registry as ir
+from homeassistant.helpers.typing import UNDEFINED
 from modbus_connection import ModbusTcpParams
 from thermia_genesis import ThermiaGenesis
 
@@ -46,6 +47,15 @@ async def async_unload_entry(hass: HomeAssistant, entry: ThermiaGenesisConfigEnt
     return await hass.config_entries.async_unload_platforms(entry, PLATFORMS)
 
 
+async def async_remove_entry(hass: HomeAssistant, entry: ThermiaGenesisConfigEntry) -> None:
+    """Drop the entry's repair issue along with the entry."""
+    ir.async_delete_issue(hass, DOMAIN, _firmware_issue_id(entry))
+
+
+def _firmware_issue_id(entry: ThermiaGenesisConfigEntry) -> str:
+    return f"unsupported_firmware_{entry.entry_id}"
+
+
 @callback
 def _async_update_devices(hass: HomeAssistant, entry: ThermiaGenesisConfigEntry) -> None:
     """Register the pump and a device per part it has; drop the parts it no longer has."""
@@ -58,7 +68,8 @@ def _async_update_devices(hass: HomeAssistant, entry: ThermiaGenesisConfigEntry)
         manufacturer=MANUFACTURER,
         model=MODEL,
         name=entry.title,
-        sw_version=None if firmware is None else str(firmware),
+        # A read that missed the firmware keeps the version registered before.
+        sw_version=UNDEFINED if firmware is None else str(firmware),
     )
     wanted = {main.id}
     for part in PARTS:
@@ -80,9 +91,11 @@ def _async_update_devices(hass: HomeAssistant, entry: ThermiaGenesisConfigEntry)
 @callback
 def _async_update_firmware_issue(hass: HomeAssistant, entry: ThermiaGenesisConfigEntry) -> None:
     """Warn while the pump runs a firmware the register map isn't written for."""
-    issue_id = f"unsupported_firmware_{entry.entry_id}"
+    issue_id = _firmware_issue_id(entry)
     firmware = entry.runtime_data.pump.firmware_version
-    if firmware is None or firmware.supported:
+    if firmware is None:
+        return  # unknown: keep the issue as it is
+    if firmware.supported:
         ir.async_delete_issue(hass, DOMAIN, issue_id)
         return
     ir.async_create_issue(
