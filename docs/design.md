@@ -31,8 +31,10 @@ entities.
 
 ## Connection
 
-- The config flow asks host and port (default 502). The entry data also holds `unit_id: 1`
-  (the controller ignores the unit id on TCP), so RTU can be added without migrating data.
+- The config flow asks host and port (default 502), with selectors and a probatio schema
+  like the core `sofar` integration, which uses the same Modbus helpers. The entry data also
+  holds `unit_id: 1` (the controller ignores the unit id on TCP), so RTU can be added
+  without migrating data.
 - The flow validates the target with `async_get_temporary_unit` by reading the firmware
   version, and shows `cannot_connect` when that fails.
 - Setup gets the unit with `async_get_unit(hass, entry, ModbusTcpParams(...), unit_id)`.
@@ -123,6 +125,14 @@ entities.
   copy of the library's Calibra 7 fixture; entity states are checked with syrupy snapshots.
   An end-to-end test goes through the real `async_get_unit` to an in-process `tmodbus`
   server. Tests never touch a real pump.
+- The manifest's requirement on the library equals the dependency in `pyproject.toml`; a
+  test keeps them in step, because Dependabot only bumps the latter. The requirements of
+  Home Assistant's `modbus` integration are development dependencies pinned to the versions
+  of the tested Home Assistant release; Dependabot leaves them alone, and a test compares
+  them with the installed `modbus` manifest, so a newer Home Assistant fails until they
+  follow.
+- `translations/en.json` is `strings.json` with its references resolved, and the Dutch
+  translation has exactly its keys; tests check both.
 - uv (with a committed `uv.lock`; the project is not a package), ruff (`ALL` rules), mypy
   strict, prek. Strict TDD; CI enforces 100% line and branch coverage and runs hassfest and
   the HACS validation.

@@ -6,6 +6,12 @@ updates:
       interval: weekly
     commit-message:
       prefix: "build(deps)"
+    # The modbus integration's requirements: they follow the Home Assistant version that
+    # pytest-homeassistant-custom-component pins, not their own releases.
+    ignore:
+      - dependency-name: modbus-connection
+      - dependency-name: pymodbus
+      - dependency-name: tmodbus
     groups:
       dev-dependencies:
         dependency-type: development

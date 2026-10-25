@@ -1,0 +1,37 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "description": "Connect to the heat pump's Genesis controller over Modbus TCP.",
+        "data": {
+          "host": "Host",
+          "port": "Port"
+        },
+        "data_description": {
+          "host": "The IP address or host name of the heat pump.",
+          "port": "The Modbus TCP port of the heat pump, usually 502."
+        }
+      },
+      "reconfigure": {
+        "description": "Change the address of the heat pump. Its entities and their history are kept.",
+        "data": {
+          "host": "Host",
+          "port": "Port"
+        },
+        "data_description": {
+          "host": "The IP address or host name of the heat pump.",
+          "port": "The Modbus TCP port of the heat pump, usually 502."
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Failed to connect",
+      "connection_in_use": "Another integration already uses this address with different connection settings.",
+      "unknown": "Unexpected error"
+    },
+    "abort": {
+      "already_configured": "Device is already configured",
+      "reconfigure_successful": "Reconfiguration was successful"
+    }
+  }
+}
