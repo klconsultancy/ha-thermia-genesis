@@ -62,7 +62,7 @@ entities.
 - One main device "Thermia Genesis": manufacturer Thermia, model Genesis, `sw_version` the
   firmware version. The status entities (operational mode, demands) and the aggregate alarm
   belong to it. The user renames it to the actual model.
-- One sub-device per subsystem the pump has (heat pump unit, heat, mix valve 1, tap water,
+- One sub-device per subsystem the pump has (heat pump unit, heat, mix valve 1, hot water,
   HGW, cooling, pool, electric meter), linked with `via_device` to the main device, all on
   one level. An optional part the pump doesn't have gets no sub-device.
 - The pump's device identifier is `(DOMAIN, entry_id)`, a part's

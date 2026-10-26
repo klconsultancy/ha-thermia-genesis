@@ -131,4 +131,4 @@ async def test_a_refused_field_reads_as_unknown(
 
     await setup(hass, entry)
 
-    assert state(hass, "binary_sensor.thermia_genesis_no_demand_running") == STATE_UNKNOWN
+    assert state(hass, "binary_sensor.thermia_genesis_running_demand_no_demand") == STATE_UNKNOWN

@@ -45,7 +45,7 @@
       "name": "Mengklep 1"
     },
     "tap_water": {
-      "name": "Tapwater"
+      "name": "Warm water"
     },
     "hgw": {
       "name": "Heetgaswarmteterugwinning"
@@ -179,7 +179,7 @@
         "name": "Systeemcirculatiepomp ingeschakeld"
       },
       "enable_tap_water": {
-        "name": "Tapwater ingeschakeld"
+        "name": "Warm water ingeschakeld"
       },
       "enable_variable_speed_brine_pump": {
         "name": "Toerengeregelde brinepomp ingeschakeld"
@@ -212,10 +212,10 @@
         "name": "Alarm hogedrukschakelaar"
       },
       "inverter_unit_alarm": {
-        "name": "Alarm invertor"
+        "name": "Alarm omvormer"
       },
       "inverter_unit_communication_alarm": {
-        "name": "Alarm communicatie invertor"
+        "name": "Alarm communicatie omvormer"
       },
       "liquid_line_sensor_alarm": {
         "name": "Alarm vloeistofleidingvoeler"
@@ -251,40 +251,40 @@
         "name": "Alarm drukverhouding buiten bereik"
       },
       "reset_all_alarms": {
-        "name": "Alle alarmen resetten"
+        "name": "Alarmreset bezig"
       },
       "running_demands_active_cooling": {
-        "name": "Actieve koeling actief"
+        "name": "Lopende vraag: Actieve koeling"
       },
       "running_demands_anti_legionella": {
-        "name": "Antilegionella actief"
+        "name": "Lopende vraag: Antilegionella"
       },
       "running_demands_defrost": {
-        "name": "Ontdooien actief"
+        "name": "Lopende vraag: Ontdooien"
       },
       "running_demands_heat": {
-        "name": "Verwarming actief"
+        "name": "Lopende vraag: Verwarming"
       },
       "running_demands_hot_water": {
-        "name": "Warm water actief"
+        "name": "Lopende vraag: Warm water"
       },
       "running_demands_manual_operation": {
-        "name": "Handbediening actief"
+        "name": "Lopende vraag: Handbediening"
       },
       "running_demands_no_demand": {
-        "name": "Geen vraag actief"
+        "name": "Lopende vraag: Geen vraag"
       },
       "running_demands_off": {
-        "name": "Uit actief"
+        "name": "Lopende vraag: Uit"
       },
       "running_demands_passive_cooling": {
-        "name": "Passieve koeling actief"
+        "name": "Lopende vraag: Passieve koeling"
       },
       "running_demands_pool": {
-        "name": "Zwembad actief"
+        "name": "Lopende vraag: Zwembad"
       },
       "running_demands_standby": {
-        "name": "Stand-by actief"
+        "name": "Lopende vraag: Stand-by"
       },
       "secondary_unit_communication_alarm": {
         "name": "Alarm communicatie secundaire unit"
@@ -302,10 +302,10 @@
         "name": "Alarm zuiggasvoeler"
       },
       "sum_alarm": {
-        "name": "Verzamelalarm"
+        "name": "Somalarm"
       },
       "tap_water_top_sensor_alarm": {
-        "name": "Alarm voeler tapwater boven"
+        "name": "Alarm voeler warm water boven"
       }
     },
     "sensor": {
@@ -328,7 +328,7 @@
         "name": "Temperatuur brine in"
       },
       "brine_max_delta_limit": {
-        "name": "Maximaal temperatuurverschil brine"
+        "name": "Grens maximaal temperatuurverschil brine"
       },
       "brine_out_low_alarm_limit": {
         "name": "Alarmgrens laag brine uit"
@@ -364,7 +364,7 @@
         "name": "Compressortoerental"
       },
       "compressor_speed_percent": {
-        "name": "Compressortoerental (procent)"
+        "name": "Relatief compressortoerental"
       },
       "compressor_start_restriction_timer": {
         "name": "Herstartvertraging compressor"
@@ -406,7 +406,7 @@
         "name": "Persgastemperatuur"
       },
       "enabled_immersion_heater": {
-        "name": "Elektrisch element",
+        "name": "Ingeschakeld elektrisch element",
         "state": {
           "disabled": "Uitgeschakeld",
           "internal": "Intern"
@@ -422,10 +422,10 @@
         "name": "Bedrijfsuren externe bijverwarming"
       },
       "external_additional_heater_start": {
-        "name": "Start externe bijverwarming"
+        "name": "Startdrempel externe bijverwarming"
       },
       "external_additional_heater_stop": {
-        "name": "Stop externe bijverwarming"
+        "name": "Stopdrempel externe bijverwarming"
       },
       "external_heater_outdoor_temperature_limit": {
         "name": "Buitentemperatuurgrens externe bijverwarming"
@@ -446,7 +446,7 @@
         "name": "Trap elektrisch element"
       },
       "inverter_temperature": {
-        "name": "Temperatuur invertor"
+        "name": "Temperatuur omvormer"
       },
       "liquid_line_temperature": {
         "name": "Vloeistofleidingtemperatuur"

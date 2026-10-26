@@ -45,7 +45,7 @@
       "name": "Mix valve 1"
     },
     "tap_water": {
-      "name": "Tap water"
+      "name": "Hot water"
     },
     "hgw": {
       "name": "Hot gas heat recovery"
@@ -179,7 +179,7 @@
         "name": "System circulation pump enabled"
       },
       "enable_tap_water": {
-        "name": "Tap water enabled"
+        "name": "Hot water enabled"
       },
       "enable_variable_speed_brine_pump": {
         "name": "Variable speed brine pump enabled"
@@ -251,40 +251,40 @@
         "name": "Pressure ratio out of range alarm"
       },
       "reset_all_alarms": {
-        "name": "Reset all alarms"
+        "name": "Alarm reset pending"
       },
       "running_demands_active_cooling": {
-        "name": "Active cooling running"
+        "name": "Running demand: Active cooling"
       },
       "running_demands_anti_legionella": {
-        "name": "Anti-legionella running"
+        "name": "Running demand: Anti-legionella"
       },
       "running_demands_defrost": {
-        "name": "Defrost running"
+        "name": "Running demand: Defrost"
       },
       "running_demands_heat": {
-        "name": "Heating running"
+        "name": "Running demand: Heating"
       },
       "running_demands_hot_water": {
-        "name": "Hot water running"
+        "name": "Running demand: Hot water"
       },
       "running_demands_manual_operation": {
-        "name": "Manual operation running"
+        "name": "Running demand: Manual operation"
       },
       "running_demands_no_demand": {
-        "name": "No demand running"
+        "name": "Running demand: No demand"
       },
       "running_demands_off": {
-        "name": "Off running"
+        "name": "Running demand: Off"
       },
       "running_demands_passive_cooling": {
-        "name": "Passive cooling running"
+        "name": "Running demand: Passive cooling"
       },
       "running_demands_pool": {
-        "name": "Pool running"
+        "name": "Running demand: Pool"
       },
       "running_demands_standby": {
-        "name": "Standby running"
+        "name": "Running demand: Standby"
       },
       "secondary_unit_communication_alarm": {
         "name": "Secondary unit communication alarm"
@@ -305,7 +305,7 @@
         "name": "Sum alarm"
       },
       "tap_water_top_sensor_alarm": {
-        "name": "Tap water top sensor alarm"
+        "name": "Hot water top sensor alarm"
       }
     },
     "sensor": {
@@ -328,7 +328,7 @@
         "name": "Brine in temperature"
       },
       "brine_max_delta_limit": {
-        "name": "Brine maximum difference"
+        "name": "Brine maximum difference limit"
       },
       "brine_out_low_alarm_limit": {
         "name": "Brine out low alarm limit"
@@ -364,7 +364,7 @@
         "name": "Compressor speed"
       },
       "compressor_speed_percent": {
-        "name": "Compressor speed (percent)"
+        "name": "Relative compressor speed"
       },
       "compressor_start_restriction_timer": {
         "name": "Compressor start restriction timer"
@@ -406,7 +406,7 @@
         "name": "Discharge pipe temperature"
       },
       "enabled_immersion_heater": {
-        "name": "Immersion heater",
+        "name": "Enabled immersion heater",
         "state": {
           "disabled": "Disabled",
           "internal": "Internal"
@@ -422,10 +422,10 @@
         "name": "External additional heater operating hours"
       },
       "external_additional_heater_start": {
-        "name": "External additional heater start"
+        "name": "External additional heater start threshold"
       },
       "external_additional_heater_stop": {
-        "name": "External additional heater stop"
+        "name": "External additional heater stop threshold"
       },
       "external_heater_outdoor_temperature_limit": {
         "name": "External heater outdoor temperature limit"

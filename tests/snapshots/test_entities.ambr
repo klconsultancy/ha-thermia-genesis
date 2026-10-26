@@ -49,6 +49,56 @@
     'state': 'off',
   })
 # ---
+# name: test_entities[binary_sensor][binary_sensor.heat_pump_unit_alarm_reset_pending-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'binary_sensor.heat_pump_unit_alarm_reset_pending',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Alarm reset pending',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Alarm reset pending',
+    'platform': 'thermia_genesis',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'reset_all_alarms',
+    'unique_id': '01JTHERMIAGENESIS000000000_heat_pump_reset_all_alarms',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[binary_sensor][binary_sensor.heat_pump_unit_alarm_reset_pending-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Heat pump unit Alarm reset pending',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.heat_pump_unit_alarm_reset_pending',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
 # name: test_entities[binary_sensor][binary_sensor.heat_pump_unit_brine_difference_out_of_range_alarm-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
@@ -1974,6 +2024,107 @@
     'state': 'off',
   })
 # ---
+# name: test_entities[binary_sensor][binary_sensor.heat_pump_unit_hot_water_enabled-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'binary_sensor.heat_pump_unit_hot_water_enabled',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Hot water enabled',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Hot water enabled',
+    'platform': 'thermia_genesis',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'enable_tap_water',
+    'unique_id': '01JTHERMIAGENESIS000000000_heat_pump_enable_tap_water',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[binary_sensor][binary_sensor.heat_pump_unit_hot_water_enabled-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Heat pump unit Hot water enabled',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.heat_pump_unit_hot_water_enabled',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'on',
+  })
+# ---
+# name: test_entities[binary_sensor][binary_sensor.heat_pump_unit_hot_water_top_sensor_alarm-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'binary_sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'binary_sensor.heat_pump_unit_hot_water_top_sensor_alarm',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Hot water top sensor alarm',
+    'options': dict({
+    }),
+    'original_device_class': <BinarySensorDeviceClass.PROBLEM: 'problem'>,
+    'original_icon': None,
+    'original_name': 'Hot water top sensor alarm',
+    'platform': 'thermia_genesis',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'tap_water_top_sensor_alarm',
+    'unique_id': '01JTHERMIAGENESIS000000000_heat_pump_tap_water_top_sensor_alarm',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[binary_sensor][binary_sensor.heat_pump_unit_hot_water_top_sensor_alarm-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'problem',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Heat pump unit Hot water top sensor alarm',
+    }),
+    'context': <ANY>,
+    'entity_id': 'binary_sensor.heat_pump_unit_hot_water_top_sensor_alarm',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'off',
+  })
+# ---
 # name: test_entities[binary_sensor][binary_sensor.heat_pump_unit_inverter_alarm-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
@@ -2686,56 +2837,6 @@
     'state': 'on',
   })
 # ---
-# name: test_entities[binary_sensor][binary_sensor.heat_pump_unit_reset_all_alarms-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': list([
-      None,
-    ]),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'binary_sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'binary_sensor.heat_pump_unit_reset_all_alarms',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'object_id_base': 'Reset all alarms',
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': None,
-    'original_name': 'Reset all alarms',
-    'platform': 'thermia_genesis',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'reset_all_alarms',
-    'unique_id': '01JTHERMIAGENESIS000000000_heat_pump_reset_all_alarms',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_entities[binary_sensor][binary_sensor.heat_pump_unit_reset_all_alarms-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Heat pump unit Reset all alarms',
-    }),
-    'context': <ANY>,
-    'entity_id': 'binary_sensor.heat_pump_unit_reset_all_alarms',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'off',
-  })
-# ---
 # name: test_entities[binary_sensor][binary_sensor.heat_pump_unit_secondary_unit_communication_alarm-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
@@ -3089,107 +3190,6 @@
     'state': 'off',
   })
 # ---
-# name: test_entities[binary_sensor][binary_sensor.heat_pump_unit_tap_water_enabled-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': list([
-      None,
-    ]),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'binary_sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'binary_sensor.heat_pump_unit_tap_water_enabled',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'object_id_base': 'Tap water enabled',
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': None,
-    'original_name': 'Tap water enabled',
-    'platform': 'thermia_genesis',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'enable_tap_water',
-    'unique_id': '01JTHERMIAGENESIS000000000_heat_pump_enable_tap_water',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_entities[binary_sensor][binary_sensor.heat_pump_unit_tap_water_enabled-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Heat pump unit Tap water enabled',
-    }),
-    'context': <ANY>,
-    'entity_id': 'binary_sensor.heat_pump_unit_tap_water_enabled',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'on',
-  })
-# ---
-# name: test_entities[binary_sensor][binary_sensor.heat_pump_unit_tap_water_top_sensor_alarm-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': list([
-      None,
-    ]),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'binary_sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'binary_sensor.heat_pump_unit_tap_water_top_sensor_alarm',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'object_id_base': 'Tap water top sensor alarm',
-    'options': dict({
-    }),
-    'original_device_class': <BinarySensorDeviceClass.PROBLEM: 'problem'>,
-    'original_icon': None,
-    'original_name': 'Tap water top sensor alarm',
-    'platform': 'thermia_genesis',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'tap_water_top_sensor_alarm',
-    'unique_id': '01JTHERMIAGENESIS000000000_heat_pump_tap_water_top_sensor_alarm',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_entities[binary_sensor][binary_sensor.heat_pump_unit_tap_water_top_sensor_alarm-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'problem',
-      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Heat pump unit Tap water top sensor alarm',
-    }),
-    'context': <ANY>,
-    'entity_id': 'binary_sensor.heat_pump_unit_tap_water_top_sensor_alarm',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'off',
-  })
-# ---
 # name: test_entities[binary_sensor][binary_sensor.heat_pump_unit_variable_speed_brine_pump_enabled-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
@@ -3290,7 +3290,7 @@
     'state': 'off',
   })
 # ---
-# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_active_cooling_running-entry]
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_running_demand_active_cooling-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -3304,7 +3304,7 @@
     'disabled_by': None,
     'domain': 'binary_sensor',
     'entity_category': None,
-    'entity_id': 'binary_sensor.thermia_genesis_active_cooling_running',
+    'entity_id': 'binary_sensor.thermia_genesis_running_demand_active_cooling',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -3312,12 +3312,12 @@
     'labels': set({
     }),
     'name': None,
-    'object_id_base': 'Active cooling running',
+    'object_id_base': 'Running demand: Active cooling',
     'options': dict({
     }),
     'original_device_class': None,
     'original_icon': None,
-    'original_name': 'Active cooling running',
+    'original_name': 'Running demand: Active cooling',
     'platform': 'thermia_genesis',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -3327,20 +3327,20 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_active_cooling_running-state]
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_running_demand_active_cooling-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Active cooling running',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Running demand: Active cooling',
     }),
     'context': <ANY>,
-    'entity_id': 'binary_sensor.thermia_genesis_active_cooling_running',
+    'entity_id': 'binary_sensor.thermia_genesis_running_demand_active_cooling',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'off',
   })
 # ---
-# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_anti_legionella_running-entry]
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_running_demand_anti_legionella-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -3354,7 +3354,7 @@
     'disabled_by': None,
     'domain': 'binary_sensor',
     'entity_category': None,
-    'entity_id': 'binary_sensor.thermia_genesis_anti_legionella_running',
+    'entity_id': 'binary_sensor.thermia_genesis_running_demand_anti_legionella',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -3362,12 +3362,12 @@
     'labels': set({
     }),
     'name': None,
-    'object_id_base': 'Anti-legionella running',
+    'object_id_base': 'Running demand: Anti-legionella',
     'options': dict({
     }),
     'original_device_class': None,
     'original_icon': None,
-    'original_name': 'Anti-legionella running',
+    'original_name': 'Running demand: Anti-legionella',
     'platform': 'thermia_genesis',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -3377,20 +3377,20 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_anti_legionella_running-state]
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_running_demand_anti_legionella-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Anti-legionella running',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Running demand: Anti-legionella',
     }),
     'context': <ANY>,
-    'entity_id': 'binary_sensor.thermia_genesis_anti_legionella_running',
+    'entity_id': 'binary_sensor.thermia_genesis_running_demand_anti_legionella',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'off',
   })
 # ---
-# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_defrost_running-entry]
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_running_demand_defrost-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -3404,7 +3404,7 @@
     'disabled_by': None,
     'domain': 'binary_sensor',
     'entity_category': None,
-    'entity_id': 'binary_sensor.thermia_genesis_defrost_running',
+    'entity_id': 'binary_sensor.thermia_genesis_running_demand_defrost',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -3412,12 +3412,12 @@
     'labels': set({
     }),
     'name': None,
-    'object_id_base': 'Defrost running',
+    'object_id_base': 'Running demand: Defrost',
     'options': dict({
     }),
     'original_device_class': None,
     'original_icon': None,
-    'original_name': 'Defrost running',
+    'original_name': 'Running demand: Defrost',
     'platform': 'thermia_genesis',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -3427,20 +3427,20 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_defrost_running-state]
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_running_demand_defrost-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Defrost running',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Running demand: Defrost',
     }),
     'context': <ANY>,
-    'entity_id': 'binary_sensor.thermia_genesis_defrost_running',
+    'entity_id': 'binary_sensor.thermia_genesis_running_demand_defrost',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'off',
   })
 # ---
-# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_heating_running-entry]
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_running_demand_heating-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -3454,7 +3454,7 @@
     'disabled_by': None,
     'domain': 'binary_sensor',
     'entity_category': None,
-    'entity_id': 'binary_sensor.thermia_genesis_heating_running',
+    'entity_id': 'binary_sensor.thermia_genesis_running_demand_heating',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -3462,12 +3462,12 @@
     'labels': set({
     }),
     'name': None,
-    'object_id_base': 'Heating running',
+    'object_id_base': 'Running demand: Heating',
     'options': dict({
     }),
     'original_device_class': None,
     'original_icon': None,
-    'original_name': 'Heating running',
+    'original_name': 'Running demand: Heating',
     'platform': 'thermia_genesis',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -3477,20 +3477,20 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_heating_running-state]
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_running_demand_heating-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Heating running',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Running demand: Heating',
     }),
     'context': <ANY>,
-    'entity_id': 'binary_sensor.thermia_genesis_heating_running',
+    'entity_id': 'binary_sensor.thermia_genesis_running_demand_heating',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'off',
   })
 # ---
-# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_hot_water_running-entry]
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_running_demand_hot_water-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -3504,7 +3504,7 @@
     'disabled_by': None,
     'domain': 'binary_sensor',
     'entity_category': None,
-    'entity_id': 'binary_sensor.thermia_genesis_hot_water_running',
+    'entity_id': 'binary_sensor.thermia_genesis_running_demand_hot_water',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -3512,12 +3512,12 @@
     'labels': set({
     }),
     'name': None,
-    'object_id_base': 'Hot water running',
+    'object_id_base': 'Running demand: Hot water',
     'options': dict({
     }),
     'original_device_class': None,
     'original_icon': None,
-    'original_name': 'Hot water running',
+    'original_name': 'Running demand: Hot water',
     'platform': 'thermia_genesis',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -3527,20 +3527,20 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_hot_water_running-state]
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_running_demand_hot_water-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Hot water running',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Running demand: Hot water',
     }),
     'context': <ANY>,
-    'entity_id': 'binary_sensor.thermia_genesis_hot_water_running',
+    'entity_id': 'binary_sensor.thermia_genesis_running_demand_hot_water',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'off',
   })
 # ---
-# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_manual_operation_running-entry]
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_running_demand_manual_operation-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -3554,7 +3554,7 @@
     'disabled_by': None,
     'domain': 'binary_sensor',
     'entity_category': None,
-    'entity_id': 'binary_sensor.thermia_genesis_manual_operation_running',
+    'entity_id': 'binary_sensor.thermia_genesis_running_demand_manual_operation',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -3562,12 +3562,12 @@
     'labels': set({
     }),
     'name': None,
-    'object_id_base': 'Manual operation running',
+    'object_id_base': 'Running demand: Manual operation',
     'options': dict({
     }),
     'original_device_class': None,
     'original_icon': None,
-    'original_name': 'Manual operation running',
+    'original_name': 'Running demand: Manual operation',
     'platform': 'thermia_genesis',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -3577,20 +3577,20 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_manual_operation_running-state]
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_running_demand_manual_operation-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Manual operation running',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Running demand: Manual operation',
     }),
     'context': <ANY>,
-    'entity_id': 'binary_sensor.thermia_genesis_manual_operation_running',
+    'entity_id': 'binary_sensor.thermia_genesis_running_demand_manual_operation',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'off',
   })
 # ---
-# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_no_demand_running-entry]
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_running_demand_no_demand-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -3604,7 +3604,7 @@
     'disabled_by': None,
     'domain': 'binary_sensor',
     'entity_category': None,
-    'entity_id': 'binary_sensor.thermia_genesis_no_demand_running',
+    'entity_id': 'binary_sensor.thermia_genesis_running_demand_no_demand',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -3612,12 +3612,12 @@
     'labels': set({
     }),
     'name': None,
-    'object_id_base': 'No demand running',
+    'object_id_base': 'Running demand: No demand',
     'options': dict({
     }),
     'original_device_class': None,
     'original_icon': None,
-    'original_name': 'No demand running',
+    'original_name': 'Running demand: No demand',
     'platform': 'thermia_genesis',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -3627,20 +3627,20 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_no_demand_running-state]
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_running_demand_no_demand-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis No demand running',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Running demand: No demand',
     }),
     'context': <ANY>,
-    'entity_id': 'binary_sensor.thermia_genesis_no_demand_running',
+    'entity_id': 'binary_sensor.thermia_genesis_running_demand_no_demand',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'on',
   })
 # ---
-# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_off_running-entry]
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_running_demand_off-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -3654,7 +3654,7 @@
     'disabled_by': None,
     'domain': 'binary_sensor',
     'entity_category': None,
-    'entity_id': 'binary_sensor.thermia_genesis_off_running',
+    'entity_id': 'binary_sensor.thermia_genesis_running_demand_off',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -3662,12 +3662,12 @@
     'labels': set({
     }),
     'name': None,
-    'object_id_base': 'Off running',
+    'object_id_base': 'Running demand: Off',
     'options': dict({
     }),
     'original_device_class': None,
     'original_icon': None,
-    'original_name': 'Off running',
+    'original_name': 'Running demand: Off',
     'platform': 'thermia_genesis',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -3677,20 +3677,20 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_off_running-state]
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_running_demand_off-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Off running',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Running demand: Off',
     }),
     'context': <ANY>,
-    'entity_id': 'binary_sensor.thermia_genesis_off_running',
+    'entity_id': 'binary_sensor.thermia_genesis_running_demand_off',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'off',
   })
 # ---
-# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_passive_cooling_running-entry]
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_running_demand_passive_cooling-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -3704,7 +3704,7 @@
     'disabled_by': None,
     'domain': 'binary_sensor',
     'entity_category': None,
-    'entity_id': 'binary_sensor.thermia_genesis_passive_cooling_running',
+    'entity_id': 'binary_sensor.thermia_genesis_running_demand_passive_cooling',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -3712,12 +3712,12 @@
     'labels': set({
     }),
     'name': None,
-    'object_id_base': 'Passive cooling running',
+    'object_id_base': 'Running demand: Passive cooling',
     'options': dict({
     }),
     'original_device_class': None,
     'original_icon': None,
-    'original_name': 'Passive cooling running',
+    'original_name': 'Running demand: Passive cooling',
     'platform': 'thermia_genesis',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -3727,20 +3727,20 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_passive_cooling_running-state]
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_running_demand_passive_cooling-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Passive cooling running',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Running demand: Passive cooling',
     }),
     'context': <ANY>,
-    'entity_id': 'binary_sensor.thermia_genesis_passive_cooling_running',
+    'entity_id': 'binary_sensor.thermia_genesis_running_demand_passive_cooling',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'off',
   })
 # ---
-# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_pool_running-entry]
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_running_demand_pool-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -3754,7 +3754,7 @@
     'disabled_by': None,
     'domain': 'binary_sensor',
     'entity_category': None,
-    'entity_id': 'binary_sensor.thermia_genesis_pool_running',
+    'entity_id': 'binary_sensor.thermia_genesis_running_demand_pool',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -3762,12 +3762,12 @@
     'labels': set({
     }),
     'name': None,
-    'object_id_base': 'Pool running',
+    'object_id_base': 'Running demand: Pool',
     'options': dict({
     }),
     'original_device_class': None,
     'original_icon': None,
-    'original_name': 'Pool running',
+    'original_name': 'Running demand: Pool',
     'platform': 'thermia_genesis',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -3777,20 +3777,20 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_pool_running-state]
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_running_demand_pool-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Pool running',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Running demand: Pool',
     }),
     'context': <ANY>,
-    'entity_id': 'binary_sensor.thermia_genesis_pool_running',
+    'entity_id': 'binary_sensor.thermia_genesis_running_demand_pool',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'off',
   })
 # ---
-# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_standby_running-entry]
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_running_demand_standby-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -3804,7 +3804,7 @@
     'disabled_by': None,
     'domain': 'binary_sensor',
     'entity_category': None,
-    'entity_id': 'binary_sensor.thermia_genesis_standby_running',
+    'entity_id': 'binary_sensor.thermia_genesis_running_demand_standby',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -3812,12 +3812,12 @@
     'labels': set({
     }),
     'name': None,
-    'object_id_base': 'Standby running',
+    'object_id_base': 'Running demand: Standby',
     'options': dict({
     }),
     'original_device_class': None,
     'original_icon': None,
-    'original_name': 'Standby running',
+    'original_name': 'Running demand: Standby',
     'platform': 'thermia_genesis',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -3827,13 +3827,13 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_standby_running-state]
+# name: test_entities[binary_sensor][binary_sensor.thermia_genesis_running_demand_standby-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Standby running',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Running demand: Standby',
     }),
     'context': <ANY>,
-    'entity_id': 'binary_sensor.thermia_genesis_standby_running',
+    'entity_id': 'binary_sensor.thermia_genesis_running_demand_standby',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -4172,7 +4172,7 @@
     'state': '24.6',
   })
 # ---
-# name: test_entities[sensor][sensor.heat_pump_unit_brine_maximum_difference-entry]
+# name: test_entities[sensor][sensor.heat_pump_unit_brine_maximum_difference_limit-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -4186,7 +4186,7 @@
     'disabled_by': None,
     'domain': 'sensor',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.heat_pump_unit_brine_maximum_difference',
+    'entity_id': 'sensor.heat_pump_unit_brine_maximum_difference_limit',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -4194,7 +4194,7 @@
     'labels': set({
     }),
     'name': None,
-    'object_id_base': 'Brine maximum difference',
+    'object_id_base': 'Brine maximum difference limit',
     'options': dict({
       'sensor': dict({
         'suggested_display_precision': 1,
@@ -4202,7 +4202,7 @@
     }),
     'original_device_class': <SensorDeviceClass.TEMPERATURE_DELTA: 'temperature_delta'>,
     'original_icon': None,
-    'original_name': 'Brine maximum difference',
+    'original_name': 'Brine maximum difference limit',
     'platform': 'thermia_genesis',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -4212,15 +4212,15 @@
     'unit_of_measurement': <UnitOfTemperature.KELVIN: 'K'>,
   })
 # ---
-# name: test_entities[sensor][sensor.heat_pump_unit_brine_maximum_difference-state]
+# name: test_entities[sensor][sensor.heat_pump_unit_brine_maximum_difference_limit-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'temperature_delta',
-      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Heat pump unit Brine maximum difference',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Heat pump unit Brine maximum difference limit',
       <EntityStateAttribute.UNIT_OF_MEASUREMENT: 'unit_of_measurement'>: <UnitOfTemperature.KELVIN: 'K'>,
     }),
     'context': <ANY>,
-    'entity_id': 'sensor.heat_pump_unit_brine_maximum_difference',
+    'entity_id': 'sensor.heat_pump_unit_brine_maximum_difference_limit',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -4841,63 +4841,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '0',
-  })
-# ---
-# name: test_entities[sensor][sensor.heat_pump_unit_compressor_speed_percent-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': list([
-      None,
-    ]),
-    'area_id': None,
-    'capabilities': dict({
-      <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
-    }),
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': None,
-    'entity_id': 'sensor.heat_pump_unit_compressor_speed_percent',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'object_id_base': 'Compressor speed (percent)',
-    'options': dict({
-      'sensor': dict({
-        'suggested_display_precision': 0,
-      }),
-    }),
-    'original_device_class': None,
-    'original_icon': None,
-    'original_name': 'Compressor speed (percent)',
-    'platform': 'thermia_genesis',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'compressor_speed_percent',
-    'unique_id': '01JTHERMIAGENESIS000000000_heat_pump_compressor_speed_percent',
-    'unit_of_measurement': '%',
-  })
-# ---
-# name: test_entities[sensor][sensor.heat_pump_unit_compressor_speed_percent-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Heat pump unit Compressor speed (percent)',
-      <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
-      <EntityStateAttribute.UNIT_OF_MEASUREMENT: 'unit_of_measurement'>: '%',
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.heat_pump_unit_compressor_speed_percent',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': '0.0',
   })
 # ---
 # name: test_entities[sensor][sensor.heat_pump_unit_compressor_start_restriction_timer-entry]
@@ -5571,6 +5514,66 @@
     'state': '0',
   })
 # ---
+# name: test_entities[sensor][sensor.heat_pump_unit_enabled_immersion_heater-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      <SensorEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+        'disabled',
+        'internal',
+      ]),
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_id': 'sensor.heat_pump_unit_enabled_immersion_heater',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Enabled immersion heater',
+    'options': dict({
+    }),
+    'original_device_class': <SensorDeviceClass.ENUM: 'enum'>,
+    'original_icon': None,
+    'original_name': 'Enabled immersion heater',
+    'platform': 'thermia_genesis',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'enabled_immersion_heater',
+    'unique_id': '01JTHERMIAGENESIS000000000_heat_pump_enabled_immersion_heater',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[sensor][sensor.heat_pump_unit_enabled_immersion_heater-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'enum',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Heat pump unit Enabled immersion heater',
+      <SensorEntityCapabilityAttribute.OPTIONS: 'options'>: list([
+        'disabled',
+        'internal',
+      ]),
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.heat_pump_unit_enabled_immersion_heater',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'internal',
+  })
+# ---
 # name: test_entities[sensor][sensor.heat_pump_unit_expansion_valve_opening-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
@@ -5743,7 +5746,7 @@
     'state': '0',
   })
 # ---
-# name: test_entities[sensor][sensor.heat_pump_unit_external_additional_heater_start-entry]
+# name: test_entities[sensor][sensor.heat_pump_unit_external_additional_heater_start_threshold-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -5757,7 +5760,7 @@
     'disabled_by': None,
     'domain': 'sensor',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.heat_pump_unit_external_additional_heater_start',
+    'entity_id': 'sensor.heat_pump_unit_external_additional_heater_start_threshold',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -5765,12 +5768,12 @@
     'labels': set({
     }),
     'name': None,
-    'object_id_base': 'External additional heater start',
+    'object_id_base': 'External additional heater start threshold',
     'options': dict({
     }),
     'original_device_class': None,
     'original_icon': None,
-    'original_name': 'External additional heater start',
+    'original_name': 'External additional heater start threshold',
     'platform': 'thermia_genesis',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -5780,20 +5783,20 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_entities[sensor][sensor.heat_pump_unit_external_additional_heater_start-state]
+# name: test_entities[sensor][sensor.heat_pump_unit_external_additional_heater_start_threshold-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Heat pump unit External additional heater start',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Heat pump unit External additional heater start threshold',
     }),
     'context': <ANY>,
-    'entity_id': 'sensor.heat_pump_unit_external_additional_heater_start',
+    'entity_id': 'sensor.heat_pump_unit_external_additional_heater_start_threshold',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '-6',
   })
 # ---
-# name: test_entities[sensor][sensor.heat_pump_unit_external_additional_heater_stop-entry]
+# name: test_entities[sensor][sensor.heat_pump_unit_external_additional_heater_stop_threshold-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -5807,7 +5810,7 @@
     'disabled_by': None,
     'domain': 'sensor',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.heat_pump_unit_external_additional_heater_stop',
+    'entity_id': 'sensor.heat_pump_unit_external_additional_heater_stop_threshold',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -5815,7 +5818,7 @@
     'labels': set({
     }),
     'name': None,
-    'object_id_base': 'External additional heater stop',
+    'object_id_base': 'External additional heater stop threshold',
     'options': dict({
       'sensor': dict({
         'suggested_display_precision': 2,
@@ -5823,7 +5826,7 @@
     }),
     'original_device_class': None,
     'original_icon': None,
-    'original_name': 'External additional heater stop',
+    'original_name': 'External additional heater stop threshold',
     'platform': 'thermia_genesis',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -5833,13 +5836,13 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_entities[sensor][sensor.heat_pump_unit_external_additional_heater_stop-state]
+# name: test_entities[sensor][sensor.heat_pump_unit_external_additional_heater_stop_threshold-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Heat pump unit External additional heater stop',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Heat pump unit External additional heater stop threshold',
     }),
     'context': <ANY>,
-    'entity_id': 'sensor.heat_pump_unit_external_additional_heater_stop',
+    'entity_id': 'sensor.heat_pump_unit_external_additional_heater_stop_threshold',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -6285,66 +6288,6 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '14.77',
-  })
-# ---
-# name: test_entities[sensor][sensor.heat_pump_unit_immersion_heater-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': list([
-      None,
-    ]),
-    'area_id': None,
-    'capabilities': dict({
-      <SensorEntityCapabilityAttribute.OPTIONS: 'options'>: list([
-        'disabled',
-        'internal',
-      ]),
-    }),
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'sensor.heat_pump_unit_immersion_heater',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'object_id_base': 'Immersion heater',
-    'options': dict({
-    }),
-    'original_device_class': <SensorDeviceClass.ENUM: 'enum'>,
-    'original_icon': None,
-    'original_name': 'Immersion heater',
-    'platform': 'thermia_genesis',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'enabled_immersion_heater',
-    'unique_id': '01JTHERMIAGENESIS000000000_heat_pump_enabled_immersion_heater',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_entities[sensor][sensor.heat_pump_unit_immersion_heater-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'enum',
-      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Heat pump unit Immersion heater',
-      <SensorEntityCapabilityAttribute.OPTIONS: 'options'>: list([
-        'disabled',
-        'internal',
-      ]),
-    }),
-    'context': <ANY>,
-    'entity_id': 'sensor.heat_pump_unit_immersion_heater',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'internal',
   })
 # ---
 # name: test_entities[sensor][sensor.heat_pump_unit_immersion_heater_step-entry]
@@ -7064,6 +7007,63 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '0',
+  })
+# ---
+# name: test_entities[sensor][sensor.heat_pump_unit_relative_compressor_speed-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': dict({
+      <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
+    }),
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'sensor',
+    'entity_category': None,
+    'entity_id': 'sensor.heat_pump_unit_relative_compressor_speed',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Relative compressor speed',
+    'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 0,
+      }),
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Relative compressor speed',
+    'platform': 'thermia_genesis',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'compressor_speed_percent',
+    'unique_id': '01JTHERMIAGENESIS000000000_heat_pump_compressor_speed_percent',
+    'unit_of_measurement': '%',
+  })
+# ---
+# name: test_entities[sensor][sensor.heat_pump_unit_relative_compressor_speed-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Heat pump unit Relative compressor speed',
+      <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
+      <EntityStateAttribute.UNIT_OF_MEASUREMENT: 'unit_of_measurement'>: '%',
+    }),
+    'context': <ANY>,
+    'entity_id': 'sensor.heat_pump_unit_relative_compressor_speed',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': '0.0',
   })
 # ---
 # name: test_entities[sensor][sensor.heat_pump_unit_room_temperature-entry]
