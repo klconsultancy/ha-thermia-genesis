@@ -41,5 +41,6 @@ BINARY_SENSORS: tuple[BinarySensor, ...] = (
     signal("external_start_brine_pump"),
     signal("circuit_regulation_control_signal"),
     signal("surplus_heat_directional_valve_position"),
+    # Chapter 3 adds "(Borehole disconnected)": on likely means the borehole is cut off.
     signal("active_cooling_directional_valve_position"),
 )
