@@ -1,4 +1,30 @@
 # serializer version: 1
+# name: test_an_optional_part_gets_its_entities
+  dict({
+    'binary_sensor.mix_valve_1_circulation_pump': 'off',
+    'binary_sensor.mix_valve_1_enabled': 'on',
+    'binary_sensor.mix_valve_1_internal_brine_pump_in_cooling_enabled': 'off',
+    'binary_sensor.mix_valve_1_outdoor_temperature_dependent_cooling_enabled': 'off',
+    'binary_sensor.mix_valve_1_passive_cooling': 'off',
+    'binary_sensor.mix_valve_1_supply_line_sensor_alarm': 'off',
+    'binary_sensor.mix_valve_1_supply_line_temperature_deviation_alarm': 'off',
+    'sensor.mix_valve_1_cooling_minimum_outdoor_temperature': '22.0',
+    'sensor.mix_valve_1_heat_curve_point_1_supply_line_temperature': '41.0',
+    'sensor.mix_valve_1_heat_curve_point_2_supply_line_temperature': '38.0',
+    'sensor.mix_valve_1_heat_curve_point_3_supply_line_temperature': '35.0',
+    'sensor.mix_valve_1_heat_curve_point_4_supply_line_temperature': '32.0',
+    'sensor.mix_valve_1_heat_curve_point_5_supply_line_temperature': '29.0',
+    'sensor.mix_valve_1_heat_curve_point_6_supply_line_temperature': '26.0',
+    'sensor.mix_valve_1_heat_curve_point_7_supply_line_temperature': '23.0',
+    'sensor.mix_valve_1_maximum_supply_line_temperature_limit': '45.0',
+    'sensor.mix_valve_1_minimum_supply_line_temperature_limit': '20.0',
+    'sensor.mix_valve_1_mode': 'auto',
+    'sensor.mix_valve_1_passive_cooling_supply_line_set_point': '18.0',
+    'sensor.mix_valve_1_supply_line_set_point': '32.0',
+    'sensor.mix_valve_1_supply_line_temperature': '31.5',
+    'sensor.mix_valve_1_valve_position': '42.0',
+  })
+# ---
 # name: test_entities[binary_sensor][binary_sensor.heat_pump_unit_additional_heater_only_enabled-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([

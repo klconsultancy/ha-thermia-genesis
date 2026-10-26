@@ -115,6 +115,9 @@
       "brine_temperature_out_of_range_alarm": {
         "name": "Alarm brinetemperatuur buiten bereik"
       },
+      "circulation_pump_control_signal": {
+        "name": "Circulatiepomp"
+      },
       "compressor_control_signal": {
         "name": "Compressor"
       },
@@ -145,6 +148,9 @@
       "discharge_pipe_sensor_alarm": {
         "name": "Alarm persgasvoeler"
       },
+      "enable": {
+        "name": "Ingeschakeld"
+      },
       "enable_additional_heater_only": {
         "name": "Alleen bijverwarming ingeschakeld"
       },
@@ -174,6 +180,12 @@
       },
       "enable_heat": {
         "name": "Verwarming ingeschakeld"
+      },
+      "enable_internal_brine_pump_when_cooling": {
+        "name": "Interne brinepomp bij koelen ingeschakeld"
+      },
+      "enable_outdoor_temperature_dependent_cooling": {
+        "name": "Buitentemperatuurafhankelijk koelen ingeschakeld"
       },
       "enable_outdoor_temperature_dependent_external_heater": {
         "name": "Buitentemperatuurafhankelijke externe bijverwarming ingeschakeld"
@@ -256,6 +268,9 @@
       "pressure_ratio_out_of_range_alarm": {
         "name": "Alarm drukverhouding buiten bereik"
       },
+      "producing_passive_cooling": {
+        "name": "Passieve koeling"
+      },
       "reset_all_alarms": {
         "name": "Alarmreset bezig"
       },
@@ -312,6 +327,12 @@
       },
       "sum_alarm": {
         "name": "Somalarm"
+      },
+      "supply_line_sensor_alarm": {
+        "name": "Alarm aanvoervoeler"
+      },
+      "supply_temperature_deviation_alarm": {
+        "name": "Alarm afwijking aanvoertemperatuur"
       },
       "system_circulation_pump_control_signal": {
         "name": "Systeemcirculatiepomp"
@@ -417,6 +438,9 @@
       "condenser_pump_standby_speed": {
         "name": "Stand-bytoerental condensorpomp"
       },
+      "cooling_minimum_outdoor_temperature": {
+        "name": "Minimale buitentemperatuur voor koelen"
+      },
       "cooling_season_integral_value": {
         "name": "Integraal koelseizoen"
       },
@@ -426,8 +450,32 @@
       "current_power_output": {
         "name": "Afgegeven vermogen"
       },
+      "curve_y_1": {
+        "name": "Stooklijn punt 1 aanvoertemperatuur"
+      },
+      "curve_y_2": {
+        "name": "Stooklijn punt 2 aanvoertemperatuur"
+      },
+      "curve_y_3": {
+        "name": "Stooklijn punt 3 aanvoertemperatuur"
+      },
+      "curve_y_4": {
+        "name": "Stooklijn punt 4 aanvoertemperatuur"
+      },
+      "curve_y_5": {
+        "name": "Stooklijn punt 5 aanvoertemperatuur"
+      },
+      "curve_y_6": {
+        "name": "Stooklijn punt 6 aanvoertemperatuur"
+      },
+      "curve_y_7": {
+        "name": "Stooklijn punt 7 aanvoertemperatuur"
+      },
       "desired_gear": {
         "name": "Gewenste compressortrap"
+      },
+      "desired_temperature": {
+        "name": "Aanvoersetpoint"
       },
       "dew_point_high_pressure_temperature": {
         "name": "Dauwpunttemperatuur (hoge druk)"
@@ -553,6 +601,14 @@
       "minimum_allowed_gear_in_heating": {
         "name": "Minimale trap bij verwarmen"
       },
+      "mode": {
+        "name": "Modus",
+        "state": {
+          "heat": "Verwarmen",
+          "cool": "Koelen",
+          "auto": "Automatisch"
+        }
+      },
       "operational_mode": {
         "name": "Bedrijfsmodus",
         "state": {
@@ -570,6 +626,12 @@
           "pt1000_sensor": "PT1000-voeler",
           "bms": "GBS"
         }
+      },
+      "passive_cooling_supply_set_point": {
+        "name": "Aanvoersetpoint passieve koeling"
+      },
+      "position": {
+        "name": "Klepstand"
       },
       "power_consumption_control_mode": {
         "name": "Modus verbruiksregeling"
@@ -746,6 +808,9 @@
       },
       "superheat_temperature": {
         "name": "Oververhitting"
+      },
+      "supply_line_temperature": {
+        "name": "Aanvoertemperatuur"
       },
       "system_return_line_temperature": {
         "name": "Retourtemperatuur"

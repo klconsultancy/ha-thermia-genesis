@@ -6,6 +6,7 @@ from unittest.mock import patch
 
 import pytest
 from homeassistant.const import CONF_HOST, CONF_PORT, STATE_UNAVAILABLE, STATE_UNKNOWN, Platform
+from homeassistant.helpers import device_registry as dr
 from homeassistant.helpers import entity_registry as er
 from modbus_connection.exceptions import IllegalDataAddressError, ServerDeviceBusyError
 from pytest_homeassistant_custom_component.common import (
@@ -132,3 +133,32 @@ async def test_a_refused_field_reads_as_unknown(
     await setup(hass, entry)
 
     assert state(hass, "binary_sensor.thermia_genesis_running_demand_no_demand") == STATE_UNKNOWN
+
+
+@pytest.mark.usefixtures("entity_registry_enabled_by_default")
+async def test_an_optional_part_gets_its_entities(
+    hass: HomeAssistant,
+    entry: MockConfigEntry,
+    entity_registry: er.EntityRegistry,
+    device_registry: dr.DeviceRegistry,
+    pump_unit: MockModbusUnit,
+    snapshot: SnapshotAssertion,
+) -> None:
+    pump_unit.coil[11] = True  # mix valve 1
+    pump_unit.input[40] = 3150
+    pump_unit.input[43] = 4200
+    pump_unit.input[147] = 3200
+    pump_unit.holding[298] = 2  # auto
+    for address, value in enumerate((2000, 4500, 4100, 3800, 3500, 3200, 2900, 2600, 2300), 107):
+        pump_unit.holding[address] = value
+    pump_unit.holding[302] = 1800
+    pump_unit.holding[303] = 2200
+
+    await setup(hass, entry)
+
+    device = device_registry.async_get_device_by_identifier(
+        (DOMAIN, f"{entry.entry_id}_mix_valve_1"), entry.entry_id
+    )
+    assert device is not None
+    entities = er.async_entries_for_device(entity_registry, device.id)
+    assert {entity.entity_id: state(hass, entity.entity_id) for entity in entities} == snapshot

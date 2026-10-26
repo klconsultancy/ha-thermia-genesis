@@ -2,7 +2,7 @@
 
 from typing import TYPE_CHECKING
 
-from . import heat, heat_pump, status
+from . import heat, heat_pump, mix_valve_1, status
 
 if TYPE_CHECKING:
     from ..descriptions import BinarySensor, Sensor
@@ -11,10 +11,12 @@ if TYPE_CHECKING:
 SENSORS: dict[str, tuple[Sensor, ...]] = {
     "heat": heat.SENSORS,
     "heat_pump": heat_pump.SENSORS,
+    "mix_valve_1": mix_valve_1.SENSORS,
     "status": status.SENSORS,
 }
 BINARY_SENSORS: dict[str, tuple[BinarySensor, ...]] = {
     "heat": heat.BINARY_SENSORS,
     "heat_pump": heat_pump.BINARY_SENSORS,
+    "mix_valve_1": mix_valve_1.BINARY_SENSORS,
     "status": status.BINARY_SENSORS,
 }
