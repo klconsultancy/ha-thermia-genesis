@@ -115,6 +115,9 @@
       "brine_temperature_out_of_range_alarm": {
         "name": "Brine temperature out of range alarm"
       },
+      "circulation_pump_control_signal": {
+        "name": "Circulation pump"
+      },
       "compressor_control_signal": {
         "name": "Compressor"
       },
@@ -145,6 +148,9 @@
       "discharge_pipe_sensor_alarm": {
         "name": "Discharge pipe sensor alarm"
       },
+      "enable": {
+        "name": "Enabled"
+      },
       "enable_additional_heater_only": {
         "name": "Additional heater only enabled"
       },
@@ -174,6 +180,12 @@
       },
       "enable_heat": {
         "name": "Heating enabled"
+      },
+      "enable_internal_brine_pump_when_cooling": {
+        "name": "Internal brine pump in cooling enabled"
+      },
+      "enable_outdoor_temperature_dependent_cooling": {
+        "name": "Outdoor temperature dependent cooling enabled"
       },
       "enable_outdoor_temperature_dependent_external_heater": {
         "name": "Outdoor temperature dependent external heater enabled"
@@ -256,6 +268,9 @@
       "pressure_ratio_out_of_range_alarm": {
         "name": "Pressure ratio out of range alarm"
       },
+      "producing_passive_cooling": {
+        "name": "Passive cooling"
+      },
       "reset_all_alarms": {
         "name": "Alarm reset pending"
       },
@@ -312,6 +327,12 @@
       },
       "sum_alarm": {
         "name": "Sum alarm"
+      },
+      "supply_line_sensor_alarm": {
+        "name": "Supply line sensor alarm"
+      },
+      "supply_temperature_deviation_alarm": {
+        "name": "Supply line temperature deviation alarm"
       },
       "system_circulation_pump_control_signal": {
         "name": "System circulation pump"
@@ -417,6 +438,9 @@
       "condenser_pump_standby_speed": {
         "name": "Condenser pump standby speed"
       },
+      "cooling_minimum_outdoor_temperature": {
+        "name": "Cooling minimum outdoor temperature"
+      },
       "cooling_season_integral_value": {
         "name": "Cooling season integral"
       },
@@ -426,8 +450,32 @@
       "current_power_output": {
         "name": "Heat output"
       },
+      "curve_y_1": {
+        "name": "Heat curve point 1 supply line temperature"
+      },
+      "curve_y_2": {
+        "name": "Heat curve point 2 supply line temperature"
+      },
+      "curve_y_3": {
+        "name": "Heat curve point 3 supply line temperature"
+      },
+      "curve_y_4": {
+        "name": "Heat curve point 4 supply line temperature"
+      },
+      "curve_y_5": {
+        "name": "Heat curve point 5 supply line temperature"
+      },
+      "curve_y_6": {
+        "name": "Heat curve point 6 supply line temperature"
+      },
+      "curve_y_7": {
+        "name": "Heat curve point 7 supply line temperature"
+      },
       "desired_gear": {
         "name": "Desired gear"
+      },
+      "desired_temperature": {
+        "name": "Supply line set point"
       },
       "dew_point_high_pressure_temperature": {
         "name": "Dew point temperature (high pressure)"
@@ -553,6 +601,14 @@
       "minimum_allowed_gear_in_heating": {
         "name": "Minimum gear in heating"
       },
+      "mode": {
+        "name": "Mode",
+        "state": {
+          "heat": "Heating",
+          "cool": "Cooling",
+          "auto": "Automatic"
+        }
+      },
       "operational_mode": {
         "name": "Operational mode",
         "state": {
@@ -570,6 +626,12 @@
           "pt1000_sensor": "PT1000 sensor",
           "bms": "BMS"
         }
+      },
+      "passive_cooling_supply_set_point": {
+        "name": "Passive cooling supply line set point"
+      },
+      "position": {
+        "name": "Valve position"
       },
       "power_consumption_control_mode": {
         "name": "Power consumption control mode"
@@ -746,6 +808,9 @@
       },
       "superheat_temperature": {
         "name": "Superheat"
+      },
+      "supply_line_temperature": {
+        "name": "Supply line temperature"
       },
       "system_return_line_temperature": {
         "name": "Return line temperature"
