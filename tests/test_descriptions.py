@@ -17,7 +17,7 @@ from custom_components.thermia_genesis.descriptions import UNITS
 from custom_components.thermia_genesis.parts import BINARY_SENSORS, SENSORS
 
 # The parts whose every field has an entity; it grows with each part's pull request.
-COMPLETE = ["heat_pump", "status"]
+COMPLETE = ["heat", "heat_pump", "status"]
 
 
 async def _read_every_part() -> dict[str, type[Subsystem]]:
@@ -143,6 +143,14 @@ def test_every_enum_option_has_a_translation(part: str) -> None:
         if description.options is not None:
             states = sensors[description.translation_key]["state"]
             assert set(description.options) <= set(states), description.key
+
+
+@pytest.mark.parametrize("part", sorted({*SENSORS, *BINARY_SENSORS}))
+def test_every_entity_has_a_name(part: str) -> None:
+    for platform, descriptions in (("sensor", SENSORS), ("binary_sensor", BINARY_SENSORS)):
+        names = STRINGS["entity"][platform]
+        for description in descriptions.get(part, ()):
+            assert "name" in names.get(description.translation_key, {}), description.key
 
 
 # Settings on the dashboard rather than among the diagnostics.

@@ -166,6 +166,9 @@
       "enable_external_additional_heater": {
         "name": "External additional heater enabled"
       },
+      "enable_fixed_system_supply_set_point": {
+        "name": "Fixed supply line set point enabled"
+      },
       "enable_flow_pressure_switch": {
         "name": "Flow pressure switch enabled"
       },
@@ -204,6 +207,9 @@
       },
       "flow_pressure_switch_alarm": {
         "name": "Flow pressure switch alarm"
+      },
+      "heating_season_active": {
+        "name": "Heating season"
       },
       "high_discharge_pipe_temperature_alarm": {
         "name": "High discharge pipe temperature alarm"
@@ -252,6 +258,9 @@
       },
       "reset_all_alarms": {
         "name": "Alarm reset pending"
+      },
+      "room_temperature_sensor_alarm": {
+        "name": "Room sensor alarm"
       },
       "running_demands_active_cooling": {
         "name": "Running demand: Active cooling"
@@ -304,6 +313,15 @@
       "sum_alarm": {
         "name": "Sum alarm"
       },
+      "system_circulation_pump_control_signal": {
+        "name": "System circulation pump"
+      },
+      "system_supply_line_sensor_alarm": {
+        "name": "Supply line sensor alarm"
+      },
+      "system_supply_low_temperature_alarm": {
+        "name": "Supply line low temperature alarm"
+      },
       "tap_water_top_sensor_alarm": {
         "name": "Hot water top sensor alarm"
       }
@@ -347,6 +365,18 @@
       },
       "bubble_point_high_pressure_temperature": {
         "name": "Bubble point temperature (high pressure)"
+      },
+      "buffer_tank_charge_set_point": {
+        "name": "Buffer tank charge set point"
+      },
+      "buffer_tank_temperature": {
+        "name": "Buffer tank temperature"
+      },
+      "calculated_demand": {
+        "name": "Calculated demand"
+      },
+      "comfort_wheel_setting": {
+        "name": "Comfort wheel"
       },
       "compressor_available_gears": {
         "name": "Available compressor gears"
@@ -396,6 +426,9 @@
       "current_power_output": {
         "name": "Heat output"
       },
+      "desired_gear": {
+        "name": "Desired gear"
+      },
       "dew_point_high_pressure_temperature": {
         "name": "Dew point temperature (high pressure)"
       },
@@ -430,11 +463,59 @@
       "external_heater_outdoor_temperature_limit": {
         "name": "External heater outdoor temperature limit"
       },
+      "fixed_system_supply_set_point": {
+        "name": "Fixed supply line set point"
+      },
       "gear_shift_delay_heating": {
         "name": "Gear shift delay in heating"
       },
+      "heat_curve_x_1": {
+        "name": "Heat curve point 1 outdoor temperature"
+      },
+      "heat_curve_x_2": {
+        "name": "Heat curve point 2 outdoor temperature"
+      },
+      "heat_curve_x_3": {
+        "name": "Heat curve point 3 outdoor temperature"
+      },
+      "heat_curve_x_4": {
+        "name": "Heat curve point 4 outdoor temperature"
+      },
+      "heat_curve_x_5": {
+        "name": "Heat curve point 5 outdoor temperature"
+      },
+      "heat_curve_x_6": {
+        "name": "Heat curve point 6 outdoor temperature"
+      },
+      "heat_curve_x_7": {
+        "name": "Heat curve point 7 outdoor temperature"
+      },
+      "heat_curve_y_1": {
+        "name": "Heat curve point 1 supply line temperature"
+      },
+      "heat_curve_y_2": {
+        "name": "Heat curve point 2 supply line temperature"
+      },
+      "heat_curve_y_3": {
+        "name": "Heat curve point 3 supply line temperature"
+      },
+      "heat_curve_y_4": {
+        "name": "Heat curve point 4 supply line temperature"
+      },
+      "heat_curve_y_5": {
+        "name": "Heat curve point 5 supply line temperature"
+      },
+      "heat_curve_y_6": {
+        "name": "Heat curve point 6 supply line temperature"
+      },
+      "heat_curve_y_7": {
+        "name": "Heat curve point 7 supply line temperature"
+      },
       "heating_season_integral_value": {
         "name": "Heating season integral"
+      },
+      "heating_season_stop_temperature": {
+        "name": "Heating season stop temperature"
       },
       "high_pressure_side_pressure": {
         "name": "High pressure"
@@ -454,6 +535,9 @@
       "low_pressure_side_pressure": {
         "name": "Low pressure"
       },
+      "max_limitation_set_point_curve": {
+        "name": "Maximum supply line temperature limit"
+      },
       "maximum_allowed_gear_in_heating": {
         "name": "Maximum gear in heating"
       },
@@ -462,6 +546,9 @@
       },
       "maximum_requested_gear": {
         "name": "Maximum requested gear"
+      },
+      "min_limitation_set_point_curve": {
+        "name": "Minimum supply line temperature limit"
       },
       "minimum_allowed_gear_in_heating": {
         "name": "Minimum gear in heating"
@@ -630,6 +717,9 @@
       "secondaries_communication_alarm": {
         "name": "Secondary units with a communication alarm"
       },
+      "selected_heat_curve_supply_line": {
+        "name": "Heat curve supply line set point"
+      },
       "smart_grid_mode": {
         "name": "Smart grid mode",
         "state": {
@@ -656,6 +746,15 @@
       },
       "superheat_temperature": {
         "name": "Superheat"
+      },
+      "system_return_line_temperature": {
+        "name": "Return line temperature"
+      },
+      "system_supply_line_calculated_set_point": {
+        "name": "Calculated supply line set point"
+      },
+      "system_supply_line_temperature": {
+        "name": "Supply line temperature"
       },
       "total_distributed_gears": {
         "name": "Distributed gears"
