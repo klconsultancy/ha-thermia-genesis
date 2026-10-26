@@ -76,5 +76,180 @@
       "title": "Unsupported heat pump firmware",
       "description": "{title} runs Genesis firmware {version}, but this integration is written for firmware 17.1. It reads the pump as if it were 17.1, so some values may be wrong or missing.\n\nPlease open an issue in the thermia-genesis repository with the diagnostics of this entry, so support for this firmware can be added."
     }
+  },
+  "entity": {
+    "binary_sensor": {
+      "running_demands_manual_operation": {
+        "name": "Manual operation running"
+      },
+      "running_demands_defrost": {
+        "name": "Defrost running"
+      },
+      "running_demands_hot_water": {
+        "name": "Hot water running"
+      },
+      "running_demands_heat": {
+        "name": "Heating running"
+      },
+      "running_demands_active_cooling": {
+        "name": "Active cooling running"
+      },
+      "running_demands_pool": {
+        "name": "Pool running"
+      },
+      "running_demands_anti_legionella": {
+        "name": "Anti-legionella running"
+      },
+      "running_demands_passive_cooling": {
+        "name": "Passive cooling running"
+      },
+      "running_demands_standby": {
+        "name": "Standby running"
+      },
+      "running_demands_no_demand": {
+        "name": "No demand running"
+      },
+      "running_demands_off": {
+        "name": "Off running"
+      }
+    },
+    "sensor": {
+      "operational_mode": {
+        "name": "Operational mode",
+        "state": {
+          "off": "Off",
+          "standby": "Standby",
+          "on_auto": "On (auto)"
+        }
+      },
+      "running_demand_1": {
+        "name": "Running demand 1",
+        "state": {
+          "manual_operation": "Manual operation",
+          "defrost": "Defrost",
+          "hot_water": "Hot water",
+          "heat": "Heating",
+          "active_cooling": "Active cooling",
+          "pool": "Pool",
+          "anti_legionella": "Anti-legionella",
+          "passive_cooling": "Passive cooling",
+          "standby": "Standby",
+          "no_demand": "No demand",
+          "off": "Off"
+        }
+      },
+      "running_demand_2": {
+        "name": "Running demand 2",
+        "state": {
+          "manual_operation": "Manual operation",
+          "defrost": "Defrost",
+          "hot_water": "Hot water",
+          "heat": "Heating",
+          "active_cooling": "Active cooling",
+          "pool": "Pool",
+          "anti_legionella": "Anti-legionella",
+          "passive_cooling": "Passive cooling",
+          "standby": "Standby",
+          "no_demand": "No demand",
+          "off": "Off"
+        }
+      },
+      "running_demand_3": {
+        "name": "Running demand 3",
+        "state": {
+          "manual_operation": "Manual operation",
+          "defrost": "Defrost",
+          "hot_water": "Hot water",
+          "heat": "Heating",
+          "active_cooling": "Active cooling",
+          "pool": "Pool",
+          "anti_legionella": "Anti-legionella",
+          "passive_cooling": "Passive cooling",
+          "standby": "Standby",
+          "no_demand": "No demand",
+          "off": "Off"
+        }
+      },
+      "queued_demand_1": {
+        "name": "Queued demand 1",
+        "state": {
+          "manual_operation": "Manual operation",
+          "defrost": "Defrost",
+          "hot_water": "Hot water",
+          "heat": "Heating",
+          "active_cooling": "Active cooling",
+          "pool": "Pool",
+          "anti_legionella": "Anti-legionella",
+          "passive_cooling": "Passive cooling",
+          "standby": "Standby",
+          "no_demand": "No demand",
+          "off": "Off"
+        }
+      },
+      "queued_demand_2": {
+        "name": "Queued demand 2",
+        "state": {
+          "manual_operation": "Manual operation",
+          "defrost": "Defrost",
+          "hot_water": "Hot water",
+          "heat": "Heating",
+          "active_cooling": "Active cooling",
+          "pool": "Pool",
+          "anti_legionella": "Anti-legionella",
+          "passive_cooling": "Passive cooling",
+          "standby": "Standby",
+          "no_demand": "No demand",
+          "off": "Off"
+        }
+      },
+      "queued_demand_3": {
+        "name": "Queued demand 3",
+        "state": {
+          "manual_operation": "Manual operation",
+          "defrost": "Defrost",
+          "hot_water": "Hot water",
+          "heat": "Heating",
+          "active_cooling": "Active cooling",
+          "pool": "Pool",
+          "anti_legionella": "Anti-legionella",
+          "passive_cooling": "Passive cooling",
+          "standby": "Standby",
+          "no_demand": "No demand",
+          "off": "Off"
+        }
+      },
+      "queued_demand_4": {
+        "name": "Queued demand 4",
+        "state": {
+          "manual_operation": "Manual operation",
+          "defrost": "Defrost",
+          "hot_water": "Hot water",
+          "heat": "Heating",
+          "active_cooling": "Active cooling",
+          "pool": "Pool",
+          "anti_legionella": "Anti-legionella",
+          "passive_cooling": "Passive cooling",
+          "standby": "Standby",
+          "no_demand": "No demand",
+          "off": "Off"
+        }
+      },
+      "queued_demand_5": {
+        "name": "Queued demand 5",
+        "state": {
+          "manual_operation": "Manual operation",
+          "defrost": "Defrost",
+          "hot_water": "Hot water",
+          "heat": "Heating",
+          "active_cooling": "Active cooling",
+          "pool": "Pool",
+          "anti_legionella": "Anti-legionella",
+          "passive_cooling": "Passive cooling",
+          "standby": "Standby",
+          "no_demand": "No demand",
+          "off": "Off"
+        }
+      }
+    }
   }
 }

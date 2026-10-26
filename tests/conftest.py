@@ -4,7 +4,7 @@ import json
 from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import TYPE_CHECKING, Any
-from unittest.mock import AsyncMock, MagicMock, patch
+from unittest.mock import AsyncMock, MagicMock, PropertyMock, patch
 
 import pytest
 
@@ -72,3 +72,14 @@ def mock_setup_entry() -> Iterator[AsyncMock]:
     """Keep a created entry from being set up."""
     with patch("custom_components.thermia_genesis.async_setup_entry", return_value=True) as mock:
         yield mock
+
+
+@pytest.fixture
+def entity_registry_enabled_by_default() -> Iterator[None]:
+    """Enable every entity, also those disabled by default (as in Home Assistant core)."""
+    with patch(
+        "homeassistant.helpers.entity.Entity.entity_registry_enabled_default",
+        return_value=True,
+        new_callable=PropertyMock,
+    ):
+        yield
