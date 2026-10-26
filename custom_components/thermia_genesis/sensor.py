@@ -1,17 +1,12 @@
 """Sensors: the numbers and enums of the pump."""
 
-from dataclasses import dataclass
 from enum import Enum
 from typing import TYPE_CHECKING
 
-from homeassistant.components.sensor import (
-    SensorDeviceClass,
-    SensorEntity,
-    SensorEntityDescription,
-)
-from thermia_genesis.v17_1.enums import Demand, OperationalMode
+from homeassistant.components.sensor import SensorEntity
 
-from .entity import ThermiaGenesisEntity, ThermiaGenesisEntityDescription
+from .entity import ThermiaGenesisEntity
+from .parts import SENSORS
 
 if TYPE_CHECKING:
     from homeassistant.core import HomeAssistant
@@ -19,54 +14,10 @@ if TYPE_CHECKING:
     from homeassistant.helpers.typing import StateType
 
     from .coordinator import ThermiaGenesisConfigEntry
+    from .descriptions import ThermiaGenesisSensorEntityDescription
 
 # Coordinator-based: the entities never update on their own.
 PARALLEL_UPDATES = 0
-
-# Home Assistant's unit for each unit the library declares.
-UNITS: dict[str | None, str] = {}
-
-
-@dataclass(frozen=True, kw_only=True)
-class ThermiaGenesisSensorEntityDescription(
-    ThermiaGenesisEntityDescription, SensorEntityDescription
-):
-    """A sensor for one field of a part."""
-
-
-def _options(enum: type[Enum]) -> list[str]:
-    return [member.name.lower() for member in enum]
-
-
-def _demand(key: str, *, enabled: bool = False) -> ThermiaGenesisSensorEntityDescription:
-    return ThermiaGenesisSensorEntityDescription(
-        key=key,
-        translation_key=key,
-        device_class=SensorDeviceClass.ENUM,
-        options=_options(Demand),
-        entity_registry_enabled_default=enabled,
-    )
-
-
-# The sensors of each part, by the part's attribute on ThermiaGenesis.
-SENSORS: dict[str, tuple[ThermiaGenesisSensorEntityDescription, ...]] = {
-    "status": (
-        ThermiaGenesisSensorEntityDescription(
-            key="operational_mode",
-            translation_key="operational_mode",
-            device_class=SensorDeviceClass.ENUM,
-            options=_options(OperationalMode),
-        ),
-        _demand("running_demand_1", enabled=True),
-        _demand("running_demand_2"),
-        _demand("running_demand_3"),
-        _demand("queued_demand_1"),
-        _demand("queued_demand_2"),
-        _demand("queued_demand_3"),
-        _demand("queued_demand_4"),
-        _demand("queued_demand_5"),
-    ),
-}
 
 
 async def async_setup_entry(

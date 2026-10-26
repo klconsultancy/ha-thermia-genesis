@@ -62,7 +62,7 @@ entities.
 - One main device "Thermia Genesis": manufacturer Thermia, model Genesis, `sw_version` the
   firmware version. The status entities (operational mode, demands) and the aggregate alarm
   belong to it. The user renames it to the actual model.
-- One sub-device per subsystem the pump has (heat pump unit, heat, mix valve 1, tap water,
+- One sub-device per subsystem the pump has (heat pump unit, heat, mix valve 1, hot water,
   HGW, cooling, pool, electric meter), linked with `via_device` to the main device, all on
   one level. An optional part the pump doesn't have gets no sub-device.
 - The pump's device identifier is `(DOMAIN, entry_id)`, a part's
@@ -101,8 +101,13 @@ entities.
   exactly once (every member of a flags field) with a unit that matches the library's.
   Like the library's consistency test, it lists the parts it holds complete; each part's
   pull request adds its part.
-- The descriptions live in the platform modules, grouped per part (`SENSORS`,
-  `BINARY_SENSORS`), with the field name as `key` and translation key. A key is shared by
+- Each part declares its entities in its own module, `parts/<part>.py` (`SENSORS`,
+  `BINARY_SENSORS`), with the helpers of `descriptions.py` (`temperature`, `setting`,
+  `alarm`, `running`, ...), so a part reads as one list; `parts/__init__.py` registers
+  each part once for both platforms. The field name is the `key` and the translation key.
+- A diagnostic measurement (a count, a version) and every setting have no state class, so
+  they stay out of the long-term statistics; tests enforce that settings are diagnostic,
+  except the operational mode, which belongs on the dashboard. A key is shared by
   parts with a field of the same name ("Supply line temperature"); the device name tells
   them apart.
 - An entity is unavailable while its field's register space fails. A field the pump
@@ -124,10 +129,17 @@ entities.
   which `total_increasing` reads as a reset; it is disabled by default.
 - One derived `binary_sensor` "Alarm" (device class `problem`) on the main device is on when
   any alarm input is on, for notifications.
-- Enabled by default: the measured temperatures, operational mode, running demand 1,
-  compressor gear, speed and operating hours, the auxiliary heater, the tap water top
-  temperature, and the electric meter's power and kWh. Everything else (queued demands, PID
-  values, flags, settings, individual alarms) is disabled by default.
+- Enabled by default: the measured temperatures of the heating circuit (brine and
+  condenser in and out, discharge pipe, outdoor, room), operational mode, running demand 1,
+  compressor gear, speed, operating hours and whether it runs, heat output and power
+  consumption, the immersion heater step and whether the external heater runs, the tap
+  water top temperature, and the electric meter's power and kWh. The refrigerant circuit
+  (liquid line, suction gas, dew and bubble points, superheat, subcooling, pressures) is
+  disabled by default.
+  Everything else (queued demands, PID values, flags, settings, individual alarms) is
+  disabled by default.
+- Coils and holding registers (settings) and the alarm inputs have entity category
+  `diagnostic`; a setting has no state class, so it stays out of the long-term statistics.
 - Entity names come from translations (`has_entity_name`), in English and Dutch.
 
 ## Diagnostics

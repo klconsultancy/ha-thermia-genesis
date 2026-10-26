@@ -95,7 +95,7 @@ async def test_creates_the_pump_and_a_device_per_present_part(
     assert {part: device.name for part, device in found.items()} == {
         "heat_pump": "Heat pump unit",
         "heat": "Heating",
-        "tap_water": "Tap water",
+        "tap_water": "Hot water",
         "cooling": "Cooling",
     }
     for device in found.values():

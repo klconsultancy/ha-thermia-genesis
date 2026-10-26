@@ -7,16 +7,17 @@ from pathlib import Path
 
 import pytest
 from homeassistant.components.sensor import SensorDeviceClass
+from homeassistant.const import EntityCategory
 from modbus_connection.mock import MockModbusConnection
 from thermia_genesis import ThermiaGenesis
 from thermia_genesis.subsystem import Field, Subsystem
 
-from custom_components.thermia_genesis.binary_sensor import BINARY_SENSORS
 from custom_components.thermia_genesis.const import PARTS
-from custom_components.thermia_genesis.sensor import SENSORS, UNITS
+from custom_components.thermia_genesis.descriptions import UNITS
+from custom_components.thermia_genesis.parts import BINARY_SENSORS, SENSORS
 
 # The parts whose every field has an entity; it grows with each part's pull request.
-COMPLETE = ["status"]
+COMPLETE = ["heat_pump", "status"]
 
 
 async def _read_every_part() -> dict[str, type[Subsystem]]:
@@ -142,3 +143,25 @@ def test_every_enum_option_has_a_translation(part: str) -> None:
         if description.options is not None:
             states = sensors[description.translation_key]["state"]
             assert set(description.options) <= set(states), description.key
+
+
+# Settings on the dashboard rather than among the diagnostics.
+PROMINENT_SETTINGS = {"operational_mode"}
+
+
+@pytest.mark.parametrize("part", sorted({*SENSORS, *BINARY_SENSORS}))
+def test_settings_are_diagnostic(part: str) -> None:
+    library = fields(part)
+    for description in (*SENSORS.get(part, ()), *BINARY_SENSORS.get(part, ())):
+        field = library[description.field or description.key]
+        if field.space in {"coil", "holding"} and description.key not in PROMINENT_SETTINGS:
+            assert description.entity_category is EntityCategory.DIAGNOSTIC, description.key
+
+
+@pytest.mark.parametrize("part", sorted(SENSORS))
+def test_diagnostics_and_settings_stay_out_of_the_statistics(part: str) -> None:
+    library = fields(part)
+    for description in SENSORS[part]:
+        field = library[description.field or description.key]
+        if description.entity_category is EntityCategory.DIAGNOSTIC or field.space == "holding":
+            assert description.state_class is None, description.key

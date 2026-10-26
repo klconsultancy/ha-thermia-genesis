@@ -45,7 +45,7 @@
       "name": "Mengklep 1"
     },
     "tap_water": {
-      "name": "Tapwater"
+      "name": "Warm water"
     },
     "hgw": {
       "name": "Heetgaswarmteterugwinning"
@@ -79,41 +79,393 @@
   },
   "entity": {
     "binary_sensor": {
-      "running_demands_manual_operation": {
-        "name": "Handbediening actief"
+      "alarm_class_a": {
+        "name": "Klasse A-alarm"
       },
-      "running_demands_defrost": {
-        "name": "Ontdooien actief"
+      "alarm_class_b": {
+        "name": "Klasse B-alarm"
       },
-      "running_demands_hot_water": {
-        "name": "Warm water actief"
+      "alarm_class_c": {
+        "name": "Klasse C-alarm"
       },
-      "running_demands_heat": {
-        "name": "Verwarming actief"
+      "alarm_class_d": {
+        "name": "Klasse D-alarm"
+      },
+      "brine_delta_out_of_range_alarm": {
+        "name": "Alarm temperatuurverschil brine buiten bereik"
+      },
+      "brine_in_high_temperature_alarm": {
+        "name": "Alarm hoge temperatuur brine in"
+      },
+      "brine_in_low_temperature_alarm": {
+        "name": "Alarm lage temperatuur brine in"
+      },
+      "brine_in_sensor_alarm": {
+        "name": "Alarm voeler brine in"
+      },
+      "brine_out_low_temperature_alarm": {
+        "name": "Alarm lage temperatuur brine uit"
+      },
+      "brine_out_sensor_alarm": {
+        "name": "Alarm voeler brine uit"
+      },
+      "brine_pump_on": {
+        "name": "Brinepomp"
+      },
+      "brine_temperature_out_of_range_alarm": {
+        "name": "Alarm brinetemperatuur buiten bereik"
+      },
+      "compressor_control_signal": {
+        "name": "Compressor"
+      },
+      "compressor_low_speed_alarm": {
+        "name": "Alarm laag compressortoerental"
+      },
+      "compressor_pressure_outside_envelope_alarm": {
+        "name": "Alarm compressordruk buiten werkgebied"
+      },
+      "compressor_unable_to_speed_up": {
+        "name": "Compressor kan niet versnellen"
+      },
+      "condenser_in_sensor_alarm": {
+        "name": "Alarm voeler condensor in"
+      },
+      "condenser_out_sensor_alarm": {
+        "name": "Alarm voeler condensor uit"
+      },
+      "condenser_pump_on": {
+        "name": "Condensorpomp"
+      },
+      "current_limiter_restricts_external_additional_heater": {
+        "name": "Stroombegrenzer beperkt externe bijverwarming"
+      },
+      "current_limiter_restricts_secondary_units": {
+        "name": "Stroombegrenzer beperkt secundaire units"
+      },
+      "discharge_pipe_sensor_alarm": {
+        "name": "Alarm persgasvoeler"
+      },
+      "enable_additional_heater_only": {
+        "name": "Alleen bijverwarming ingeschakeld"
+      },
+      "enable_brine_in_monitoring": {
+        "name": "Bewaking brine in ingeschakeld"
+      },
+      "enable_brine_out_monitoring": {
+        "name": "Bewaking brine uit ingeschakeld"
+      },
+      "enable_brine_pump_continuous_operation": {
+        "name": "Continu bedrijf brinepomp ingeschakeld"
+      },
+      "enable_continuous_condenser_pump": {
+        "name": "Continu condensorpomp ingeschakeld"
+      },
+      "enable_evaporator_freeze_protection": {
+        "name": "Vorstbeveiliging verdamper ingeschakeld"
+      },
+      "enable_external_additional_heater": {
+        "name": "Externe bijverwarming ingeschakeld"
+      },
+      "enable_flow_pressure_switch": {
+        "name": "Debietdrukschakelaar ingeschakeld"
+      },
+      "enable_heat": {
+        "name": "Verwarming ingeschakeld"
+      },
+      "enable_outdoor_temperature_dependent_external_heater": {
+        "name": "Buitentemperatuurafhankelijke externe bijverwarming ingeschakeld"
+      },
+      "enable_system_circulation_pump": {
+        "name": "Systeemcirculatiepomp ingeschakeld"
+      },
+      "enable_tap_water": {
+        "name": "Warm water ingeschakeld"
+      },
+      "enable_variable_speed_brine_pump": {
+        "name": "Toerengeregelde brinepomp ingeschakeld"
+      },
+      "enable_variable_speed_condenser_pump": {
+        "name": "Toerengeregelde condensorpomp ingeschakeld"
+      },
+      "external_additional_heater_active": {
+        "name": "Externe bijverwarming"
+      },
+      "external_additional_heater_control_signal": {
+        "name": "Stuursignaal externe bijverwarming"
+      },
+      "external_alarm_input": {
+        "name": "Externe alarmingang"
+      },
+      "external_heater_circulation_pump_control_signal": {
+        "name": "Circulatiepomp externe bijverwarming"
+      },
+      "external_relay_brine_ground_water_pump": {
+        "name": "Extern relais brine-/grondwaterpomp"
+      },
+      "flow_pressure_switch_alarm": {
+        "name": "Alarm debietdrukschakelaar"
+      },
+      "high_discharge_pipe_temperature_alarm": {
+        "name": "Alarm hoge persgastemperatuur"
+      },
+      "high_pressure_switch_alarm": {
+        "name": "Alarm hogedrukschakelaar"
+      },
+      "inverter_unit_alarm": {
+        "name": "Alarm omvormer"
+      },
+      "inverter_unit_communication_alarm": {
+        "name": "Alarm communicatie omvormer"
+      },
+      "liquid_line_sensor_alarm": {
+        "name": "Alarm vloeistofleidingvoeler"
+      },
+      "low_pressure_level_alarm": {
+        "name": "Alarm lagedrukniveau"
+      },
+      "low_super_heat_alarm": {
+        "name": "Alarm lage oververhitting"
+      },
+      "missing_secondary_units_alarm": {
+        "name": "Alarm ontbrekende secundaire units"
+      },
+      "oil_boost_in_progress": {
+        "name": "Olieboost"
+      },
+      "ok_to_start": {
+        "name": "Klaar om te starten"
+      },
+      "operating_pressure_limit_indication": {
+        "name": "Werkdrukgrens bereikt"
+      },
+      "other_primary_units_alarm": {
+        "name": "Alarm andere primaire units"
+      },
+      "outdoor_sensor_alarm": {
+        "name": "Alarm buitenvoeler"
+      },
+      "power_input_phase_detection_alarm": {
+        "name": "Alarm fasedetectie voeding"
+      },
+      "pressure_ratio_out_of_range_alarm": {
+        "name": "Alarm drukverhouding buiten bereik"
+      },
+      "reset_all_alarms": {
+        "name": "Alarmreset bezig"
       },
       "running_demands_active_cooling": {
-        "name": "Actieve koeling actief"
-      },
-      "running_demands_pool": {
-        "name": "Zwembad actief"
+        "name": "Lopende vraag: Actieve koeling"
       },
       "running_demands_anti_legionella": {
-        "name": "Antilegionella actief"
+        "name": "Lopende vraag: Antilegionella"
       },
-      "running_demands_passive_cooling": {
-        "name": "Passieve koeling actief"
+      "running_demands_defrost": {
+        "name": "Lopende vraag: Ontdooien"
       },
-      "running_demands_standby": {
-        "name": "Stand-by actief"
+      "running_demands_heat": {
+        "name": "Lopende vraag: Verwarming"
+      },
+      "running_demands_hot_water": {
+        "name": "Lopende vraag: Warm water"
+      },
+      "running_demands_manual_operation": {
+        "name": "Lopende vraag: Handbediening"
       },
       "running_demands_no_demand": {
-        "name": "Geen vraag actief"
+        "name": "Lopende vraag: Geen vraag"
       },
       "running_demands_off": {
-        "name": "Uit actief"
+        "name": "Lopende vraag: Uit"
+      },
+      "running_demands_passive_cooling": {
+        "name": "Lopende vraag: Passieve koeling"
+      },
+      "running_demands_pool": {
+        "name": "Lopende vraag: Zwembad"
+      },
+      "running_demands_standby": {
+        "name": "Lopende vraag: Stand-by"
+      },
+      "secondary_unit_communication_alarm": {
+        "name": "Alarm communicatie secundaire unit"
+      },
+      "smart_grid_1_evu_input": {
+        "name": "Smart grid-ingang 1 (EVU)"
+      },
+      "smart_grid_2": {
+        "name": "Smart grid-ingang 2"
+      },
+      "stopping": {
+        "name": "Stopt"
+      },
+      "suction_gas_sensor_alarm": {
+        "name": "Alarm zuiggasvoeler"
+      },
+      "sum_alarm": {
+        "name": "Somalarm"
+      },
+      "tap_water_top_sensor_alarm": {
+        "name": "Alarm voeler warm water boven"
       }
     },
     "sensor": {
+      "available_secondaries": {
+        "name": "Beschikbare secundaire units"
+      },
+      "bms_outdoor_temperature": {
+        "name": "Buitentemperatuur van GBS"
+      },
+      "brine_circulation_pump_speed": {
+        "name": "Toerental brinepomp"
+      },
+      "brine_in_high_alarm_limit": {
+        "name": "Alarmgrens hoog brine in"
+      },
+      "brine_in_low_alarm_limit": {
+        "name": "Alarmgrens laag brine in"
+      },
+      "brine_in_temperature": {
+        "name": "Temperatuur brine in"
+      },
+      "brine_max_delta_limit": {
+        "name": "Grens maximaal temperatuurverschil brine"
+      },
+      "brine_out_low_alarm_limit": {
+        "name": "Alarmgrens laag brine uit"
+      },
+      "brine_out_temperature": {
+        "name": "Temperatuur brine uit"
+      },
+      "brine_pump_highest_allowed_speed": {
+        "name": "Maximaal toerental brinepomp"
+      },
+      "brine_pump_lowest_allowed_speed": {
+        "name": "Minimaal toerental brinepomp"
+      },
+      "brine_pump_standby_speed": {
+        "name": "Stand-bytoerental brinepomp"
+      },
+      "bubble_point_high_pressure_temperature": {
+        "name": "Kookpunttemperatuur (hoge druk)"
+      },
+      "compressor_available_gears": {
+        "name": "Beschikbare compressortrappen"
+      },
+      "compressor_current_gear": {
+        "name": "Compressortrap"
+      },
+      "compressor_current_hysteresis": {
+        "name": "Stroomhysterese compressor"
+      },
+      "compressor_operating_hours": {
+        "name": "Bedrijfsuren compressor"
+      },
+      "compressor_speed": {
+        "name": "Compressortoerental"
+      },
+      "compressor_speed_percent": {
+        "name": "Relatief compressortoerental"
+      },
+      "compressor_start_restriction_timer": {
+        "name": "Herstartvertraging compressor"
+      },
+      "condenser_circulation_pump_speed": {
+        "name": "Toerental condensorpomp"
+      },
+      "condenser_in_temperature": {
+        "name": "Temperatuur condensor in"
+      },
+      "condenser_out_temperature": {
+        "name": "Temperatuur condensor uit"
+      },
+      "condenser_pump_highest_allowed_speed": {
+        "name": "Maximaal toerental condensorpomp"
+      },
+      "condenser_pump_lowest_allowed_speed": {
+        "name": "Minimaal toerental condensorpomp"
+      },
+      "condenser_pump_standby_speed": {
+        "name": "Stand-bytoerental condensorpomp"
+      },
+      "cooling_season_integral_value": {
+        "name": "Integraal koelseizoen"
+      },
+      "current_consumed_power": {
+        "name": "Opgenomen vermogen"
+      },
+      "current_power_output": {
+        "name": "Afgegeven vermogen"
+      },
+      "dew_point_high_pressure_temperature": {
+        "name": "Dauwpunttemperatuur (hoge druk)"
+      },
+      "dew_point_low_pressure_temperature": {
+        "name": "Dauwpunttemperatuur (lage druk)"
+      },
+      "discharge_pipe_temperature": {
+        "name": "Persgastemperatuur"
+      },
+      "enabled_immersion_heater": {
+        "name": "Ingeschakeld elektrisch element",
+        "state": {
+          "disabled": "Uitgeschakeld",
+          "internal": "Intern"
+        }
+      },
+      "expansion_valve_opening_degree": {
+        "name": "Opening expansieventiel"
+      },
+      "external_additional_heater_current_demand": {
+        "name": "Vraag externe bijverwarming"
+      },
+      "external_additional_heater_operating_hours": {
+        "name": "Bedrijfsuren externe bijverwarming"
+      },
+      "external_additional_heater_start": {
+        "name": "Startdrempel externe bijverwarming"
+      },
+      "external_additional_heater_stop": {
+        "name": "Stopdrempel externe bijverwarming"
+      },
+      "external_heater_outdoor_temperature_limit": {
+        "name": "Buitentemperatuurgrens externe bijverwarming"
+      },
+      "gear_shift_delay_heating": {
+        "name": "Trapwisselvertraging bij verwarmen"
+      },
+      "heating_season_integral_value": {
+        "name": "Integraal stookseizoen"
+      },
+      "high_pressure_side_pressure": {
+        "name": "Hoge druk"
+      },
+      "input_power_limit": {
+        "name": "Limiet opgenomen vermogen"
+      },
+      "internal_immersion_heater_active_step": {
+        "name": "Trap elektrisch element"
+      },
+      "inverter_temperature": {
+        "name": "Temperatuur omvormer"
+      },
+      "liquid_line_temperature": {
+        "name": "Vloeistofleidingtemperatuur"
+      },
+      "low_pressure_side_pressure": {
+        "name": "Lage druk"
+      },
+      "maximum_allowed_gear_in_heating": {
+        "name": "Maximale trap bij verwarmen"
+      },
+      "maximum_phase_current": {
+        "name": "Maximale fasestroom"
+      },
+      "maximum_requested_gear": {
+        "name": "Hoogst gevraagde trap"
+      },
+      "minimum_allowed_gear_in_heating": {
+        "name": "Minimale trap bij verwarmen"
+      },
       "operational_mode": {
         "name": "Bedrijfsmodus",
         "state": {
@@ -122,53 +474,18 @@
           "on_auto": "Aan (auto)"
         }
       },
-      "running_demand_1": {
-        "name": "Lopende vraag 1",
+      "outdoor_temperature": {
+        "name": "Buitentemperatuur"
+      },
+      "outdoor_temperature_source": {
+        "name": "Bron buitentemperatuur",
         "state": {
-          "manual_operation": "Handbediening",
-          "defrost": "Ontdooien",
-          "hot_water": "Warm water",
-          "heat": "Verwarming",
-          "active_cooling": "Actieve koeling",
-          "pool": "Zwembad",
-          "anti_legionella": "Antilegionella",
-          "passive_cooling": "Passieve koeling",
-          "standby": "Stand-by",
-          "no_demand": "Geen vraag",
-          "off": "Uit"
+          "pt1000_sensor": "PT1000-voeler",
+          "bms": "GBS"
         }
       },
-      "running_demand_2": {
-        "name": "Lopende vraag 2",
-        "state": {
-          "manual_operation": "Handbediening",
-          "defrost": "Ontdooien",
-          "hot_water": "Warm water",
-          "heat": "Verwarming",
-          "active_cooling": "Actieve koeling",
-          "pool": "Zwembad",
-          "anti_legionella": "Antilegionella",
-          "passive_cooling": "Passieve koeling",
-          "standby": "Stand-by",
-          "no_demand": "Geen vraag",
-          "off": "Uit"
-        }
-      },
-      "running_demand_3": {
-        "name": "Lopende vraag 3",
-        "state": {
-          "manual_operation": "Handbediening",
-          "defrost": "Ontdooien",
-          "hot_water": "Warm water",
-          "heat": "Verwarming",
-          "active_cooling": "Actieve koeling",
-          "pool": "Zwembad",
-          "anti_legionella": "Antilegionella",
-          "passive_cooling": "Passieve koeling",
-          "standby": "Stand-by",
-          "no_demand": "Geen vraag",
-          "off": "Uit"
-        }
+      "power_consumption_control_mode": {
+        "name": "Modus verbruiksregeling"
       },
       "queued_demand_1": {
         "name": "Vraag in wachtrij 1",
@@ -249,6 +566,99 @@
           "no_demand": "Geen vraag",
           "off": "Uit"
         }
+      },
+      "room_temperature": {
+        "name": "Kamertemperatuur"
+      },
+      "running_demand_1": {
+        "name": "Lopende vraag 1",
+        "state": {
+          "manual_operation": "Handbediening",
+          "defrost": "Ontdooien",
+          "hot_water": "Warm water",
+          "heat": "Verwarming",
+          "active_cooling": "Actieve koeling",
+          "pool": "Zwembad",
+          "anti_legionella": "Antilegionella",
+          "passive_cooling": "Passieve koeling",
+          "standby": "Stand-by",
+          "no_demand": "Geen vraag",
+          "off": "Uit"
+        }
+      },
+      "running_demand_2": {
+        "name": "Lopende vraag 2",
+        "state": {
+          "manual_operation": "Handbediening",
+          "defrost": "Ontdooien",
+          "hot_water": "Warm water",
+          "heat": "Verwarming",
+          "active_cooling": "Actieve koeling",
+          "pool": "Zwembad",
+          "anti_legionella": "Antilegionella",
+          "passive_cooling": "Passieve koeling",
+          "standby": "Stand-by",
+          "no_demand": "Geen vraag",
+          "off": "Uit"
+        }
+      },
+      "running_demand_3": {
+        "name": "Lopende vraag 3",
+        "state": {
+          "manual_operation": "Handbediening",
+          "defrost": "Ontdooien",
+          "hot_water": "Warm water",
+          "heat": "Verwarming",
+          "active_cooling": "Actieve koeling",
+          "pool": "Zwembad",
+          "anti_legionella": "Antilegionella",
+          "passive_cooling": "Passieve koeling",
+          "standby": "Stand-by",
+          "no_demand": "Geen vraag",
+          "off": "Uit"
+        }
+      },
+      "secondaries_class_a_alarm": {
+        "name": "Secundaire units met klasse A-alarm"
+      },
+      "secondaries_class_b_alarm": {
+        "name": "Secundaire units met klasse B-alarm"
+      },
+      "secondaries_class_d_alarm": {
+        "name": "Secundaire units met klasse D-alarm"
+      },
+      "secondaries_communication_alarm": {
+        "name": "Secundaire units met communicatiealarm"
+      },
+      "smart_grid_mode": {
+        "name": "Smart grid-modus",
+        "state": {
+          "evu": "EVU (geblokkeerd)",
+          "normal": "Normaal",
+          "comfort": "Comfort",
+          "boost": "Boost"
+        }
+      },
+      "software_version_major": {
+        "name": "Firmware-hoofdversie"
+      },
+      "software_version_micro": {
+        "name": "Firmware-microversie"
+      },
+      "software_version_minor": {
+        "name": "Firmware-subversie"
+      },
+      "sub_cooling_temperature": {
+        "name": "Onderkoeling"
+      },
+      "suction_gas_temperature": {
+        "name": "Zuiggastemperatuur"
+      },
+      "superheat_temperature": {
+        "name": "Oververhitting"
+      },
+      "total_distributed_gears": {
+        "name": "Verdeelde trappen"
       }
     }
   }

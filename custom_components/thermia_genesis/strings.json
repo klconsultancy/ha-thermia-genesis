@@ -45,7 +45,7 @@
       "name": "Mix valve 1"
     },
     "tap_water": {
-      "name": "Tap water"
+      "name": "Hot water"
     },
     "hgw": {
       "name": "Hot gas heat recovery"
@@ -79,41 +79,393 @@
   },
   "entity": {
     "binary_sensor": {
-      "running_demands_manual_operation": {
-        "name": "Manual operation running"
+      "alarm_class_a": {
+        "name": "Class A alarm"
       },
-      "running_demands_defrost": {
-        "name": "Defrost running"
+      "alarm_class_b": {
+        "name": "Class B alarm"
       },
-      "running_demands_hot_water": {
-        "name": "Hot water running"
+      "alarm_class_c": {
+        "name": "Class C alarm"
       },
-      "running_demands_heat": {
-        "name": "Heating running"
+      "alarm_class_d": {
+        "name": "Class D alarm"
+      },
+      "brine_delta_out_of_range_alarm": {
+        "name": "Brine difference out of range alarm"
+      },
+      "brine_in_high_temperature_alarm": {
+        "name": "Brine in high temperature alarm"
+      },
+      "brine_in_low_temperature_alarm": {
+        "name": "Brine in low temperature alarm"
+      },
+      "brine_in_sensor_alarm": {
+        "name": "Brine in sensor alarm"
+      },
+      "brine_out_low_temperature_alarm": {
+        "name": "Brine out low temperature alarm"
+      },
+      "brine_out_sensor_alarm": {
+        "name": "Brine out sensor alarm"
+      },
+      "brine_pump_on": {
+        "name": "Brine pump"
+      },
+      "brine_temperature_out_of_range_alarm": {
+        "name": "Brine temperature out of range alarm"
+      },
+      "compressor_control_signal": {
+        "name": "Compressor"
+      },
+      "compressor_low_speed_alarm": {
+        "name": "Compressor low speed alarm"
+      },
+      "compressor_pressure_outside_envelope_alarm": {
+        "name": "Compressor pressure outside envelope alarm"
+      },
+      "compressor_unable_to_speed_up": {
+        "name": "Compressor unable to speed up"
+      },
+      "condenser_in_sensor_alarm": {
+        "name": "Condenser in sensor alarm"
+      },
+      "condenser_out_sensor_alarm": {
+        "name": "Condenser out sensor alarm"
+      },
+      "condenser_pump_on": {
+        "name": "Condenser pump"
+      },
+      "current_limiter_restricts_external_additional_heater": {
+        "name": "Current limiter restricts external additional heater"
+      },
+      "current_limiter_restricts_secondary_units": {
+        "name": "Current limiter restricts secondary units"
+      },
+      "discharge_pipe_sensor_alarm": {
+        "name": "Discharge pipe sensor alarm"
+      },
+      "enable_additional_heater_only": {
+        "name": "Additional heater only enabled"
+      },
+      "enable_brine_in_monitoring": {
+        "name": "Brine in monitoring enabled"
+      },
+      "enable_brine_out_monitoring": {
+        "name": "Brine out monitoring enabled"
+      },
+      "enable_brine_pump_continuous_operation": {
+        "name": "Brine pump continuous operation enabled"
+      },
+      "enable_continuous_condenser_pump": {
+        "name": "Continuous condenser pump enabled"
+      },
+      "enable_evaporator_freeze_protection": {
+        "name": "Evaporator freeze protection enabled"
+      },
+      "enable_external_additional_heater": {
+        "name": "External additional heater enabled"
+      },
+      "enable_flow_pressure_switch": {
+        "name": "Flow pressure switch enabled"
+      },
+      "enable_heat": {
+        "name": "Heating enabled"
+      },
+      "enable_outdoor_temperature_dependent_external_heater": {
+        "name": "Outdoor temperature dependent external heater enabled"
+      },
+      "enable_system_circulation_pump": {
+        "name": "System circulation pump enabled"
+      },
+      "enable_tap_water": {
+        "name": "Hot water enabled"
+      },
+      "enable_variable_speed_brine_pump": {
+        "name": "Variable speed brine pump enabled"
+      },
+      "enable_variable_speed_condenser_pump": {
+        "name": "Variable speed condenser pump enabled"
+      },
+      "external_additional_heater_active": {
+        "name": "External additional heater"
+      },
+      "external_additional_heater_control_signal": {
+        "name": "External additional heater control signal"
+      },
+      "external_alarm_input": {
+        "name": "External alarm input"
+      },
+      "external_heater_circulation_pump_control_signal": {
+        "name": "External heater circulation pump"
+      },
+      "external_relay_brine_ground_water_pump": {
+        "name": "External relay brine/ground water pump"
+      },
+      "flow_pressure_switch_alarm": {
+        "name": "Flow pressure switch alarm"
+      },
+      "high_discharge_pipe_temperature_alarm": {
+        "name": "High discharge pipe temperature alarm"
+      },
+      "high_pressure_switch_alarm": {
+        "name": "High pressure switch alarm"
+      },
+      "inverter_unit_alarm": {
+        "name": "Inverter alarm"
+      },
+      "inverter_unit_communication_alarm": {
+        "name": "Inverter communication alarm"
+      },
+      "liquid_line_sensor_alarm": {
+        "name": "Liquid line sensor alarm"
+      },
+      "low_pressure_level_alarm": {
+        "name": "Low pressure level alarm"
+      },
+      "low_super_heat_alarm": {
+        "name": "Low superheat alarm"
+      },
+      "missing_secondary_units_alarm": {
+        "name": "Missing secondary units alarm"
+      },
+      "oil_boost_in_progress": {
+        "name": "Oil boost"
+      },
+      "ok_to_start": {
+        "name": "Ready to start"
+      },
+      "operating_pressure_limit_indication": {
+        "name": "Operating pressure limit reached"
+      },
+      "other_primary_units_alarm": {
+        "name": "Other primary units alarm"
+      },
+      "outdoor_sensor_alarm": {
+        "name": "Outdoor sensor alarm"
+      },
+      "power_input_phase_detection_alarm": {
+        "name": "Power input phase detection alarm"
+      },
+      "pressure_ratio_out_of_range_alarm": {
+        "name": "Pressure ratio out of range alarm"
+      },
+      "reset_all_alarms": {
+        "name": "Alarm reset pending"
       },
       "running_demands_active_cooling": {
-        "name": "Active cooling running"
-      },
-      "running_demands_pool": {
-        "name": "Pool running"
+        "name": "Running demand: Active cooling"
       },
       "running_demands_anti_legionella": {
-        "name": "Anti-legionella running"
+        "name": "Running demand: Anti-legionella"
       },
-      "running_demands_passive_cooling": {
-        "name": "Passive cooling running"
+      "running_demands_defrost": {
+        "name": "Running demand: Defrost"
       },
-      "running_demands_standby": {
-        "name": "Standby running"
+      "running_demands_heat": {
+        "name": "Running demand: Heating"
+      },
+      "running_demands_hot_water": {
+        "name": "Running demand: Hot water"
+      },
+      "running_demands_manual_operation": {
+        "name": "Running demand: Manual operation"
       },
       "running_demands_no_demand": {
-        "name": "No demand running"
+        "name": "Running demand: No demand"
       },
       "running_demands_off": {
-        "name": "Off running"
+        "name": "Running demand: Off"
+      },
+      "running_demands_passive_cooling": {
+        "name": "Running demand: Passive cooling"
+      },
+      "running_demands_pool": {
+        "name": "Running demand: Pool"
+      },
+      "running_demands_standby": {
+        "name": "Running demand: Standby"
+      },
+      "secondary_unit_communication_alarm": {
+        "name": "Secondary unit communication alarm"
+      },
+      "smart_grid_1_evu_input": {
+        "name": "Smart grid input 1 (EVU)"
+      },
+      "smart_grid_2": {
+        "name": "Smart grid input 2"
+      },
+      "stopping": {
+        "name": "Stopping"
+      },
+      "suction_gas_sensor_alarm": {
+        "name": "Suction gas sensor alarm"
+      },
+      "sum_alarm": {
+        "name": "Sum alarm"
+      },
+      "tap_water_top_sensor_alarm": {
+        "name": "Hot water top sensor alarm"
       }
     },
     "sensor": {
+      "available_secondaries": {
+        "name": "Available secondary units"
+      },
+      "bms_outdoor_temperature": {
+        "name": "BMS outdoor temperature"
+      },
+      "brine_circulation_pump_speed": {
+        "name": "Brine pump speed"
+      },
+      "brine_in_high_alarm_limit": {
+        "name": "Brine in high alarm limit"
+      },
+      "brine_in_low_alarm_limit": {
+        "name": "Brine in low alarm limit"
+      },
+      "brine_in_temperature": {
+        "name": "Brine in temperature"
+      },
+      "brine_max_delta_limit": {
+        "name": "Brine maximum difference limit"
+      },
+      "brine_out_low_alarm_limit": {
+        "name": "Brine out low alarm limit"
+      },
+      "brine_out_temperature": {
+        "name": "Brine out temperature"
+      },
+      "brine_pump_highest_allowed_speed": {
+        "name": "Brine pump maximum speed"
+      },
+      "brine_pump_lowest_allowed_speed": {
+        "name": "Brine pump minimum speed"
+      },
+      "brine_pump_standby_speed": {
+        "name": "Brine pump standby speed"
+      },
+      "bubble_point_high_pressure_temperature": {
+        "name": "Bubble point temperature (high pressure)"
+      },
+      "compressor_available_gears": {
+        "name": "Available compressor gears"
+      },
+      "compressor_current_gear": {
+        "name": "Compressor gear"
+      },
+      "compressor_current_hysteresis": {
+        "name": "Compressor current hysteresis"
+      },
+      "compressor_operating_hours": {
+        "name": "Compressor operating hours"
+      },
+      "compressor_speed": {
+        "name": "Compressor speed"
+      },
+      "compressor_speed_percent": {
+        "name": "Relative compressor speed"
+      },
+      "compressor_start_restriction_timer": {
+        "name": "Compressor start restriction timer"
+      },
+      "condenser_circulation_pump_speed": {
+        "name": "Condenser pump speed"
+      },
+      "condenser_in_temperature": {
+        "name": "Condenser in temperature"
+      },
+      "condenser_out_temperature": {
+        "name": "Condenser out temperature"
+      },
+      "condenser_pump_highest_allowed_speed": {
+        "name": "Condenser pump maximum speed"
+      },
+      "condenser_pump_lowest_allowed_speed": {
+        "name": "Condenser pump minimum speed"
+      },
+      "condenser_pump_standby_speed": {
+        "name": "Condenser pump standby speed"
+      },
+      "cooling_season_integral_value": {
+        "name": "Cooling season integral"
+      },
+      "current_consumed_power": {
+        "name": "Power consumption"
+      },
+      "current_power_output": {
+        "name": "Heat output"
+      },
+      "dew_point_high_pressure_temperature": {
+        "name": "Dew point temperature (high pressure)"
+      },
+      "dew_point_low_pressure_temperature": {
+        "name": "Dew point temperature (low pressure)"
+      },
+      "discharge_pipe_temperature": {
+        "name": "Discharge pipe temperature"
+      },
+      "enabled_immersion_heater": {
+        "name": "Enabled immersion heater",
+        "state": {
+          "disabled": "Disabled",
+          "internal": "Internal"
+        }
+      },
+      "expansion_valve_opening_degree": {
+        "name": "Expansion valve opening"
+      },
+      "external_additional_heater_current_demand": {
+        "name": "External additional heater demand"
+      },
+      "external_additional_heater_operating_hours": {
+        "name": "External additional heater operating hours"
+      },
+      "external_additional_heater_start": {
+        "name": "External additional heater start threshold"
+      },
+      "external_additional_heater_stop": {
+        "name": "External additional heater stop threshold"
+      },
+      "external_heater_outdoor_temperature_limit": {
+        "name": "External heater outdoor temperature limit"
+      },
+      "gear_shift_delay_heating": {
+        "name": "Gear shift delay in heating"
+      },
+      "heating_season_integral_value": {
+        "name": "Heating season integral"
+      },
+      "high_pressure_side_pressure": {
+        "name": "High pressure"
+      },
+      "input_power_limit": {
+        "name": "Input power limit"
+      },
+      "internal_immersion_heater_active_step": {
+        "name": "Immersion heater step"
+      },
+      "inverter_temperature": {
+        "name": "Inverter temperature"
+      },
+      "liquid_line_temperature": {
+        "name": "Liquid line temperature"
+      },
+      "low_pressure_side_pressure": {
+        "name": "Low pressure"
+      },
+      "maximum_allowed_gear_in_heating": {
+        "name": "Maximum gear in heating"
+      },
+      "maximum_phase_current": {
+        "name": "Maximum phase current"
+      },
+      "maximum_requested_gear": {
+        "name": "Maximum requested gear"
+      },
+      "minimum_allowed_gear_in_heating": {
+        "name": "Minimum gear in heating"
+      },
       "operational_mode": {
         "name": "Operational mode",
         "state": {
@@ -122,53 +474,18 @@
           "on_auto": "On (auto)"
         }
       },
-      "running_demand_1": {
-        "name": "Running demand 1",
+      "outdoor_temperature": {
+        "name": "Outdoor temperature"
+      },
+      "outdoor_temperature_source": {
+        "name": "Outdoor temperature source",
         "state": {
-          "manual_operation": "Manual operation",
-          "defrost": "Defrost",
-          "hot_water": "Hot water",
-          "heat": "Heating",
-          "active_cooling": "Active cooling",
-          "pool": "Pool",
-          "anti_legionella": "Anti-legionella",
-          "passive_cooling": "Passive cooling",
-          "standby": "Standby",
-          "no_demand": "No demand",
-          "off": "Off"
+          "pt1000_sensor": "PT1000 sensor",
+          "bms": "BMS"
         }
       },
-      "running_demand_2": {
-        "name": "Running demand 2",
-        "state": {
-          "manual_operation": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::manual_operation%]",
-          "defrost": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::defrost%]",
-          "hot_water": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::hot_water%]",
-          "heat": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::heat%]",
-          "active_cooling": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::active_cooling%]",
-          "pool": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::pool%]",
-          "anti_legionella": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::anti_legionella%]",
-          "passive_cooling": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::passive_cooling%]",
-          "standby": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::standby%]",
-          "no_demand": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::no_demand%]",
-          "off": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::off%]"
-        }
-      },
-      "running_demand_3": {
-        "name": "Running demand 3",
-        "state": {
-          "manual_operation": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::manual_operation%]",
-          "defrost": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::defrost%]",
-          "hot_water": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::hot_water%]",
-          "heat": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::heat%]",
-          "active_cooling": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::active_cooling%]",
-          "pool": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::pool%]",
-          "anti_legionella": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::anti_legionella%]",
-          "passive_cooling": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::passive_cooling%]",
-          "standby": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::standby%]",
-          "no_demand": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::no_demand%]",
-          "off": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::off%]"
-        }
+      "power_consumption_control_mode": {
+        "name": "Power consumption control mode"
       },
       "queued_demand_1": {
         "name": "Queued demand 1",
@@ -249,6 +566,99 @@
           "no_demand": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::no_demand%]",
           "off": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::off%]"
         }
+      },
+      "room_temperature": {
+        "name": "Room temperature"
+      },
+      "running_demand_1": {
+        "name": "Running demand 1",
+        "state": {
+          "manual_operation": "Manual operation",
+          "defrost": "Defrost",
+          "hot_water": "Hot water",
+          "heat": "Heating",
+          "active_cooling": "Active cooling",
+          "pool": "Pool",
+          "anti_legionella": "Anti-legionella",
+          "passive_cooling": "Passive cooling",
+          "standby": "Standby",
+          "no_demand": "No demand",
+          "off": "Off"
+        }
+      },
+      "running_demand_2": {
+        "name": "Running demand 2",
+        "state": {
+          "manual_operation": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::manual_operation%]",
+          "defrost": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::defrost%]",
+          "hot_water": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::hot_water%]",
+          "heat": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::heat%]",
+          "active_cooling": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::active_cooling%]",
+          "pool": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::pool%]",
+          "anti_legionella": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::anti_legionella%]",
+          "passive_cooling": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::passive_cooling%]",
+          "standby": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::standby%]",
+          "no_demand": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::no_demand%]",
+          "off": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::off%]"
+        }
+      },
+      "running_demand_3": {
+        "name": "Running demand 3",
+        "state": {
+          "manual_operation": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::manual_operation%]",
+          "defrost": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::defrost%]",
+          "hot_water": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::hot_water%]",
+          "heat": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::heat%]",
+          "active_cooling": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::active_cooling%]",
+          "pool": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::pool%]",
+          "anti_legionella": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::anti_legionella%]",
+          "passive_cooling": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::passive_cooling%]",
+          "standby": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::standby%]",
+          "no_demand": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::no_demand%]",
+          "off": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::off%]"
+        }
+      },
+      "secondaries_class_a_alarm": {
+        "name": "Secondary units with a class A alarm"
+      },
+      "secondaries_class_b_alarm": {
+        "name": "Secondary units with a class B alarm"
+      },
+      "secondaries_class_d_alarm": {
+        "name": "Secondary units with a class D alarm"
+      },
+      "secondaries_communication_alarm": {
+        "name": "Secondary units with a communication alarm"
+      },
+      "smart_grid_mode": {
+        "name": "Smart grid mode",
+        "state": {
+          "evu": "EVU (blocked)",
+          "normal": "Normal",
+          "comfort": "Comfort",
+          "boost": "Boost"
+        }
+      },
+      "software_version_major": {
+        "name": "Firmware major version"
+      },
+      "software_version_micro": {
+        "name": "Firmware micro version"
+      },
+      "software_version_minor": {
+        "name": "Firmware minor version"
+      },
+      "sub_cooling_temperature": {
+        "name": "Subcooling"
+      },
+      "suction_gas_temperature": {
+        "name": "Suction gas temperature"
+      },
+      "superheat_temperature": {
+        "name": "Superheat"
+      },
+      "total_distributed_gears": {
+        "name": "Distributed gears"
       }
     }
   }
