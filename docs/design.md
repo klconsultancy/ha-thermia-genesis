@@ -105,11 +105,11 @@ entities.
   `BINARY_SENSORS`), with the helpers of `descriptions.py` (`temperature`, `setting`,
   `alarm`, `running`, ...), so a part reads as one list; `parts/__init__.py` registers
   each part once for both platforms. The field name is the `key` and the translation key.
-- A diagnostic measurement (a count, a version) and every setting have no state class, so
-  they stay out of the long-term statistics; tests enforce that settings are diagnostic,
-  except the operational mode, which belongs on the dashboard. A key is shared by
-  parts with a field of the same name ("Supply line temperature"); the device name tells
-  them apart.
+- A diagnostic measurement (a count, a version, a point on the heat curve's x axis) and every
+  setting have no state class, so they stay out of the long-term statistics; tests enforce
+  that settings are diagnostic, except the operational mode, which belongs on the dashboard.
+  A key is shared by parts with a field of the same name ("Supply line temperature"); the
+  device name tells them apart. Every entity has a translated name, which a test enforces.
 - An entity is unavailable while its field's register space fails. A field the pump
   refuses, or an enum value the library doesn't know, reads as unknown.
 - Platforms:

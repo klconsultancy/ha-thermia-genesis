@@ -166,6 +166,9 @@
       "enable_external_additional_heater": {
         "name": "Externe bijverwarming ingeschakeld"
       },
+      "enable_fixed_system_supply_set_point": {
+        "name": "Vast aanvoersetpoint ingeschakeld"
+      },
       "enable_flow_pressure_switch": {
         "name": "Debietdrukschakelaar ingeschakeld"
       },
@@ -204,6 +207,9 @@
       },
       "flow_pressure_switch_alarm": {
         "name": "Alarm debietdrukschakelaar"
+      },
+      "heating_season_active": {
+        "name": "Stookseizoen"
       },
       "high_discharge_pipe_temperature_alarm": {
         "name": "Alarm hoge persgastemperatuur"
@@ -252,6 +258,9 @@
       },
       "reset_all_alarms": {
         "name": "Alarmreset bezig"
+      },
+      "room_temperature_sensor_alarm": {
+        "name": "Alarm kamervoeler"
       },
       "running_demands_active_cooling": {
         "name": "Lopende vraag: Actieve koeling"
@@ -304,6 +313,15 @@
       "sum_alarm": {
         "name": "Somalarm"
       },
+      "system_circulation_pump_control_signal": {
+        "name": "Systeemcirculatiepomp"
+      },
+      "system_supply_line_sensor_alarm": {
+        "name": "Alarm aanvoervoeler"
+      },
+      "system_supply_low_temperature_alarm": {
+        "name": "Alarm lage aanvoertemperatuur"
+      },
       "tap_water_top_sensor_alarm": {
         "name": "Alarm voeler warm water boven"
       }
@@ -347,6 +365,18 @@
       },
       "bubble_point_high_pressure_temperature": {
         "name": "Kookpunttemperatuur (hoge druk)"
+      },
+      "buffer_tank_charge_set_point": {
+        "name": "Laadsetpoint buffervat"
+      },
+      "buffer_tank_temperature": {
+        "name": "Temperatuur buffervat"
+      },
+      "calculated_demand": {
+        "name": "Berekende vraag"
+      },
+      "comfort_wheel_setting": {
+        "name": "Comfortwiel"
       },
       "compressor_available_gears": {
         "name": "Beschikbare compressortrappen"
@@ -396,6 +426,9 @@
       "current_power_output": {
         "name": "Afgegeven vermogen"
       },
+      "desired_gear": {
+        "name": "Gewenste trap"
+      },
       "dew_point_high_pressure_temperature": {
         "name": "Dauwpunttemperatuur (hoge druk)"
       },
@@ -430,11 +463,59 @@
       "external_heater_outdoor_temperature_limit": {
         "name": "Buitentemperatuurgrens externe bijverwarming"
       },
+      "fixed_system_supply_set_point": {
+        "name": "Vast aanvoersetpoint"
+      },
       "gear_shift_delay_heating": {
         "name": "Trapwisselvertraging bij verwarmen"
       },
+      "heat_curve_x_1": {
+        "name": "Stooklijn punt 1 buitentemperatuur"
+      },
+      "heat_curve_x_2": {
+        "name": "Stooklijn punt 2 buitentemperatuur"
+      },
+      "heat_curve_x_3": {
+        "name": "Stooklijn punt 3 buitentemperatuur"
+      },
+      "heat_curve_x_4": {
+        "name": "Stooklijn punt 4 buitentemperatuur"
+      },
+      "heat_curve_x_5": {
+        "name": "Stooklijn punt 5 buitentemperatuur"
+      },
+      "heat_curve_x_6": {
+        "name": "Stooklijn punt 6 buitentemperatuur"
+      },
+      "heat_curve_x_7": {
+        "name": "Stooklijn punt 7 buitentemperatuur"
+      },
+      "heat_curve_y_1": {
+        "name": "Stooklijn punt 1 aanvoertemperatuur"
+      },
+      "heat_curve_y_2": {
+        "name": "Stooklijn punt 2 aanvoertemperatuur"
+      },
+      "heat_curve_y_3": {
+        "name": "Stooklijn punt 3 aanvoertemperatuur"
+      },
+      "heat_curve_y_4": {
+        "name": "Stooklijn punt 4 aanvoertemperatuur"
+      },
+      "heat_curve_y_5": {
+        "name": "Stooklijn punt 5 aanvoertemperatuur"
+      },
+      "heat_curve_y_6": {
+        "name": "Stooklijn punt 6 aanvoertemperatuur"
+      },
+      "heat_curve_y_7": {
+        "name": "Stooklijn punt 7 aanvoertemperatuur"
+      },
       "heating_season_integral_value": {
         "name": "Integraal stookseizoen"
+      },
+      "heating_season_stop_temperature": {
+        "name": "Stoptemperatuur stookseizoen"
       },
       "high_pressure_side_pressure": {
         "name": "Hoge druk"
@@ -454,6 +535,9 @@
       "low_pressure_side_pressure": {
         "name": "Lage druk"
       },
+      "max_limitation_set_point_curve": {
+        "name": "Maximale aanvoertemperatuur"
+      },
       "maximum_allowed_gear_in_heating": {
         "name": "Maximale trap bij verwarmen"
       },
@@ -462,6 +546,9 @@
       },
       "maximum_requested_gear": {
         "name": "Hoogst gevraagde trap"
+      },
+      "min_limitation_set_point_curve": {
+        "name": "Minimale aanvoertemperatuur"
       },
       "minimum_allowed_gear_in_heating": {
         "name": "Minimale trap bij verwarmen"
@@ -630,6 +717,9 @@
       "secondaries_communication_alarm": {
         "name": "Secundaire units met communicatiealarm"
       },
+      "selected_heat_curve_supply_line": {
+        "name": "Aanvoertemperatuur volgens stooklijn"
+      },
       "smart_grid_mode": {
         "name": "Smart grid-modus",
         "state": {
@@ -656,6 +746,15 @@
       },
       "superheat_temperature": {
         "name": "Oververhitting"
+      },
+      "system_return_line_temperature": {
+        "name": "Retourtemperatuur"
+      },
+      "system_supply_line_calculated_set_point": {
+        "name": "Berekend aanvoersetpoint"
+      },
+      "system_supply_line_temperature": {
+        "name": "Aanvoertemperatuur"
       },
       "total_distributed_gears": {
         "name": "Verdeelde trappen"
