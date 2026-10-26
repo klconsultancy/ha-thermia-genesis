@@ -8021,7 +8021,7 @@
     'object_id_base': 'Calculated demand',
     'options': dict({
       'sensor': dict({
-        'suggested_display_precision': 1,
+        'suggested_display_precision': 2,
       }),
     }),
     'original_device_class': None,

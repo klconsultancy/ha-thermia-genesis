@@ -25,7 +25,7 @@ SENSORS: tuple[Sensor, ...] = (
     temperature("system_supply_line_temperature"),
     temperature("system_supply_line_calculated_set_point"),
     temperature("system_return_line_temperature"),
-    measurement("calculated_demand", precision=1),
+    measurement("calculated_demand", precision=2),
     measurement("desired_gear", precision=0),
     # Heat curve
     temperature("selected_heat_curve_supply_line"),

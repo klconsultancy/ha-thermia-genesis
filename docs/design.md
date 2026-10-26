@@ -132,10 +132,12 @@ entities.
 - Enabled by default: the measured temperatures of the heating circuit (brine and
   condenser in and out, discharge pipe, outdoor, room), operational mode, running demand 1,
   compressor gear, speed, operating hours and whether it runs, heat output and power
-  consumption, the immersion heater step and whether the external heater runs, the tap
+  consumption, the immersion heater step and whether the external heater runs, the hot
   water top temperature, and the electric meter's power and kWh. The refrigerant circuit
   (liquid line, suction gas, dew and bubble points, superheat, subcooling, pressures) is
-  disabled by default.
+  disabled by default. So are the heating system's supply and return line temperatures: a
+  pump without system sensors reads them as unknown. A set point of an absent part (the
+  buffer tank's) can read 0.0; it is disabled, so it stays out of sight.
   Everything else (queued demands, PID values, flags, settings, individual alarms) is
   disabled by default.
 - Coils and holding registers (settings) and the alarm inputs have entity category
