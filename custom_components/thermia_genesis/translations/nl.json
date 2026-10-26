@@ -605,13 +605,13 @@
         "name": "Maximale compressortrap"
       },
       "maximum_allowed_gear_in_heating": {
-        "name": "Maximale trap bij verwarmen"
+        "name": "Maximale compressortrap bij verwarmen"
       },
       "maximum_phase_current": {
         "name": "Maximale fasestroom"
       },
       "maximum_requested_gear": {
-        "name": "Hoogst gevraagde trap"
+        "name": "Hoogst gevraagde compressortrap"
       },
       "min_limitation_set_point_curve": {
         "name": "Grens minimale aanvoertemperatuur"
@@ -620,7 +620,7 @@
         "name": "Minimale compressortrap"
       },
       "minimum_allowed_gear_in_heating": {
-        "name": "Minimale trap bij verwarmen"
+        "name": "Minimale compressortrap bij verwarmen"
       },
       "mode": {
         "name": "Modus",
