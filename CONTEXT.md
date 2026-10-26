@@ -26,3 +26,10 @@ class, state class, entity category and whether it is enabled by default.
 
 **Aggregate alarm**
 : The derived binary sensor that is on when any alarm input of the pump is on.
+
+**Hot water**
+: What the pump makes for the taps, which the library calls tap water (`tap_water`). The keys
+keep the library's name; every name shown to the user says hot water ("Warm water" in Dutch).
+The protocol calls the alarm of the lower hot water sensor (discrete 50) the "mid" sensor
+alarm; it shares position 53 with the lower temperature (input 16), so it is named after that
+sensor.

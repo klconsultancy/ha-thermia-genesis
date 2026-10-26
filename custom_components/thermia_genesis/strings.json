@@ -181,6 +181,9 @@
       "enable_heat": {
         "name": "Heating enabled"
       },
+      "enable_hot_gas_pump": {
+        "name": "Hot gas pump enabled"
+      },
       "enable_internal_brine_pump_when_cooling": {
         "name": "Internal brine pump in cooling enabled"
       },
@@ -244,6 +247,9 @@
       "low_super_heat_alarm": {
         "name": "Low superheat alarm"
       },
+      "mid_sensor_alarm": {
+        "name": "Lower sensor alarm"
+      },
       "missing_secondary_units_alarm": {
         "name": "Missing secondary units alarm"
       },
@@ -270,6 +276,9 @@
       },
       "producing_passive_cooling": {
         "name": "Passive cooling"
+      },
+      "regulation_control_signal": {
+        "name": "Regulation control signal"
       },
       "reset_all_alarms": {
         "name": "Alarm reset pending"
@@ -312,6 +321,9 @@
       },
       "secondary_unit_communication_alarm": {
         "name": "Secondary unit communication alarm"
+      },
+      "sensor_alarm": {
+        "name": "Sensor alarm"
       },
       "smart_grid_1_evu_input": {
         "name": "Smart grid input 1 (EVU)"
@@ -583,8 +595,14 @@
       "low_pressure_side_pressure": {
         "name": "Low pressure"
       },
+      "lower_temperature": {
+        "name": "Lower temperature"
+      },
       "max_limitation_set_point_curve": {
         "name": "Maximum supply line temperature limit"
+      },
+      "maximum_allowed_gear": {
+        "name": "Maximum gear"
       },
       "maximum_allowed_gear_in_heating": {
         "name": "Maximum gear in heating"
@@ -598,6 +616,9 @@
       "min_limitation_set_point_curve": {
         "name": "Minimum supply line temperature limit"
       },
+      "minimum_allowed_gear": {
+        "name": "Minimum gear"
+      },
       "minimum_allowed_gear_in_heating": {
         "name": "Minimum gear in heating"
       },
@@ -608,6 +629,9 @@
           "cool": "Cooling",
           "auto": "Automatic"
         }
+      },
+      "operating_hours": {
+        "name": "Operating hours"
       },
       "operational_mode": {
         "name": "Operational mode",
@@ -800,6 +824,12 @@
       "software_version_minor": {
         "name": "Firmware minor version"
       },
+      "start_temperature": {
+        "name": "Start temperature"
+      },
+      "stop_temperature": {
+        "name": "Stop temperature"
+      },
       "sub_cooling_temperature": {
         "name": "Subcooling"
       },
@@ -821,8 +851,17 @@
       "system_supply_line_temperature": {
         "name": "Supply line temperature"
       },
+      "top_temperature": {
+        "name": "Top temperature"
+      },
       "total_distributed_gears": {
         "name": "Distributed gears"
+      },
+      "valve_position": {
+        "name": "Valve position"
+      },
+      "weighted_temperature": {
+        "name": "Weighted temperature"
       }
     }
   }

@@ -181,6 +181,9 @@
       "enable_heat": {
         "name": "Verwarming ingeschakeld"
       },
+      "enable_hot_gas_pump": {
+        "name": "Heetgaspomp ingeschakeld"
+      },
       "enable_internal_brine_pump_when_cooling": {
         "name": "Interne brinepomp bij koelen ingeschakeld"
       },
@@ -244,6 +247,9 @@
       "low_super_heat_alarm": {
         "name": "Alarm lage oververhitting"
       },
+      "mid_sensor_alarm": {
+        "name": "Alarm voeler onder"
+      },
       "missing_secondary_units_alarm": {
         "name": "Alarm ontbrekende secundaire units"
       },
@@ -270,6 +276,9 @@
       },
       "producing_passive_cooling": {
         "name": "Passieve koeling"
+      },
+      "regulation_control_signal": {
+        "name": "Regelsignaal"
       },
       "reset_all_alarms": {
         "name": "Alarmreset bezig"
@@ -312,6 +321,9 @@
       },
       "secondary_unit_communication_alarm": {
         "name": "Alarm communicatie secundaire unit"
+      },
+      "sensor_alarm": {
+        "name": "Alarm voeler"
       },
       "smart_grid_1_evu_input": {
         "name": "Smart grid-ingang 1 (EVU)"
@@ -583,8 +595,14 @@
       "low_pressure_side_pressure": {
         "name": "Lage druk"
       },
+      "lower_temperature": {
+        "name": "Temperatuur onder"
+      },
       "max_limitation_set_point_curve": {
         "name": "Grens maximale aanvoertemperatuur"
+      },
+      "maximum_allowed_gear": {
+        "name": "Maximale compressortrap"
       },
       "maximum_allowed_gear_in_heating": {
         "name": "Maximale trap bij verwarmen"
@@ -598,6 +616,9 @@
       "min_limitation_set_point_curve": {
         "name": "Grens minimale aanvoertemperatuur"
       },
+      "minimum_allowed_gear": {
+        "name": "Minimale compressortrap"
+      },
       "minimum_allowed_gear_in_heating": {
         "name": "Minimale trap bij verwarmen"
       },
@@ -608,6 +629,9 @@
           "cool": "Koelen",
           "auto": "Automatisch"
         }
+      },
+      "operating_hours": {
+        "name": "Bedrijfsuren"
       },
       "operational_mode": {
         "name": "Bedrijfsmodus",
@@ -800,6 +824,12 @@
       "software_version_minor": {
         "name": "Firmware-subversie"
       },
+      "start_temperature": {
+        "name": "Starttemperatuur"
+      },
+      "stop_temperature": {
+        "name": "Stoptemperatuur"
+      },
       "sub_cooling_temperature": {
         "name": "Onderkoeling"
       },
@@ -821,8 +851,17 @@
       "system_supply_line_temperature": {
         "name": "Aanvoertemperatuur"
       },
+      "top_temperature": {
+        "name": "Temperatuur boven"
+      },
       "total_distributed_gears": {
         "name": "Verdeelde trappen"
+      },
+      "valve_position": {
+        "name": "Klepstand"
+      },
+      "weighted_temperature": {
+        "name": "Gewogen temperatuur"
       }
     }
   }
