@@ -17,7 +17,7 @@ from custom_components.thermia_genesis.descriptions import UNITS
 from custom_components.thermia_genesis.parts import BINARY_SENSORS, SENSORS
 
 # The parts whose every field has an entity; it grows with each part's pull request.
-COMPLETE = ["heat", "heat_pump", "mix_valve_1", "status"]
+COMPLETE = ["heat", "heat_pump", "hgw", "mix_valve_1", "status", "tap_water"]
 
 
 async def _read_every_part() -> dict[str, type[Subsystem]]:

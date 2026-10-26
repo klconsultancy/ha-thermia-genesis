@@ -1,7 +1,7 @@
 """The entities as Home Assistant shows them, on the reference pump."""
 
 from datetime import timedelta
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 from unittest.mock import patch
 
 import pytest
@@ -91,6 +91,7 @@ async def test_enabled_by_default(
         "sensor.heat_pump_unit_outdoor_temperature",
         "sensor.heat_pump_unit_power_consumption",
         "sensor.heat_pump_unit_room_temperature",
+        "sensor.hot_water_top_temperature",
         "sensor.thermia_genesis_operational_mode",
         "sensor.thermia_genesis_running_demand_1",
     ]
@@ -135,7 +136,28 @@ async def test_a_refused_field_reads_as_unknown(
     assert state(hass, "binary_sensor.thermia_genesis_running_demand_no_demand") == STATE_UNKNOWN
 
 
+# The registers of each optional part the reference pump lacks: its Enable coil and values.
+OPTIONAL_PARTS: dict[str, dict[str, dict[int, int | bool]]] = {
+    "mix_valve_1": {
+        "coil": {11: True},
+        "input": {40: 3150, 43: 4200, 147: 3200},
+        "holding": {
+            298: 2,  # auto
+            **dict(enumerate((2000, 4500, 4100, 3800, 3500, 3200, 2900, 2600, 2300), 107)),
+            302: 1800,
+            303: 2200,
+        },
+    },
+    "hgw": {
+        "coil": {6: True},
+        "discrete": {223: True},
+        "input": {45: 5520},
+    },
+}
+
+
 @pytest.mark.usefixtures("entity_registry_enabled_by_default")
+@pytest.mark.parametrize("part", list(OPTIONAL_PARTS))
 async def test_an_optional_part_gets_its_entities(
     hass: HomeAssistant,
     entry: MockConfigEntry,
@@ -143,21 +165,21 @@ async def test_an_optional_part_gets_its_entities(
     device_registry: dr.DeviceRegistry,
     pump_unit: MockModbusUnit,
     snapshot: SnapshotAssertion,
+    part: str,
 ) -> None:
-    pump_unit.coil[11] = True  # mix valve 1
-    pump_unit.input[40] = 3150
-    pump_unit.input[43] = 4200
-    pump_unit.input[147] = 3200
-    pump_unit.holding[298] = 2  # auto
-    for address, value in enumerate((2000, 4500, 4100, 3800, 3500, 3200, 2900, 2600, 2300), 107):
-        pump_unit.holding[address] = value
-    pump_unit.holding[302] = 1800
-    pump_unit.holding[303] = 2200
+    stores: dict[str, dict[int, Any]] = {
+        "coil": pump_unit.coil,
+        "discrete": pump_unit.discrete,
+        "input": pump_unit.input,
+        "holding": pump_unit.holding,
+    }
+    for space, registers in OPTIONAL_PARTS[part].items():
+        stores[space].update(registers)
 
     await setup(hass, entry)
 
     device = device_registry.async_get_device_by_identifier(
-        (DOMAIN, f"{entry.entry_id}_mix_valve_1"), entry.entry_id
+        (DOMAIN, f"{entry.entry_id}_{part}"), entry.entry_id
     )
     assert device is not None
     entities = er.async_entries_for_device(entity_registry, device.id)
