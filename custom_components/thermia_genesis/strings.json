@@ -248,7 +248,7 @@
         "name": "Low superheat alarm"
       },
       "mid_sensor_alarm": {
-        "name": "Middle sensor alarm"
+        "name": "Lower sensor alarm"
       },
       "missing_secondary_units_alarm": {
         "name": "Missing secondary units alarm"

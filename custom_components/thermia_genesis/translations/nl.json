@@ -248,7 +248,7 @@
         "name": "Alarm lage oververhitting"
       },
       "mid_sensor_alarm": {
-        "name": "Alarm voeler midden"
+        "name": "Alarm voeler onder"
       },
       "missing_secondary_units_alarm": {
         "name": "Alarm ontbrekende secundaire units"

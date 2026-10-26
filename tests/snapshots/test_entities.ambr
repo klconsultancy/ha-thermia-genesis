@@ -3678,7 +3678,7 @@
     'state': 'off',
   })
 # ---
-# name: test_entities[binary_sensor][binary_sensor.hot_water_middle_sensor_alarm-entry]
+# name: test_entities[binary_sensor][binary_sensor.hot_water_lower_sensor_alarm-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -3692,7 +3692,7 @@
     'disabled_by': None,
     'domain': 'binary_sensor',
     'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'binary_sensor.hot_water_middle_sensor_alarm',
+    'entity_id': 'binary_sensor.hot_water_lower_sensor_alarm',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -3700,12 +3700,12 @@
     'labels': set({
     }),
     'name': None,
-    'object_id_base': 'Middle sensor alarm',
+    'object_id_base': 'Lower sensor alarm',
     'options': dict({
     }),
     'original_device_class': <BinarySensorDeviceClass.PROBLEM: 'problem'>,
     'original_icon': None,
-    'original_name': 'Middle sensor alarm',
+    'original_name': 'Lower sensor alarm',
     'platform': 'thermia_genesis',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -3715,14 +3715,14 @@
     'unit_of_measurement': None,
   })
 # ---
-# name: test_entities[binary_sensor][binary_sensor.hot_water_middle_sensor_alarm-state]
+# name: test_entities[binary_sensor][binary_sensor.hot_water_lower_sensor_alarm-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'problem',
-      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Hot water Middle sensor alarm',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Hot water Lower sensor alarm',
     }),
     'context': <ANY>,
-    'entity_id': 'binary_sensor.hot_water_middle_sensor_alarm',
+    'entity_id': 'binary_sensor.hot_water_lower_sensor_alarm',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
