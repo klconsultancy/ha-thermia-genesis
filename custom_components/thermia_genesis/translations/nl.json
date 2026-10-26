@@ -427,7 +427,7 @@
         "name": "Afgegeven vermogen"
       },
       "desired_gear": {
-        "name": "Gewenste trap"
+        "name": "Gewenste compressortrap"
       },
       "dew_point_high_pressure_temperature": {
         "name": "Dauwpunttemperatuur (hoge druk)"
@@ -536,7 +536,7 @@
         "name": "Lage druk"
       },
       "max_limitation_set_point_curve": {
-        "name": "Maximale aanvoertemperatuur"
+        "name": "Grens maximale aanvoertemperatuur"
       },
       "maximum_allowed_gear_in_heating": {
         "name": "Maximale trap bij verwarmen"
@@ -548,7 +548,7 @@
         "name": "Hoogst gevraagde trap"
       },
       "min_limitation_set_point_curve": {
-        "name": "Minimale aanvoertemperatuur"
+        "name": "Grens minimale aanvoertemperatuur"
       },
       "minimum_allowed_gear_in_heating": {
         "name": "Minimale trap bij verwarmen"
@@ -718,7 +718,7 @@
         "name": "Secundaire units met communicatiealarm"
       },
       "selected_heat_curve_supply_line": {
-        "name": "Aanvoertemperatuur volgens stooklijn"
+        "name": "Aanvoersetpoint volgens stooklijn"
       },
       "smart_grid_mode": {
         "name": "Smart grid-modus",

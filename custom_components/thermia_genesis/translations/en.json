@@ -536,7 +536,7 @@
         "name": "Low pressure"
       },
       "max_limitation_set_point_curve": {
-        "name": "Maximum supply line temperature"
+        "name": "Maximum supply line temperature limit"
       },
       "maximum_allowed_gear_in_heating": {
         "name": "Maximum gear in heating"
@@ -548,7 +548,7 @@
         "name": "Maximum requested gear"
       },
       "min_limitation_set_point_curve": {
-        "name": "Minimum supply line temperature"
+        "name": "Minimum supply line temperature limit"
       },
       "minimum_allowed_gear_in_heating": {
         "name": "Minimum gear in heating"
@@ -718,7 +718,7 @@
         "name": "Secondary units with a communication alarm"
       },
       "selected_heat_curve_supply_line": {
-        "name": "Heat curve supply line temperature"
+        "name": "Heat curve supply line set point"
       },
       "smart_grid_mode": {
         "name": "Smart grid mode",
