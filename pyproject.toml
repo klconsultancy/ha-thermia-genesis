@@ -1,6 +1,6 @@
 [project]
 name = "ha-thermia-genesis"
-version = "0.0.0"
+version = "0.1.0"
 description = "Home Assistant integration for Thermia heat pumps on the Genesis platform via Modbus"
 readme = "README.md"
 license = "MIT"
