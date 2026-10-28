@@ -79,6 +79,9 @@
   },
   "entity": {
     "binary_sensor": {
+      "active_cooling_directional_valve_position": {
+        "name": "Active cooling directional valve"
+      },
       "alarm_class_a": {
         "name": "Class A alarm"
       },
@@ -115,6 +118,15 @@
       "brine_temperature_out_of_range_alarm": {
         "name": "Brine temperature out of range alarm"
       },
+      "circuit_circulation_pump_control_signal": {
+        "name": "Circulation pump"
+      },
+      "circuit_regulation_control_signal": {
+        "name": "Regulation control signal"
+      },
+      "circuit_supply_line_temperature_deviation_alarm": {
+        "name": "Supply line temperature deviation alarm"
+      },
       "circulation_pump_control_signal": {
         "name": "Circulation pump"
       },
@@ -150,6 +162,9 @@
       },
       "enable": {
         "name": "Enabled"
+      },
+      "enable_active_cooling": {
+        "name": "Active cooling enabled"
       },
       "enable_additional_heater_only": {
         "name": "Additional heater only enabled"
@@ -193,6 +208,9 @@
       "enable_outdoor_temperature_dependent_external_heater": {
         "name": "Outdoor temperature dependent external heater enabled"
       },
+      "enable_passive_cooling": {
+        "name": "Passive cooling enabled"
+      },
       "enable_system_circulation_pump": {
         "name": "System circulation pump enabled"
       },
@@ -219,6 +237,9 @@
       },
       "external_relay_brine_ground_water_pump": {
         "name": "External relay brine/ground water pump"
+      },
+      "external_start_brine_pump": {
+        "name": "External brine pump start"
       },
       "flow_pressure_switch_alarm": {
         "name": "Flow pressure switch alarm"
@@ -346,6 +367,9 @@
       "supply_temperature_deviation_alarm": {
         "name": "Supply line temperature deviation alarm"
       },
+      "surplus_heat_directional_valve_position": {
+        "name": "Surplus heat directional valve"
+      },
       "system_circulation_pump_control_signal": {
         "name": "System circulation pump"
       },
@@ -407,6 +431,9 @@
       },
       "calculated_demand": {
         "name": "Calculated demand"
+      },
+      "circuit_supply_line_temperature": {
+        "name": "Supply line temperature"
       },
       "comfort_wheel_setting": {
         "name": "Comfort wheel"
@@ -526,6 +553,9 @@
       "fixed_system_supply_set_point": {
         "name": "Fixed supply line set point"
       },
+      "gear_shift_delay": {
+        "name": "Gear shift delay"
+      },
       "gear_shift_delay_heating": {
         "name": "Gear shift delay in heating"
       },
@@ -621,6 +651,12 @@
       },
       "minimum_allowed_gear_in_heating": {
         "name": "Minimum gear in heating"
+      },
+      "mix_valve_opening_degree": {
+        "name": "Mix valve opening"
+      },
+      "mix_valve_set_point": {
+        "name": "Minimum supply line set point"
       },
       "mode": {
         "name": "Mode",
@@ -838,6 +874,12 @@
       },
       "superheat_temperature": {
         "name": "Superheat"
+      },
+      "supply_line_mix_valve_highest_allowed_opening_degree": {
+        "name": "Mix valve maximum opening"
+      },
+      "supply_line_mix_valve_lowest_allowed_opening_degree": {
+        "name": "Mix valve minimum opening"
       },
       "supply_line_temperature": {
         "name": "Supply line temperature"

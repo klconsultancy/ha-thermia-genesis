@@ -79,6 +79,9 @@
   },
   "entity": {
     "binary_sensor": {
+      "active_cooling_directional_valve_position": {
+        "name": "Omschakelklep actieve koeling"
+      },
       "alarm_class_a": {
         "name": "Klasse A-alarm"
       },
@@ -115,6 +118,15 @@
       "brine_temperature_out_of_range_alarm": {
         "name": "Alarm brinetemperatuur buiten bereik"
       },
+      "circuit_circulation_pump_control_signal": {
+        "name": "Circulatiepomp"
+      },
+      "circuit_regulation_control_signal": {
+        "name": "Regelsignaal"
+      },
+      "circuit_supply_line_temperature_deviation_alarm": {
+        "name": "Alarm afwijking aanvoertemperatuur"
+      },
       "circulation_pump_control_signal": {
         "name": "Circulatiepomp"
       },
@@ -150,6 +162,9 @@
       },
       "enable": {
         "name": "Ingeschakeld"
+      },
+      "enable_active_cooling": {
+        "name": "Actieve koeling ingeschakeld"
       },
       "enable_additional_heater_only": {
         "name": "Alleen bijverwarming ingeschakeld"
@@ -193,6 +208,9 @@
       "enable_outdoor_temperature_dependent_external_heater": {
         "name": "Buitentemperatuurafhankelijke externe bijverwarming ingeschakeld"
       },
+      "enable_passive_cooling": {
+        "name": "Passieve koeling ingeschakeld"
+      },
       "enable_system_circulation_pump": {
         "name": "Systeemcirculatiepomp ingeschakeld"
       },
@@ -219,6 +237,9 @@
       },
       "external_relay_brine_ground_water_pump": {
         "name": "Extern relais brine-/grondwaterpomp"
+      },
+      "external_start_brine_pump": {
+        "name": "Externe start brinepomp"
       },
       "flow_pressure_switch_alarm": {
         "name": "Alarm debietdrukschakelaar"
@@ -346,6 +367,9 @@
       "supply_temperature_deviation_alarm": {
         "name": "Alarm afwijking aanvoertemperatuur"
       },
+      "surplus_heat_directional_valve_position": {
+        "name": "Omschakelklep restwarmte"
+      },
       "system_circulation_pump_control_signal": {
         "name": "Systeemcirculatiepomp"
       },
@@ -407,6 +431,9 @@
       },
       "calculated_demand": {
         "name": "Berekende vraag"
+      },
+      "circuit_supply_line_temperature": {
+        "name": "Aanvoertemperatuur"
       },
       "comfort_wheel_setting": {
         "name": "Comfortwiel"
@@ -526,6 +553,9 @@
       "fixed_system_supply_set_point": {
         "name": "Vast aanvoersetpoint"
       },
+      "gear_shift_delay": {
+        "name": "Trapwisselvertraging"
+      },
       "gear_shift_delay_heating": {
         "name": "Trapwisselvertraging bij verwarmen"
       },
@@ -621,6 +651,12 @@
       },
       "minimum_allowed_gear_in_heating": {
         "name": "Minimale compressortrap bij verwarmen"
+      },
+      "mix_valve_opening_degree": {
+        "name": "Opening mengklep"
+      },
+      "mix_valve_set_point": {
+        "name": "Minimaal aanvoersetpoint"
       },
       "mode": {
         "name": "Modus",
@@ -838,6 +874,12 @@
       },
       "superheat_temperature": {
         "name": "Oververhitting"
+      },
+      "supply_line_mix_valve_highest_allowed_opening_degree": {
+        "name": "Maximale opening mengklep"
+      },
+      "supply_line_mix_valve_lowest_allowed_opening_degree": {
+        "name": "Minimale opening mengklep"
       },
       "supply_line_temperature": {
         "name": "Aanvoertemperatuur"
