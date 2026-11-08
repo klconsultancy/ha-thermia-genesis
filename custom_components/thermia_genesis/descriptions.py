@@ -124,6 +124,22 @@ def operating_hours(key: str, *, enabled: bool = False) -> Sensor:
     )
 
 
+def meter_energy(key: str) -> Sensor:
+    """Describe a meter's energy in kWh that never goes down; disabled by default.
+
+    Only for counters that never go down: total_increasing reads any drop as a reset.
+    """
+    return ThermiaGenesisSensorEntityDescription(
+        key=key,
+        translation_key=key,
+        native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
+        device_class=SensorDeviceClass.ENERGY,
+        state_class=SensorStateClass.TOTAL_INCREASING,
+        suggested_display_precision=1,
+        entity_registry_enabled_default=False,
+    )
+
+
 def enumeration(
     key: str, enum: type[Enum], *, enabled: bool = False, diagnostic: bool = False
 ) -> Sensor:

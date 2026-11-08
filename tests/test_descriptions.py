@@ -6,7 +6,7 @@ from enum import IntEnum, IntFlag
 from pathlib import Path
 
 import pytest
-from homeassistant.components.sensor import SensorDeviceClass
+from homeassistant.components.sensor import SensorDeviceClass, SensorStateClass
 from homeassistant.const import EntityCategory
 from modbus_connection.mock import MockModbusConnection
 from thermia_genesis import ThermiaGenesis
@@ -17,7 +17,17 @@ from custom_components.thermia_genesis.descriptions import UNITS
 from custom_components.thermia_genesis.parts import BINARY_SENSORS, SENSORS
 
 # The parts whose every field has an entity; it grows with each part's pull request.
-COMPLETE = ["cooling", "heat", "heat_pump", "hgw", "mix_valve_1", "pool", "status", "tap_water"]
+COMPLETE = [
+    "cooling",
+    "electric_meter",
+    "heat",
+    "heat_pump",
+    "hgw",
+    "mix_valve_1",
+    "pool",
+    "status",
+    "tap_water",
+]
 
 
 async def _read_every_part() -> dict[str, type[Subsystem]]:
@@ -173,3 +183,13 @@ def test_diagnostics_and_settings_stay_out_of_the_statistics(part: str) -> None:
         field = library[description.field or description.key]
         if description.entity_category is EntityCategory.DIAGNOSTIC or field.space == "holding":
             assert description.state_class is None, description.key
+
+
+def test_the_electric_meter_energy_never_goes_down_and_is_disabled() -> None:
+    meter = {description.key: description for description in SENSORS["electric_meter"]}
+    for key in ("kwh_total", "meter_value"):
+        assert meter[key].device_class is SensorDeviceClass.ENERGY, key
+        assert meter[key].state_class is SensorStateClass.TOTAL_INCREASING, key
+    # The meter measures the house connection, not the heat pump (docs/design.md).
+    assert not meter["kwh_total"].entity_registry_enabled_default
+    assert not meter["meter_value"].entity_registry_enabled_default

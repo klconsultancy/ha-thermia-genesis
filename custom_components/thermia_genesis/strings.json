@@ -184,6 +184,9 @@
       "enable_continuous_condenser_pump": {
         "name": "Continuous condenser pump enabled"
       },
+      "enable_current_limitation": {
+        "name": "Current limitation enabled"
+      },
       "enable_evaporator_freeze_protection": {
         "name": "Evaporator freeze protection enabled"
       },
@@ -637,6 +640,45 @@
       "inverter_temperature": {
         "name": "Inverter temperature"
       },
+      "kwh_total": {
+        "name": "Energy"
+      },
+      "l1_current": {
+        "name": "L1 current"
+      },
+      "l1_l2_voltage": {
+        "name": "L1-L2 voltage"
+      },
+      "l1_power": {
+        "name": "L1 power"
+      },
+      "l1_voltage": {
+        "name": "L1 voltage"
+      },
+      "l2_current": {
+        "name": "L2 current"
+      },
+      "l2_l3_voltage": {
+        "name": "L2-L3 voltage"
+      },
+      "l2_power": {
+        "name": "L2 power"
+      },
+      "l2_voltage": {
+        "name": "L2 voltage"
+      },
+      "l3_current": {
+        "name": "L3 current"
+      },
+      "l3_l1_voltage": {
+        "name": "L3-L1 voltage"
+      },
+      "l3_power": {
+        "name": "L3 power"
+      },
+      "l3_voltage": {
+        "name": "L3 voltage"
+      },
       "liquid_line_temperature": {
         "name": "Liquid line temperature"
       },
@@ -660,6 +702,9 @@
       },
       "maximum_requested_gear": {
         "name": "Maximum requested gear"
+      },
+      "meter_value": {
+        "name": "Energy (16-bit)"
       },
       "min_limitation_set_point_curve": {
         "name": "Minimum supply line temperature limit"
