@@ -139,8 +139,11 @@ entities.
   fits a rolling sum. All are disabled by default: no protocol edition lists them, they
   are verified on a Calibra 17.1 only, and a pump without them reads 0 kWh (the library
   reads a COP of 0 as no value).
-- One derived `binary_sensor` "Alarm" (device class `problem`) on the main device is on when
-  any alarm input is on, for notifications.
+- One derived `binary_sensor` "Alarm" (device class `problem`, enabled) on the main device is
+  on when any alarm input is on, for notifications. The alarm inputs are the binary sensors
+  with device class `problem` of the parts the pump has, so an absent part's alarms don't
+  count; they are all discrete inputs, so the alarm is unavailable while those fail to
+  refresh.
 - Enabled by default: the measured temperatures of the heating circuit (brine and
   condenser in and out, discharge pipe, outdoor, room), operational mode, running demand 1,
   compressor gear, speed, operating hours and whether it runs, heat output and power

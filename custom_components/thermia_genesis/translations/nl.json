@@ -85,6 +85,9 @@
       "active_cooling_directional_valve_position": {
         "name": "Omschakelklep actieve koeling"
       },
+      "alarm": {
+        "name": "Alarm"
+      },
       "alarm_class_a": {
         "name": "Klasse A-alarm"
       },
