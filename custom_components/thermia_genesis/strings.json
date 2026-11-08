@@ -85,6 +85,9 @@
       "active_cooling_directional_valve_position": {
         "name": "Active cooling directional valve"
       },
+      "alarm": {
+        "name": "Alarm"
+      },
       "alarm_class_a": {
         "name": "Class A alarm"
       },
