@@ -181,6 +181,9 @@
       "enable_continuous_condenser_pump": {
         "name": "Continu condensorpomp ingeschakeld"
       },
+      "enable_current_limitation": {
+        "name": "Stroombegrenzing ingeschakeld"
+      },
       "enable_evaporator_freeze_protection": {
         "name": "Vorstbeveiliging verdamper ingeschakeld"
       },
@@ -619,6 +622,45 @@
       "inverter_temperature": {
         "name": "Temperatuur omvormer"
       },
+      "kwh_total": {
+        "name": "Energie"
+      },
+      "l1_current": {
+        "name": "Stroom L1"
+      },
+      "l1_l2_voltage": {
+        "name": "Spanning L1-L2"
+      },
+      "l1_power": {
+        "name": "Vermogen L1"
+      },
+      "l1_voltage": {
+        "name": "Spanning L1"
+      },
+      "l2_current": {
+        "name": "Stroom L2"
+      },
+      "l2_l3_voltage": {
+        "name": "Spanning L2-L3"
+      },
+      "l2_power": {
+        "name": "Vermogen L2"
+      },
+      "l2_voltage": {
+        "name": "Spanning L2"
+      },
+      "l3_current": {
+        "name": "Stroom L3"
+      },
+      "l3_l1_voltage": {
+        "name": "Spanning L3-L1"
+      },
+      "l3_power": {
+        "name": "Vermogen L3"
+      },
+      "l3_voltage": {
+        "name": "Spanning L3"
+      },
       "liquid_line_temperature": {
         "name": "Vloeistofleidingtemperatuur"
       },
@@ -642,6 +684,9 @@
       },
       "maximum_requested_gear": {
         "name": "Hoogst gevraagde compressortrap"
+      },
+      "meter_value": {
+        "name": "Energie (16-bit)"
       },
       "min_limitation_set_point_curve": {
         "name": "Grens minimale aanvoertemperatuur"

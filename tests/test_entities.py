@@ -153,6 +153,21 @@ OPTIONAL_PARTS: dict[str, dict[str, dict[int, int | bool]]] = {
         "discrete": {223: True},
         "input": {45: 5520},
     },
+    "electric_meter": {
+        "coil": {26: True},
+        "input": {
+            **dict(zip(range(69, 72), (512, 230, 1), strict=True)),
+            **dict(zip(range(72, 75), (23010, 22980, 23120), strict=True)),
+            **dict(zip(range(75, 78), (3990, 3985, 4002), strict=True)),
+            78: 1180,
+            79: 530,
+            80: 65436,  # -100 W: the house exports on L3
+            81: 1234,
+            # 123456.7 kWh, least significant word first
+            83: 1234567 & 0xFFFF,
+            84: 1234567 >> 16,
+        },
+    },
 }
 
 

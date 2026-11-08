@@ -2,7 +2,7 @@
 
 from typing import TYPE_CHECKING
 
-from . import cooling, heat, heat_pump, hgw, mix_valve_1, status, tap_water
+from . import cooling, electric_meter, heat, heat_pump, hgw, mix_valve_1, status, tap_water
 
 if TYPE_CHECKING:
     from ..descriptions import BinarySensor, Sensor
@@ -10,6 +10,7 @@ if TYPE_CHECKING:
 # The sensors and binary sensors of each part, by the part's attribute on ThermiaGenesis.
 SENSORS: dict[str, tuple[Sensor, ...]] = {
     "cooling": cooling.SENSORS,
+    "electric_meter": electric_meter.SENSORS,
     "heat": heat.SENSORS,
     "heat_pump": heat_pump.SENSORS,
     "hgw": hgw.SENSORS,
@@ -19,6 +20,7 @@ SENSORS: dict[str, tuple[Sensor, ...]] = {
 }
 BINARY_SENSORS: dict[str, tuple[BinarySensor, ...]] = {
     "cooling": cooling.BINARY_SENSORS,
+    "electric_meter": electric_meter.BINARY_SENSORS,
     "heat": heat.BINARY_SENSORS,
     "heat_pump": heat_pump.BINARY_SENSORS,
     "hgw": hgw.BINARY_SENSORS,

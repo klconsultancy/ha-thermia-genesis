@@ -1,4 +1,23 @@
 # serializer version: 1
+# name: test_an_optional_part_gets_its_entities[electric_meter]
+  dict({
+    'binary_sensor.electric_meter_current_limitation_enabled': 'on',
+    'sensor.electric_meter_energy': '123456.7',
+    'sensor.electric_meter_energy_16_bit': '1234',
+    'sensor.electric_meter_l1_current': '5.12',
+    'sensor.electric_meter_l1_l2_voltage': '399.0',
+    'sensor.electric_meter_l1_power': '1180',
+    'sensor.electric_meter_l1_voltage': '230.1',
+    'sensor.electric_meter_l2_current': '2.3',
+    'sensor.electric_meter_l2_l3_voltage': '398.5',
+    'sensor.electric_meter_l2_power': '530',
+    'sensor.electric_meter_l2_voltage': '229.8',
+    'sensor.electric_meter_l3_current': '0.01',
+    'sensor.electric_meter_l3_l1_voltage': '400.2',
+    'sensor.electric_meter_l3_power': '-100',
+    'sensor.electric_meter_l3_voltage': '231.2',
+  })
+# ---
 # name: test_an_optional_part_gets_its_entities[hgw]
   dict({
     'binary_sensor.hot_gas_heat_recovery_enabled': 'on',
