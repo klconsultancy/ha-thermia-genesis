@@ -121,7 +121,10 @@ entities.
     removes the old sensors.
 - The heat pump unit's power output and consumed power (input 157/158) come in kW and are
   shown in W (`suggested_unit_of_measurement`), like the electric meter and most power
-  sensors such as a P1 meter: Home Assistant's history draws one graph per unit.
+  sensors such as a P1 meter: Home Assistant's history draws one graph per unit. Power
+  measurements show in W; power settings (`input_power_limit`) keep the pump's unit, kW.
+  An entity created before this keeps kW and, with display precision 0 in W, shows three
+  decimals in kW; changing its unit to W in the entity settings fixes both.
 - State classes: `measurement` for temperatures, power, gears and percentages;
   `total_increasing` for operating hours (device class `duration`) and the electric meter's
   kWh (device class `energy`).
