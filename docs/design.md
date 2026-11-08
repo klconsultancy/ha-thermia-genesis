@@ -164,6 +164,11 @@ entities.
 - The entry's diagnostics hold the raw registers and the decoded values per subsystem, like
   `thermia-genesis dump`, with the host redacted. They are the first thing to ask for in a
   report about another pump or firmware.
+- They call the library's `dump` on the coordinator's unit, so they read the whole pump
+  again (about 0.4 s) and their `dump` is exactly the JSON of `thermia-genesis dump`: a
+  report becomes a test fixture as is. Beside it, the redacted config entry and the
+  coordinator's state (last update, failing register spaces). A dropped link or a timeout
+  replaces the dump with its error; the rest still comes.
 
 ## Coexistence
 

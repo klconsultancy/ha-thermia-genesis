@@ -8,12 +8,13 @@ from homeassistant.config_entries import ConfigEntry
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 from modbus_connection.exceptions import ModbusError
 from modbus_connection.model import UpdateReport
+from thermia_genesis import ThermiaGenesis
 
 from .const import DOMAIN
 
 if TYPE_CHECKING:
     from homeassistant.core import HomeAssistant
-    from thermia_genesis import ThermiaGenesis
+    from modbus_connection import ModbusUnit
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -29,13 +30,15 @@ class ThermiaGenesisCoordinator(DataUpdateCoordinator[UpdateReport]):
     config_entry: ThermiaGenesisConfigEntry
 
     def __init__(
-        self, hass: HomeAssistant, entry: ThermiaGenesisConfigEntry, pump: ThermiaGenesis
+        self, hass: HomeAssistant, entry: ThermiaGenesisConfigEntry, unit: ModbusUnit
     ) -> None:
-        """Poll ``pump`` for ``entry``."""
+        """Poll the pump on ``unit`` for ``entry``."""
         super().__init__(
             hass, _LOGGER, config_entry=entry, name=entry.title, update_interval=UPDATE_INTERVAL
         )
-        self.pump = pump
+        # Kept for the diagnostics, which read the whole pump again.
+        self.unit = unit
+        self.pump = ThermiaGenesis(unit)
         self._failing: set[str] = set()
 
     @override
