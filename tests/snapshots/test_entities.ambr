@@ -33,6 +33,24 @@
     'sensor.mix_valve_1_valve_position': '42.0',
   })
 # ---
+# name: test_an_optional_part_gets_its_entities[pool]
+  dict({
+    'binary_sensor.pool_directional_valve': 'on',
+    'binary_sensor.pool_enabled': 'on',
+    'binary_sensor.pool_external_additional_heater_enabled': 'off',
+    'binary_sensor.pool_external_stop': 'off',
+    'binary_sensor.pool_return_line_sensor_alarm': 'off',
+    'sensor.pool_charge_set_point': '26.0',
+    'sensor.pool_desired_gear': '2',
+    'sensor.pool_gear_shift_delay': '600',
+    'sensor.pool_heat_exchanger_return_line_set_point': '27.0',
+    'sensor.pool_hysteresis': '1.0',
+    'sensor.pool_maximum_gear': '5',
+    'sensor.pool_minimum_gear': '1',
+    'sensor.pool_return_line_temperature': '26.1',
+    'sensor.pool_supply_line_temperature': '28.5',
+  })
+# ---
 # name: test_entities[binary_sensor][binary_sensor.cooling_active_cooling_directional_valve-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
