@@ -11,6 +11,7 @@ from .const import DOMAIN
 from .coordinator import ThermiaGenesisCoordinator
 
 if TYPE_CHECKING:
+    from thermia_genesis import ThermiaGenesis
     from thermia_genesis.subsystem import Field, Space, Subsystem
 
 # The register space of a field, as the coordinator's UpdateReport names it.
@@ -35,6 +36,11 @@ class ThermiaGenesisEntityDescription(EntityDescription):
     def field_name(self) -> str:
         """The name of the library field this entity shows."""
         return self.field or self.key
+
+
+def field_value(pump: ThermiaGenesis, part: str, field: str) -> Any:  # noqa: ANN401
+    """Return the value of ``part``'s ``field``; its type depends on the field."""
+    return getattr(getattr(pump, part), field)
 
 
 class ThermiaGenesisEntity(CoordinatorEntity[ThermiaGenesisCoordinator]):
@@ -67,7 +73,7 @@ class ThermiaGenesisEntity(CoordinatorEntity[ThermiaGenesisCoordinator]):
     @property
     def _value(self) -> Any:  # noqa: ANN401
         """The field's value; its type depends on the field."""
-        return getattr(self._subsystem, self.entity_description.field_name)
+        return field_value(self.coordinator.pump, self._part, self.entity_description.field_name)
 
     @property
     def available(self) -> bool:

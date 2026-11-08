@@ -3019,7 +3019,7 @@
     'device_id': <ANY>,
     'disabled_by': None,
     'domain': 'binary_sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
+    'entity_category': None,
     'entity_id': 'binary_sensor.heat_pump_unit_operating_pressure_limit_reached',
     'has_entity_name': True,
     'hidden_by': None,
@@ -3031,7 +3031,7 @@
     'object_id_base': 'Operating pressure limit reached',
     'options': dict({
     }),
-    'original_device_class': <BinarySensorDeviceClass.PROBLEM: 'problem'>,
+    'original_device_class': None,
     'original_icon': None,
     'original_name': 'Operating pressure limit reached',
     'platform': 'thermia_genesis',
@@ -3046,7 +3046,6 @@
 # name: test_entities[binary_sensor][binary_sensor.heat_pump_unit_operating_pressure_limit_reached-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
-      <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'problem',
       <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Heat pump unit Operating pressure limit reached',
     }),
     'context': <ANY>,

@@ -125,7 +125,6 @@ BINARY_SENSORS: tuple[BinarySensor, ...] = (
     alarm("high_pressure_switch_alarm"),
     alarm("low_pressure_level_alarm"),
     alarm("high_discharge_pipe_temperature_alarm"),
-    alarm("operating_pressure_limit_indication"),
     alarm("discharge_pipe_sensor_alarm"),
     alarm("liquid_line_sensor_alarm"),
     alarm("suction_gas_sensor_alarm"),
@@ -161,6 +160,9 @@ BINARY_SENSORS: tuple[BinarySensor, ...] = (
     running("external_heater_circulation_pump_control_signal"),
     running("oil_boost_in_progress"),
     # Signals
+    # Chapter 3 documents it as On/Off, where the alarms read active/inactive: the pump
+    # limits its operating pressure under load, which is no fault, so not an alarm.
+    signal("operating_pressure_limit_indication"),
     signal("external_relay_brine_ground_water_pump"),
     signal("smart_grid_1_evu_input"),
     signal("smart_grid_2"),

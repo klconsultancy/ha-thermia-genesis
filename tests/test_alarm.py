@@ -12,8 +12,9 @@ from homeassistant.const import (
     STATE_OFF,
     STATE_ON,
     STATE_UNAVAILABLE,
+    STATE_UNKNOWN,
 )
-from modbus_connection.exceptions import ServerDeviceBusyError
+from modbus_connection.exceptions import IllegalDataAddressError, ServerDeviceBusyError
 from pytest_homeassistant_custom_component.common import MockConfigEntry, async_fire_time_changed
 
 from custom_components.thermia_genesis.const import CONF_UNIT_ID, DOMAIN
@@ -124,3 +125,29 @@ async def test_is_unavailable_while_the_alarm_inputs_fail_to_refresh(
     await refresh(hass, freezer)
 
     assert hass.states.get(ALARM).state == STATE_UNAVAILABLE  # type: ignore[union-attr]
+
+
+async def test_ignores_the_operating_pressure_limit_indication(
+    hass: HomeAssistant,
+    entry: MockConfigEntry,
+    pump_unit: MockModbusUnit,
+    freezer: FrozenDateTimeFactory,
+) -> None:
+    await setup(hass, entry)
+
+    # Chapter 3 documents it as On/Off, not active/inactive: a state under load, not a fault.
+    pump_unit.discrete[12] = True
+    await refresh(hass, freezer)
+
+    assert hass.states.get(ALARM).state == STATE_OFF  # type: ignore[union-attr]
+
+
+async def test_is_unknown_while_no_alarm_input_is_known(
+    hass: HomeAssistant, entry: MockConfigEntry, pump_unit: MockModbusUnit
+) -> None:
+    for address in range(300):
+        pump_unit.fail_read(address, IllegalDataAddressError(), register_type="discrete")
+
+    await setup(hass, entry)
+
+    assert hass.states.get(ALARM).state == STATE_UNKNOWN  # type: ignore[union-attr]
