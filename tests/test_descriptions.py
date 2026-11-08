@@ -20,6 +20,7 @@ from custom_components.thermia_genesis.parts import BINARY_SENSORS, SENSORS
 COMPLETE = [
     "cooling",
     "electric_meter",
+    "energy_statistics",
     "heat",
     "heat_pump",
     "hgw",
@@ -193,3 +194,12 @@ def test_the_electric_meter_energy_never_goes_down_and_is_disabled() -> None:
     # The meter measures the house connection, not the heat pump (docs/design.md).
     assert not meter["kwh_total"].entity_registry_enabled_default
     assert not meter["meter_value"].entity_registry_enabled_default
+
+
+def test_the_energy_statistics_stay_out_of_the_statistics_and_are_disabled() -> None:
+    # They roll per month, so they can drop, and a pump without them reads 0 (docs/design.md).
+    for description in SENSORS["energy_statistics"]:
+        assert description.state_class is None, description.key
+        assert not description.entity_registry_enabled_default, description.key
+        if description.native_unit_of_measurement is not None:
+            assert description.device_class is SensorDeviceClass.ENERGY, description.key

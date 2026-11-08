@@ -58,6 +58,9 @@
     },
     "electric_meter": {
       "name": "Electric meter"
+    },
+    "energy_statistics": {
+      "name": "Energy statistics"
     }
   },
   "exceptions": {
@@ -619,6 +622,36 @@
       "heat_curve_y_7": {
         "name": "Heat curve point 7 supply line temperature"
       },
+      "heating_aux_heater_months_13_to_24": {
+        "name": "Heating additional heat, previous 12 months"
+      },
+      "heating_aux_heater_months_1_to_12": {
+        "name": "Heating additional heat, last 12 months"
+      },
+      "heating_consumed_months_13_to_24": {
+        "name": "Heating energy consumed, previous 12 months"
+      },
+      "heating_consumed_months_1_to_12": {
+        "name": "Heating energy consumed, last 12 months"
+      },
+      "heating_cop_months_13_to_24": {
+        "name": "Heating COP, previous 12 months"
+      },
+      "heating_cop_months_1_to_12": {
+        "name": "Heating COP, last 12 months"
+      },
+      "heating_delivered_months_13_to_24": {
+        "name": "Heating energy delivered, previous 12 months"
+      },
+      "heating_delivered_months_1_to_12": {
+        "name": "Heating energy delivered, last 12 months"
+      },
+      "heating_natural_source_months_13_to_24": {
+        "name": "Heating energy from the source, previous 12 months"
+      },
+      "heating_natural_source_months_1_to_12": {
+        "name": "Heating energy from the source, last 12 months"
+      },
       "heating_season_integral_value": {
         "name": "Heating season integral"
       },
@@ -961,6 +994,36 @@
       },
       "system_supply_line_temperature": {
         "name": "Supply line temperature"
+      },
+      "tap_water_aux_heater_months_13_to_24": {
+        "name": "Hot water additional heat, previous 12 months"
+      },
+      "tap_water_aux_heater_months_1_to_12": {
+        "name": "Hot water additional heat, last 12 months"
+      },
+      "tap_water_consumed_months_13_to_24": {
+        "name": "Hot water energy consumed, previous 12 months"
+      },
+      "tap_water_consumed_months_1_to_12": {
+        "name": "Hot water energy consumed, last 12 months"
+      },
+      "tap_water_cop_months_13_to_24": {
+        "name": "Hot water COP, previous 12 months"
+      },
+      "tap_water_cop_months_1_to_12": {
+        "name": "Hot water COP, last 12 months"
+      },
+      "tap_water_delivered_months_13_to_24": {
+        "name": "Hot water energy delivered, previous 12 months"
+      },
+      "tap_water_delivered_months_1_to_12": {
+        "name": "Hot water energy delivered, last 12 months"
+      },
+      "tap_water_natural_source_months_13_to_24": {
+        "name": "Hot water energy from the source, previous 12 months"
+      },
+      "tap_water_natural_source_months_1_to_12": {
+        "name": "Hot water energy from the source, last 12 months"
       },
       "top_temperature": {
         "name": "Top temperature"

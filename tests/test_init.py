@@ -91,12 +91,13 @@ async def test_creates_the_pump_and_a_device_per_present_part(
         "17.1.11",
     )
     # The reference pump has passive cooling and none of the other optional parts.
-    assert set(found) == {"heat_pump", "heat", "tap_water", "cooling"}
+    assert set(found) == {"heat_pump", "heat", "tap_water", "cooling", "energy_statistics"}
     assert {part: device.name for part, device in found.items()} == {
         "heat_pump": "Heat pump unit",
         "heat": "Heating",
         "tap_water": "Hot water",
         "cooling": "Cooling",
+        "energy_statistics": "Energy statistics",
     }
     for device in found.values():
         assert device.via_device_id == pump.id

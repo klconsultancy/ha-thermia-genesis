@@ -23,4 +23,5 @@ PARTS = (
     "cooling",
     "pool",
     "electric_meter",
+    "energy_statistics",
 )
