@@ -5,7 +5,8 @@ platform (Calibra, Atlas, Diplomat, Mega), read over Modbus TCP. It is built on 
 [`thermia-genesis`](https://github.com/klconsultancy/python-thermia-genesis) library and
 Home Assistant's own Modbus connection.
 
-> **Status:** under development. The first release will be read-only.
+> **Status:** the first releases are read-only: the integration shows what the pump reports
+> and never writes to it. Changing settings comes later.
 
 ## Requirements
 
@@ -14,14 +15,58 @@ Home Assistant's own Modbus connection.
 
 ## Installation
 
-Not released yet. The first release will install through
-[HACS](https://hacs.xyz/) as a custom repository.
+The integration installs through [HACS](https://hacs.xyz/) as a custom repository:
+
+1. In HACS, open the menu (⋮) → **Custom repositories**.
+2. Add `https://github.com/klconsultancy/ha-thermia-genesis` with the type **Integration**.
+3. Search for **Thermia Genesis**, download it and restart Home Assistant.
+
+## Configuration
+
+1. Go to **Settings → Devices & services → Add integration** and pick **Thermia Genesis**.
+2. Enter the heat pump's IP address or host name, and the Modbus TCP port (usually 502).
+
+The integration reads the firmware to check the connection. It connects through Home
+Assistant's own Modbus integration, so it can share the connection with another integration
+that uses the same address and settings. To change the address later, use **Reconfigure**
+on the entry: its entities and their history are kept.
+
+## What you get
+
+- A **Thermia Genesis** device with the pump's status (operational mode, running demand)
+  and an **Alarm** binary sensor that is on while any alarm input is on, which is the one
+  to notify on.
+- One device per part the pump has (heat pump unit, heating, mix valve 1, hot water, hot gas
+  heat recovery, cooling, pool, electric meter, energy statistics). A part the pump doesn't
+  have gets no device.
+- An entity for every value the library reads. A curated set is enabled, mainly the
+  temperatures, the compressor, the heaters and the operational mode. The rest (settings,
+  individual alarms, the refrigerant circuit, the energy statistics) is disabled; enable
+  what you need.
+- Settings show as diagnostic sensors until writing comes.
+- Entity names in English and Dutch.
+
+The pump is read every 30 seconds. When a register space fails to read, only its entities
+become unavailable, and the integration keeps polling without reloading.
+
+## Reporting a problem
+
+Download the diagnostics of the entry (**⋮ → Download diagnostics**) and attach them to an
+issue. They hold every register the pump has, raw and decoded, with the host and the entry's
+title redacted: the same JSON as `thermia-genesis dump`. A wrong or missing value, or an
+unsupported firmware, belongs in the
+[library's issues](https://github.com/klconsultancy/python-thermia-genesis/issues). Report
+security issues privately as described in [SECURITY.md](SECURITY.md).
 
 ## The older `thermiagenesis` integration
 
 The community `thermiagenesis` integration uses another domain, so both can run side by side
 while you switch over. Entities are not migrated: remove the old integration once the new
 one runs.
+
+## Disclaimer
+
+Not affiliated with Thermia AB. Controlling a heat pump remotely is at your own risk.
 
 ## License
 
