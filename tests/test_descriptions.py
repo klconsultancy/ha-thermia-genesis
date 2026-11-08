@@ -184,7 +184,7 @@ def test_diagnostics_and_settings_stay_out_of_the_statistics(part: str) -> None:
             assert description.state_class is None, description.key
 
 
-def test_the_electric_meter_energy_counts_up_for_the_energy_dashboard() -> None:
+def test_the_electric_meter_energy_never_goes_down_and_is_disabled() -> None:
     meter = {description.key: description for description in SENSORS["electric_meter"]}
     for key in ("kwh_total", "meter_value"):
         assert meter[key].device_class is SensorDeviceClass.ENERGY, key

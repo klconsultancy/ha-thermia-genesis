@@ -125,7 +125,10 @@ def operating_hours(key: str, *, enabled: bool = False) -> Sensor:
 
 
 def meter_energy(key: str) -> Sensor:
-    """Describe a meter's energy in kWh, a counter for the energy dashboard."""
+    """Describe a meter's energy in kWh that never goes down; disabled by default.
+
+    Only for counters that never go down: total_increasing reads any drop as a reset.
+    """
     return ThermiaGenesisSensorEntityDescription(
         key=key,
         translation_key=key,
