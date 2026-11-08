@@ -172,8 +172,10 @@ entities.
 
 ## Coexistence
 
-- The older `thermiagenesis` custom integration uses another domain, so both can run side
-  by side, each with its own TCP connection. Nothing is migrated from it.
+- The older `thermiagenesis` custom integration uses another domain, so both can be
+  installed side by side, each with its own TCP connection. Two Modbus clients on the pump
+  at once are untested, so the README says to disable the old one once the new one runs.
+  Nothing is migrated from it.
 
 ## Tooling and process
 
