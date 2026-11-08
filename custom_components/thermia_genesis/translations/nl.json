@@ -188,7 +188,7 @@
         "name": "Continu bedrijf brinepomp ingeschakeld"
       },
       "enable_continuous_condenser_pump": {
-        "name": "Continu condensorpomp ingeschakeld"
+        "name": "Continue condensorpomp ingeschakeld"
       },
       "enable_current_limitation": {
         "name": "Stroombegrenzing ingeschakeld"
@@ -550,7 +550,7 @@
         "name": "Persgastemperatuur"
       },
       "enabled_immersion_heater": {
-        "name": "Ingeschakeld elektrisch element",
+        "name": "Elektrisch element",
         "state": {
           "disabled": "Uitgeschakeld",
           "internal": "Intern"
