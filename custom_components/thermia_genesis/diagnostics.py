@@ -12,8 +12,9 @@ if TYPE_CHECKING:
 
     from .coordinator import ThermiaGenesisConfigEntry
 
-# The pump's address on the network.
-TO_REDACT = {CONF_HOST}
+# The pump's address on the network, and the title, which users may rename to an address or
+# a location.
+TO_REDACT = {CONF_HOST, "title"}
 
 
 async def async_get_config_entry_diagnostics(
@@ -26,7 +27,7 @@ async def async_get_config_entry_diagnostics(
         pump: dict[str, Any] = await dump(coordinator.unit)
     except ModbusError as err:
         # A dropped link or a timeout; the rest still helps.
-        pump = {"error": str(err)}
+        pump = {"error": f"{type(err).__name__}: {err}"}
     return {
         "entry": async_redact_data(entry.as_dict(), TO_REDACT),
         "coordinator": {

@@ -63,6 +63,18 @@ async def test_hold_the_dump_of_the_pump(
     assert HOST not in json.dumps(diagnostics)
 
 
+async def test_redact_the_title_users_may_give_an_address(
+    hass: HomeAssistant, hass_client: ClientSessionGenerator, entry: MockConfigEntry
+) -> None:
+    hass.config_entries.async_update_entry(entry, title=f"Heat pump {HOST}")
+    await setup(hass, entry)
+
+    diagnostics = await get_diagnostics_for_config_entry(hass, hass_client, entry)
+
+    assert diagnostics["entry"]["title"] == "**REDACTED**"
+    assert HOST not in json.dumps(diagnostics)
+
+
 async def test_name_the_register_spaces_that_failed_to_refresh(
     hass: HomeAssistant,
     hass_client: ClientSessionGenerator,
@@ -93,5 +105,5 @@ async def test_say_why_the_dump_is_missing_when_the_link_drops(
 
     diagnostics = await get_diagnostics_for_config_entry(hass, hass_client, entry)
 
-    assert diagnostics["dump"] == {"error": "link down"}
+    assert diagnostics["dump"] == {"error": "ModbusConnectionError: link down"}
     assert diagnostics["entry"]["data"][CONF_HOST] == "**REDACTED**"

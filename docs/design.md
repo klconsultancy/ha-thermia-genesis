@@ -162,7 +162,7 @@ entities.
 ## Diagnostics
 
 - The entry's diagnostics hold the raw registers and the decoded values per subsystem, like
-  `thermia-genesis dump`, with the host redacted. They are the first thing to ask for in a
+  `thermia-genesis dump`, with the host and the entry's title redacted. They are the first thing to ask for in a
   report about another pump or firmware.
 - They call the library's `dump` on the coordinator's unit, so they read the whole pump
   again (about 0.4 s) and their `dump` is exactly the JSON of `thermia-genesis dump`: a
