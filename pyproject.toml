@@ -7,7 +7,7 @@ license = "MIT"
 authors = [{ name = "Kristof Lemmens" }]
 # Home Assistant's own requirement; the integration runs inside it.
 requires-python = ">=3.14.2"
-dependencies = ["thermia-genesis==0.2.1"]
+dependencies = ["thermia-genesis==0.3.0"]
 
 [dependency-groups]
 dev = [

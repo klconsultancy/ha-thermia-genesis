@@ -63,8 +63,8 @@ entities.
   firmware version. The status entities (operational mode, demands) and the aggregate alarm
   belong to it. The user renames it to the actual model.
 - One sub-device per subsystem the pump has (heat pump unit, heat, mix valve 1, hot water,
-  HGW, cooling, pool, electric meter), linked with `via_device` to the main device, all on
-  one level. An optional part the pump doesn't have gets no sub-device.
+  HGW, cooling, pool, electric meter, energy statistics), linked with `via_device` to the
+  main device, all on one level. An optional part the pump doesn't have gets no sub-device.
 - The pump's device identifier is `(DOMAIN, entry_id)`, a part's
   `(DOMAIN, f"{entry_id}_{part}")`, with the part named as its attribute on
   `ThermiaGenesis`.
@@ -132,6 +132,13 @@ entities.
   statistics for good. `meter_value` (input 81, 16-bit) wraps after 65535 kWh, which
   `total_increasing` reads as a reset. The phase powers are enabled: they show what the
   current limiter acts on.
+- The energy statistics (library `energy_statistics`, input 348–397) are the display's
+  energy and COP per circuit for the last 12 months and the 12 before. They have device
+  class `energy` but no state class: both periods roll per month, so a value drops when a
+  month falls out (python-thermia-genesis#33), and neither `total_increasing` nor `total`
+  fits a rolling sum. All are disabled by default: no protocol edition lists them, they
+  are verified on a Calibra 17.1 only, and a pump without them reads 0 kWh (the library
+  reads a COP of 0 as no value).
 - One derived `binary_sensor` "Alarm" (device class `problem`) on the main device is on when
   any alarm input is on, for notifications.
 - Enabled by default: the measured temperatures of the heating circuit (brine and

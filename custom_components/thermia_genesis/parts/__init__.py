@@ -2,7 +2,18 @@
 
 from typing import TYPE_CHECKING
 
-from . import cooling, electric_meter, heat, heat_pump, hgw, mix_valve_1, pool, status, tap_water
+from . import (
+    cooling,
+    electric_meter,
+    energy_statistics,
+    heat,
+    heat_pump,
+    hgw,
+    mix_valve_1,
+    pool,
+    status,
+    tap_water,
+)
 
 if TYPE_CHECKING:
     from ..descriptions import BinarySensor, Sensor
@@ -11,6 +22,7 @@ if TYPE_CHECKING:
 SENSORS: dict[str, tuple[Sensor, ...]] = {
     "cooling": cooling.SENSORS,
     "electric_meter": electric_meter.SENSORS,
+    "energy_statistics": energy_statistics.SENSORS,
     "heat": heat.SENSORS,
     "heat_pump": heat_pump.SENSORS,
     "hgw": hgw.SENSORS,
