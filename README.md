@@ -27,9 +27,11 @@ The integration installs through [HACS](https://hacs.xyz/) as a custom repositor
 2. Enter the heat pump's IP address or host name, and the Modbus TCP port (usually 502).
 
 The integration reads the firmware to check the connection. It connects through Home
-Assistant's own Modbus integration, so it can share the connection with another integration
-that uses the same address and settings. To change the address later, use **Reconfigure**
-on the entry: its entities and their history are kept.
+Assistant's own Modbus integration, so it shares one connection with Home Assistant's
+`modbus` integration, or with another integration built on it, that talks to the same
+address. If that one uses other connection settings for the address, setup stops with an
+error saying the address is in use. To change the address later, use **Reconfigure** on the
+entry: its entities and their history are kept.
 
 ## What you get
 
@@ -37,8 +39,9 @@ on the entry: its entities and their history are kept.
   and an **Alarm** binary sensor that is on while any alarm input is on, which is the one
   to notify on.
 - One device per part the pump has (heat pump unit, heating, mix valve 1, hot water, hot gas
-  heat recovery, cooling, pool, electric meter, energy statistics). A part the pump doesn't
-  have gets no device.
+  heat recovery, cooling, pool, electric meter, energy statistics). An optional part the
+  pump doesn't have (mix valve 1, hot gas heat recovery, pool, electric meter) gets no
+  device.
 - An entity for every value the library reads. A curated set is enabled, mainly the
   temperatures, the compressor, the heaters and the operational mode. The rest (settings,
   individual alarms, the refrigerant circuit, the energy statistics) is disabled; enable
@@ -51,8 +54,8 @@ become unavailable, and the integration keeps polling without reloading.
 
 ## Reporting a problem
 
-Download the diagnostics of the entry (**⋮ → Download diagnostics**) and attach them to an
-issue. They hold every register the pump has, raw and decoded, with the host and the entry's
+Download the diagnostics of the entry (**Settings → Devices & services → Thermia Genesis →
+⋮ → Download diagnostics**) and attach them to an issue. They hold every register the pump has, raw and decoded, with the host and the entry's
 title redacted: the same JSON as `thermia-genesis dump`. A wrong or missing value, or an
 unsupported firmware, belongs in the
 [library's issues](https://github.com/klconsultancy/python-thermia-genesis/issues). Report
@@ -60,9 +63,10 @@ security issues privately as described in [SECURITY.md](SECURITY.md).
 
 ## The older `thermiagenesis` integration
 
-The community `thermiagenesis` integration uses another domain, so both can run side by side
-while you switch over. Entities are not migrated: remove the old integration once the new
-one runs.
+The community `thermiagenesis` integration uses another domain, so both can be installed side
+by side while you switch over. Each opens its own connection to the pump, though, and two
+Modbus clients at once have not been tested against the pump: disable the old integration
+once the new one runs. Entities are not migrated.
 
 ## Disclaimer
 

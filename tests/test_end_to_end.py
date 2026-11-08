@@ -102,3 +102,4 @@ async def test_reads_the_reference_pump_over_tcp(
 
     assert await hass.config_entries.async_unload(entry.entry_id)
     await hass.async_block_till_done()
+    assert entry.state is ConfigEntryState.NOT_LOADED  # type: ignore[comparison-overlap]
