@@ -623,10 +623,10 @@
         "name": "Heat curve point 7 supply line temperature"
       },
       "heating_aux_heater_months_13_to_24": {
-        "name": "Heating additional heat, previous 12 months"
+        "name": "Heating additional heater energy, previous 12 months"
       },
       "heating_aux_heater_months_1_to_12": {
-        "name": "Heating additional heat, last 12 months"
+        "name": "Heating additional heater energy, last 12 months"
       },
       "heating_consumed_months_13_to_24": {
         "name": "Heating energy consumed, previous 12 months"
@@ -996,10 +996,10 @@
         "name": "Supply line temperature"
       },
       "tap_water_aux_heater_months_13_to_24": {
-        "name": "Hot water additional heat, previous 12 months"
+        "name": "Hot water additional heater energy, previous 12 months"
       },
       "tap_water_aux_heater_months_1_to_12": {
-        "name": "Hot water additional heat, last 12 months"
+        "name": "Hot water additional heater energy, last 12 months"
       },
       "tap_water_consumed_months_13_to_24": {
         "name": "Hot water energy consumed, previous 12 months"

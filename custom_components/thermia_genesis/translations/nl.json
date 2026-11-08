@@ -623,10 +623,10 @@
         "name": "Stooklijn punt 7 aanvoertemperatuur"
       },
       "heating_aux_heater_months_13_to_24": {
-        "name": "Verwarming bijverwarming, vorige 12 maanden"
+        "name": "Verwarming energie bijverwarming, vorige 12 maanden"
       },
       "heating_aux_heater_months_1_to_12": {
-        "name": "Verwarming bijverwarming, laatste 12 maanden"
+        "name": "Verwarming energie bijverwarming, laatste 12 maanden"
       },
       "heating_consumed_months_13_to_24": {
         "name": "Verwarming verbruikte energie, vorige 12 maanden"
@@ -996,10 +996,10 @@
         "name": "Aanvoertemperatuur"
       },
       "tap_water_aux_heater_months_13_to_24": {
-        "name": "Warm water bijverwarming, vorige 12 maanden"
+        "name": "Warm water energie bijverwarming, vorige 12 maanden"
       },
       "tap_water_aux_heater_months_1_to_12": {
-        "name": "Warm water bijverwarming, laatste 12 maanden"
+        "name": "Warm water energie bijverwarming, laatste 12 maanden"
       },
       "tap_water_consumed_months_13_to_24": {
         "name": "Warm water verbruikte energie, vorige 12 maanden"

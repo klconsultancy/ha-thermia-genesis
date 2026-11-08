@@ -17,18 +17,22 @@ ENERGIES = ("aux_heater", "consumed", "delivered", "natural_source")
 
 
 def energy(key: str) -> Sensor:
-    """Describe an energy over a 12-month period in kWh; it is no counter."""
+    """Describe an energy over a 12-month period in whole kWh; it is no counter."""
     return ThermiaGenesisSensorEntityDescription(
         key=key,
         translation_key=key,
         native_unit_of_measurement=UnitOfEnergy.KILO_WATT_HOUR,
         device_class=SensorDeviceClass.ENERGY,
+        suggested_display_precision=0,
         entity_registry_enabled_default=False,
     )
 
 
 def cop(key: str) -> Sensor:
-    """Describe the COP over a 12-month period."""
+    """Describe the COP over a 12-month period.
+
+    No state class: a rolling 12-month figure, not a measurement to average over time.
+    """
     return ThermiaGenesisSensorEntityDescription(
         key=key,
         translation_key=key,

@@ -203,3 +203,5 @@ def test_the_energy_statistics_stay_out_of_the_statistics_and_are_disabled() -> 
         assert not description.entity_registry_enabled_default, description.key
         if description.native_unit_of_measurement is not None:
             assert description.device_class is SensorDeviceClass.ENERGY, description.key
+            # The pump counts whole kWh.
+            assert description.suggested_display_precision == 0, description.key

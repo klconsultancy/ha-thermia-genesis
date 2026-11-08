@@ -5368,7 +5368,7 @@
     'state': '21.76',
   })
 # ---
-# name: test_entities[sensor][sensor.energy_statistics_heating_additional_heat_last_12_months-entry]
+# name: test_entities[sensor][sensor.energy_statistics_heating_additional_heater_energy_last_12_months-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -5382,7 +5382,7 @@
     'disabled_by': None,
     'domain': 'sensor',
     'entity_category': None,
-    'entity_id': 'sensor.energy_statistics_heating_additional_heat_last_12_months',
+    'entity_id': 'sensor.energy_statistics_heating_additional_heater_energy_last_12_months',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -5390,15 +5390,15 @@
     'labels': set({
     }),
     'name': None,
-    'object_id_base': 'Heating additional heat, last 12 months',
+    'object_id_base': 'Heating additional heater energy, last 12 months',
     'options': dict({
       'sensor': dict({
-        'suggested_display_precision': 2,
+        'suggested_display_precision': 0,
       }),
     }),
     'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
     'original_icon': None,
-    'original_name': 'Heating additional heat, last 12 months',
+    'original_name': 'Heating additional heater energy, last 12 months',
     'platform': 'thermia_genesis',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -5408,22 +5408,22 @@
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
-# name: test_entities[sensor][sensor.energy_statistics_heating_additional_heat_last_12_months-state]
+# name: test_entities[sensor][sensor.energy_statistics_heating_additional_heater_energy_last_12_months-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'energy',
-      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Energy statistics Heating additional heat, last 12 months',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Energy statistics Heating additional heater energy, last 12 months',
       <EntityStateAttribute.UNIT_OF_MEASUREMENT: 'unit_of_measurement'>: <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
     }),
     'context': <ANY>,
-    'entity_id': 'sensor.energy_statistics_heating_additional_heat_last_12_months',
+    'entity_id': 'sensor.energy_statistics_heating_additional_heater_energy_last_12_months',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '0',
   })
 # ---
-# name: test_entities[sensor][sensor.energy_statistics_heating_additional_heat_previous_12_months-entry]
+# name: test_entities[sensor][sensor.energy_statistics_heating_additional_heater_energy_previous_12_months-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -5437,7 +5437,7 @@
     'disabled_by': None,
     'domain': 'sensor',
     'entity_category': None,
-    'entity_id': 'sensor.energy_statistics_heating_additional_heat_previous_12_months',
+    'entity_id': 'sensor.energy_statistics_heating_additional_heater_energy_previous_12_months',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -5445,15 +5445,15 @@
     'labels': set({
     }),
     'name': None,
-    'object_id_base': 'Heating additional heat, previous 12 months',
+    'object_id_base': 'Heating additional heater energy, previous 12 months',
     'options': dict({
       'sensor': dict({
-        'suggested_display_precision': 2,
+        'suggested_display_precision': 0,
       }),
     }),
     'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
     'original_icon': None,
-    'original_name': 'Heating additional heat, previous 12 months',
+    'original_name': 'Heating additional heater energy, previous 12 months',
     'platform': 'thermia_genesis',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -5463,15 +5463,15 @@
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
-# name: test_entities[sensor][sensor.energy_statistics_heating_additional_heat_previous_12_months-state]
+# name: test_entities[sensor][sensor.energy_statistics_heating_additional_heater_energy_previous_12_months-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'energy',
-      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Energy statistics Heating additional heat, previous 12 months',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Energy statistics Heating additional heater energy, previous 12 months',
       <EntityStateAttribute.UNIT_OF_MEASUREMENT: 'unit_of_measurement'>: <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
     }),
     'context': <ANY>,
-    'entity_id': 'sensor.energy_statistics_heating_additional_heat_previous_12_months',
+    'entity_id': 'sensor.energy_statistics_heating_additional_heater_energy_previous_12_months',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -5609,7 +5609,7 @@
     'object_id_base': 'Heating energy consumed, last 12 months',
     'options': dict({
       'sensor': dict({
-        'suggested_display_precision': 2,
+        'suggested_display_precision': 0,
       }),
     }),
     'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
@@ -5664,7 +5664,7 @@
     'object_id_base': 'Heating energy consumed, previous 12 months',
     'options': dict({
       'sensor': dict({
-        'suggested_display_precision': 2,
+        'suggested_display_precision': 0,
       }),
     }),
     'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
@@ -5719,7 +5719,7 @@
     'object_id_base': 'Heating energy delivered, last 12 months',
     'options': dict({
       'sensor': dict({
-        'suggested_display_precision': 2,
+        'suggested_display_precision': 0,
       }),
     }),
     'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
@@ -5774,7 +5774,7 @@
     'object_id_base': 'Heating energy delivered, previous 12 months',
     'options': dict({
       'sensor': dict({
-        'suggested_display_precision': 2,
+        'suggested_display_precision': 0,
       }),
     }),
     'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
@@ -5829,7 +5829,7 @@
     'object_id_base': 'Heating energy from the source, last 12 months',
     'options': dict({
       'sensor': dict({
-        'suggested_display_precision': 2,
+        'suggested_display_precision': 0,
       }),
     }),
     'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
@@ -5884,7 +5884,7 @@
     'object_id_base': 'Heating energy from the source, previous 12 months',
     'options': dict({
       'sensor': dict({
-        'suggested_display_precision': 2,
+        'suggested_display_precision': 0,
       }),
     }),
     'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
@@ -5914,7 +5914,7 @@
     'state': '6868',
   })
 # ---
-# name: test_entities[sensor][sensor.energy_statistics_hot_water_additional_heat_last_12_months-entry]
+# name: test_entities[sensor][sensor.energy_statistics_hot_water_additional_heater_energy_last_12_months-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -5928,7 +5928,7 @@
     'disabled_by': None,
     'domain': 'sensor',
     'entity_category': None,
-    'entity_id': 'sensor.energy_statistics_hot_water_additional_heat_last_12_months',
+    'entity_id': 'sensor.energy_statistics_hot_water_additional_heater_energy_last_12_months',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -5936,15 +5936,15 @@
     'labels': set({
     }),
     'name': None,
-    'object_id_base': 'Hot water additional heat, last 12 months',
+    'object_id_base': 'Hot water additional heater energy, last 12 months',
     'options': dict({
       'sensor': dict({
-        'suggested_display_precision': 2,
+        'suggested_display_precision': 0,
       }),
     }),
     'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
     'original_icon': None,
-    'original_name': 'Hot water additional heat, last 12 months',
+    'original_name': 'Hot water additional heater energy, last 12 months',
     'platform': 'thermia_genesis',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -5954,22 +5954,22 @@
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
-# name: test_entities[sensor][sensor.energy_statistics_hot_water_additional_heat_last_12_months-state]
+# name: test_entities[sensor][sensor.energy_statistics_hot_water_additional_heater_energy_last_12_months-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'energy',
-      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Energy statistics Hot water additional heat, last 12 months',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Energy statistics Hot water additional heater energy, last 12 months',
       <EntityStateAttribute.UNIT_OF_MEASUREMENT: 'unit_of_measurement'>: <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
     }),
     'context': <ANY>,
-    'entity_id': 'sensor.energy_statistics_hot_water_additional_heat_last_12_months',
+    'entity_id': 'sensor.energy_statistics_hot_water_additional_heater_energy_last_12_months',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': '39',
   })
 # ---
-# name: test_entities[sensor][sensor.energy_statistics_hot_water_additional_heat_previous_12_months-entry]
+# name: test_entities[sensor][sensor.energy_statistics_hot_water_additional_heater_energy_previous_12_months-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -5983,7 +5983,7 @@
     'disabled_by': None,
     'domain': 'sensor',
     'entity_category': None,
-    'entity_id': 'sensor.energy_statistics_hot_water_additional_heat_previous_12_months',
+    'entity_id': 'sensor.energy_statistics_hot_water_additional_heater_energy_previous_12_months',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -5991,15 +5991,15 @@
     'labels': set({
     }),
     'name': None,
-    'object_id_base': 'Hot water additional heat, previous 12 months',
+    'object_id_base': 'Hot water additional heater energy, previous 12 months',
     'options': dict({
       'sensor': dict({
-        'suggested_display_precision': 2,
+        'suggested_display_precision': 0,
       }),
     }),
     'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
     'original_icon': None,
-    'original_name': 'Hot water additional heat, previous 12 months',
+    'original_name': 'Hot water additional heater energy, previous 12 months',
     'platform': 'thermia_genesis',
     'previous_unique_id': None,
     'suggested_object_id': None,
@@ -6009,15 +6009,15 @@
     'unit_of_measurement': <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
   })
 # ---
-# name: test_entities[sensor][sensor.energy_statistics_hot_water_additional_heat_previous_12_months-state]
+# name: test_entities[sensor][sensor.energy_statistics_hot_water_additional_heater_energy_previous_12_months-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'energy',
-      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Energy statistics Hot water additional heat, previous 12 months',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Energy statistics Hot water additional heater energy, previous 12 months',
       <EntityStateAttribute.UNIT_OF_MEASUREMENT: 'unit_of_measurement'>: <UnitOfEnergy.KILO_WATT_HOUR: 'kWh'>,
     }),
     'context': <ANY>,
-    'entity_id': 'sensor.energy_statistics_hot_water_additional_heat_previous_12_months',
+    'entity_id': 'sensor.energy_statistics_hot_water_additional_heater_energy_previous_12_months',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,
@@ -6155,7 +6155,7 @@
     'object_id_base': 'Hot water energy consumed, last 12 months',
     'options': dict({
       'sensor': dict({
-        'suggested_display_precision': 2,
+        'suggested_display_precision': 0,
       }),
     }),
     'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
@@ -6210,7 +6210,7 @@
     'object_id_base': 'Hot water energy consumed, previous 12 months',
     'options': dict({
       'sensor': dict({
-        'suggested_display_precision': 2,
+        'suggested_display_precision': 0,
       }),
     }),
     'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
@@ -6265,7 +6265,7 @@
     'object_id_base': 'Hot water energy delivered, last 12 months',
     'options': dict({
       'sensor': dict({
-        'suggested_display_precision': 2,
+        'suggested_display_precision': 0,
       }),
     }),
     'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
@@ -6320,7 +6320,7 @@
     'object_id_base': 'Hot water energy delivered, previous 12 months',
     'options': dict({
       'sensor': dict({
-        'suggested_display_precision': 2,
+        'suggested_display_precision': 0,
       }),
     }),
     'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
@@ -6375,7 +6375,7 @@
     'object_id_base': 'Hot water energy from the source, last 12 months',
     'options': dict({
       'sensor': dict({
-        'suggested_display_precision': 2,
+        'suggested_display_precision': 0,
       }),
     }),
     'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
@@ -6430,7 +6430,7 @@
     'object_id_base': 'Hot water energy from the source, previous 12 months',
     'options': dict({
       'sensor': dict({
-        'suggested_display_precision': 2,
+        'suggested_display_precision': 0,
       }),
     }),
     'original_device_class': <SensorDeviceClass.ENERGY: 'energy'>,
