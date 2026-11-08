@@ -13,3 +13,6 @@ htmlcov/
 .mypy_cache/
 .ruff_cache/
 .claude/settings.local.json
+
+# syrupy's default snapshot directory; ours is tests/snapshots (tests/conftest.py)
+tests/__snapshots__/

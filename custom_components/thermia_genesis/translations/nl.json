@@ -157,6 +157,9 @@
       "current_limiter_restricts_secondary_units": {
         "name": "Stroombegrenzer beperkt secundaire units"
       },
+      "directional_valve_position": {
+        "name": "Omschakelklep"
+      },
       "discharge_pipe_sensor_alarm": {
         "name": "Alarm persgasvoeler"
       },
@@ -214,6 +217,9 @@
       "enable_passive_cooling": {
         "name": "Passieve koeling ingeschakeld"
       },
+      "enable_pool": {
+        "name": "Ingeschakeld"
+      },
       "enable_system_circulation_pump": {
         "name": "Systeemcirculatiepomp ingeschakeld"
       },
@@ -243,6 +249,9 @@
       },
       "external_start_brine_pump": {
         "name": "Externe start brinepomp"
+      },
+      "external_stop": {
+        "name": "Externe stop"
       },
       "flow_pressure_switch_alarm": {
         "name": "Alarm debietdrukschakelaar"
@@ -306,6 +315,9 @@
       },
       "reset_all_alarms": {
         "name": "Alarmreset bezig"
+      },
+      "return_line_sensor_alarm": {
+        "name": "Alarm retourvoeler"
       },
       "room_temperature_sensor_alarm": {
         "name": "Alarm kamervoeler"
@@ -434,6 +446,9 @@
       },
       "calculated_demand": {
         "name": "Berekende vraag"
+      },
+      "charge_set_point": {
+        "name": "Laadsetpoint"
       },
       "circuit_supply_line_temperature": {
         "name": "Aanvoertemperatuur"
@@ -612,6 +627,9 @@
       },
       "high_pressure_side_pressure": {
         "name": "Hoge druk"
+      },
+      "hysteresis_set_point": {
+        "name": "Hysterese"
       },
       "input_power_limit": {
         "name": "Limiet opgenomen vermogen"
@@ -820,6 +838,12 @@
           "no_demand": "Geen vraag",
           "off": "Uit"
         }
+      },
+      "return_line_temperature": {
+        "name": "Retourtemperatuur"
+      },
+      "return_temperature_to_heat_exchanger_set_point": {
+        "name": "Retoursetpoint"
       },
       "room_temperature": {
         "name": "Kamertemperatuur"

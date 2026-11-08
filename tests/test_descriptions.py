@@ -24,6 +24,7 @@ COMPLETE = [
     "heat_pump",
     "hgw",
     "mix_valve_1",
+    "pool",
     "status",
     "tap_water",
 ]

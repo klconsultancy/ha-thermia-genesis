@@ -157,6 +157,9 @@
       "current_limiter_restricts_secondary_units": {
         "name": "Current limiter restricts secondary units"
       },
+      "directional_valve_position": {
+        "name": "Directional valve"
+      },
       "discharge_pipe_sensor_alarm": {
         "name": "Discharge pipe sensor alarm"
       },
@@ -214,6 +217,9 @@
       "enable_passive_cooling": {
         "name": "Passive cooling enabled"
       },
+      "enable_pool": {
+        "name": "Enabled"
+      },
       "enable_system_circulation_pump": {
         "name": "System circulation pump enabled"
       },
@@ -243,6 +249,9 @@
       },
       "external_start_brine_pump": {
         "name": "External brine pump start"
+      },
+      "external_stop": {
+        "name": "External stop"
       },
       "flow_pressure_switch_alarm": {
         "name": "Flow pressure switch alarm"
@@ -306,6 +315,9 @@
       },
       "reset_all_alarms": {
         "name": "Alarm reset pending"
+      },
+      "return_line_sensor_alarm": {
+        "name": "Return line sensor alarm"
       },
       "room_temperature_sensor_alarm": {
         "name": "Room sensor alarm"
@@ -434,6 +446,9 @@
       },
       "calculated_demand": {
         "name": "Calculated demand"
+      },
+      "charge_set_point": {
+        "name": "Charge set point"
       },
       "circuit_supply_line_temperature": {
         "name": "Supply line temperature"
@@ -612,6 +627,9 @@
       },
       "high_pressure_side_pressure": {
         "name": "High pressure"
+      },
+      "hysteresis_set_point": {
+        "name": "Hysteresis"
       },
       "input_power_limit": {
         "name": "Input power limit"
@@ -820,6 +838,12 @@
           "no_demand": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::no_demand%]",
           "off": "[%key:component::thermia_genesis::entity::sensor::running_demand_1::state::off%]"
         }
+      },
+      "return_line_temperature": {
+        "name": "Return line temperature"
+      },
+      "return_temperature_to_heat_exchanger_set_point": {
+        "name": "Return line set point"
       },
       "room_temperature": {
         "name": "Room temperature"

@@ -7,6 +7,7 @@ from typing import TYPE_CHECKING, Any
 from unittest.mock import AsyncMock, MagicMock, PropertyMock, patch
 
 import pytest
+from pytest_homeassistant_custom_component.syrupy import HomeAssistantSnapshotExtension
 
 if TYPE_CHECKING:
     from collections.abc import AsyncIterator, Iterator
@@ -14,11 +15,23 @@ if TYPE_CHECKING:
     from homeassistant.core import HomeAssistant
     from modbus_connection import ModbusTcpParams, ModbusUnit
     from modbus_connection.mock import MockModbusUnit
+    from syrupy.assertion import SnapshotAssertion
 
 # A register dump of the reference pump, copied from the library's tests/fixtures.
 REFERENCE_PUMP: dict[str, Any] = json.loads(
     (Path(__file__).parent / "fixtures" / "calibra7-17.1.11.json").read_text(encoding="utf-8")
 )
+
+
+@pytest.fixture
+def snapshot(snapshot: SnapshotAssertion) -> SnapshotAssertion:
+    """Store snapshots in tests/snapshots, in Home Assistant's format.
+
+    pytest-homeassistant-custom-component and syrupy both define this fixture, and which one
+    wins depends on the order the plugins load in: a fresh install can get syrupy's, which
+    looks in tests/__snapshots__ and finds nothing. A conftest fixture always wins.
+    """
+    return snapshot.use_extension(HomeAssistantSnapshotExtension)
 
 
 @pytest.fixture(autouse=True)

@@ -168,6 +168,12 @@ OPTIONAL_PARTS: dict[str, dict[str, dict[int, int | bool]]] = {
             84: 1234567 >> 16,
         },
     },
+    "pool": {
+        "coil": {28: True},
+        "discrete": {235: True},
+        "input": {119: 2850, 120: 2610, 142: 2},
+        "holding": {58: 2600, 299: 270, 300: 10, 62: 600, 85: 1, 86: 5},
+    },
 }
 
 
