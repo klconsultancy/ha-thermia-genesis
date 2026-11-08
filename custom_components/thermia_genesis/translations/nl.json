@@ -185,10 +185,10 @@
         "name": "Bewaking brine uit ingeschakeld"
       },
       "enable_brine_pump_continuous_operation": {
-        "name": "Continu bedrijf brinepomp ingeschakeld"
+        "name": "Brinepomp continu ingeschakeld"
       },
       "enable_continuous_condenser_pump": {
-        "name": "Continue condensorpomp ingeschakeld"
+        "name": "Condensorpomp continu ingeschakeld"
       },
       "enable_current_limitation": {
         "name": "Stroombegrenzing ingeschakeld"
