@@ -18,6 +18,9 @@ terms before changing code.
 - When a design choice or term changes, update `docs/design.md` or `CONTEXT.md` in the same
   PR. Do not create ADRs.
 - Register, decoding and firmware questions belong in the library, not here.
+- Dependency updates come from Renovate (`renovate.json`): grouped on the 1st and the 15th
+  and automerged once CI passes, except majors. The modbus integration's requirements and
+  a new Python minor version are raised by hand.
 
 ## Commands
 

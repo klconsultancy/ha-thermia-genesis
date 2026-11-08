@@ -1,0 +1,92 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": ["config:recommended", "helpers:pinGitHubActionDigests"],
+  "description": "Updates come on the 1st and the 15th, grouped, and are merged once main's required checks pass, unless they raise a major version. release-please collects the fix(deps) ones in the release pull request, which is merged by hand.",
+  "timezone": "Europe/Brussels",
+  "schedule": ["* 0-8 1,15 * *"],
+  "platformCommit": "enabled",
+  "semanticCommits": "enabled",
+  "automerge": true,
+  "platformAutomerge": true,
+  "automergeType": "pr",
+  "rebaseWhen": "behind-base-branch",
+  "vulnerabilityAlerts": {
+    "description": "Security fixes come at once, outside the schedule.",
+    "schedule": ["at any time"]
+  },
+  "pre-commit": {
+    "enabled": true
+  },
+  "lockFileMaintenance": {
+    "description": "Refreshes uv.lock, which pins the dev tools the tests and CI run; no release contains it.",
+    "enabled": true,
+    "schedule": ["* 0-8 1,15 * *"],
+    "semanticCommitType": "build"
+  },
+  "customManagers": [
+    {
+      "description": "uv's version in pyproject.toml, which CI requires to equal the dev container's and the prek hook's.",
+      "customType": "regex",
+      "managerFilePatterns": ["/^pyproject\\.toml$/"],
+      "matchStrings": ["required-version = \"==(?<currentValue>[0-9.]+)\""],
+      "depNameTemplate": "astral-sh/uv",
+      "datasourceTemplate": "github-releases"
+    }
+  ],
+  "packageRules": [
+    {
+      "description": "The library, in the manifest Home Assistant installs from and in pyproject.toml together: a test requires them to be equal. A new version reaches users, so it is a fix release-please releases.",
+      "matchPackageNames": ["thermia-genesis"],
+      "rangeStrategy": "pin",
+      "semanticCommitType": "fix",
+      "groupName": "thermia-genesis"
+    },
+    {
+      "description": "The dev dependencies, which no release contains.",
+      "matchDepTypes": ["dependency-groups"],
+      "matchPackageNames": ["!thermia-genesis"],
+      "semanticCommitType": "build",
+      "groupName": "dev dependencies"
+    },
+    {
+      "description": "pytest-homeassistant-custom-component pins the Home Assistant release the tests run against, and with it the requirements of its modbus integration below. A new one goes on its own, so the modbus pins can follow by hand on the same branch when test_manifest asks for it.",
+      "matchPackageNames": ["pytest-homeassistant-custom-component"],
+      "semanticCommitType": "build",
+      "groupName": "home assistant"
+    },
+    {
+      "description": "The requirements of Home Assistant's modbus integration, at the versions the tested Home Assistant release installs. They follow pytest-homeassistant-custom-component, not their own releases (docs/design.md).",
+      "matchPackageNames": ["modbus-connection", "pymodbus", "tmodbus"],
+      "enabled": false
+    },
+    {
+      "description": "uv in the dev container, pyproject.toml and the prek hook together: CI fails while they differ.",
+      "matchPackageNames": ["ghcr.io/astral-sh/uv", "astral-sh/uv", "astral-sh/uv-pre-commit"],
+      "semanticCommitType": "build",
+      "groupName": "uv"
+    },
+    {
+      "description": "The dev container, which no release contains.",
+      "matchFileNames": [".devcontainer/**"],
+      "matchPackageNames": ["!ghcr.io/astral-sh/uv"],
+      "semanticCommitType": "build",
+      "groupName": "devcontainer"
+    },
+    {
+      "description": "A new Python minor version is raised by hand, with the Home Assistant release that needs it; only the image's digest comes from here.",
+      "matchPackageNames": ["mcr.microsoft.com/devcontainers/python"],
+      "matchUpdateTypes": ["major", "minor"],
+      "enabled": false
+    },
+    {
+      "matchManagers": ["github-actions"],
+      "semanticCommitType": "ci",
+      "groupName": "actions"
+    },
+    {
+      "description": "A major version waits for review.",
+      "matchUpdateTypes": ["major"],
+      "automerge": false
+    }
+  ]
+}

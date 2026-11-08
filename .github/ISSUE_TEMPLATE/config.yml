@@ -1,5 +1,8 @@
 blank_issues_enabled: false
 contact_links:
+  - name: Report a security vulnerability
+    url: https://github.com/klconsultancy/ha-thermia-genesis/security/advisories/new
+    about: Report vulnerabilities privately, not in a public issue.
   - name: Wrong or missing register
     url: https://github.com/klconsultancy/python-thermia-genesis/issues
     about: A value that is decoded wrong, a missing register or an unsupported firmware belongs in the library repository.

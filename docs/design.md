@@ -174,11 +174,11 @@ entities.
   An end-to-end test goes through the real `async_get_unit` to an in-process `tmodbus`
   server. Tests never touch a real pump.
 - The manifest's requirement on the library equals the dependency in `pyproject.toml`; a
-  test keeps them in step, because Dependabot only bumps the latter. The requirements of
+  test keeps them in step, and Renovate bumps both in one pull request. The requirements of
   Home Assistant's `modbus` integration are development dependencies pinned to the versions
-  of the tested Home Assistant release; Dependabot leaves them alone, and a test compares
-  them with the installed `modbus` manifest, so a newer Home Assistant fails until they
-  follow.
+  of the tested Home Assistant release; Renovate leaves them alone, and a test compares
+  them with the installed `modbus` manifest, so a new `pytest-homeassistant-custom-component`
+  (a newer Home Assistant) fails until they follow, by hand on Renovate's branch.
 - `translations/en.json` is `strings.json` with its references resolved, and the Dutch
   translation has exactly its keys; tests check both.
 - uv (with a committed `uv.lock`; the project is not a package), ruff (`ALL` rules), mypy
