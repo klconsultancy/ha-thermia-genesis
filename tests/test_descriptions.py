@@ -189,6 +189,6 @@ def test_the_electric_meter_energy_counts_up_for_the_energy_dashboard() -> None:
     for key in ("kwh_total", "meter_value"):
         assert meter[key].device_class is SensorDeviceClass.ENERGY, key
         assert meter[key].state_class is SensorStateClass.TOTAL_INCREASING, key
-    # meter_value wraps after 65535 kWh, which total_increasing reads as a reset.
-    assert meter["kwh_total"].entity_registry_enabled_default
+    # The meter measures the house connection, not the heat pump (docs/design.md).
+    assert not meter["kwh_total"].entity_registry_enabled_default
     assert not meter["meter_value"].entity_registry_enabled_default

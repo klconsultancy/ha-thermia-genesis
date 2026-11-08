@@ -121,19 +121,24 @@ entities.
     removes the old sensors.
 - State classes: `measurement` for temperatures, power, gears and percentages;
   `total_increasing` for operating hours (device class `duration`) and the electric meter's
-  kWh (device class `energy`, usable in the energy dashboard).
-- The electric meter reports its energy twice. `kwh_total` (input 83–84, 32-bit) is the
-  energy sensor enabled by default: it practically never wraps. Its LSB-first word order
-  comes from the community (CJNE #292), not from the protocol document, and the reference
-  pump has no meter to confirm it. `meter_value` (input 81, 16-bit) wraps after 65535 kWh,
-  which `total_increasing` reads as a reset; it is disabled by default.
+  kWh (device class `energy`).
+- The electric meter is the current limiter's meter on the house connection, so it
+  measures the whole house, not the heat pump. It reports its energy twice, and both are
+  disabled by default: they duplicate the house's own meter (P1) and would read as the
+  heat pump's consumption in the energy dashboard. `kwh_total` (input 83–84, 32-bit)
+  practically never wraps, but its LSB-first word order comes from the community
+  (CJNE #292), not from the protocol document, and the reference pump has no meter to
+  confirm it; a wrong decode under `total_increasing` would pollute the long-term
+  statistics for good. `meter_value` (input 81, 16-bit) wraps after 65535 kWh, which
+  `total_increasing` reads as a reset. The phase powers are enabled: they show what the
+  current limiter acts on.
 - One derived `binary_sensor` "Alarm" (device class `problem`) on the main device is on when
   any alarm input is on, for notifications.
 - Enabled by default: the measured temperatures of the heating circuit (brine and
   condenser in and out, discharge pipe, outdoor, room), operational mode, running demand 1,
   compressor gear, speed, operating hours and whether it runs, heat output and power
   consumption, the immersion heater step and whether the external heater runs, the hot
-  water top temperature, and the electric meter's power and kWh. The refrigerant circuit
+  water top temperature, and the electric meter's phase powers. The refrigerant circuit
   (liquid line, suction gas, dew and bubble points, superheat, subcooling, pressures) is
   disabled by default. So are the heating system's supply and return line temperatures: a
   pump without system sensors reads them as unknown. A set point of an absent part (the

@@ -2,7 +2,7 @@
 
 from homeassistant.components.sensor import SensorDeviceClass
 
-from ..descriptions import BinarySensor, Sensor, enabled_setting, energy, measurement
+from ..descriptions import BinarySensor, Sensor, enabled_setting, measurement, meter_energy
 
 
 def current(key: str) -> Sensor:
@@ -33,9 +33,9 @@ SENSORS: tuple[Sensor, ...] = (
     power("l1_power"),
     power("l2_power"),
     power("l3_power"),
-    # The 32-bit total; the 16-bit meter value wraps after 65535 kWh (docs/design.md).
-    energy("kwh_total", enabled=True),
-    energy("meter_value"),
+    # The house connection's energy, not the heat pump's: both off (docs/design.md).
+    meter_energy("kwh_total"),
+    meter_energy("meter_value"),
 )
 
 BINARY_SENSORS: tuple[BinarySensor, ...] = (enabled_setting("enable_current_limitation"),)
