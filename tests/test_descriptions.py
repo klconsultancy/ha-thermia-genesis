@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 from homeassistant.components.sensor import SensorDeviceClass, SensorStateClass
-from homeassistant.const import EntityCategory
+from homeassistant.const import EntityCategory, UnitOfPower
 from modbus_connection.mock import MockModbusConnection
 from thermia_genesis import ThermiaGenesis
 from thermia_genesis.subsystem import Field, Subsystem
@@ -204,4 +204,19 @@ def test_the_energy_statistics_stay_out_of_the_statistics_and_are_disabled() -> 
         if description.native_unit_of_measurement is not None:
             assert description.device_class is SensorDeviceClass.ENERGY, description.key
             # The pump counts whole kWh.
+            assert description.suggested_display_precision == 0, description.key
+
+
+@pytest.mark.parametrize("part", sorted(SENSORS))
+def test_power_measurements_show_in_watt(part: str) -> None:
+    # One unit for every power, so the history puts them in one graph (with P1, in W).
+    for description in SENSORS[part]:
+        if (
+            description.device_class is SensorDeviceClass.POWER
+            and description.state_class is SensorStateClass.MEASUREMENT
+        ):
+            shown = (
+                description.suggested_unit_of_measurement or description.native_unit_of_measurement
+            )
+            assert shown == UnitOfPower.WATT, description.key
             assert description.suggested_display_precision == 0, description.key

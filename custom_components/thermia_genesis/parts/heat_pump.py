@@ -12,6 +12,7 @@ from ..descriptions import (
     measurement,
     operating_hours,
     percentage,
+    power,
     running,
     setting,
     signal,
@@ -54,8 +55,8 @@ SENSORS: tuple[Sensor, ...] = (
     operating_hours("external_additional_heater_operating_hours"),
     measurement("internal_immersion_heater_active_step", precision=0, enabled=True),
     # Power
-    measurement("current_power_output", "kW", SensorDeviceClass.POWER, precision=2, enabled=True),
-    measurement("current_consumed_power", "kW", SensorDeviceClass.POWER, precision=2, enabled=True),
+    power("current_power_output", enabled=True),
+    power("current_consumed_power", enabled=True),
     # Control
     measurement("cooling_season_integral_value", precision=0),
     measurement("heating_season_integral_value", precision=0),

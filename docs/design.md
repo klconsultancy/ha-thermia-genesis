@@ -119,6 +119,9 @@ entities.
   - holding registers (settings): `sensor` with entity category `diagnostic` until the
     write API. They then become `number`/`select` entities, and a registry migration
     removes the old sensors.
+- The heat pump unit's power output and consumed power (input 157/158) come in kW and are
+  shown in W (`suggested_unit_of_measurement`), like the electric meter and most power
+  sensors such as a P1 meter: Home Assistant's history draws one graph per unit.
 - State classes: `measurement` for temperatures, power, gears and percentages;
   `total_increasing` for operating hours (device class `duration`) and the electric meter's
   kWh (device class `energy`).
