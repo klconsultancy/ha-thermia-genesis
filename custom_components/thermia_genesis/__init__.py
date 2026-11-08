@@ -8,7 +8,6 @@ from homeassistant.helpers import device_registry as dr
 from homeassistant.helpers import issue_registry as ir
 from homeassistant.helpers.typing import UNDEFINED
 from modbus_connection import ModbusTcpParams
-from thermia_genesis import ThermiaGenesis
 
 from .const import CONF_UNIT_ID, DOMAIN, MANUFACTURER, MODEL, PARTS
 from .coordinator import ThermiaGenesisConfigEntry, ThermiaGenesisCoordinator
@@ -31,7 +30,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ThermiaGenesisConfigEntr
             translation_domain=DOMAIN, translation_key="connection_in_use"
         ) from err
 
-    coordinator = ThermiaGenesisCoordinator(hass, entry, ThermiaGenesis(unit))
+    coordinator = ThermiaGenesisCoordinator(hass, entry, unit)
     await coordinator.async_config_entry_first_refresh()
     entry.runtime_data = coordinator
 
