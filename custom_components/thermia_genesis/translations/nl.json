@@ -77,7 +77,7 @@
   "issues": {
     "unsupported_firmware": {
       "title": "Niet-ondersteunde firmware van de warmtepomp",
-      "description": "{title} draait Genesis-firmware {version}, maar deze integratie is geschreven voor firmware 17.1. Ze leest de pomp alsof het 17.1 is, dus sommige waarden kunnen fout zijn of ontbreken.\n\nOpen een issue in de thermia-genesis-repository met de diagnostiek van deze entry, zodat ondersteuning voor deze firmware kan worden toegevoegd."
+      "description": "{title} draait Genesis-firmware {version}, maar deze integratie is geschreven voor firmware 17.1. Ze leest de pomp alsof het 17.1 is, dus sommige waarden kunnen fout zijn of ontbreken.\n\nOpen een issue in de thermia-genesis-repository met de diagnostische gegevens van deze integratie, zodat ondersteuning voor deze firmware kan worden toegevoegd."
     }
   },
   "entity": {
