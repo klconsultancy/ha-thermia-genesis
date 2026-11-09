@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.0](https://github.com/klconsultancy/ha-thermia-genesis/compare/v0.1.0...v0.2.0) (2026-11-09)
+
+
+### Features
+
+* show the heat pump unit's power in W ([#39](https://github.com/klconsultancy/ha-thermia-genesis/issues/39)) ([5ac31df](https://github.com/klconsultancy/ha-thermia-genesis/commit/5ac31df97f9ae727178817d8953a3a80427a26ee))
+
 ## 0.1.0 (2026-11-08)
 
 
