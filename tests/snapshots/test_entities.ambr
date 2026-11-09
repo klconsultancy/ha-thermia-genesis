@@ -8815,7 +8815,10 @@
     'object_id_base': 'Heat output',
     'options': dict({
       'sensor': dict({
-        'suggested_display_precision': 2,
+        'suggested_display_precision': 0,
+      }),
+      'sensor.private': dict({
+        'suggested_unit_of_measurement': <UnitOfPower.WATT: 'W'>,
       }),
     }),
     'original_device_class': <SensorDeviceClass.POWER: 'power'>,
@@ -8827,7 +8830,7 @@
     'supported_features': 0,
     'translation_key': 'current_power_output',
     'unique_id': '01JTHERMIAGENESIS000000000_heat_pump_current_power_output',
-    'unit_of_measurement': <UnitOfPower.KILO_WATT: 'kW'>,
+    'unit_of_measurement': <UnitOfPower.WATT: 'W'>,
   })
 # ---
 # name: test_entities[sensor][sensor.heat_pump_unit_heat_output-state]
@@ -8836,7 +8839,7 @@
       <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'power',
       <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Heat pump unit Heat output',
       <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
-      <EntityStateAttribute.UNIT_OF_MEASUREMENT: 'unit_of_measurement'>: <UnitOfPower.KILO_WATT: 'kW'>,
+      <EntityStateAttribute.UNIT_OF_MEASUREMENT: 'unit_of_measurement'>: <UnitOfPower.WATT: 'W'>,
     }),
     'context': <ANY>,
     'entity_id': 'sensor.heat_pump_unit_heat_output',
@@ -9598,7 +9601,10 @@
     'object_id_base': 'Power consumption',
     'options': dict({
       'sensor': dict({
-        'suggested_display_precision': 2,
+        'suggested_display_precision': 0,
+      }),
+      'sensor.private': dict({
+        'suggested_unit_of_measurement': <UnitOfPower.WATT: 'W'>,
       }),
     }),
     'original_device_class': <SensorDeviceClass.POWER: 'power'>,
@@ -9610,7 +9616,7 @@
     'supported_features': 0,
     'translation_key': 'current_consumed_power',
     'unique_id': '01JTHERMIAGENESIS000000000_heat_pump_current_consumed_power',
-    'unit_of_measurement': <UnitOfPower.KILO_WATT: 'kW'>,
+    'unit_of_measurement': <UnitOfPower.WATT: 'W'>,
   })
 # ---
 # name: test_entities[sensor][sensor.heat_pump_unit_power_consumption-state]
@@ -9619,7 +9625,7 @@
       <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'power',
       <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Heat pump unit Power consumption',
       <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
-      <EntityStateAttribute.UNIT_OF_MEASUREMENT: 'unit_of_measurement'>: <UnitOfPower.KILO_WATT: 'kW'>,
+      <EntityStateAttribute.UNIT_OF_MEASUREMENT: 'unit_of_measurement'>: <UnitOfPower.WATT: 'W'>,
     }),
     'context': <ANY>,
     'entity_id': 'sensor.heat_pump_unit_power_consumption',

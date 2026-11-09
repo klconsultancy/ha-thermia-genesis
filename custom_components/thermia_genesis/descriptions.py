@@ -102,6 +102,24 @@ def temperature(key: str, *, enabled: bool = False) -> Sensor:
     return measurement(key, "°C", SensorDeviceClass.TEMPERATURE, precision=1, enabled=enabled)
 
 
+def power(key: str, *, enabled: bool = False) -> Sensor:
+    """Describe a power the pump reports in kW, shown in W like the other power sensors.
+
+    Home Assistant's history draws one graph per unit, so a P1 meter in W and the pump in
+    kW would land in separate graphs.
+    """
+    return ThermiaGenesisSensorEntityDescription(
+        key=key,
+        translation_key=key,
+        native_unit_of_measurement=UnitOfPower.KILO_WATT,
+        suggested_unit_of_measurement=UnitOfPower.WATT,
+        device_class=SensorDeviceClass.POWER,
+        state_class=SensorStateClass.MEASUREMENT,
+        suggested_display_precision=0,
+        entity_registry_enabled_default=enabled,
+    )
+
+
 def temperature_delta(key: str) -> Sensor:
     """Describe a temperature difference in K."""
     return measurement(key, "K", SensorDeviceClass.TEMPERATURE_DELTA, precision=1)
