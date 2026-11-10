@@ -72,6 +72,12 @@
     },
     "no_register_space_answered": {
       "message": "The heat pump refused every read."
+    },
+    "invalid_value": {
+      "message": "The heat pump does not accept this value: {error}"
+    },
+    "write_failed": {
+      "message": "The heat pump did not take the change."
     }
   },
   "issues": {

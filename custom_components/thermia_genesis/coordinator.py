@@ -5,6 +5,7 @@ from datetime import timedelta
 from typing import TYPE_CHECKING, override
 
 from homeassistant.config_entries import ConfigEntry
+from homeassistant.exceptions import HomeAssistantError, ServiceValidationError
 from homeassistant.helpers.update_coordinator import DataUpdateCoordinator, UpdateFailed
 from modbus_connection.exceptions import ModbusError
 from modbus_connection.model import UpdateReport
@@ -15,6 +16,7 @@ from .const import DOMAIN
 if TYPE_CHECKING:
     from homeassistant.core import HomeAssistant
     from modbus_connection import ModbusUnit
+    from thermia_genesis.subsystem import Field, Subsystem
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -54,6 +56,27 @@ class ThermiaGenesisCoordinator(DataUpdateCoordinator[UpdateReport]):
             ) from ExceptionGroup("every register space failed", list(report.failed.values()))
         self._log_changes(report)
         return report
+
+    async def async_write[T](self, subsystem: Subsystem, field: Field[T], value: T) -> None:
+        """Write ``value`` to ``subsystem``'s ``field``, then read the pump back.
+
+        The entities show what the pump accepted, which the read after the write returns.
+        Raises ``ServiceValidationError`` for a value the library refuses, and
+        ``HomeAssistantError`` when the pump doesn't take the write.
+        """
+        try:
+            await subsystem.write(field, value)
+        except (ValueError, TypeError) as err:
+            raise ServiceValidationError(
+                translation_domain=DOMAIN,
+                translation_key="invalid_value",
+                translation_placeholders={"error": str(err)},
+            ) from err
+        except ModbusError as err:
+            raise HomeAssistantError(
+                translation_domain=DOMAIN, translation_key="write_failed"
+            ) from err
+        await self.async_refresh()
 
     def _log_changes(self, report: UpdateReport) -> None:
         """Log a register space when it starts failing and when it answers again."""

@@ -12,8 +12,9 @@ entities.
 
 ## Scope
 
-- Read-only first. Settings become writable (`number`, `select`, `switch`) after the
-  library's write API (python-thermia-genesis#19).
+- Read first, then writes: settings become writable (`climate`, `number`, `select`,
+  `switch`) on top of the library's write API (thermia-genesis 0.4.0), field by field as
+  the library declares them writable (milestone 0.3.0).
 - Modbus TCP first. RTU is mostly config-flow work, because the connection comes from Home
   Assistant's `modbus` integration.
 - Distributed through HACS first; the target after that is Home Assistant core at the
@@ -91,6 +92,18 @@ entities.
   issue and the device's software version as they were.
 - When the first read fails, setup raises `ConfigEntryNotReady` (through the coordinator's
   first refresh) and Home Assistant retries.
+
+## Writes
+
+- Every write goes through `coordinator.async_write(subsystem, field, value)`, which calls
+  the library's `Subsystem.write` and then refreshes at once. The library leaves a field at
+  its old value until the next read, so the entities show what the pump accepted, not what
+  was sent.
+- A value the library refuses (a `ValueError` or `TypeError`: out of range, not a multiple
+  of the register's resolution) raises `ServiceValidationError` with the library's message;
+  a write the pump fails, or a lost connection, raises `HomeAssistantError`. Both are
+  translated. Nothing retries a write.
+- Tests write to the mock unit only, never to a real pump.
 
 ## Entities
 
