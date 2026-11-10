@@ -207,4 +207,9 @@ entities.
   `icon@2x.png` 512 px), which Home Assistant and HACS show for a custom integration. It is
   the Thermia logo that home-assistant/brands already holds for CJNE/thermiagenesis. The
   HACS validation checks it.
+- A release candidate (`vX.Y.Z-rc.N`) is a tag an admin pushes on `main`; the release
+  workflow turns it into a GitHub pre-release, which HACS offers to users who enabled beta
+  versions. release-please doesn't see it, so the final notes still cover everything since
+  the last stable release (PhoenixContactCharx learned this with 2.0.0). The rc's
+  `manifest.json` keeps the last stable version, since only release-please bumps it.
 - Development happens in the devcontainer, in a git worktree under `.worktrees/<branch>`.

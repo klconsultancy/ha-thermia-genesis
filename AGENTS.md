@@ -15,6 +15,12 @@ terms before changing code.
   never push to `main` (see Commands).
 - PR titles and squash commits follow Conventional Commits (`feat:`, `fix:`, `docs:`,
   `test:`, `refactor:`, `build:`, `ci:`, `chore:`). They drive release-please.
+- A release candidate is a tag `vX.Y.Z-rc.N` on `main`, pushed by an admin; the release
+  workflow makes it a GitHub pre-release, which HACS offers as a beta. Never make one with
+  `release-as` and `prerelease` in `release-please-config.json`: release-please would count
+  the rc as the last release, and the final release's notes would leave out what the rc
+  had. Before merging a release PR, check that its notes cover everything since the last
+  stable release.
 - When a design choice or term changes, update `docs/design.md` or `CONTEXT.md` in the same
   PR. Do not create ADRs.
 - Register, decoding and firmware questions belong in the library, not here.
