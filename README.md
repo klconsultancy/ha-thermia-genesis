@@ -49,6 +49,7 @@ entry: its entities and their history are kept.
 - A **Heating** climate: the room temperature, the comfort wheel as the target, and
   heating on or off.
 - A **Reset alarms** button on the main device.
+- The **Operational mode** (off, standby, on auto) as a select on the main device.
 - The other settings show as diagnostic sensors until they can be written.
 - Entity names in English and Dutch.
 

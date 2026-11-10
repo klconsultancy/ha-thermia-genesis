@@ -125,26 +125,31 @@ entities.
   Like the library's consistency test, it lists the parts it holds complete; each part's
   pull request adds its part.
 - Each part declares its entities in its own module, `parts/<part>.py` (`SENSORS`,
-  `BINARY_SENSORS`), with the helpers of `descriptions.py` (`temperature`, `setting`,
-  `alarm`, `running`, ...), so a part reads as one list; `parts/__init__.py` registers
-  each part once for both platforms. The field name is the `key` and the translation key.
+  `BINARY_SENSORS`, `SELECTS`), with the helpers of `descriptions.py` (`temperature`,
+  `setting`, `alarm`, `running`, `choice`, ...), so a part reads as one list;
+  `parts/__init__.py` registers each part once per platform. The field name is the `key` and the translation key.
 - A diagnostic measurement (a count, a version, a point on the heat curve's x axis) and every
   setting have no state class, so they stay out of the long-term statistics; tests enforce
-  that settings are diagnostic, except the operational mode, which belongs on the dashboard.
+  that settings are diagnostic.
   A key is shared by parts with a field of the same name ("Supply line temperature"); the
   device name tells them apart. Every entity has a translated name, which a test enforces.
 - An entity is unavailable while its field's register space fails. A field the pump
   refuses, or an enum value the library doesn't know, reads as unknown.
 - Platforms:
   - coils and discrete inputs: `binary_sensor`; alarms get device class `problem`;
-  - enums: `sensor` with device class `enum` and translated options;
+  - enums: `sensor` with device class `enum` and translated options; a writable enum is a
+    `select` (`parts/<part>.py`, `SELECTS`, with `choice`) whose options are the members
+    of the library's `MemberOf` validator, as lowercase names with translations. A test
+    holds every select to a writable field with a `MemberOf`. A select has category
+    `config`, which keeps it off the generated dashboard, where the operational mode's Off
+    would be a tap away; the operational mode is enabled, the rest disabled;
   - flags: one `binary_sensor` per member;
   - holding registers (settings): `sensor` with entity category `diagnostic`. As the
     library declares a setting writable, it becomes a `number`, `select`, `switch` or part
     of a `climate` entity (milestone 0.3.0), and the old sensor goes. A config entry
-    migration removes it: each change of the entities raises the entry's minor version
-    (1.2 for the heating climate), so it runs once per entry. Once in core, removing an
-    entity would need a deprecation period with a repair issue first.
+    migration removes it: each release that removes entities raises the entry's minor
+    version, so it runs once per entry; 1.2 holds every removal of 0.3.0. Once in core,
+    removing an entity would need a deprecation period with a repair issue first.
 - Climate "Heating" (enabled, on the heating device, named after it): the room temperature
   (`heat_pump.room_temperature`), the comfort wheel as target (`heat.comfort_wheel_setting`)
   and heating on or off as HVAC mode `heat`/`off` (`heat_pump.enable_heat`). Its min and
@@ -197,15 +202,15 @@ entities.
   refresh.
 - Enabled by default: the heating climate, the measured temperatures of the heating
   circuit (brine and condenser in and out, discharge pipe, outdoor, room), operational
-  mode, running demand 1, compressor gear, speed, operating hours and whether it runs,
-  heat output and power consumption, the immersion heater step and whether the external
-  heater runs, the hot water top temperature, and the electric meter's phase powers. The
-  refrigerant circuit (liquid line, suction gas, dew and bubble points, superheat,
-  subcooling, pressures) is disabled by default. So are the heating system's supply and
-  return line temperatures: a pump without system sensors reads them as unknown. A set
-  point of an absent part (the buffer tank's) can read 0.0; it is disabled, so it stays
-  out of sight. Everything else (queued demands, PID values, flags, settings, individual alarms) is
-  disabled by default.
+  mode (a select), running demand 1, compressor gear, speed, operating hours and whether
+  it runs, heat output and power consumption, the immersion heater step and whether the
+  external heater runs, the hot water top temperature, and the electric meter's phase
+  powers. The refrigerant circuit (liquid line, suction gas, dew and bubble points,
+  superheat, subcooling, pressures) is disabled by default. So are the heating system's
+  supply and return line temperatures: a pump without system sensors reads them as unknown.
+  A set point of an absent part (the buffer tank's) can read 0.0; it is disabled, so it
+  stays out of sight. Everything else (queued demands, PID values, flags, settings,
+  individual alarms) is disabled by default.
 - Coils and holding registers (settings) and the alarm inputs have entity category
   `diagnostic`; a setting has no state class, so it stays out of the long-term statistics.
 - Entity names come from translations (`has_entity_name`), in English and Dutch.
