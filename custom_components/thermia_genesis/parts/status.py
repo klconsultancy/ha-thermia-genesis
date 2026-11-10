@@ -1,16 +1,17 @@
 """Status: the operational mode and the demands, on the pump's own device."""
 
-from thermia_genesis.v17_1.enums import Demand, OperationalMode, RunningDemands
+from thermia_genesis.v17_1.enums import Demand, RunningDemands
 
 from ..descriptions import (
     BinarySensor,
+    Select,
     Sensor,
+    choice,
     enumeration,
     members,
 )
 
 SENSORS: tuple[Sensor, ...] = (
-    enumeration("operational_mode", OperationalMode, enabled=True),
     enumeration("running_demand_1", Demand, enabled=True),
     enumeration("running_demand_2", Demand),
     enumeration("running_demand_3", Demand),
@@ -22,3 +23,5 @@ SENSORS: tuple[Sensor, ...] = (
 )
 
 BINARY_SENSORS: tuple[BinarySensor, ...] = members("running_demands", RunningDemands)
+
+SELECTS: tuple[Select, ...] = (choice("operational_mode", enabled=True),)

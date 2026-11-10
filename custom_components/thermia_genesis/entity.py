@@ -63,8 +63,9 @@ class ThermiaGenesisEntity(CoordinatorEntity[ThermiaGenesisCoordinator]):
         self._attr_unique_id = f"{entry_id}_{part}_{description.key}"
         device = entry_id if part in MAIN_DEVICE_PARTS else f"{entry_id}_{part}"
         self._attr_device_info = DeviceInfo(identifiers={(DOMAIN, device)})
-        library_field: Field[Any] = getattr(type(self._subsystem), description.field_name)
-        self._group = GROUPS[library_field.space]
+        # The library's field, the class attribute: what it accepts and where it lives.
+        self._field: Field[Any] = getattr(type(self._subsystem), description.field_name)
+        self._group = GROUPS[self._field.space]
 
     @property
     def _subsystem(self) -> Subsystem:

@@ -51,7 +51,9 @@ async def setup(hass: HomeAssistant, entry: MockConfigEntry) -> None:
 
 
 @pytest.mark.usefixtures("entity_registry_enabled_by_default")
-@pytest.mark.parametrize("platform", [Platform.SENSOR, Platform.BINARY_SENSOR, Platform.CLIMATE])
+@pytest.mark.parametrize(
+    "platform", [Platform.SENSOR, Platform.BINARY_SENSOR, Platform.CLIMATE, Platform.SELECT]
+)
 async def test_entities(
     hass: HomeAssistant,
     entry: MockConfigEntry,
@@ -80,6 +82,7 @@ async def test_enabled_by_default(
         "binary_sensor.heat_pump_unit_external_additional_heater",
         "binary_sensor.thermia_genesis_alarm",
         "climate.heating",
+        "select.thermia_genesis_operational_mode",
         "sensor.heat_pump_unit_brine_in_temperature",
         "sensor.heat_pump_unit_brine_out_temperature",
         "sensor.heat_pump_unit_compressor_gear",
@@ -94,7 +97,6 @@ async def test_enabled_by_default(
         "sensor.heat_pump_unit_power_consumption",
         "sensor.heat_pump_unit_room_temperature",
         "sensor.hot_water_top_temperature",
-        "sensor.thermia_genesis_operational_mode",
         "sensor.thermia_genesis_running_demand_1",
     ]
 
@@ -113,7 +115,7 @@ async def test_a_failing_register_space_makes_only_its_entities_unavailable(
     async_fire_time_changed(hass)
     await hass.async_block_till_done()
 
-    assert state(hass, "sensor.thermia_genesis_operational_mode") == STATE_UNAVAILABLE
+    assert state(hass, "select.thermia_genesis_operational_mode") == STATE_UNAVAILABLE
     assert state(hass, "sensor.thermia_genesis_running_demand_1") == "no_demand"
 
 
