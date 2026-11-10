@@ -240,8 +240,9 @@ entities.
   and out, discharge pipe, outdoor, room), operational mode (a select), running demand
   1, compressor gear, speed, operating hours and whether it runs, heat output and power
   consumption, the immersion heater step and whether the external heater runs, the hot
-  water top temperature, and the electric meter's phase powers. The refrigerant circuit (liquid line, suction gas, dew and bubble points,
-  superheat, subcooling, pressures) is disabled by default. So are the heating system's
+  water top temperature, and the electric meter's phase powers. The refrigerant circuit
+  (liquid line, suction gas, dew and bubble points, superheat, subcooling, pressures) is
+  disabled by default. So are the heating system's
   supply and return line temperatures: a pump without system sensors reads them as unknown.
   A set point of an absent part (the buffer tank's) can read 0.0; it is disabled, so it
   stays out of sight. Everything else (queued demands, PID values, flags, settings,
