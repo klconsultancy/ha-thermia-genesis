@@ -58,15 +58,17 @@ class ThermiaGenesisCoordinator(DataUpdateCoordinator[UpdateReport]):
         return report
 
     async def async_write[T](self, subsystem: Subsystem, field: Field[T], value: T) -> None:
-        """Write ``value`` to ``subsystem``'s ``field``, then read the pump back.
+        """Write ``value`` to ``subsystem``'s ``field``, then ask for a read-back.
 
-        The entities show what the pump accepted, which the read after the write returns.
-        Raises ``ServiceValidationError`` for a value the library refuses, and
-        ``HomeAssistantError`` when the pump doesn't take the write.
+        The entities show what the pump accepted, which the read after the write returns;
+        writes in a burst share one read. Raises ``ServiceValidationError`` for a value the
+        library refuses (``ValueError``), and ``HomeAssistantError`` when the pump doesn't
+        take the write. A ``TypeError`` (a value of the wrong type) or an ``AttributeError``
+        (a read-only field) is an integration bug and propagates.
         """
         try:
             await subsystem.write(field, value)
-        except (ValueError, TypeError) as err:
+        except ValueError as err:
             raise ServiceValidationError(
                 translation_domain=DOMAIN,
                 translation_key="invalid_value",
@@ -74,9 +76,11 @@ class ThermiaGenesisCoordinator(DataUpdateCoordinator[UpdateReport]):
             ) from err
         except ModbusError as err:
             raise HomeAssistantError(
-                translation_domain=DOMAIN, translation_key="write_failed"
+                translation_domain=DOMAIN,
+                translation_key="write_failed",
+                translation_placeholders={"error": f"{type(err).__name__}: {err}"},
             ) from err
-        await self.async_refresh()
+        await self.async_request_refresh()
 
     def _log_changes(self, report: UpdateReport) -> None:
         """Log a register space when it starts failing and when it answers again."""

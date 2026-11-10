@@ -74,10 +74,10 @@
       "message": "The heat pump refused every read."
     },
     "invalid_value": {
-      "message": "The heat pump does not accept this value: {error}"
+      "message": "This value is not valid: {error}"
     },
     "write_failed": {
-      "message": "The heat pump did not take the change."
+      "message": "The heat pump did not take the change: {error}"
     }
   },
   "issues": {

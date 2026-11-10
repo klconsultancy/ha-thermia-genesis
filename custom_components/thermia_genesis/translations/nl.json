@@ -74,10 +74,10 @@
       "message": "De warmtepomp weigerde elke leesopdracht."
     },
     "invalid_value": {
-      "message": "De warmtepomp aanvaardt deze waarde niet: {error}"
+      "message": "Deze waarde is ongeldig: {error}"
     },
     "write_failed": {
-      "message": "De warmtepomp heeft de wijziging niet overgenomen."
+      "message": "De warmtepomp heeft de wijziging niet overgenomen: {error}"
     }
   },
   "issues": {

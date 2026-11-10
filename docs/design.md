@@ -96,13 +96,20 @@ entities.
 ## Writes
 
 - Every write goes through `coordinator.async_write(subsystem, field, value)`, which calls
-  the library's `Subsystem.write` and then refreshes at once. The library leaves a field at
-  its old value until the next read, so the entities show what the pump accepted, not what
-  was sent.
-- A value the library refuses (a `ValueError` or `TypeError`: out of range, not a multiple
-  of the register's resolution) raises `ServiceValidationError` with the library's message;
-  a write the pump fails, or a lost connection, raises `HomeAssistantError`. Both are
-  translated. Nothing retries a write.
+  the library's `Subsystem.write` and then asks for a refresh (`async_request_refresh`).
+  The library leaves a field at its old value until the next read, so the entities show
+  what the pump accepted, not what was sent. The first write reads back at once; writes in
+  the following 10 seconds share one read after that cooldown.
+- An entity validates first: it sets min, max and step from the library's validator and
+  the register's resolution, so Home Assistant refuses a bad value in the user's language.
+- A value the library still refuses (`ValueError`) raises `ServiceValidationError` with the
+  library's message. A write the pump fails, or a lost connection (`ModbusError`), raises
+  `HomeAssistantError` with the error's type and message, so a timeout and a refusal can be
+  told apart. Both are translated. A `TypeError` or `AttributeError` (a wrong type, a
+  read-only field) can only be an integration bug, so it propagates and is logged as one.
+  Nothing retries a write.
+- A write that the pump took is a success even when the read-back fails; the entities then
+  go unavailable like after any failed update, and the next poll shows the value.
 - Tests write to the mock unit only, never to a real pump.
 
 ## Entities
@@ -129,9 +136,10 @@ entities.
   - coils and discrete inputs: `binary_sensor`; alarms get device class `problem`;
   - enums: `sensor` with device class `enum` and translated options;
   - flags: one `binary_sensor` per member;
-  - holding registers (settings): `sensor` with entity category `diagnostic` until the
-    write API. They then become `number`/`select` entities, and a registry migration
-    removes the old sensors.
+  - holding registers (settings): `sensor` with entity category `diagnostic`. As the
+    library declares a setting writable, it becomes a `number`, `select`, `switch` or part
+    of a `climate` entity (milestone 0.3.0), and a registry migration removes the old
+    sensor.
 - The heat pump unit's power output and consumed power (input 157/158) come in kW and are
   shown in W (`suggested_unit_of_measurement`), like the electric meter and most power
   sensors such as a P1 meter: Home Assistant's history draws one graph per unit. Power
