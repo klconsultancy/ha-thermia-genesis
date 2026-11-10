@@ -407,6 +407,16 @@
         "name": "Hot water top sensor alarm"
       }
     },
+    "select": {
+      "operational_mode": {
+        "name": "Operational mode",
+        "state": {
+          "off": "Off",
+          "standby": "Standby",
+          "on_auto": "On (auto)"
+        }
+      }
+    },
     "sensor": {
       "available_secondaries": {
         "name": "Available secondary units"
@@ -767,14 +777,6 @@
       },
       "operating_hours": {
         "name": "Operating hours"
-      },
-      "operational_mode": {
-        "name": "Operational mode",
-        "state": {
-          "off": "Off",
-          "standby": "Standby",
-          "on_auto": "On (auto)"
-        }
       },
       "outdoor_temperature": {
         "name": "Outdoor temperature"

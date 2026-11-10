@@ -5,6 +5,7 @@ from typing import TYPE_CHECKING
 
 from homeassistant.components.binary_sensor import BinarySensorEntityDescription
 from homeassistant.components.binary_sensor.const import BinarySensorDeviceClass
+from homeassistant.components.select import SelectEntityDescription
 from homeassistant.components.sensor import (
     SensorDeviceClass,
     SensorEntityDescription,
@@ -70,8 +71,16 @@ class ThermiaGenesisBinarySensorEntityDescription(
     member: IntFlag | None = None
 
 
+@dataclass(frozen=True, kw_only=True)
+class ThermiaGenesisSelectEntityDescription(
+    ThermiaGenesisEntityDescription, SelectEntityDescription
+):
+    """A select for a writable enum field; its options come from the library's validator."""
+
+
 type Sensor = ThermiaGenesisSensorEntityDescription
 type BinarySensor = ThermiaGenesisBinarySensorEntityDescription
+type Select = ThermiaGenesisSelectEntityDescription
 
 
 def measurement(  # noqa: PLR0913
@@ -234,4 +243,14 @@ def members(field: str, flags: type[IntFlag]) -> tuple[BinarySensor, ...]:
             entity_registry_enabled_default=False,
         )
         for member in flags
+    )
+
+
+def choice(key: str, *, enabled: bool = False) -> Select:
+    """Describe a writable enum setting, shown as its lowercase member name."""
+    return ThermiaGenesisSelectEntityDescription(
+        key=key,
+        translation_key=key,
+        entity_registry_enabled_default=enabled,
+        entity_category=None if enabled else EntityCategory.CONFIG,
     )

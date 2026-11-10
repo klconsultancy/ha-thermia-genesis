@@ -407,6 +407,16 @@
         "name": "Alarm voeler warm water boven"
       }
     },
+    "select": {
+      "operational_mode": {
+        "name": "Bedrijfsmodus",
+        "state": {
+          "off": "Uit",
+          "standby": "Stand-by",
+          "on_auto": "Aan (auto)"
+        }
+      }
+    },
     "sensor": {
       "available_secondaries": {
         "name": "Beschikbare secundaire units"
@@ -767,14 +777,6 @@
       },
       "operating_hours": {
         "name": "Bedrijfsuren"
-      },
-      "operational_mode": {
-        "name": "Bedrijfsmodus",
-        "state": {
-          "off": "Uit",
-          "standby": "Stand-by",
-          "on_auto": "Aan (auto)"
-        }
       },
       "outdoor_temperature": {
         "name": "Buitentemperatuur"

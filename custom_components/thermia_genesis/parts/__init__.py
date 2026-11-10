@@ -16,7 +16,7 @@ from . import (
 )
 
 if TYPE_CHECKING:
-    from ..descriptions import BinarySensor, Sensor
+    from ..descriptions import BinarySensor, Select, Sensor
 
 # The sensors and binary sensors of each part, by the part's attribute on ThermiaGenesis.
 SENSORS: dict[str, tuple[Sensor, ...]] = {
@@ -41,4 +41,7 @@ BINARY_SENSORS: dict[str, tuple[BinarySensor, ...]] = {
     "pool": pool.BINARY_SENSORS,
     "status": status.BINARY_SENSORS,
     "tap_water": tap_water.BINARY_SENSORS,
+}
+SELECTS: dict[str, tuple[Select, ...]] = {
+    "status": status.SELECTS,
 }

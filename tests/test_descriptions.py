@@ -10,12 +10,12 @@ from homeassistant.components.sensor import SensorDeviceClass, SensorStateClass
 from homeassistant.const import EntityCategory, UnitOfPower
 from modbus_connection.mock import MockModbusConnection
 from thermia_genesis import ThermiaGenesis
-from thermia_genesis.subsystem import Field, Subsystem
+from thermia_genesis.subsystem import Field, MemberOf, Subsystem
 
 from custom_components.thermia_genesis import climate
 from custom_components.thermia_genesis.const import PARTS
 from custom_components.thermia_genesis.descriptions import UNITS
-from custom_components.thermia_genesis.parts import BINARY_SENSORS, SENSORS
+from custom_components.thermia_genesis.parts import BINARY_SENSORS, SELECTS, SENSORS
 
 # The parts whose every field has an entity; it grows with each part's pull request.
 COMPLETE = [
@@ -74,6 +74,7 @@ def described(part: str) -> list[str]:
         name = description.field or description.key
         member = description.member
         names.append(name if member is None else f"{name}.{member.name}")
+    names.extend(d.field or d.key for d in SELECTS.get(part, ()))
     # A climate stands for the fields it sets (docs/design.md, Entities).
     names.extend(climate.FIELDS.get(part, ()))
     return names
@@ -167,16 +168,12 @@ def test_every_entity_has_a_name(part: str) -> None:
             assert "name" in names.get(description.translation_key, {}), description.key
 
 
-# Settings on the dashboard rather than among the diagnostics.
-PROMINENT_SETTINGS = {"operational_mode"}
-
-
 @pytest.mark.parametrize("part", sorted({*SENSORS, *BINARY_SENSORS}))
 def test_settings_are_diagnostic(part: str) -> None:
     library = fields(part)
     for description in (*SENSORS.get(part, ()), *BINARY_SENSORS.get(part, ())):
         field = library[description.field or description.key]
-        if field.space in {"coil", "holding"} and description.key not in PROMINENT_SETTINGS:
+        if field.space in {"coil", "holding"}:
             assert description.entity_category is EntityCategory.DIAGNOSTIC, description.key
 
 
@@ -223,3 +220,23 @@ def test_power_measurements_show_in_watt(part: str) -> None:
             )
             assert shown == UnitOfPower.WATT, description.key
             assert description.suggested_display_precision == 0, description.key
+
+
+@pytest.mark.parametrize("part", sorted(SELECTS))
+def test_selects_are_writable_enums(part: str) -> None:
+    library = fields(part)
+    for description in SELECTS[part]:
+        field = library[description.field or description.key]
+        assert field.writable, description.key
+        assert isinstance(field.validator, MemberOf), description.key
+
+
+@pytest.mark.parametrize("part", sorted(SELECTS))
+def test_every_select_option_has_a_translation(part: str) -> None:
+    selects = STRINGS["entity"]["select"]
+    library = fields(part)
+    for description in SELECTS[part]:
+        validator = library[description.field or description.key].validator
+        assert isinstance(validator, MemberOf)
+        states = selects[description.translation_key]["state"]
+        assert {member.name.lower() for member in validator.enum} == set(states)
