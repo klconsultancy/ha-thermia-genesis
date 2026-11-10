@@ -259,15 +259,17 @@ def signal(key: str) -> BinarySensor:
     )
 
 
-def members(field: str, flags: type[IntFlag]) -> tuple[BinarySensor, ...]:
-    """Describe one binary sensor per member of a flags field, disabled by default."""
+def members(
+    field: str, flags: type[IntFlag], *, enabled: frozenset[IntFlag] = frozenset()
+) -> tuple[BinarySensor, ...]:
+    """Describe one binary sensor per member of a flags field, disabled unless ``enabled``."""
     return tuple(
         ThermiaGenesisBinarySensorEntityDescription(
             key=f"{field}_{member.name.lower()}",  # type: ignore[union-attr]
             translation_key=f"{field}_{member.name.lower()}",  # type: ignore[union-attr]
             field=field,
             member=member,
-            entity_registry_enabled_default=False,
+            entity_registry_enabled_default=member in enabled,
         )
         for member in flags
     )
