@@ -100,8 +100,9 @@ entities.
   The library leaves a field at its old value until the next read, so the entities show
   what the pump accepted, not what was sent. The first write reads back at once; writes in
   the following 10 seconds share one read after that cooldown.
-- An entity validates first: it sets min, max and step from the library's validator and
-  the register's resolution, so Home Assistant refuses a bad value in the user's language.
+- An entity validates first: it sets min and max from the library's validator (and options
+  for a select), so Home Assistant refuses a bad value in the user's language. Its step is
+  a multiple of the register's resolution, and it rounds a value to that resolution.
 - A value the library still refuses (`ValueError`) raises `ServiceValidationError` with the
   library's message. A write the pump fails, or a lost connection (`ModbusError`), raises
   `HomeAssistantError` with the error's type and message, so a timeout and a refusal can be
@@ -118,7 +119,8 @@ entities.
   becomes one per member. A hand-written entity description per field (per member for
   flags) sets its translation key, device class, state class, entity category and whether
   it is enabled by default. A test requires that the descriptions cover every library field
-  exactly once (every member of a flags field) with a unit that matches the library's.
+  exactly once (every member of a flags field) with a unit that matches the library's; a
+  field a climate sets counts as that climate's (`climate.FIELDS`).
   Like the library's consistency test, it lists the parts it holds complete; each part's
   pull request adds its part.
 - Each part declares its entities in its own module, `parts/<part>.py` (`SENSORS`,
@@ -138,8 +140,22 @@ entities.
   - flags: one `binary_sensor` per member;
   - holding registers (settings): `sensor` with entity category `diagnostic`. As the
     library declares a setting writable, it becomes a `number`, `select`, `switch` or part
-    of a `climate` entity (milestone 0.3.0), and a registry migration removes the old
-    sensor.
+    of a `climate` entity (milestone 0.3.0), and the old sensor goes. A config entry
+    migration removes it: each change of the entities raises the entry's minor version
+    (1.2 for the heating climate), so it runs once per entry. Once in core, removing an
+    entity would need a deprecation period with a repair issue first.
+- Climate "Heating" (enabled, on the heating device, named after it): the room temperature
+  (`heat_pump.room_temperature`), the comfort wheel as target (`heat.comfort_wheel_setting`)
+  and heating on or off as HVAC mode `heat`/`off` (`heat_pump.enable_heat`). Its min and
+  max come from the library's `Between`, falling back to Home Assistant's defaults without
+  one. The card steps by 0.5 °C, a multiple of the register's 0.01, so the pump takes every
+  step. Any value is rounded to the register's resolution before the write, since Home
+  Assistant converts °F to °C without rounding (70 °F is 21.11 °C). The action is
+  `defrosting` or `heating` while the running demands hold `DEFROST` or `HEAT`, `idle`
+  otherwise, `off` while heating is disabled. A `set_temperature` with an HVAC mode
+  validates and writes the mode first. A writing platform has `PARALLEL_UPDATES = 1`. It
+  is unavailable while the coils, the holding or the input registers fail, and replaces
+  the `comfort_wheel_setting` sensor and the `enable_heat` binary sensor.
 - The heat pump unit's power output and consumed power (input 157/158) come in kW and are
   shown in W (`suggested_unit_of_measurement`), like the electric meter and most power
   sensors such as a P1 meter: Home Assistant's history draws one graph per unit. Power
@@ -171,16 +187,16 @@ entities.
   with device class `problem` of the parts the pump has, so an absent part's alarms don't
   count; they are all discrete inputs, so the alarm is unavailable while those fail to
   refresh.
-- Enabled by default: the measured temperatures of the heating circuit (brine and
-  condenser in and out, discharge pipe, outdoor, room), operational mode, running demand 1,
-  compressor gear, speed, operating hours and whether it runs, heat output and power
-  consumption, the immersion heater step and whether the external heater runs, the hot
-  water top temperature, and the electric meter's phase powers. The refrigerant circuit
-  (liquid line, suction gas, dew and bubble points, superheat, subcooling, pressures) is
-  disabled by default. So are the heating system's supply and return line temperatures: a
-  pump without system sensors reads them as unknown. A set point of an absent part (the
-  buffer tank's) can read 0.0; it is disabled, so it stays out of sight.
-  Everything else (queued demands, PID values, flags, settings, individual alarms) is
+- Enabled by default: the heating climate, the measured temperatures of the heating
+  circuit (brine and condenser in and out, discharge pipe, outdoor, room), operational
+  mode, running demand 1, compressor gear, speed, operating hours and whether it runs,
+  heat output and power consumption, the immersion heater step and whether the external
+  heater runs, the hot water top temperature, and the electric meter's phase powers. The
+  refrigerant circuit (liquid line, suction gas, dew and bubble points, superheat,
+  subcooling, pressures) is disabled by default. So are the heating system's supply and
+  return line temperatures: a pump without system sensors reads them as unknown. A set
+  point of an absent part (the buffer tank's) can read 0.0; it is disabled, so it stays
+  out of sight. Everything else (queued demands, PID values, flags, settings, individual alarms) is
   disabled by default.
 - Coils and holding registers (settings) and the alarm inputs have entity category
   `diagnostic`; a setting has no state class, so it stays out of the long-term statistics.

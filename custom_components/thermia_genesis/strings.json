@@ -211,9 +211,6 @@
       "enable_flow_pressure_switch": {
         "name": "Flow pressure switch enabled"
       },
-      "enable_heat": {
-        "name": "Heating enabled"
-      },
       "enable_hot_gas_pump": {
         "name": "Hot gas pump enabled"
       },
@@ -464,9 +461,6 @@
       },
       "circuit_supply_line_temperature": {
         "name": "Supply line temperature"
-      },
-      "comfort_wheel_setting": {
-        "name": "Comfort wheel"
       },
       "compressor_available_gears": {
         "name": "Available compressor gears"

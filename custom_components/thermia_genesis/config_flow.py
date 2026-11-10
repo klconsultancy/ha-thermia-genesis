@@ -40,7 +40,7 @@ class ThermiaGenesisConfigFlow(ConfigFlow, domain=DOMAIN):
     """Add a Thermia Genesis pump reachable over Modbus TCP."""
 
     VERSION = 1
-    MINOR_VERSION = 1
+    MINOR_VERSION = 2
 
     @override
     async def async_step_user(self, user_input: dict[str, Any] | None = None) -> ConfigFlowResult:

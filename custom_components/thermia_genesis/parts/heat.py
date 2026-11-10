@@ -42,7 +42,6 @@ SENSORS: tuple[Sensor, ...] = (
     # Settings
     setting("max_limitation_set_point_curve", "°C", precision=1),
     setting("min_limitation_set_point_curve", "°C", precision=1),
-    setting("comfort_wheel_setting", "°C", precision=1),
     setting("heating_season_stop_temperature", "°C", precision=1),
     setting("fixed_system_supply_set_point", "°C", precision=1),
     setting("heat_curve_y_1", "°C", precision=1),

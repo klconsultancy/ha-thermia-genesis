@@ -211,9 +211,6 @@
       "enable_flow_pressure_switch": {
         "name": "Debietdrukschakelaar ingeschakeld"
       },
-      "enable_heat": {
-        "name": "Verwarming ingeschakeld"
-      },
       "enable_hot_gas_pump": {
         "name": "Heetgaspomp ingeschakeld"
       },
@@ -464,9 +461,6 @@
       },
       "circuit_supply_line_temperature": {
         "name": "Aanvoertemperatuur"
-      },
-      "comfort_wheel_setting": {
-        "name": "Comfortwiel"
       },
       "compressor_available_gears": {
         "name": "Beschikbare compressortrappen"

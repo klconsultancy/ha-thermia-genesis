@@ -46,7 +46,9 @@ entry: its entities and their history are kept.
   temperatures, the compressor, the heaters and the operational mode. The rest (settings,
   individual alarms, the refrigerant circuit, the energy statistics) is disabled; enable
   what you need.
-- Settings show as diagnostic sensors until writing comes.
+- A **Heating** climate: the room temperature, the comfort wheel as the target, and
+  heating on or off.
+- The other settings show as diagnostic sensors until they can be written.
 - Entity names in English and Dutch.
 
 The pump is read every 30 seconds. When a register space fails to read, only its entities
