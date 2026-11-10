@@ -69,8 +69,10 @@ class ThermiaGenesisHeating(CoordinatorEntity[ThermiaGenesisCoordinator], Climat
         """Show the heating of the pump ``coordinator`` reads."""
         super().__init__(coordinator)
         entry_id = coordinator.config_entry.entry_id
-        self._attr_unique_id = f"{entry_id}_heat_climate"
-        self._attr_device_info = DeviceInfo(identifiers={(DOMAIN, f"{entry_id}_heat")})
+        # The pump's own device and a neutral id: the climate is the house's, so cooling
+        # can join it as an HVAC mode (docs/design.md).
+        self._attr_unique_id = f"{entry_id}_climate"
+        self._attr_device_info = DeviceInfo(identifiers={(DOMAIN, entry_id)})
         validator = Heat.comfort_wheel_setting.validator
         if isinstance(validator, Between):
             self._attr_min_temp = validator.low
