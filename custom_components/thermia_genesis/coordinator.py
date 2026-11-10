@@ -1,5 +1,6 @@
 """The coordinator that reads the whole pump."""
 
+import asyncio
 import logging
 from datetime import timedelta
 from typing import TYPE_CHECKING, override
@@ -14,6 +15,8 @@ from thermia_genesis import ThermiaGenesis
 from .const import DOMAIN
 
 if TYPE_CHECKING:
+    from collections.abc import Callable
+
     from homeassistant.core import HomeAssistant
     from modbus_connection import ModbusUnit
     from thermia_genesis.subsystem import Field, Subsystem
@@ -44,24 +47,40 @@ class ThermiaGenesisCoordinator(DataUpdateCoordinator[UpdateReport]):
         self._failing: set[str] = set()
         # What was written since the last read, by subsystem and field name.
         self._written: dict[tuple[int, str], object] = {}
+        # Held by an update and by a write with its check, which so never interleave.
+        self._lock = asyncio.Lock()
 
     @override
     async def _async_update_data(self) -> UpdateReport:
-        try:
-            report = await self.pump.async_update()
-        except ModbusError as err:
-            # A dead link or a timeout; a failure within one register space is in the report.
-            raise UpdateFailed(translation_domain=DOMAIN, translation_key="update_failed") from err
-        if not report.updated:
-            raise UpdateFailed(
-                translation_domain=DOMAIN, translation_key="no_register_space_answered"
-            ) from ExceptionGroup("every register space failed", list(report.failed.values()))
+        # No write lands between the read and forgetting what was written.
+        async with self._lock:
+            try:
+                report = await self.pump.async_update()
+            except ModbusError as err:
+                # A dead link or a timeout; a failure within one space is in the report.
+                raise UpdateFailed(
+                    translation_domain=DOMAIN, translation_key="update_failed"
+                ) from err
+            if not report.updated:
+                raise UpdateFailed(
+                    translation_domain=DOMAIN, translation_key="no_register_space_answered"
+                ) from ExceptionGroup("every register space failed", list(report.failed.values()))
+            self._written.clear()
         self._log_changes(report)
-        self._written.clear()
         return report
 
-    async def async_write[T](self, subsystem: Subsystem, field: Field[T], value: T) -> None:
+    async def async_write[T](
+        self,
+        subsystem: Subsystem,
+        field: Field[T],
+        value: T,
+        *,
+        check: Callable[[], None] | None = None,
+    ) -> None:
         """Write ``value`` to ``subsystem``'s ``field``, then ask for a read-back.
+
+        ``check`` (a check across fields, which raises to refuse) runs with the write while
+        no update and no other write runs, so ``latest`` can't change in between.
 
         The entities show what the pump accepted, which the read after the write returns;
         writes in a burst share one read. Raises ``ServiceValidationError`` for a value the
@@ -69,21 +88,24 @@ class ThermiaGenesisCoordinator(DataUpdateCoordinator[UpdateReport]):
         take the write. A ``TypeError`` (a value of the wrong type) or an ``AttributeError``
         (a read-only field) is an integration bug and propagates.
         """
-        try:
-            await subsystem.write(field, value)
-        except ValueError as err:
-            raise ServiceValidationError(
-                translation_domain=DOMAIN,
-                translation_key="invalid_value",
-                translation_placeholders={"error": str(err)},
-            ) from err
-        except ModbusError as err:
-            raise HomeAssistantError(
-                translation_domain=DOMAIN,
-                translation_key="write_failed",
-                translation_placeholders={"error": f"{type(err).__name__}: {err}"},
-            ) from err
-        self._written[id(subsystem), field.name] = value
+        async with self._lock:
+            if check is not None:
+                check()
+            try:
+                await subsystem.write(field, value)
+            except ValueError as err:
+                raise ServiceValidationError(
+                    translation_domain=DOMAIN,
+                    translation_key="invalid_value",
+                    translation_placeholders={"error": str(err)},
+                ) from err
+            except ModbusError as err:
+                raise HomeAssistantError(
+                    translation_domain=DOMAIN,
+                    translation_key="write_failed",
+                    translation_placeholders={"error": f"{type(err).__name__}: {err}"},
+                ) from err
+            self._written[id(subsystem), field.name] = value
         await self.async_request_refresh()
 
     def latest[T](self, subsystem: Subsystem, field: Field[T]) -> T | None:

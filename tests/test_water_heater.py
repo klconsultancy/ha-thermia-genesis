@@ -1,7 +1,9 @@
 """The hot water: a water heater heating to the stop temperature, and its start temperature."""
 
+import asyncio
 from datetime import timedelta
 from typing import TYPE_CHECKING, Literal
+from unittest.mock import patch
 
 import pytest
 from homeassistant.components.number.const import ATTR_VALUE, SERVICE_SET_VALUE
@@ -37,6 +39,7 @@ if TYPE_CHECKING:
     from homeassistant.core import HomeAssistant, State
     from homeassistant.helpers import entity_registry as er
     from modbus_connection.mock import MockModbusUnit
+    from modbus_connection.model import UpdateReport
 
 HOT_WATER = "water_heater.hot_water"
 START = "number.hot_water_start_temperature"
@@ -317,3 +320,45 @@ async def test_an_entry_from_before_drops_the_sensors_they_replace(
 
     for platform, unique_id in replaced:
         assert entity_registry.async_get_entity_id(platform, DOMAIN, unique_id) is None
+
+
+async def test_a_write_waits_for_a_poll_in_flight(
+    hass: HomeAssistant, entry: MockConfigEntry, pump_unit: MockModbusUnit
+) -> None:
+    await setup(hass, entry)
+    coordinator = entry.runtime_data
+    read, resume = asyncio.Event(), asyncio.Event()
+    update = coordinator.pump.async_update
+
+    async def paused_update() -> UpdateReport:
+        report: UpdateReport = await update()  # reads the stop as 55 here
+        read.set()
+        await resume.wait()
+        return report
+
+    with patch.object(coordinator.pump, "async_update", paused_update):
+        poll = hass.async_create_task(coordinator.async_refresh())
+        await read.wait()
+        # The stop is lowered while the poll is in flight: the write waits for it.
+        lower = hass.async_create_task(set_stop(hass, 48.0))
+        await asyncio.sleep(0)
+        assert pump_unit.holding[23] == 5500
+        resume.set()
+        await poll
+        await lower
+
+    # Within the cooldown, the start is checked against the stop just written.
+    with pytest.raises(ServiceValidationError):
+        await set_start(hass, 50.0)
+    assert (pump_unit.holding[22], pump_unit.holding[23]) == (4500, 4800)
+
+
+async def test_a_refused_stop_leaves_the_operation_mode(
+    hass: HomeAssistant, entry: MockConfigEntry, pump_unit: MockModbusUnit
+) -> None:
+    await setup(hass, entry)
+
+    with pytest.raises(ServiceValidationError):
+        await set_stop(hass, 45.0, **{ATTR_OPERATION_MODE: STATE_OFF})
+
+    assert pump_unit.coil[8] is True

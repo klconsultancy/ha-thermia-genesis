@@ -110,7 +110,7 @@ class ThermiaGenesisHotWater(CoordinatorEntity[ThermiaGenesisCoordinator], Water
 
     @property
     def target_temperature_high(self) -> float | None:
-        """The stop temperature again, so the card shows the range."""
+        """The temperature the pump stops heating the water at, as the high target."""
         return self.coordinator.pump.tap_water.stop_temperature
 
     async def async_set_temperature(self, **kwargs: Any) -> None:  # noqa: ANN401
@@ -118,18 +118,23 @@ class ThermiaGenesisHotWater(CoordinatorEntity[ThermiaGenesisCoordinator], Water
 
         The start is the one last written, since a write reads back only after the cooldown.
         """
-        if (operation_mode := kwargs.get(ATTR_OPERATION_MODE)) is not None:
-            await self.async_handle_set_operation_mode(operation_mode)
         tap_water = self.coordinator.pump.tap_water
         stop = to_register(TapWater.stop_temperature, kwargs[ATTR_TEMPERATURE])
-        start = self.coordinator.latest(tap_water, TapWater.start_temperature)
-        if start is not None and start >= stop:
-            raise ServiceValidationError(
-                translation_domain=DOMAIN,
-                translation_key="start_not_below_stop",
-                translation_placeholders={"start": str(start), "stop": str(stop)},
-            )
-        await self.coordinator.async_write(tap_water, TapWater.stop_temperature, stop)
+
+        def check() -> None:
+            start = self.coordinator.latest(tap_water, TapWater.start_temperature)
+            if start is not None and start >= stop:
+                raise ServiceValidationError(
+                    translation_domain=DOMAIN,
+                    translation_key="start_not_below_stop",
+                    translation_placeholders={"start": str(start), "stop": str(stop)},
+                )
+
+        # Refuse a stop before changing the operation mode, so a refusal changes nothing.
+        check()
+        if (operation_mode := kwargs.get(ATTR_OPERATION_MODE)) is not None:
+            await self.async_handle_set_operation_mode(operation_mode)
+        await self.coordinator.async_write(tap_water, TapWater.stop_temperature, stop, check=check)
 
     async def async_set_operation_mode(self, operation_mode: str) -> None:
         """Turn hot water on (heat pump) or off."""

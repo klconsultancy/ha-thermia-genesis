@@ -68,7 +68,11 @@ class ThermiaGenesisNumber(ThermiaGenesisEntity, NumberEntity):
         written, since a write reads back only after the cooldown.
         """
         value = to_register(self._field, value)
-        if (below := self.entity_description.below) is not None:
+        below = self.entity_description.below
+
+        def check() -> None:
+            if below is None:
+                return
             above: Field[float] = getattr(type(self._subsystem), below)
             limit = self.coordinator.latest(self._subsystem, above)
             if limit is not None and value >= limit:
@@ -77,4 +81,5 @@ class ThermiaGenesisNumber(ThermiaGenesisEntity, NumberEntity):
                     translation_key="start_not_below_stop",
                     translation_placeholders={"start": str(value), "stop": str(limit)},
                 )
-        await self.coordinator.async_write(self._subsystem, self._field, value)
+
+        await self.coordinator.async_write(self._subsystem, self._field, value, check=check)

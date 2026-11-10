@@ -115,7 +115,14 @@ entities.
 - `coordinator.latest(subsystem, field)` is a field's value as last written, else as last
   read; the next update forgets what was written. A check across fields uses it (the hot
   water start below its stop), since the read-back of a second write within the cooldown
-  comes up to 10 s later and the library keeps the old value until then.
+  comes up to 10 s later and the library keeps the old value until then. An update and a
+  write hold one lock, the write with its check (`async_write(..., check=...)`): a write
+  waits for a poll in flight instead of landing between its read and the forgetting, and
+  two checks across the same fields (the start number and the water heater) can't both
+  pass before either writes. The refresh after a write runs outside the lock. A water
+  heater checks its stop before it changes the operation mode, so a refused stop changes
+  nothing. The `start_not_below_stop` message names the start and stop temperatures; a
+  later `below` on another field needs its own message.
 - Tests write to the mock unit only, never to a real pump.
 
 ## Entities
@@ -242,8 +249,8 @@ entities.
   consumption, the immersion heater step and whether the external heater runs, the hot
   water top temperature, and the electric meter's phase powers. The refrigerant circuit
   (liquid line, suction gas, dew and bubble points, superheat, subcooling, pressures) is
-  disabled by default. So are the heating system's
-  supply and return line temperatures: a pump without system sensors reads them as unknown.
+  disabled by default. So are the heating system's supply and return line temperatures: a
+  pump without system sensors reads them as unknown.
   A set point of an absent part (the buffer tank's) can read 0.0; it is disabled, so it
   stays out of sight. Everything else (queued demands, PID values, flags, settings,
   individual alarms) is disabled by default.
