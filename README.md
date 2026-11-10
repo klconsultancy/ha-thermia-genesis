@@ -50,6 +50,21 @@ entry: its entities and their history are kept.
   heating on or off.
 - A **Reset alarms** button on the main device.
 - The **Operational mode** (off, standby, on auto) as a select on the main device.
+- **Power consumption control** (disabled by default): the control mode (0–3) and the
+  input power limit (kW) of the heat pump unit, for an automation that limits the pump's
+  power. **Read this before you enable them.** What the mode values mean depends on the
+  controller's power consumption control mode, which an installer sets and which can't be
+  read over Modbus:
+  - SG-Ready: 0 Normal, 1 Load-Up, 2 EVU (blocks the compressor), 3 Boost;
+  - PL/LU: 0 Normal, 1 and 3 Power Limit (the input power limit applies), 2 Load-Up.
+
+  So 0 undoes either, but 1 caps power in one mode and asks for more heat in the other.
+  On a pump without a configured mode the values probably do nothing. The **Smart grid
+  mode** sensor (disabled by default) shows the active SG-Ready mode; it may not reflect a
+  PL/LU limit. A limit set too low stops the compressor. Not yet tested: whether the limit
+  covers the immersion heater, and whether it lapses when nothing writes it any more.
+  Write only when the value changes: whether the pump stores these registers in memory
+  that wears out is unknown.
 - The other settings show as diagnostic sensors until they can be written.
 - Entity names in English and Dutch.
 

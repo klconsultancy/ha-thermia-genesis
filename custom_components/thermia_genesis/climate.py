@@ -19,7 +19,7 @@ from thermia_genesis.v17_1.heat_pump_unit import HeatPumpUnit
 
 from .const import DOMAIN
 from .coordinator import ThermiaGenesisCoordinator
-from .entity import GROUPS
+from .entity import GROUPS, to_register
 
 if TYPE_CHECKING:
     from homeassistant.core import HomeAssistant
@@ -121,8 +121,7 @@ class ThermiaGenesisHeating(CoordinatorEntity[ThermiaGenesisCoordinator], Climat
         if (hvac_mode := kwargs.get(ATTR_HVAC_MODE)) is not None:
             await self.async_handle_set_hvac_mode_service(hvac_mode)
         field = Heat.comfort_wheel_setting
-        resolution = field.resolution or 1
-        value = round(round(kwargs[ATTR_TEMPERATURE] / resolution) * resolution, 6)
+        value = to_register(field, kwargs[ATTR_TEMPERATURE])
         await self.coordinator.async_write(self.coordinator.pump.heat, field, value)
 
     async def async_set_hvac_mode(self, hvac_mode: HVACMode) -> None:

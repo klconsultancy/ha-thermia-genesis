@@ -17,6 +17,7 @@ PLATFORMS: list[Platform] = [
     Platform.BINARY_SENSOR,
     Platform.BUTTON,
     Platform.CLIMATE,
+    Platform.NUMBER,
     Platform.SELECT,
     Platform.SENSOR,
 ]
@@ -63,6 +64,8 @@ async def async_migrate_entry(hass: HomeAssistant, entry: ThermiaGenesisConfigEn
             (Platform.BINARY_SENSOR, "heat_pump_enable_heat"),
             (Platform.BINARY_SENSOR, "heat_pump_reset_all_alarms"),
             (Platform.SENSOR, "status_operational_mode"),
+            (Platform.SENSOR, "heat_pump_power_consumption_control_mode"),
+            (Platform.SENSOR, "heat_pump_input_power_limit"),
         ],
     )
     hass.config_entries.async_update_entry(entry, minor_version=2)

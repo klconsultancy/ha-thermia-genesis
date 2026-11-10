@@ -409,6 +409,14 @@
         "name": "Reset alarms"
       }
     },
+    "number": {
+      "power_consumption_control_mode": {
+        "name": "Power consumption control mode"
+      },
+      "input_power_limit": {
+        "name": "Input power limit"
+      }
+    },
     "select": {
       "operational_mode": {
         "name": "Operational mode",
@@ -679,9 +687,6 @@
       "hysteresis_set_point": {
         "name": "Hysteresis"
       },
-      "input_power_limit": {
-        "name": "Input power limit"
-      },
       "internal_immersion_heater_active_step": {
         "name": "Immersion heater step"
       },
@@ -795,9 +800,6 @@
       },
       "position": {
         "name": "Valve position"
-      },
-      "power_consumption_control_mode": {
-        "name": "Power consumption control mode"
       },
       "queued_demand_1": {
         "name": "Queued demand 1",
