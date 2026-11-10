@@ -74,8 +74,6 @@ jobs:
         with:
           category: integration
           comment: false
-          # The brand icon comes with the release (#8).
-          ignore: brands
 
   dependency-review:
     name: Dependency review
