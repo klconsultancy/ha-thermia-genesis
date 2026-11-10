@@ -72,6 +72,12 @@
     },
     "no_register_space_answered": {
       "message": "De warmtepomp weigerde elke leesopdracht."
+    },
+    "invalid_value": {
+      "message": "Deze waarde is ongeldig: {error}"
+    },
+    "write_failed": {
+      "message": "De warmtepomp heeft de wijziging niet overgenomen: {error}"
     }
   },
   "issues": {
