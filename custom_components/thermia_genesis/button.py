@@ -46,7 +46,7 @@ class ThermiaGenesisResetAlarms(CoordinatorEntity[ThermiaGenesisCoordinator], Bu
         self._attr_device_info = DeviceInfo(identifiers={(DOMAIN, entry_id)})
 
     async def async_press(self) -> None:
-        """Turn the pump's reset coil on."""
+        """Turn the pump's reset coil on; the pump turns it off itself (library errata)."""
         await self.coordinator.async_write(
             self.coordinator.pump.heat_pump,
             HeatPumpUnit.reset_all_alarms,

@@ -157,9 +157,9 @@ entities.
   is unavailable while the coils, the holding or the input registers fail, and replaces
   the `comfort_wheel_setting` sensor and the `enable_heat` binary sensor.
 - Button "Reset alarms" (enabled, on the main device next to the alarm) writes on to
-  `heat_pump.reset_all_alarms` (coil 3). What the pump does with the coil afterwards (clear
-  it itself, reset only the alarms whose cause is gone) is to be verified on the reference
-  pump in the release candidate. It replaces the `reset_all_alarms` binary sensor ("Alarm
+  `heat_pump.reset_all_alarms` (coil 3) and never off: the reference pump clears the coil
+  itself within seconds (python-thermia-genesis errata, 2026-11-10). Whether a reset clears
+  an alarm whose cause is still there is not tested. It replaces the `reset_all_alarms` binary sensor ("Alarm
   reset pending"). Like the climates it is unavailable only while the pump doesn't answer.
 - The heat pump unit's power output and consumed power (input 157/158) come in kW and are
   shown in W (`suggested_unit_of_measurement`), like the electric meter and most power
