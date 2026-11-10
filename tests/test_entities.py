@@ -51,7 +51,9 @@ async def setup(hass: HomeAssistant, entry: MockConfigEntry) -> None:
 
 
 @pytest.mark.usefixtures("entity_registry_enabled_by_default")
-@pytest.mark.parametrize("platform", [Platform.SENSOR, Platform.BINARY_SENSOR, Platform.CLIMATE])
+@pytest.mark.parametrize(
+    "platform", [Platform.SENSOR, Platform.BINARY_SENSOR, Platform.BUTTON, Platform.CLIMATE]
+)
 async def test_entities(
     hass: HomeAssistant,
     entry: MockConfigEntry,
@@ -79,6 +81,7 @@ async def test_enabled_by_default(
         "binary_sensor.heat_pump_unit_compressor",
         "binary_sensor.heat_pump_unit_external_additional_heater",
         "binary_sensor.thermia_genesis_alarm",
+        "button.thermia_genesis_reset_alarms",
         "climate.heating",
         "sensor.heat_pump_unit_brine_in_temperature",
         "sensor.heat_pump_unit_brine_out_temperature",

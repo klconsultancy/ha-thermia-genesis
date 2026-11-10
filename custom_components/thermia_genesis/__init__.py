@@ -13,7 +13,12 @@ from modbus_connection import ModbusTcpParams
 from .const import CONF_UNIT_ID, DOMAIN, MANUFACTURER, MODEL, PARTS
 from .coordinator import ThermiaGenesisConfigEntry, ThermiaGenesisCoordinator
 
-PLATFORMS: list[Platform] = [Platform.BINARY_SENSOR, Platform.CLIMATE, Platform.SENSOR]
+PLATFORMS: list[Platform] = [
+    Platform.BINARY_SENSOR,
+    Platform.BUTTON,
+    Platform.CLIMATE,
+    Platform.SENSOR,
+]
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ThermiaGenesisConfigEntry) -> bool:

@@ -322,9 +322,6 @@
       "regulation_control_signal": {
         "name": "Regelsignaal"
       },
-      "reset_all_alarms": {
-        "name": "Alarmreset bezig"
-      },
       "return_line_sensor_alarm": {
         "name": "Alarm retourvoeler"
       },
@@ -405,6 +402,11 @@
       },
       "tap_water_top_sensor_alarm": {
         "name": "Alarm voeler warm water boven"
+      }
+    },
+    "button": {
+      "reset_alarms": {
+        "name": "Alarmen resetten"
       }
     },
     "sensor": {

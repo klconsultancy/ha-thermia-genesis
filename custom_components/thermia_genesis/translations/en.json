@@ -322,9 +322,6 @@
       "regulation_control_signal": {
         "name": "Regulation control signal"
       },
-      "reset_all_alarms": {
-        "name": "Alarm reset pending"
-      },
       "return_line_sensor_alarm": {
         "name": "Return line sensor alarm"
       },
@@ -405,6 +402,11 @@
       },
       "tap_water_top_sensor_alarm": {
         "name": "Hot water top sensor alarm"
+      }
+    },
+    "button": {
+      "reset_alarms": {
+        "name": "Reset alarms"
       }
     },
     "sensor": {
