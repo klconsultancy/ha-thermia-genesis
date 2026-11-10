@@ -203,4 +203,8 @@ entities.
 - Every change goes through a pull request with a Conventional Commits title. release-please
   turns merged commits into a release PR; merging it tags `vX.Y.Z` and creates the GitHub
   Release HACS installs from. It also bumps the version in `manifest.json`.
+- The brand icon ships in `custom_components/thermia_genesis/brand/` (`icon.png` 256 px,
+  `icon@2x.png` 512 px), which Home Assistant and HACS show for a custom integration. It is
+  the Thermia logo that home-assistant/brands already holds for CJNE/thermiagenesis. The
+  HACS validation checks it.
 - Development happens in the devcontainer, in a git worktree under `.worktrees/<branch>`.
