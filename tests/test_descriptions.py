@@ -12,7 +12,7 @@ from modbus_connection.mock import MockModbusConnection
 from thermia_genesis import ThermiaGenesis
 from thermia_genesis.subsystem import Field, MemberOf, Subsystem
 
-from custom_components.thermia_genesis import climate
+from custom_components.thermia_genesis import button, climate
 from custom_components.thermia_genesis.const import PARTS
 from custom_components.thermia_genesis.descriptions import UNITS
 from custom_components.thermia_genesis.parts import BINARY_SENSORS, SELECTS, SENSORS
@@ -75,8 +75,9 @@ def described(part: str) -> list[str]:
         member = description.member
         names.append(name if member is None else f"{name}.{member.name}")
     names.extend(d.field or d.key for d in SELECTS.get(part, ()))
-    # A climate stands for the fields it sets (docs/design.md, Entities).
+    # A climate or a button stands for the fields it writes (docs/design.md, Entities).
     names.extend(climate.FIELDS.get(part, ()))
+    names.extend(button.FIELDS.get(part, ()))
     return names
 
 

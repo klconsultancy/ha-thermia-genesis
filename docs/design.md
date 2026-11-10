@@ -121,7 +121,7 @@ entities.
   flags) sets its translation key, device class, state class, entity category and whether
   it is enabled by default. A test requires that the descriptions cover every library field
   exactly once (every member of a flags field) with a unit that matches the library's; a
-  field a climate sets counts as that climate's (`climate.FIELDS`).
+  field a climate or a button writes counts as theirs (`climate.FIELDS`, `button.FIELDS`).
   Like the library's consistency test, it lists the parts it holds complete; each part's
   pull request adds its part.
 - Each part declares its entities in its own module, `parts/<part>.py` (`SENSORS`,
@@ -162,6 +162,13 @@ entities.
   validates and writes the mode first. A writing platform has `PARALLEL_UPDATES = 1`. It
   is unavailable while the coils, the holding or the input registers fail, and replaces
   the `comfort_wheel_setting` sensor and the `enable_heat` binary sensor.
+- Button "Reset alarms" (enabled, on the main device next to the alarm) writes on to
+  `heat_pump.reset_all_alarms` (coil 3) and never off: the reference pump clears the coil
+  itself within seconds (python-thermia-genesis errata, 2026-11-10). Whether a reset clears
+  an alarm whose cause is still there is not tested. It has no entity category: resetting
+  is what a user does after the Alarm, not a setting of the pump. It reads nothing, so it
+  is unavailable only while the pump doesn't answer at all, not when one register space
+  fails. It replaces the `reset_all_alarms` binary sensor ("Alarm reset pending").
 - The heat pump unit's power output and consumed power (input 157/158) come in kW and are
   shown in W (`suggested_unit_of_measurement`), like the electric meter and most power
   sensors such as a P1 meter: Home Assistant's history draws one graph per unit. Power

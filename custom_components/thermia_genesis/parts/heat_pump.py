@@ -101,7 +101,6 @@ SENSORS: tuple[Sensor, ...] = (
 
 BINARY_SENSORS: tuple[BinarySensor, ...] = (
     # Settings
-    enabled_setting("reset_all_alarms"),
     enabled_setting("enable_external_additional_heater"),
     enabled_setting("enable_flow_pressure_switch"),
     enabled_setting("enable_tap_water"),

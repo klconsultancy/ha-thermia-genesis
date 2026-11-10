@@ -573,56 +573,6 @@
     'state': 'off',
   })
 # ---
-# name: test_entities[binary_sensor][binary_sensor.heat_pump_unit_alarm_reset_pending-entry]
-  EntityRegistryEntrySnapshot({
-    'aliases': list([
-      None,
-    ]),
-    'area_id': None,
-    'capabilities': None,
-    'config_entry_id': <ANY>,
-    'config_subentry_id': <ANY>,
-    'device_class': None,
-    'device_id': <ANY>,
-    'disabled_by': None,
-    'domain': 'binary_sensor',
-    'entity_category': <EntityCategory.DIAGNOSTIC: 'diagnostic'>,
-    'entity_id': 'binary_sensor.heat_pump_unit_alarm_reset_pending',
-    'has_entity_name': True,
-    'hidden_by': None,
-    'icon': None,
-    'id': <ANY>,
-    'labels': set({
-    }),
-    'name': None,
-    'object_id_base': 'Alarm reset pending',
-    'options': dict({
-    }),
-    'original_device_class': None,
-    'original_icon': None,
-    'original_name': 'Alarm reset pending',
-    'platform': 'thermia_genesis',
-    'previous_unique_id': None,
-    'suggested_object_id': None,
-    'supported_features': 0,
-    'translation_key': 'reset_all_alarms',
-    'unique_id': '01JTHERMIAGENESIS000000000_heat_pump_reset_all_alarms',
-    'unit_of_measurement': None,
-  })
-# ---
-# name: test_entities[binary_sensor][binary_sensor.heat_pump_unit_alarm_reset_pending-state]
-  StateSnapshot({
-    'attributes': ReadOnlyDict({
-      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Heat pump unit Alarm reset pending',
-    }),
-    'context': <ANY>,
-    'entity_id': 'binary_sensor.heat_pump_unit_alarm_reset_pending',
-    'last_changed': <ANY>,
-    'last_reported': <ANY>,
-    'last_updated': <ANY>,
-    'state': 'off',
-  })
-# ---
 # name: test_entities[binary_sensor][binary_sensor.heat_pump_unit_brine_difference_out_of_range_alarm-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
@@ -4767,6 +4717,56 @@
     'last_reported': <ANY>,
     'last_updated': <ANY>,
     'state': 'off',
+  })
+# ---
+# name: test_entities[button][button.thermia_genesis_reset_alarms-entry]
+  EntityRegistryEntrySnapshot({
+    'aliases': list([
+      None,
+    ]),
+    'area_id': None,
+    'capabilities': None,
+    'config_entry_id': <ANY>,
+    'config_subentry_id': <ANY>,
+    'device_class': None,
+    'device_id': <ANY>,
+    'disabled_by': None,
+    'domain': 'button',
+    'entity_category': None,
+    'entity_id': 'button.thermia_genesis_reset_alarms',
+    'has_entity_name': True,
+    'hidden_by': None,
+    'icon': None,
+    'id': <ANY>,
+    'labels': set({
+    }),
+    'name': None,
+    'object_id_base': 'Reset alarms',
+    'options': dict({
+    }),
+    'original_device_class': None,
+    'original_icon': None,
+    'original_name': 'Reset alarms',
+    'platform': 'thermia_genesis',
+    'previous_unique_id': None,
+    'suggested_object_id': None,
+    'supported_features': 0,
+    'translation_key': 'reset_alarms',
+    'unique_id': '01JTHERMIAGENESIS000000000_reset_alarms',
+    'unit_of_measurement': None,
+  })
+# ---
+# name: test_entities[button][button.thermia_genesis_reset_alarms-state]
+  StateSnapshot({
+    'attributes': ReadOnlyDict({
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis Reset alarms',
+    }),
+    'context': <ANY>,
+    'entity_id': 'button.thermia_genesis_reset_alarms',
+    'last_changed': <ANY>,
+    'last_reported': <ANY>,
+    'last_updated': <ANY>,
+    'state': 'unknown',
   })
 # ---
 # name: test_entities[climate][climate.heating-entry]

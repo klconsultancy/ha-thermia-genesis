@@ -15,6 +15,7 @@ from .coordinator import ThermiaGenesisConfigEntry, ThermiaGenesisCoordinator
 
 PLATFORMS: list[Platform] = [
     Platform.BINARY_SENSOR,
+    Platform.BUTTON,
     Platform.CLIMATE,
     Platform.SELECT,
     Platform.SENSOR,
@@ -60,6 +61,7 @@ async def async_migrate_entry(hass: HomeAssistant, entry: ThermiaGenesisConfigEn
         [
             (Platform.SENSOR, "heat_comfort_wheel_setting"),
             (Platform.BINARY_SENSOR, "heat_pump_enable_heat"),
+            (Platform.BINARY_SENSOR, "heat_pump_reset_all_alarms"),
             (Platform.SENSOR, "status_operational_mode"),
         ],
     )
