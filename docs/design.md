@@ -56,7 +56,8 @@ entities.
   MAC would be the gateway's. So the config entry has no unique id.
 - A second entry for the same host and port is refused (`_async_abort_entries_match`).
 - Entity unique ids are `f"{entry_id}_{subsystem}_{field}"`, stable for the life of the
-  entry.
+  entry. An entity that stands for no single field has its own: `{entry_id}_alarm`,
+  `{entry_id}_reset_alarms`, `{entry_id}_<part>_climate`.
 
 ## Devices
 
@@ -159,8 +160,10 @@ entities.
 - Button "Reset alarms" (enabled, on the main device next to the alarm) writes on to
   `heat_pump.reset_all_alarms` (coil 3) and never off: the reference pump clears the coil
   itself within seconds (python-thermia-genesis errata, 2026-11-10). Whether a reset clears
-  an alarm whose cause is still there is not tested. It replaces the `reset_all_alarms` binary sensor ("Alarm
-  reset pending"). Like the climates it is unavailable only while the pump doesn't answer.
+  an alarm whose cause is still there is not tested. It has no entity category: resetting
+  is what a user does after the Alarm, not a setting of the pump. It reads nothing, so it
+  is unavailable only while the pump doesn't answer at all, not when one register space
+  fails. It replaces the `reset_all_alarms` binary sensor ("Alarm reset pending").
 - The heat pump unit's power output and consumed power (input 157/158) come in kW and are
   shown in W (`suggested_unit_of_measurement`), like the electric meter and most power
   sensors such as a P1 meter: Home Assistant's history draws one graph per unit. Power
