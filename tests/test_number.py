@@ -1,7 +1,7 @@
 """Numbers: the writable numeric settings, such as power consumption control."""
 
 from datetime import timedelta
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, Any
 
 import pytest
 from homeassistant.components.number.const import (
@@ -24,14 +24,18 @@ from homeassistant.const import (
 from homeassistant.exceptions import HomeAssistantError, ServiceValidationError
 from modbus_connection.exceptions import ServerDeviceBusyError, ServerDeviceFailureError
 from pytest_homeassistant_custom_component.common import MockConfigEntry, async_fire_time_changed
+from thermia_genesis.v17_1.heat import Heat
+from thermia_genesis.v17_1.heat_pump_unit import HeatPumpUnit
 
 from custom_components.thermia_genesis.const import CONF_UNIT_ID, DOMAIN
+from custom_components.thermia_genesis.entity import to_register
 
 if TYPE_CHECKING:
     from freezegun.api import FrozenDateTimeFactory
     from homeassistant.core import HomeAssistant, State
     from homeassistant.helpers import entity_registry as er
     from modbus_connection.mock import MockModbusUnit
+    from thermia_genesis.subsystem import Field
 
 MODE = "number.heat_pump_unit_power_consumption_control_mode"
 LIMIT = "number.heat_pump_unit_input_power_limit"
@@ -197,3 +201,21 @@ async def test_an_entry_from_before_the_numbers_drops_the_sensors_they_replace(
 
     for unique_id in replaced:
         assert entity_registry.async_get_entity_id("sensor", DOMAIN, unique_id) is None
+
+
+@pytest.mark.parametrize(
+    ("field", "value", "written"),
+    [
+        (HeatPumpUnit.power_consumption_control_mode, 1.0, 1),
+        (HeatPumpUnit.input_power_limit, 2.549, 2.5),
+        (Heat.comfort_wheel_setting, 21.111111, 21.11),
+    ],
+)
+def test_a_value_is_rounded_to_its_register(
+    field: Field[Any], value: float, written: float
+) -> None:
+    rounded = to_register(field, value)
+
+    assert rounded == written
+    # An integer register gets an int, not a float that happens to be whole.
+    assert type(rounded) is type(written)

@@ -125,9 +125,10 @@ entities.
   Like the library's consistency test, it lists the parts it holds complete; each part's
   pull request adds its part.
 - Each part declares its entities in its own module, `parts/<part>.py` (`SENSORS`,
-  `BINARY_SENSORS`, `SELECTS`), with the helpers of `descriptions.py` (`temperature`,
-  `setting`, `alarm`, `running`, `choice`, ...), so a part reads as one list;
-  `parts/__init__.py` registers each part once per platform. The field name is the `key` and the translation key.
+  `BINARY_SENSORS`, `SELECTS`, `NUMBERS`), with the helpers of `descriptions.py`
+  (`temperature`, `setting`, `alarm`, `running`, `choice`, `adjustable`, ...), so a part
+  reads as one list; `parts/__init__.py` registers each part once per platform. The field
+  name is the `key` and the translation key.
 - A diagnostic measurement (a count, a version, a point on the heat curve's x axis) and every
   setting have no state class, so they stay out of the long-term statistics; tests enforce
   that settings are diagnostic.
@@ -178,9 +179,11 @@ entities.
   that caps the pump on the capacity tariff or pushes surplus solar into it. 124 is a
   number, not a select: what 0–3 mean depends on the controller's power consumption
   control mode (SG-Ready or PL/LU), which an installer sets and Modbus can't read, so
-  options can't be named honestly (library errata). The README warns about it. Still to verify on the
-  reference pump: whether the limit covers the immersion heater, and whether it lapses
-  when the BMS stops writing.
+  options can't be named honestly (library errata). The README warns about it and lists
+  both meanings. Still to verify on the reference pump: whether the limit covers the
+  immersion heater, and whether it lapses when the BMS stops writing. A user can show the
+  limit in W; Home Assistant then passes unrounded kW (2549 W as 2.549), which the
+  rounding to the register's resolution also covers.
 - The heat pump unit's power output and consumed power (input 157/158) come in kW and are
   shown in W (`suggested_unit_of_measurement`), like the electric meter and most power
   sensors such as a P1 meter: Home Assistant's history draws one graph per unit. Power
