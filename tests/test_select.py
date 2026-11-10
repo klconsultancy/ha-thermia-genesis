@@ -14,6 +14,7 @@ from homeassistant.const import (
     SERVICE_SELECT_OPTION,
     STATE_UNAVAILABLE,
     STATE_UNKNOWN,
+    EntityCategory,
 )
 from homeassistant.exceptions import HomeAssistantError, ServiceValidationError
 from modbus_connection.exceptions import ServerDeviceBusyError, ServerDeviceFailureError
@@ -140,6 +141,8 @@ async def test_sits_on_the_main_device_and_is_enabled(
     assert entity.unique_id == f"{entry.entry_id}_status_operational_mode"
     assert entity.translation_key == "operational_mode"
     assert not entity.disabled
+    # Off is a tap away: kept off the generated dashboard (docs/design.md).
+    assert entity.entity_category is EntityCategory.CONFIG
 
 
 async def test_an_entry_from_before_the_select_drops_the_sensor_it_replaces(

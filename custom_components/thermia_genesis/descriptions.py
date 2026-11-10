@@ -247,10 +247,14 @@ def members(field: str, flags: type[IntFlag]) -> tuple[BinarySensor, ...]:
 
 
 def choice(key: str, *, enabled: bool = False) -> Select:
-    """Describe a writable enum setting, shown as its lowercase member name."""
+    """Describe a writable enum setting, shown as its lowercase member name.
+
+    Category config keeps it off the generated dashboard, where a mode such as Off would be
+    a tap away; it shows among the device's controls.
+    """
     return ThermiaGenesisSelectEntityDescription(
         key=key,
         translation_key=key,
         entity_registry_enabled_default=enabled,
-        entity_category=None if enabled else EntityCategory.CONFIG,
+        entity_category=EntityCategory.CONFIG,
     )

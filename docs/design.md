@@ -140,8 +140,9 @@ entities.
   - enums: `sensor` with device class `enum` and translated options; a writable enum is a
     `select` (`parts/<part>.py`, `SELECTS`, with `choice`) whose options are the members
     of the library's `MemberOf` validator, as lowercase names with translations. A test
-    holds every select to a writable field with a `MemberOf`. A select the dashboard needs
-    is enabled without a category; the rest are disabled with category `config`;
+    holds every select to a writable field with a `MemberOf`. A select has category
+    `config`, which keeps it off the generated dashboard, where the operational mode's Off
+    would be a tap away; the operational mode is enabled, the rest disabled;
   - flags: one `binary_sensor` per member;
   - holding registers (settings): `sensor` with entity category `diagnostic`. As the
     library declares a setting writable, it becomes a `number`, `select`, `switch` or part

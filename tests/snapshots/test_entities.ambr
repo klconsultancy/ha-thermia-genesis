@@ -4857,7 +4857,7 @@
     'device_id': <ANY>,
     'disabled_by': None,
     'domain': 'select',
-    'entity_category': None,
+    'entity_category': <EntityCategory.CONFIG: 'config'>,
     'entity_id': 'select.thermia_genesis_operational_mode',
     'has_entity_name': True,
     'hidden_by': None,
