@@ -89,3 +89,22 @@ async def test_sits_on_the_main_device(
     assert entity is not None
     assert entity.unique_id == f"{entry.entry_id}_reset_alarms"
     assert not entity.disabled
+
+
+async def test_an_entry_from_before_the_button_drops_the_sensor_it_replaces(
+    hass: HomeAssistant, unit: object, entity_registry: er.EntityRegistry
+) -> None:
+    del unit
+    entry = MockConfigEntry(
+        domain=DOMAIN,
+        title="Thermia Genesis",
+        data={CONF_HOST: "192.0.2.10", CONF_PORT: 502, CONF_UNIT_ID: 1},
+        minor_version=1,
+    )
+    entry.add_to_hass(hass)
+    unique_id = f"{entry.entry_id}_heat_pump_reset_all_alarms"
+    entity_registry.async_get_or_create("binary_sensor", DOMAIN, unique_id, config_entry=entry)
+
+    await setup(hass, entry)
+
+    assert entity_registry.async_get_entity_id("binary_sensor", DOMAIN, unique_id) is None
