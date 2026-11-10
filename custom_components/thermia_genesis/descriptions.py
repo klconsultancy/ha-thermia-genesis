@@ -92,13 +92,20 @@ type Select = ThermiaGenesisSelectEntityDescription
 class ThermiaGenesisNumberEntityDescription(
     ThermiaGenesisEntityDescription, NumberEntityDescription
 ):
-    """A number for a writable numeric field; its range and step come from the library."""
+    """A number for a writable numeric field; its range and step come from the library.
+
+    ``below`` names a field of the same part that the value must stay below, such as the
+    hot water start below its stop temperature.
+    """
+
+    below: str | None = None
 
 
 type Number = ThermiaGenesisNumberEntityDescription
 
 # The device class of a number, by its unit.
 NUMBER_CLASSES: dict[str, NumberDeviceClass] = {
+    "°C": NumberDeviceClass.TEMPERATURE,
     "kW": NumberDeviceClass.POWER,
 }
 
@@ -280,14 +287,26 @@ def choice(key: str, *, enabled: bool = False) -> Select:
     )
 
 
-def adjustable(key: str, unit: str | None = None) -> Number:
-    """Describe a writable numeric setting, disabled and among the device's settings."""
+def adjustable(
+    key: str,
+    unit: str | None = None,
+    *,
+    enabled: bool = False,
+    step: float | None = None,
+    below: str | None = None,
+) -> Number:
+    """Describe a writable numeric setting among the device's settings.
+
+    ``step`` is what the UI offers, a multiple of the register's resolution (the default).
+    """
     return ThermiaGenesisNumberEntityDescription(
         key=key,
         translation_key=key,
         native_unit_of_measurement=None if unit is None else UNITS[unit],
         device_class=None if unit is None else NUMBER_CLASSES.get(unit),
+        native_step=step,
         mode=NumberMode.BOX,
-        entity_registry_enabled_default=False,
+        below=below,
+        entity_registry_enabled_default=enabled,
         entity_category=EntityCategory.CONFIG,
     )

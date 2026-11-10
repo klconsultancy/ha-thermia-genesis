@@ -47,4 +47,5 @@ SELECTS: dict[str, tuple[Select, ...]] = {
 }
 NUMBERS: dict[str, tuple[Number, ...]] = {
     "heat_pump": heat_pump.NUMBERS,
+    "tap_water": tap_water.NUMBERS,
 }

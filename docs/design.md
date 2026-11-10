@@ -112,6 +112,10 @@ entities.
   Nothing retries a write.
 - A write that the pump took is a success even when the read-back fails; the entities then
   go unavailable like after any failed update, and the next poll shows the value.
+- `coordinator.latest(subsystem, field)` is a field's value as last written, else as last
+  read; the next update forgets what was written. A check across fields uses it (the hot
+  water start below its stop), since the read-back of a second write within the cooldown
+  comes up to 10 s later and the library keeps the old value until then.
 - Tests write to the mock unit only, never to a real pump.
 
 ## Entities
@@ -139,8 +143,10 @@ entities.
 - Platforms:
   - coils and discrete inputs: `binary_sensor`; alarms get device class `problem`;
   - writable numbers: `number` (`NUMBERS`, with `adjustable`), mode box, category
-    `config`, disabled; min and max from the library's `Between`, step its resolution, and a
-    value is rounded to that resolution before the write. A test holds every number to a
+    `config`, disabled unless the description says otherwise; min and max from the
+    library's `Between`, step its resolution or a multiple the description sets, and a
+    value is rounded to that resolution before the write. `below` names a field the value
+    must stay under, checked against `coordinator.latest`. A test holds every number to a
     writable field with a `Between` and the library's unit;
   - enums: `sensor` with device class `enum` and translated options; a writable enum is a
     `select` (`parts/<part>.py`, `SELECTS`, with `choice`) whose options are the members
@@ -167,6 +173,20 @@ entities.
   validates and writes the mode first. A writing platform has `PARALLEL_UPDATES = 1`. It
   is unavailable while the coils, the holding or the input registers fail, and replaces
   the `comfort_wheel_setting` sensor and the `enable_heat` binary sensor.
+- Water heater "Hot water" (`water_heater.hot_water`, enabled, on the hot water device,
+  named after it), as core heat pump integrations (nibe_heatpump, vicare, bsblan) show hot
+  water, not a climate: a climate is a room to voice assistants and thermostat cards. The
+  target temperature is the stop temperature (`tap_water.stop_temperature`, 35–60 °C from
+  the library, card step 0.5, rounded to the register); the start and stop show as the low
+  and high target, which a water heater can't set. The current temperature is the weighted
+  one (`tap_water.weighted_temperature`). Operation `heat_pump` or `off` (and turn on/off)
+  writes `heat_pump.enable_tap_water`; a `set_temperature` with an operation mode
+  validates and writes it first. A stop not above the start (as last written) is refused
+  (`start_not_below_stop`). The start temperature is a number on the same device
+  (`number.hot_water_start_temperature`, enabled, step 0.5, below the stop). It is
+  unavailable while the coils, the holding or the input registers fail. Together they
+  replace the tap water start and stop sensors and the `enable_tap_water` binary sensor;
+  the cooling's start and stop sensors stay.
 - Button "Reset alarms" (enabled, on the main device next to the alarm) writes on to
   `heat_pump.reset_all_alarms` (coil 3) and never off: the reference pump clears the coil
   itself within seconds (python-thermia-genesis errata, 2026-11-10). Whether a reset clears
@@ -215,12 +235,12 @@ entities.
   with device class `problem` of the parts the pump has, so an absent part's alarms don't
   count; they are all discrete inputs, so the alarm is unavailable while those fail to
   refresh.
-- Enabled by default: the heating climate, the measured temperatures of the heating
-  circuit (brine and condenser in and out, discharge pipe, outdoor, room), operational
-  mode (a select), running demand 1, compressor gear, speed, operating hours and whether
-  it runs, heat output and power consumption, the immersion heater step and whether the
-  external heater runs, the hot water top temperature, and the electric meter's phase
-  powers. The refrigerant circuit (liquid line, suction gas, dew and bubble points,
+- Enabled by default: the heating climate, the hot water heater and its start
+  temperature, the measured temperatures of the heating circuit (brine and condenser in
+  and out, discharge pipe, outdoor, room), operational mode (a select), running demand
+  1, compressor gear, speed, operating hours and whether it runs, heat output and power
+  consumption, the immersion heater step and whether the external heater runs, the hot
+  water top temperature, and the electric meter's phase powers. The refrigerant circuit (liquid line, suction gas, dew and bubble points,
   superheat, subcooling, pressures) is disabled by default. So are the heating system's
   supply and return line temperatures: a pump without system sensors reads them as unknown.
   A set point of an absent part (the buffer tank's) can read 0.0; it is disabled, so it

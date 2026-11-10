@@ -42,6 +42,8 @@ class ThermiaGenesisCoordinator(DataUpdateCoordinator[UpdateReport]):
         self.unit = unit
         self.pump = ThermiaGenesis(unit)
         self._failing: set[str] = set()
+        # What was written since the last read, by subsystem and field name.
+        self._written: dict[tuple[int, str], object] = {}
 
     @override
     async def _async_update_data(self) -> UpdateReport:
@@ -55,6 +57,7 @@ class ThermiaGenesisCoordinator(DataUpdateCoordinator[UpdateReport]):
                 translation_domain=DOMAIN, translation_key="no_register_space_answered"
             ) from ExceptionGroup("every register space failed", list(report.failed.values()))
         self._log_changes(report)
+        self._written.clear()
         return report
 
     async def async_write[T](self, subsystem: Subsystem, field: Field[T], value: T) -> None:
@@ -80,7 +83,19 @@ class ThermiaGenesisCoordinator(DataUpdateCoordinator[UpdateReport]):
                 translation_key="write_failed",
                 translation_placeholders={"error": f"{type(err).__name__}: {err}"},
             ) from err
+        self._written[id(subsystem), field.name] = value
         await self.async_request_refresh()
+
+    def latest[T](self, subsystem: Subsystem, field: Field[T]) -> T | None:
+        """``field``'s value as last written, or else as last read.
+
+        A write reads back only after the cooldown, so a check across fields (the hot water
+        start below its stop) would otherwise compare with a value the pump no longer has.
+        """
+        key = (id(subsystem), field.name)
+        if key in self._written:
+            return self._written[key]  # type: ignore[return-value]
+        return getattr(subsystem, field.name)  # type: ignore[no-any-return]
 
     def _log_changes(self, report: UpdateReport) -> None:
         """Log a register space when it starts failing and when it answers again."""
