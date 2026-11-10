@@ -48,6 +48,8 @@ entry: its entities and their history are kept.
   what you need.
 - A **Heating** climate: the room temperature, the comfort wheel as the target, and
   heating on or off.
+- A **Hot water** climate: the water temperature, the start and stop temperatures as the
+  target range, and hot water on or off.
 - The other settings show as diagnostic sensors until they can be written.
 - Entity names in English and Dutch.
 

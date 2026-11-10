@@ -48,16 +48,20 @@ async def async_migrate_entry(hass: HomeAssistant, entry: ThermiaGenesisConfigEn
     Home Assistant calls this only for an older version and refuses a newer one itself.
     Each step removes entities, which is safe to repeat, so the steps need no guard.
     """
-    # 1.2: the heating climate replaces the sensors of the fields it sets.
+    # The climates replace the sensors of the fields they set: 1.2 the heating, 1.3 the hot
+    # water.
     _async_remove_entities(
         hass,
         entry,
         [
             (Platform.SENSOR, "heat_comfort_wheel_setting"),
             (Platform.BINARY_SENSOR, "heat_pump_enable_heat"),
+            (Platform.SENSOR, "tap_water_start_temperature"),
+            (Platform.SENSOR, "tap_water_stop_temperature"),
+            (Platform.BINARY_SENSOR, "heat_pump_enable_tap_water"),
         ],
     )
-    hass.config_entries.async_update_entry(entry, minor_version=2)
+    hass.config_entries.async_update_entry(entry, minor_version=3)
     return True
 
 

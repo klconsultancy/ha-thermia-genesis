@@ -104,7 +104,6 @@ BINARY_SENSORS: tuple[BinarySensor, ...] = (
     enabled_setting("reset_all_alarms"),
     enabled_setting("enable_external_additional_heater"),
     enabled_setting("enable_flow_pressure_switch"),
-    enabled_setting("enable_tap_water"),
     enabled_setting("enable_brine_out_monitoring"),
     enabled_setting("enable_brine_pump_continuous_operation"),
     enabled_setting("enable_system_circulation_pump"),

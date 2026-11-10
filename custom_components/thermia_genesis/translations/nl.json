@@ -78,6 +78,9 @@
     },
     "write_failed": {
       "message": "De warmtepomp heeft de wijziging niet overgenomen: {error}"
+    },
+    "start_not_below_stop": {
+      "message": "De starttemperatuur ({start} °C) moet lager zijn dan de stoptemperatuur ({stop} °C)."
     }
   },
   "issues": {
@@ -231,9 +234,6 @@
       },
       "enable_system_circulation_pump": {
         "name": "Systeemcirculatiepomp ingeschakeld"
-      },
-      "enable_tap_water": {
-        "name": "Warm water ingeschakeld"
       },
       "enable_variable_speed_brine_pump": {
         "name": "Toerengeregelde brinepomp ingeschakeld"

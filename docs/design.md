@@ -142,7 +142,7 @@ entities.
     library declares a setting writable, it becomes a `number`, `select`, `switch` or part
     of a `climate` entity (milestone 0.3.0), and the old sensor goes. A config entry
     migration removes it: each change of the entities raises the entry's minor version
-    (1.2 for the heating climate), so it runs once per entry. Once in core, removing an
+    (1.2 for the heating climate, 1.3 for the hot water), so it runs once per entry. Once in core, removing an
     entity would need a deprecation period with a repair issue first.
 - Climate "Heating" (enabled, on the heating device, named after it): the room temperature
   (`heat_pump.room_temperature`), the comfort wheel as target (`heat.comfort_wheel_setting`)
@@ -156,6 +156,19 @@ entities.
   validates and writes the mode first. A writing platform has `PARALLEL_UPDATES = 1`. It
   is unavailable while the coils, the holding or the input registers fail, and replaces
   the `comfort_wheel_setting` sensor and the `enable_heat` binary sensor.
+- Climate "Hot water" (enabled, on the hot water device), the same way: the weighted
+  temperature (`tap_water.weighted_temperature`), the start and stop temperatures as the
+  target range (`tap_water.start_temperature`/`stop_temperature`, 35–60 °C) and hot water on
+  or off (`heat_pump.enable_tap_water`). The pump starts heating the water at the start and
+  stops at the stop, so a start not below the stop is refused (`start_not_below_stop`;
+  Home Assistant refuses a low above the high itself). The two writes are ordered so that
+  the start stays below the stop after each: the stop first when the new start reaches the
+  current stop. If the second write fails, the first stays. The action is `heating` while
+  a hot water or anti-legionella demand runs. It replaces the tap water start and stop
+  sensors and the `enable_tap_water` binary sensor; the cooling's start and stop sensors
+  stay.
+- Both climates share `ThermiaGenesisClimate`; an entity description names the part, the
+  enable coil, the set point that gives the range, and the demands that heat.
 - The heat pump unit's power output and consumed power (input 157/158) come in kW and are
   shown in W (`suggested_unit_of_measurement`), like the electric meter and most power
   sensors such as a P1 meter: Home Assistant's history draws one graph per unit. Power
@@ -187,7 +200,7 @@ entities.
   with device class `problem` of the parts the pump has, so an absent part's alarms don't
   count; they are all discrete inputs, so the alarm is unavailable while those fail to
   refresh.
-- Enabled by default: the heating climate, the measured temperatures of the heating
+- Enabled by default: the two climates, the measured temperatures of the heating
   circuit (brine and condenser in and out, discharge pipe, outdoor, room), operational
   mode, running demand 1, compressor gear, speed, operating hours and whether it runs,
   heat output and power consumption, the immersion heater step and whether the external

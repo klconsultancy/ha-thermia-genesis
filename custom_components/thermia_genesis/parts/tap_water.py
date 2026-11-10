@@ -20,8 +20,6 @@ SENSORS: tuple[Sensor, ...] = (
     operating_hours("operating_hours"),
     measurement("desired_gear", precision=0),
     # Settings
-    setting("start_temperature", "°C", precision=1),
-    setting("stop_temperature", "°C", precision=1),
     setting("maximum_allowed_gear"),
     setting("minimum_allowed_gear"),
 )

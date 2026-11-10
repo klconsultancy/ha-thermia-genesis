@@ -313,7 +313,7 @@ async def test_an_entry_from_before_the_climate_drops_the_sensors_it_replaces(
 
     await setup(hass, entry)
 
-    assert entry.minor_version == 2
+    assert entry.minor_version == 3
     for platform, unique_id in replaced:
         assert entity_registry.async_get_entity_id(platform, DOMAIN, unique_id) is None
     assert entity_registry.async_get(kept.entity_id) is not None

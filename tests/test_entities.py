@@ -80,6 +80,7 @@ async def test_enabled_by_default(
         "binary_sensor.heat_pump_unit_external_additional_heater",
         "binary_sensor.thermia_genesis_alarm",
         "climate.heating",
+        "climate.hot_water",
         "sensor.heat_pump_unit_brine_in_temperature",
         "sensor.heat_pump_unit_brine_out_temperature",
         "sensor.heat_pump_unit_compressor_gear",

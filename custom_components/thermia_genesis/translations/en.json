@@ -78,6 +78,9 @@
     },
     "write_failed": {
       "message": "The heat pump did not take the change: {error}"
+    },
+    "start_not_below_stop": {
+      "message": "The start temperature ({start} °C) must be below the stop temperature ({stop} °C)."
     }
   },
   "issues": {
@@ -231,9 +234,6 @@
       },
       "enable_system_circulation_pump": {
         "name": "System circulation pump enabled"
-      },
-      "enable_tap_water": {
-        "name": "Hot water enabled"
       },
       "enable_variable_speed_brine_pump": {
         "name": "Variable speed brine pump enabled"
