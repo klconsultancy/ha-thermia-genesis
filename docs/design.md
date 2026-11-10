@@ -137,6 +137,10 @@ entities.
   refuses, or an enum value the library doesn't know, reads as unknown.
 - Platforms:
   - coils and discrete inputs: `binary_sensor`; alarms get device class `problem`;
+  - writable numbers: `number` (`NUMBERS`, with `adjustable`), mode box, category
+    `config`, disabled; min and max from the library's `Between`, step its resolution, and a
+    value is rounded to that resolution before the write. A test holds every number to a
+    writable field with a `Between` and the library's unit;
   - enums: `sensor` with device class `enum` and translated options; a writable enum is a
     `select` (`parts/<part>.py`, `SELECTS`, with `choice`) whose options are the members
     of the library's `MemberOf` validator, as lowercase names with translations. A test
@@ -169,6 +173,14 @@ entities.
   is what a user does after the Alarm, not a setting of the pump. It reads nothing, so it
   is unavailable only while the pump doesn't answer at all, not when one register space
   fails. It replaces the `reset_all_alarms` binary sensor ("Alarm reset pending").
+- Power consumption control: `power_consumption_control_mode` (holding 124, 0–3) and
+  `input_power_limit` (holding 125, kW) are numbers, disabled by default, for an automation
+  that caps the pump on the capacity tariff or pushes surplus solar into it. 124 is a
+  number, not a select: what 0–3 mean depends on the controller's power consumption
+  control mode (SG-Ready or PL/LU), which an installer sets and Modbus can't read, so
+  options can't be named honestly (library errata). The README warns about it. Still to verify on the
+  reference pump: whether the limit covers the immersion heater, and whether it lapses
+  when the BMS stops writing.
 - The heat pump unit's power output and consumed power (input 157/158) come in kW and are
   shown in W (`suggested_unit_of_measurement`), like the electric meter and most power
   sensors such as a P1 meter: Home Assistant's history draws one graph per unit. Power

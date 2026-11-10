@@ -10,12 +10,12 @@ from homeassistant.components.sensor import SensorDeviceClass, SensorStateClass
 from homeassistant.const import EntityCategory, UnitOfPower
 from modbus_connection.mock import MockModbusConnection
 from thermia_genesis import ThermiaGenesis
-from thermia_genesis.subsystem import Field, MemberOf, Subsystem
+from thermia_genesis.subsystem import Between, Field, MemberOf, Subsystem
 
 from custom_components.thermia_genesis import button, climate
 from custom_components.thermia_genesis.const import PARTS
 from custom_components.thermia_genesis.descriptions import UNITS
-from custom_components.thermia_genesis.parts import BINARY_SENSORS, SELECTS, SENSORS
+from custom_components.thermia_genesis.parts import BINARY_SENSORS, NUMBERS, SELECTS, SENSORS
 
 # The parts whose every field has an entity; it grows with each part's pull request.
 COMPLETE = [
@@ -75,6 +75,7 @@ def described(part: str) -> list[str]:
         member = description.member
         names.append(name if member is None else f"{name}.{member.name}")
     names.extend(d.field or d.key for d in SELECTS.get(part, ()))
+    names.extend(d.field or d.key for d in NUMBERS.get(part, ()))
     # A climate or a button stands for the fields it writes (docs/design.md, Entities).
     names.extend(climate.FIELDS.get(part, ()))
     names.extend(button.FIELDS.get(part, ()))
@@ -241,3 +242,14 @@ def test_every_select_option_has_a_translation(part: str) -> None:
         assert isinstance(validator, MemberOf)
         states = selects[description.translation_key]["state"]
         assert {member.name.lower() for member in validator.enum} == set(states)
+
+
+@pytest.mark.parametrize("part", sorted(NUMBERS))
+def test_numbers_are_writable_ranges(part: str) -> None:
+    library = fields(part)
+    for description in NUMBERS[part]:
+        field = library[description.field or description.key]
+        assert field.writable, description.key
+        assert isinstance(field.validator, Between), description.key
+        unit = field.field.unit  # type: ignore[union-attr]
+        assert description.native_unit_of_measurement == UNITS.get(unit), description.key

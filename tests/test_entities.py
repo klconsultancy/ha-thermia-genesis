@@ -53,7 +53,14 @@ async def setup(hass: HomeAssistant, entry: MockConfigEntry) -> None:
 @pytest.mark.usefixtures("entity_registry_enabled_by_default")
 @pytest.mark.parametrize(
     "platform",
-    [Platform.SENSOR, Platform.BINARY_SENSOR, Platform.BUTTON, Platform.CLIMATE, Platform.SELECT],
+    [
+        Platform.SENSOR,
+        Platform.BINARY_SENSOR,
+        Platform.BUTTON,
+        Platform.CLIMATE,
+        Platform.NUMBER,
+        Platform.SELECT,
+    ],
 )
 async def test_entities(
     hass: HomeAssistant,

@@ -50,6 +50,14 @@ entry: its entities and their history are kept.
   heating on or off.
 - A **Reset alarms** button on the main device.
 - The **Operational mode** (off, standby, on auto) as a select on the main device.
+- **Power consumption control** (disabled by default): the control mode (0–3) and the
+  input power limit (kW) of the heat pump unit, for an automation that limits the pump's
+  power. **Read this before you enable them.** What the mode values mean depends on the
+  controller's power consumption control mode, which an installer sets and which can't be
+  read over Modbus. In SG-Ready mode, 2 means EVU and blocks the compressor, and 3 means
+  Boost. In PL/LU mode, 1 and 3 apply the limit, and 2 means Load-Up. On a pump without a
+  configured mode, the values probably do nothing. The active Smart Grid mode shows as a
+  sensor (input 82). A limit set too low stops the compressor.
 - The other settings show as diagnostic sensors until they can be written.
 - Entity names in English and Dutch.
 

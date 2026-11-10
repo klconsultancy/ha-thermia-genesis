@@ -38,6 +38,18 @@ class ThermiaGenesisEntityDescription(EntityDescription):
         return self.field or self.key
 
 
+def to_register(field: Field[Any], value: float) -> float:
+    """Round ``value`` to ``field``'s resolution, an int for a whole-number register.
+
+    Home Assistant converts units (°F to °C) and passes numbers as floats without rounding,
+    which the library refuses for a value finer than the register.
+    """
+    resolution = field.resolution or 1
+    if resolution >= 1:
+        return round(value / resolution) * int(resolution)
+    return round(round(value / resolution) * resolution, 6)
+
+
 def field_value(pump: ThermiaGenesis, part: str, field: str) -> Any:  # noqa: ANN401
     """Return the value of ``part``'s ``field``; its type depends on the field."""
     return getattr(getattr(pump, part), field)

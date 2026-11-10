@@ -5,7 +5,9 @@ from thermia_genesis.v17_1.enums import ImmersionHeater, OutdoorTemperatureSourc
 
 from ..descriptions import (
     BinarySensor,
+    Number,
     Sensor,
+    adjustable,
     alarm,
     enabled_setting,
     enumeration,
@@ -95,8 +97,13 @@ SENSORS: tuple[Sensor, ...] = (
     setting("bms_outdoor_temperature", "°C", precision=1),
     setting("maximum_phase_current", "A"),
     setting("compressor_current_hysteresis", "A"),
-    setting("power_consumption_control_mode"),
-    setting("input_power_limit", "kW", precision=1),
+)
+
+# Power consumption control (docs/design.md): what 124 means depends on a mode an installer
+# sets, which Modbus can't read, so it is a number, not a select.
+NUMBERS: tuple[Number, ...] = (
+    adjustable("power_consumption_control_mode"),
+    adjustable("input_power_limit", "kW"),
 )
 
 BINARY_SENSORS: tuple[BinarySensor, ...] = (

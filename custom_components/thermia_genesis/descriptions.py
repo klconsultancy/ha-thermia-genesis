@@ -5,6 +5,11 @@ from typing import TYPE_CHECKING
 
 from homeassistant.components.binary_sensor import BinarySensorEntityDescription
 from homeassistant.components.binary_sensor.const import BinarySensorDeviceClass
+from homeassistant.components.number import (
+    NumberDeviceClass,
+    NumberEntityDescription,
+    NumberMode,
+)
 from homeassistant.components.select import SelectEntityDescription
 from homeassistant.components.sensor import (
     SensorDeviceClass,
@@ -81,6 +86,21 @@ class ThermiaGenesisSelectEntityDescription(
 type Sensor = ThermiaGenesisSensorEntityDescription
 type BinarySensor = ThermiaGenesisBinarySensorEntityDescription
 type Select = ThermiaGenesisSelectEntityDescription
+
+
+@dataclass(frozen=True, kw_only=True)
+class ThermiaGenesisNumberEntityDescription(
+    ThermiaGenesisEntityDescription, NumberEntityDescription
+):
+    """A number for a writable numeric field; its range and step come from the library."""
+
+
+type Number = ThermiaGenesisNumberEntityDescription
+
+# The device class of a number, by its unit.
+NUMBER_CLASSES: dict[str, NumberDeviceClass] = {
+    "kW": NumberDeviceClass.POWER,
+}
 
 
 def measurement(  # noqa: PLR0913
@@ -256,5 +276,18 @@ def choice(key: str, *, enabled: bool = False) -> Select:
         key=key,
         translation_key=key,
         entity_registry_enabled_default=enabled,
+        entity_category=EntityCategory.CONFIG,
+    )
+
+
+def adjustable(key: str, unit: str | None = None) -> Number:
+    """Describe a writable numeric setting, disabled and among the device's settings."""
+    return ThermiaGenesisNumberEntityDescription(
+        key=key,
+        translation_key=key,
+        native_unit_of_measurement=None if unit is None else UNITS[unit],
+        device_class=None if unit is None else NUMBER_CLASSES.get(unit),
+        mode=NumberMode.BOX,
+        entity_registry_enabled_default=False,
         entity_category=EntityCategory.CONFIG,
     )

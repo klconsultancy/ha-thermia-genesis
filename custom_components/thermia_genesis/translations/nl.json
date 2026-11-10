@@ -409,6 +409,14 @@
         "name": "Alarmen resetten"
       }
     },
+    "number": {
+      "power_consumption_control_mode": {
+        "name": "Modus verbruiksregeling"
+      },
+      "input_power_limit": {
+        "name": "Limiet opgenomen vermogen"
+      }
+    },
     "select": {
       "operational_mode": {
         "name": "Bedrijfsmodus",
@@ -679,9 +687,6 @@
       "hysteresis_set_point": {
         "name": "Hysterese"
       },
-      "input_power_limit": {
-        "name": "Limiet opgenomen vermogen"
-      },
       "internal_immersion_heater_active_step": {
         "name": "Trap elektrisch element"
       },
@@ -795,9 +800,6 @@
       },
       "position": {
         "name": "Klepstand"
-      },
-      "power_consumption_control_mode": {
-        "name": "Modus verbruiksregeling"
       },
       "queued_demand_1": {
         "name": "Vraag in wachtrij 1",
