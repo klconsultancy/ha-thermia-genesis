@@ -118,7 +118,8 @@ entities.
   becomes one per member. A hand-written entity description per field (per member for
   flags) sets its translation key, device class, state class, entity category and whether
   it is enabled by default. A test requires that the descriptions cover every library field
-  exactly once (every member of a flags field) with a unit that matches the library's.
+  exactly once (every member of a flags field) with a unit that matches the library's; a
+  field a climate sets counts as that climate's (`climate.FIELDS`).
   Like the library's consistency test, it lists the parts it holds complete; each part's
   pull request adds its part.
 - Each part declares its entities in its own module, `parts/<part>.py` (`SENSORS`,
@@ -139,7 +140,18 @@ entities.
   - holding registers (settings): `sensor` with entity category `diagnostic`. As the
     library declares a setting writable, it becomes a `number`, `select`, `switch` or part
     of a `climate` entity (milestone 0.3.0), and a registry migration removes the old
-    sensor.
+    sensor. The migration runs at every setup, before the platforms, and removes the
+    sensor or binary sensor with the field's unique id.
+- Climate "Heating" (enabled, on the heating device, named after it): the room temperature
+  (`heat_pump.room_temperature`), the comfort wheel as target (`heat.comfort_wheel_setting`)
+  and heating on or off as HVAC mode `heat`/`off` (`heat_pump.enable_heat`). Its min and
+  max come from the library's `Between`, falling back to Home Assistant's defaults without
+  one. The card steps by 0.5 °C, a multiple of the register's 0.01, so the pump takes every
+  step; a finer value from an automation is written as is. The action is `heating` while
+  the running demands hold `HEAT`, `idle` otherwise, `off` while heating is disabled. A
+  `set_temperature` with an HVAC mode writes the mode first. It is unavailable while the
+  coils, the holding or the input registers fail, and replaces the `comfort_wheel_setting`
+  sensor and the `enable_heat` binary sensor.
 - The heat pump unit's power output and consumed power (input 157/158) come in kW and are
   shown in W (`suggested_unit_of_measurement`), like the electric meter and most power
   sensors such as a P1 meter: Home Assistant's history draws one graph per unit. Power
@@ -171,11 +183,11 @@ entities.
   with device class `problem` of the parts the pump has, so an absent part's alarms don't
   count; they are all discrete inputs, so the alarm is unavailable while those fail to
   refresh.
-- Enabled by default: the measured temperatures of the heating circuit (brine and
-  condenser in and out, discharge pipe, outdoor, room), operational mode, running demand 1,
-  compressor gear, speed, operating hours and whether it runs, heat output and power
-  consumption, the immersion heater step and whether the external heater runs, the hot
-  water top temperature, and the electric meter's phase powers. The refrigerant circuit
+- Enabled by default: the heating climate, the measured temperatures of the heating
+  circuit (brine and condenser in and out, discharge pipe, outdoor, room), operational
+  mode, running demand 1, compressor gear, speed, operating hours and whether it runs,
+  heat output and power consumption, the immersion heater step and whether the external
+  heater runs, the hot water top temperature, and the electric meter's phase powers. The refrigerant circuit
   (liquid line, suction gas, dew and bubble points, superheat, subcooling, pressures) is
   disabled by default. So are the heating system's supply and return line temperatures: a
   pump without system sensors reads them as unknown. A set point of an absent part (the

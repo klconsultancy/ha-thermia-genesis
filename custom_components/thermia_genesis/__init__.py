@@ -5,14 +5,16 @@ from homeassistant.const import CONF_HOST, CONF_PORT, Platform
 from homeassistant.core import HomeAssistant, callback
 from homeassistant.exceptions import ConfigEntryError, HomeAssistantError
 from homeassistant.helpers import device_registry as dr
+from homeassistant.helpers import entity_registry as er
 from homeassistant.helpers import issue_registry as ir
 from homeassistant.helpers.typing import UNDEFINED
 from modbus_connection import ModbusTcpParams
 
+from .climate import FIELDS as CLIMATE_FIELDS
 from .const import CONF_UNIT_ID, DOMAIN, MANUFACTURER, MODEL, PARTS
 from .coordinator import ThermiaGenesisConfigEntry, ThermiaGenesisCoordinator
 
-PLATFORMS: list[Platform] = [Platform.BINARY_SENSOR, Platform.SENSOR]
+PLATFORMS: list[Platform] = [Platform.BINARY_SENSOR, Platform.CLIMATE, Platform.SENSOR]
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ThermiaGenesisConfigEntry) -> bool:
@@ -35,6 +37,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ThermiaGenesisConfigEntr
     entry.runtime_data = coordinator
 
     _async_update_devices(hass, entry)
+    _async_remove_replaced_entities(hass, entry)
     _async_update_firmware_issue(hass, entry)
 
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
@@ -85,6 +88,18 @@ def _async_update_devices(hass: HomeAssistant, entry: ThermiaGenesisConfigEntry)
     for device in dr.async_entries_for_config_entry(registry, entry.entry_id):
         if device.id not in wanted:
             registry.async_update_device(device.id, remove_config_entry_id=entry.entry_id)
+
+
+@callback
+def _async_remove_replaced_entities(hass: HomeAssistant, entry: ThermiaGenesisConfigEntry) -> None:
+    """Remove the sensor of each field a climate now sets (docs/design.md, Entities)."""
+    registry = er.async_get(hass)
+    for part, fields in CLIMATE_FIELDS.items():
+        for field in fields:
+            for platform in (Platform.SENSOR, Platform.BINARY_SENSOR):
+                unique_id = f"{entry.entry_id}_{part}_{field}"
+                if entity_id := registry.async_get_entity_id(platform, DOMAIN, unique_id):
+                    registry.async_remove(entity_id)
 
 
 @callback
