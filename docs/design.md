@@ -184,8 +184,9 @@ entities.
   named after it), as core heat pump integrations (nibe_heatpump, vicare, bsblan) show hot
   water, not a climate: a climate is a room to voice assistants and thermostat cards. The
   target temperature is the stop temperature (`tap_water.stop_temperature`, 35–60 °C from
-  the library, card step 0.5, rounded to the register); the start and stop show as the low
-  and high target, which a water heater can't set. The current temperature is the weighted
+  the library, card step 0.5, rounded to the register). It has no low and high target:
+  with them the card draws a range whose low handle sets the one target a water heater has,
+  so moving the start moved the stop (0.3.0-rc.1). The current temperature is the weighted
   one (`tap_water.weighted_temperature`). Operation `heat_pump` or `off` (and turn on/off)
   writes `heat_pump.enable_tap_water`; a `set_temperature` with an operation mode
   validates and writes it first. A stop not above the start (as last written) is refused

@@ -95,8 +95,10 @@ async def test_heats_the_water_to_the_stop_temperature(
     assert heater.state == STATE_HEAT_PUMP
     assert heater.attributes["current_temperature"] == 48.9  # 48.86, shown in tenths
     assert heater.attributes[ATTR_TEMPERATURE] == 55.0
-    assert heater.attributes["target_temp_low"] == 45.0
-    assert heater.attributes["target_temp_high"] == 55.0
+    # One target only: with a low and a high, the card draws a range whose low handle
+    # sets the target, so moving the start would move the stop (docs/design.md).
+    assert heater.attributes["target_temp_low"] is None
+    assert heater.attributes["target_temp_high"] is None
     assert (heater.attributes["min_temp"], heater.attributes["max_temp"]) == (35, 60)
     assert heater.attributes["target_temp_step"] == 0.5
 
