@@ -130,3 +130,38 @@ async def test_write_succeeds_when_the_read_back_fails(
 
     assert pump_unit.holding[5] == 2150
     assert not coordinator.last_update_success
+
+
+async def test_latest_is_what_was_written_until_the_next_read(
+    hass: HomeAssistant,
+    coordinator: ThermiaGenesisCoordinator,
+    pump_unit: MockModbusUnit,
+    freezer: FrozenDateTimeFactory,
+) -> None:
+    heat = coordinator.pump.heat
+    assert coordinator.latest(heat, Heat.comfort_wheel_setting) == 22.0
+
+    await coordinator.async_write(heat, Heat.comfort_wheel_setting, 21.5)
+    await coordinator.async_write(heat, Heat.comfort_wheel_setting, 21.0)
+    # The read-back of the second write waits for the cooldown.
+    assert heat.comfort_wheel_setting == 21.5
+    assert coordinator.latest(heat, Heat.comfort_wheel_setting) == 21.0
+
+    pump_unit.holding[5] = 2050  # changed on the display in the meantime
+    freezer.tick(timedelta(seconds=REQUEST_REFRESH_DEFAULT_COOLDOWN))
+    async_fire_time_changed(hass)
+    await hass.async_block_till_done()
+
+    assert coordinator.latest(heat, Heat.comfort_wheel_setting) == 20.5
+
+
+async def test_latest_forgets_a_write_the_pump_failed(
+    coordinator: ThermiaGenesisCoordinator, pump_unit: MockModbusUnit
+) -> None:
+    heat = coordinator.pump.heat
+    pump_unit.fail_write(5, ServerDeviceFailureError(5))
+
+    with pytest.raises(HomeAssistantError):
+        await coordinator.async_write(heat, Heat.comfort_wheel_setting, 21.5)
+
+    assert coordinator.latest(heat, Heat.comfort_wheel_setting) == 22.0

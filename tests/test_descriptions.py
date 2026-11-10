@@ -12,7 +12,7 @@ from modbus_connection.mock import MockModbusConnection
 from thermia_genesis import ThermiaGenesis
 from thermia_genesis.subsystem import Between, Field, MemberOf, Subsystem
 
-from custom_components.thermia_genesis import button, climate
+from custom_components.thermia_genesis import button, climate, water_heater
 from custom_components.thermia_genesis.const import PARTS
 from custom_components.thermia_genesis.descriptions import UNITS
 from custom_components.thermia_genesis.parts import BINARY_SENSORS, NUMBERS, SELECTS, SENSORS
@@ -79,6 +79,7 @@ def described(part: str) -> list[str]:
     # A climate or a button stands for the fields it writes (docs/design.md, Entities).
     names.extend(climate.FIELDS.get(part, ()))
     names.extend(button.FIELDS.get(part, ()))
+    names.extend(water_heater.FIELDS.get(part, ()))
     return names
 
 

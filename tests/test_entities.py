@@ -60,6 +60,7 @@ async def setup(hass: HomeAssistant, entry: MockConfigEntry) -> None:
         Platform.CLIMATE,
         Platform.NUMBER,
         Platform.SELECT,
+        Platform.WATER_HEATER,
     ],
 )
 async def test_entities(
@@ -91,6 +92,7 @@ async def test_enabled_by_default(
         "binary_sensor.thermia_genesis_alarm",
         "button.thermia_genesis_reset_alarms",
         "climate.heating",
+        "number.hot_water_start_temperature",
         "select.thermia_genesis_operational_mode",
         "sensor.heat_pump_unit_brine_in_temperature",
         "sensor.heat_pump_unit_brine_out_temperature",
@@ -107,6 +109,7 @@ async def test_enabled_by_default(
         "sensor.heat_pump_unit_room_temperature",
         "sensor.hot_water_top_temperature",
         "sensor.thermia_genesis_running_demand_1",
+        "water_heater.hot_water",
     ]
 
 

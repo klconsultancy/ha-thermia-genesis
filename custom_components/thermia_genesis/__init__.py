@@ -20,6 +20,7 @@ PLATFORMS: list[Platform] = [
     Platform.NUMBER,
     Platform.SELECT,
     Platform.SENSOR,
+    Platform.WATER_HEATER,
 ]
 
 
@@ -66,6 +67,9 @@ async def async_migrate_entry(hass: HomeAssistant, entry: ThermiaGenesisConfigEn
             (Platform.SENSOR, "status_operational_mode"),
             (Platform.SENSOR, "heat_pump_power_consumption_control_mode"),
             (Platform.SENSOR, "heat_pump_input_power_limit"),
+            (Platform.SENSOR, "tap_water_start_temperature"),
+            (Platform.SENSOR, "tap_water_stop_temperature"),
+            (Platform.BINARY_SENSOR, "heat_pump_enable_tap_water"),
         ],
     )
     hass.config_entries.async_update_entry(entry, minor_version=2)

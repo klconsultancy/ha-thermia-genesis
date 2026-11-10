@@ -48,6 +48,9 @@ entry: its entities and their history are kept.
   what you need.
 - A **Heating** climate: the room temperature, the comfort wheel as the target, and
   heating on or off.
+- A **Hot water** water heater: the water temperature, the stop temperature as the
+  target, and hot water on or off. The start temperature is a number next to it, and must
+  stay below the stop: to raise both, set the stop first; to lower both, the start first.
 - A **Reset alarms** button on the main device.
 - The **Operational mode** (off, standby, on auto) as a select on the main device.
 - **Power consumption control** (disabled by default): the control mode (0–3) and the
