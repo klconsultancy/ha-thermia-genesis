@@ -142,8 +142,8 @@ entities.
     library declares a setting writable, it becomes a `number`, `select`, `switch` or part
     of a `climate` entity (milestone 0.3.0), and the old sensor goes. A config entry
     migration removes it: each change of the entities raises the entry's minor version
-    (1.2 for the heating climate, 1.3 for the hot water), so it runs once per entry. Once in core, removing an
-    entity would need a deprecation period with a repair issue first.
+    (1.2 for the heating climate, 1.3 for the hot water), so it runs once per entry. Once
+    in core, removing an entity would need a deprecation period with a repair issue first.
 - Climate "Heating" (enabled, on the heating device, named after it): the room temperature
   (`heat_pump.room_temperature`), the comfort wheel as target (`heat.comfort_wheel_setting`)
   and heating on or off as HVAC mode `heat`/`off` (`heat_pump.enable_heat`). Its min and
