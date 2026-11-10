@@ -56,7 +56,8 @@ entities.
   MAC would be the gateway's. So the config entry has no unique id.
 - A second entry for the same host and port is refused (`_async_abort_entries_match`).
 - Entity unique ids are `f"{entry_id}_{subsystem}_{field}"`, stable for the life of the
-  entry.
+  entry. An entity that stands for no single field has its own: `{entry_id}_alarm`,
+  `{entry_id}_reset_alarms`, `{entry_id}_<part>_climate`.
 
 ## Devices
 
@@ -124,9 +125,9 @@ entities.
   Like the library's consistency test, it lists the parts it holds complete; each part's
   pull request adds its part.
 - Each part declares its entities in its own module, `parts/<part>.py` (`SENSORS`,
-  `BINARY_SENSORS`), with the helpers of `descriptions.py` (`temperature`, `setting`,
-  `alarm`, `running`, ...), so a part reads as one list; `parts/__init__.py` registers
-  each part once for both platforms. The field name is the `key` and the translation key.
+  `BINARY_SENSORS`, `SELECTS`), with the helpers of `descriptions.py` (`temperature`,
+  `setting`, `alarm`, `running`, `choice`, ...), so a part reads as one list;
+  `parts/__init__.py` registers each part once per platform. The field name is the `key` and the translation key.
 - A diagnostic measurement (a count, a version, a point on the heat curve's x axis) and every
   setting have no state class, so they stay out of the long-term statistics; tests enforce
   that settings are diagnostic.
@@ -196,12 +197,12 @@ entities.
   mode (a select), running demand 1, compressor gear, speed, operating hours and whether
   it runs, heat output and power consumption, the immersion heater step and whether the
   external heater runs, the hot water top temperature, and the electric meter's phase
-  powers. The refrigerant circuit (liquid line, suction gas, dew and bubble points, superheat,
-  subcooling, pressures) is disabled by default. So are the heating system's supply and
-  return line temperatures: a pump without system sensors reads them as unknown. A set
-  point of an absent part (the buffer tank's) can read 0.0; it is disabled, so it stays
-  out of sight. Everything else (queued demands, PID values, flags, settings, individual alarms) is
-  disabled by default.
+  powers. The refrigerant circuit (liquid line, suction gas, dew and bubble points,
+  superheat, subcooling, pressures) is disabled by default. So are the heating system's
+  supply and return line temperatures: a pump without system sensors reads them as unknown.
+  A set point of an absent part (the buffer tank's) can read 0.0; it is disabled, so it
+  stays out of sight. Everything else (queued demands, PID values, flags, settings,
+  individual alarms) is disabled by default.
 - Coils and holding registers (settings) and the alarm inputs have entity category
   `diagnostic`; a setting has no state class, so it stays out of the long-term statistics.
 - Entity names come from translations (`has_entity_name`), in English and Dutch.
