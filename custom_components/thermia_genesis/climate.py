@@ -27,10 +27,10 @@ if TYPE_CHECKING:
 
     from .coordinator import ThermiaGenesisConfigEntry
 
-# Coordinator-based: the entities never update on their own.
-PARALLEL_UPDATES = 0
+# Coordinator-based, so no updates of its own; one write at a time.
+PARALLEL_UPDATES = 1
 
-# The fields each climate stands for, by part; their sensors are gone (docs/design.md).
+# The fields each climate stands for, by part; they have no sensor (docs/design.md).
 FIELDS: dict[str, set[str]] = {
     "heat": {"comfort_wheel_setting"},
     "heat_pump": {"enable_heat"},
@@ -102,21 +102,28 @@ class ThermiaGenesisHeating(CoordinatorEntity[ThermiaGenesisCoordinator], Climat
 
     @property
     def hvac_action(self) -> HVACAction | None:
-        """Heating while a heat demand runs; off while heating is disabled."""
+        """Defrosting or heating while that demand runs; off while heating is disabled."""
         if self.hvac_mode is HVACMode.OFF:
             return HVACAction.OFF
         demands = self.coordinator.pump.status.running_demands
         if demands is None:
             return None
+        if RunningDemands.DEFROST in demands:
+            return HVACAction.DEFROSTING
         return HVACAction.HEATING if RunningDemands.HEAT in demands else HVACAction.IDLE
 
     async def async_set_temperature(self, **kwargs: Any) -> None:  # noqa: ANN401
-        """Set the comfort wheel, and turn heating on or off first when asked to."""
+        """Set the comfort wheel, and turn heating on or off first when asked to.
+
+        The temperature is rounded to the register's resolution: Home Assistant converts
+        °F to °C without rounding.
+        """
         if (hvac_mode := kwargs.get(ATTR_HVAC_MODE)) is not None:
-            await self.async_set_hvac_mode(hvac_mode)
-        await self.coordinator.async_write(
-            self.coordinator.pump.heat, Heat.comfort_wheel_setting, float(kwargs[ATTR_TEMPERATURE])
-        )
+            await self.async_handle_set_hvac_mode_service(hvac_mode)
+        field = Heat.comfort_wheel_setting
+        resolution = field.resolution or 1
+        value = round(round(kwargs[ATTR_TEMPERATURE] / resolution) * resolution, 6)
+        await self.coordinator.async_write(self.coordinator.pump.heat, field, value)
 
     async def async_set_hvac_mode(self, hvac_mode: HVACMode) -> None:
         """Turn heating on or off."""

@@ -33,6 +33,7 @@ from homeassistant.const import (
     STATE_UNKNOWN,
 )
 from homeassistant.exceptions import ServiceValidationError
+from homeassistant.util.unit_system import US_CUSTOMARY_SYSTEM
 from modbus_connection.exceptions import IllegalDataAddressError, ServerDeviceBusyError
 from pytest_homeassistant_custom_component.common import MockConfigEntry, async_fire_time_changed
 from thermia_genesis.subsystem import Field
@@ -52,6 +53,7 @@ HEATING = "climate.heating"
 # Running demands (input 2) with the heat demand's bit, and with none but "no demand".
 HEATING_NOW = 1 << 3
 NO_DEMAND = 1 << 10
+DEFROSTING_NOW = 1 << 1
 
 
 @pytest.fixture
@@ -243,9 +245,62 @@ async def test_is_unavailable_while_a_register_space_it_reads_fails(
     assert climate(hass).state == STATE_UNAVAILABLE
 
 
-async def test_replaces_the_sensors_of_the_fields_it_sets(
-    hass: HomeAssistant, entry: MockConfigEntry, entity_registry: er.EntityRegistry
+async def test_refuses_an_hvac_mode_it_lacks_with_a_temperature(
+    hass: HomeAssistant, entry: MockConfigEntry, pump_unit: MockModbusUnit
 ) -> None:
+    await setup(hass, entry)
+
+    with pytest.raises(ServiceValidationError):
+        await hass.services.async_call(
+            CLIMATE_DOMAIN,
+            SERVICE_SET_TEMPERATURE,
+            {ATTR_ENTITY_ID: HEATING, ATTR_TEMPERATURE: 21.0, ATTR_HVAC_MODE: HVACMode.COOL},
+            blocking=True,
+        )
+
+    assert pump_unit.coil[9] is True
+    assert pump_unit.holding[5] == 2200
+
+
+async def test_rounds_a_temperature_to_the_register(
+    hass: HomeAssistant, entry: MockConfigEntry, pump_unit: MockModbusUnit
+) -> None:
+    hass.config.units = US_CUSTOMARY_SYSTEM
+    await setup(hass, entry)
+
+    # 70 °F is 21.111... °C.
+    await hass.services.async_call(
+        CLIMATE_DOMAIN,
+        SERVICE_SET_TEMPERATURE,
+        {ATTR_ENTITY_ID: HEATING, ATTR_TEMPERATURE: 70},
+        blocking=True,
+    )
+
+    assert pump_unit.holding[5] == 2111
+
+
+async def test_defrosts_while_a_defrost_demand_runs(
+    hass: HomeAssistant, entry: MockConfigEntry, pump_unit: MockModbusUnit
+) -> None:
+    pump_unit.input[2] = DEFROSTING_NOW | HEATING_NOW
+
+    await setup(hass, entry)
+
+    assert climate(hass).attributes[ATTR_HVAC_ACTION] == HVACAction.DEFROSTING
+
+
+async def test_an_entry_from_before_the_climate_drops_the_sensors_it_replaces(
+    hass: HomeAssistant, unit: MagicMock, entity_registry: er.EntityRegistry
+) -> None:
+    del unit
+    entry = MockConfigEntry(
+        domain=DOMAIN,
+        title="Thermia Genesis",
+        data={CONF_HOST: "192.0.2.10", CONF_PORT: 502, CONF_UNIT_ID: 1},
+        version=1,
+        minor_version=1,
+    )
+    entry.add_to_hass(hass)
     replaced = [
         ("sensor", f"{entry.entry_id}_heat_comfort_wheel_setting"),
         ("binary_sensor", f"{entry.entry_id}_heat_pump_enable_heat"),
@@ -258,6 +313,7 @@ async def test_replaces_the_sensors_of_the_fields_it_sets(
 
     await setup(hass, entry)
 
+    assert entry.minor_version == 2
     for platform, unique_id in replaced:
         assert entity_registry.async_get_entity_id(platform, DOMAIN, unique_id) is None
     assert entity_registry.async_get(kept.entity_id) is not None

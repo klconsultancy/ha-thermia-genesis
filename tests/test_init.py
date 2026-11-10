@@ -6,6 +6,7 @@ from homeassistant.config_entries import ConfigEntryState
 from homeassistant.const import CONF_HOST, CONF_PORT
 from homeassistant.exceptions import HomeAssistantError
 from homeassistant.helpers import device_registry as dr
+from homeassistant.helpers import entity_registry as er
 from homeassistant.helpers import issue_registry as ir
 from modbus_connection import ModbusTcpParams
 from modbus_connection.exceptions import (
@@ -298,3 +299,39 @@ async def test_removing_the_entry_removes_its_repair_issue(
     await hass.config_entries.async_remove(entry.entry_id)
 
     assert not ir.async_get(hass).issues
+
+
+@pytest.mark.usefixtures("unit")
+async def test_an_entry_from_a_newer_version_is_not_set_up(hass: HomeAssistant) -> None:
+    entry = MockConfigEntry(
+        domain=DOMAIN,
+        title="Thermia Genesis",
+        data={CONF_HOST: "192.0.2.10", CONF_PORT: 502, CONF_UNIT_ID: 1},
+        version=2,
+    )
+    entry.add_to_hass(hass)
+
+    await setup(hass, entry)
+
+    assert entry.state is ConfigEntryState.MIGRATION_ERROR
+
+
+@pytest.mark.usefixtures("unit")
+async def test_a_current_entry_keeps_its_entities(
+    hass: HomeAssistant, entity_registry: er.EntityRegistry
+) -> None:
+    entry = MockConfigEntry(
+        domain=DOMAIN,
+        title="Thermia Genesis",
+        data={CONF_HOST: "192.0.2.10", CONF_PORT: 502, CONF_UNIT_ID: 1},
+        minor_version=2,
+    )
+    entry.add_to_hass(hass)
+    # Not one of the integration's own entities; a current entry migrates nothing.
+    other = entity_registry.async_get_or_create(
+        "sensor", DOMAIN, f"{entry.entry_id}_heat_comfort_wheel_setting", config_entry=entry
+    )
+
+    await setup(hass, entry)
+
+    assert entity_registry.async_get(other.entity_id) is not None
