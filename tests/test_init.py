@@ -324,7 +324,7 @@ async def test_a_current_entry_keeps_its_entities(
         domain=DOMAIN,
         title="Thermia Genesis",
         data={CONF_HOST: "192.0.2.10", CONF_PORT: 502, CONF_UNIT_ID: 1},
-        minor_version=2,
+        minor_version=3,
     )
     entry.add_to_hass(hass)
     # Not one of the integration's own entities; a current entry migrates nothing.

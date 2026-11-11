@@ -4719,7 +4719,7 @@
     'state': 'unknown',
   })
 # ---
-# name: test_entities[climate][climate.heating-entry]
+# name: test_entities[climate][climate.thermia_genesis-entry]
   EntityRegistryEntrySnapshot({
     'aliases': list([
       None,
@@ -4741,7 +4741,7 @@
     'disabled_by': None,
     'domain': 'climate',
     'entity_category': None,
-    'entity_id': 'climate.heating',
+    'entity_id': 'climate.thermia_genesis',
     'has_entity_name': True,
     'hidden_by': None,
     'icon': None,
@@ -4760,15 +4760,15 @@
     'suggested_object_id': None,
     'supported_features': <ClimateEntityFeature: 385>,
     'translation_key': None,
-    'unique_id': '01JTHERMIAGENESIS000000000_heat_climate',
+    'unique_id': '01JTHERMIAGENESIS000000000_climate',
     'unit_of_measurement': None,
   })
 # ---
-# name: test_entities[climate][climate.heating-state]
+# name: test_entities[climate][climate.thermia_genesis-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
       <ClimateEntityStateAttribute.CURRENT_TEMPERATURE: 'current_temperature'>: 22.8,
-      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Heating',
+      <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Thermia Genesis',
       <ClimateEntityStateAttribute.HVAC_ACTION: 'hvac_action'>: <HVACAction.IDLE: 'idle'>,
       <ClimateEntityCapabilityAttribute.HVAC_MODES: 'hvac_modes'>: list([
         <HVACMode.OFF: 'off'>,
@@ -4781,7 +4781,7 @@
       <ClimateEntityStateAttribute.TARGET_TEMPERATURE: 'temperature'>: 22.0,
     }),
     'context': <ANY>,
-    'entity_id': 'climate.heating',
+    'entity_id': 'climate.thermia_genesis',
     'last_changed': <ANY>,
     'last_reported': <ANY>,
     'last_updated': <ANY>,

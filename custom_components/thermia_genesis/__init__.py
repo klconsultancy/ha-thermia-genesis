@@ -56,7 +56,8 @@ async def async_migrate_entry(hass: HomeAssistant, entry: ThermiaGenesisConfigEn
     Home Assistant calls this only for an older version and refuses a newer one itself.
     Each step removes entities, which is safe to repeat, so the steps need no guard.
     """
-    # 1.2 (0.3.0): the writable entities replace the sensors of the fields they write.
+    # 1.2 and 1.3 (0.3.0): the writable entities replace the sensors of the fields they
+    # write (1.2), and the climate moved to the main device (1.3).
     _async_remove_entities(
         hass,
         entry,
@@ -70,9 +71,21 @@ async def async_migrate_entry(hass: HomeAssistant, entry: ThermiaGenesisConfigEn
             (Platform.SENSOR, "tap_water_start_temperature"),
             (Platform.SENSOR, "tap_water_stop_temperature"),
             (Platform.BINARY_SENSOR, "heat_pump_enable_tap_water"),
+            # 1.3: the climate of 0.3.0-rc.1, on the heating device; now on the main one.
+            (Platform.CLIMATE, "heat_climate"),
         ],
     )
-    hass.config_entries.async_update_entry(entry, minor_version=2)
+    # 1.3: the demands now enabled by default, where the integration had disabled them.
+    _async_enable_entities(
+        hass,
+        entry,
+        [
+            (Platform.BINARY_SENSOR, "status_running_demands_heat"),
+            (Platform.BINARY_SENSOR, "status_running_demands_hot_water"),
+            (Platform.BINARY_SENSOR, "status_running_demands_anti_legionella"),
+        ],
+    )
+    hass.config_entries.async_update_entry(entry, minor_version=3)
     return True
 
 
@@ -86,6 +99,22 @@ def _async_remove_entities(
         unique_id = f"{entry.entry_id}_{key}"
         if entity_id := registry.async_get_entity_id(platform, DOMAIN, unique_id):
             registry.async_remove(entity_id)
+
+
+@callback
+def _async_enable_entities(
+    hass: HomeAssistant, entry: ThermiaGenesisConfigEntry, entities: list[tuple[Platform, str]]
+) -> None:
+    """Enable ``entry``'s entities that the integration disabled; a user's choice stays."""
+    registry = er.async_get(hass)
+    for platform, key in entities:
+        unique_id = f"{entry.entry_id}_{key}"
+        entity_id = registry.async_get_entity_id(platform, DOMAIN, unique_id)
+        if entity_id is None:
+            continue
+        entity = registry.async_get(entity_id)
+        if entity is not None and entity.disabled_by is er.RegistryEntryDisabler.INTEGRATION:
+            registry.async_update_entity(entity_id, disabled_by=None)
 
 
 async def async_unload_entry(hass: HomeAssistant, entry: ThermiaGenesisConfigEntry) -> bool:

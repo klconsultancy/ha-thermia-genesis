@@ -90,8 +90,11 @@ async def test_enabled_by_default(
         "binary_sensor.heat_pump_unit_compressor",
         "binary_sensor.heat_pump_unit_external_additional_heater",
         "binary_sensor.thermia_genesis_alarm",
+        "binary_sensor.thermia_genesis_running_demand_anti_legionella",
+        "binary_sensor.thermia_genesis_running_demand_heating",
+        "binary_sensor.thermia_genesis_running_demand_hot_water",
         "button.thermia_genesis_reset_alarms",
-        "climate.heating",
+        "climate.thermia_genesis",
         "number.hot_water_reheat_below",
         "select.thermia_genesis_operational_mode",
         "sensor.heat_pump_unit_brine_in_temperature",
@@ -220,3 +223,36 @@ async def test_an_optional_part_gets_its_entities(
     assert device is not None
     entities = er.async_entries_for_device(entity_registry, device.id)
     assert {entity.entity_id: state(hass, entity.entity_id) for entity in entities} == snapshot
+
+
+async def test_an_older_entry_enables_the_demands_the_integration_had_disabled(
+    hass: HomeAssistant, unit: MagicMock, entity_registry: er.EntityRegistry
+) -> None:
+    del unit
+    entry = MockConfigEntry(
+        domain=DOMAIN,
+        title="Thermia Genesis",
+        data={CONF_HOST: "192.0.2.10", CONF_PORT: 502, CONF_UNIT_ID: 1},
+        minor_version=2,
+    )
+    entry.add_to_hass(hass)
+
+    def demand(member: str, disabled_by: er.RegistryEntryDisabler) -> str:
+        return entity_registry.async_get_or_create(
+            "binary_sensor",
+            DOMAIN,
+            f"{entry.entry_id}_status_running_demands_{member}",
+            config_entry=entry,
+            disabled_by=disabled_by,
+        ).entity_id
+
+    by_integration = demand("hot_water", er.RegistryEntryDisabler.INTEGRATION)
+    by_user = demand("heat", er.RegistryEntryDisabler.USER)
+    other = demand("defrost", er.RegistryEntryDisabler.INTEGRATION)
+
+    await setup(hass, entry)
+
+    assert entity_registry.async_get(by_integration).disabled_by is None  # type: ignore[union-attr]
+    # The user's choice stays, and so do the members that stay disabled.
+    assert entity_registry.async_get(by_user).disabled_by is er.RegistryEntryDisabler.USER  # type: ignore[union-attr]
+    assert entity_registry.async_get(other).disabled_by is er.RegistryEntryDisabler.INTEGRATION  # type: ignore[union-attr]

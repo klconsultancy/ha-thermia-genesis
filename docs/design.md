@@ -57,7 +57,7 @@ entities.
 - A second entry for the same host and port is refused (`_async_abort_entries_match`).
 - Entity unique ids are `f"{entry_id}_{subsystem}_{field}"`, stable for the life of the
   entry. An entity that stands for no single field has its own: `{entry_id}_alarm`,
-  `{entry_id}_reset_alarms`, `{entry_id}_<part>_climate`.
+  `{entry_id}_reset_alarms`, `{entry_id}_climate`, `{entry_id}_tap_water_water_heater`.
 
 ## Devices
 
@@ -166,9 +166,16 @@ entities.
     library declares a setting writable, it becomes a `number`, `select`, `switch` or part
     of a `climate` entity (milestone 0.3.0), and the old sensor goes. A config entry
     migration removes it: each release that removes entities raises the entry's minor
-    version, so it runs once per entry; 1.2 holds every removal of 0.3.0. Once in core,
+    version, so it runs once per entry; 1.2 and 1.3 hold the removals of 0.3.0 (1.3 the
+    climate of 0.3.0-rc.1, which sat on the heating device). Every step runs again from
+    any older version, which is safe since removing is. Once in core,
     removing an entity would need a deprecation period with a repair issue first.
-- Climate "Heating" (enabled, on the heating device, named after it): the room temperature
+- One climate for the house (enabled, on the pump's main device, named after it:
+  `climate.thermia_genesis`, unique id `{entry_id}_climate`). A climate is a zone, and the
+  pump heats and cools the same rooms, switching by itself: passive cooling (coil 33) is
+  to join as HVAC modes `cool` and `heat_cool` once the library writes it
+  (python-thermia-genesis#70) and the meaning of the cooling start and stop temperatures
+  (holding 105/106) is verified; until then it offers `heat` and `off`. It shows the room temperature
   (`heat_pump.room_temperature`), the comfort wheel as target (`heat.comfort_wheel_setting`)
   and heating on or off as HVAC mode `heat`/`off` (`heat_pump.enable_heat`). Its min and
   max come from the library's `Between`, falling back to Home Assistant's defaults without
@@ -258,8 +265,13 @@ entities.
   disabled by default. So are the heating system's supply and return line temperatures: a
   pump without system sensors reads them as unknown.
   A set point of an absent part (the buffer tank's) can read 0.0; it is disabled, so it
-  stays out of sight. Everything else (queued demands, PID values, flags, settings,
-  individual alarms) is disabled by default.
+  stays out of sight. Of the running demands, heating, hot water and anti-legionella are
+  enabled: when the pump heats the house or the water, which a water heater can't show
+  (it has no action, unlike a climate), and when it runs an anti-legionella cycle. The
+  1.3 migration enables them on an older entry where the integration had disabled them,
+  never where the user did; enabled-by-default only reaches new registry entries.
+  Everything else (queued demands, PID values, the other flags, settings, individual
+  alarms) is disabled by default.
 - Coils and holding registers (settings) and the alarm inputs have entity category
   `diagnostic`; a setting has no state class, so it stays out of the long-term statistics.
 - Entity names come from translations (`has_entity_name`), in English and Dutch.

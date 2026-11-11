@@ -33,6 +33,7 @@ from homeassistant.const import (
     STATE_UNKNOWN,
 )
 from homeassistant.exceptions import ServiceValidationError
+from homeassistant.helpers import device_registry as dr
 from homeassistant.util.unit_system import US_CUSTOMARY_SYSTEM
 from modbus_connection.exceptions import IllegalDataAddressError, ServerDeviceBusyError
 from pytest_homeassistant_custom_component.common import MockConfigEntry, async_fire_time_changed
@@ -48,7 +49,7 @@ if TYPE_CHECKING:
     from homeassistant.helpers import entity_registry as er
     from modbus_connection.mock import MockModbusUnit
 
-HEATING = "climate.heating"
+HEATING = "climate.thermia_genesis"
 
 # Running demands (input 2) with the heat demand's bit, and with none but "no demand".
 HEATING_NOW = 1 << 3
@@ -313,7 +314,41 @@ async def test_an_entry_from_before_the_climate_drops_the_sensors_it_replaces(
 
     await setup(hass, entry)
 
-    assert entry.minor_version == 2
+    assert entry.minor_version == 3
     for platform, unique_id in replaced:
         assert entity_registry.async_get_entity_id(platform, DOMAIN, unique_id) is None
     assert entity_registry.async_get(kept.entity_id) is not None
+
+
+async def test_sits_on_the_main_device_so_cooling_can_join(
+    hass: HomeAssistant, entry: MockConfigEntry, entity_registry: er.EntityRegistry
+) -> None:
+    await setup(hass, entry)
+
+    entity = entity_registry.async_get(HEATING)
+    assert entity is not None
+    assert entity.unique_id == f"{entry.entry_id}_climate"
+    device = dr.async_get(hass).async_get(entity.device_id)  # type: ignore[arg-type]
+    assert device is not None
+    assert device.identifiers == {(DOMAIN, entry.entry_id)}
+
+
+async def test_an_entry_from_the_first_release_candidate_drops_the_heating_climate(
+    hass: HomeAssistant, unit: MagicMock, entity_registry: er.EntityRegistry
+) -> None:
+    del unit
+    entry = MockConfigEntry(
+        domain=DOMAIN,
+        title="Thermia Genesis",
+        data={CONF_HOST: "192.0.2.10", CONF_PORT: 502, CONF_UNIT_ID: 1},
+        minor_version=2,
+    )
+    entry.add_to_hass(hass)
+    unique_id = f"{entry.entry_id}_heat_climate"
+    entity_registry.async_get_or_create("climate", DOMAIN, unique_id, config_entry=entry)
+
+    await setup(hass, entry)
+
+    assert entity_registry.async_get_entity_id("climate", DOMAIN, unique_id) is None
+    assert entry.minor_version == 3
+    assert hass.states.get(HEATING) is not None

@@ -46,8 +46,8 @@ entry: its entities and their history are kept.
   temperatures, the compressor, the heaters and the operational mode. The rest (settings,
   individual alarms, the refrigerant circuit, the energy statistics) is disabled; enable
   what you need.
-- A **Heating** climate: the room temperature, the comfort wheel as the target, and
-  heating on or off.
+- A climate on the main device: the room temperature, the comfort wheel as the target,
+  and heating on or off. Cooling is to join it as HVAC modes later.
 - A **Hot water** water heater: the temperature at the top of the tank (what the tap
   gives), the stop temperature as the target, and hot water on or off. **Reheat below**
   is a number next to it: the pump heats the water again once it drops below it. It must
