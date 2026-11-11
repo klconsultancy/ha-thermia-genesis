@@ -49,10 +49,11 @@ async def async_setup_entry(
 
 
 class ThermiaGenesisHotWater(CoordinatorEntity[ThermiaGenesisCoordinator], WaterHeaterEntity):
-    """The hot water: heated from the start temperature (a number) up to the stop temperature.
+    """The hot water: reheated below a number, "Reheat below", up to the stop temperature.
 
-    The target is the stop temperature. It has no low and high target: the card would draw
-    them as a range whose low handle sets the one target a water heater has.
+    The target is the stop temperature. It has no low and high target: they read as a range,
+    but a water heater sets only its one target, so on 0.3.0-rc.1 changing the low value
+    set the stop.
     """
 
     _attr_has_entity_name = True

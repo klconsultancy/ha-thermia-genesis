@@ -185,8 +185,8 @@ entities.
   water, not a climate: a climate is a room to voice assistants and thermostat cards. The
   target temperature is the stop temperature (`tap_water.stop_temperature`, 35–60 °C from
   the library, card step 0.5, rounded to the register). It has no low and high target:
-  with them the card draws a range whose low handle sets the one target a water heater has,
-  so moving the start moved the stop (0.3.0-rc.1). The current temperature is the top one
+  they read as a range (the stock frontend shows them as "45 – 55 °C"), but a water heater
+  sets only its one target, so on 0.3.0-rc.1 changing the low value set the stop. The current temperature is the top one
   (`tap_water.top_temperature`), what the tap gives, so the top temperature sensor is
   disabled; the lower and weighted ones are too. At rest the three lie within 1 K; while
   water is drawn the lower and weighted ones drop first. Which one the pump starts on is

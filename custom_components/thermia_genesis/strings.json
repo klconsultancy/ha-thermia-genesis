@@ -80,7 +80,7 @@
       "message": "The heat pump did not take the change: {error}"
     },
     "start_not_below_stop": {
-      "message": "The start temperature ({start} °C) must be below the stop temperature ({stop} °C)."
+      "message": "Reheat below ({start} °C) must be lower than the hot water target temperature ({stop} °C)."
     }
   },
   "issues": {
