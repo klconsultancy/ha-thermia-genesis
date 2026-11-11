@@ -24,7 +24,7 @@ dev = [
 ]
 
 [tool.uv]
-required-version = "==0.13.5"
+required-version = "==0.13.7"
 # Not a Python package: Home Assistant loads custom_components/ from its config directory.
 package = false
 # homeassistant pins Pillow 12.3.0, which has open advisories. This environment only runs the
