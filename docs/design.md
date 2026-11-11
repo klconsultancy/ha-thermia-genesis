@@ -186,12 +186,17 @@ entities.
   target temperature is the stop temperature (`tap_water.stop_temperature`, 35–60 °C from
   the library, card step 0.5, rounded to the register). It has no low and high target:
   with them the card draws a range whose low handle sets the one target a water heater has,
-  so moving the start moved the stop (0.3.0-rc.1). The current temperature is the weighted
-  one (`tap_water.weighted_temperature`). Operation `heat_pump` or `off` (and turn on/off)
+  so moving the start moved the stop (0.3.0-rc.1). The current temperature is the top one
+  (`tap_water.top_temperature`), what the tap gives, so the top temperature sensor is
+  disabled; the lower and weighted ones are too. At rest the three lie within 1 K; while
+  water is drawn the lower and weighted ones drop first. Which one the pump starts on is
+  not documented: on 2026-11-10 the weighted one read 44.8 °C, below the start of 45 °C,
+  without a hot water demand. Operation `heat_pump` or `off` (and turn on/off)
   writes `heat_pump.enable_tap_water`; a `set_temperature` with an operation mode
   validates and writes it first. A stop not above the start (as last written) is refused
-  (`start_not_below_stop`). The start temperature is a number on the same device
-  (`number.hot_water_start_temperature`, enabled, step 0.5, below the stop). It is
+  (`start_not_below_stop`). The start temperature is a number on the same device, named
+  "Reheat below" ("Opwarmen onder"): the pump heats the water again once it drops below
+  it (`number.hot_water_reheat_below`, enabled, step 0.5, below the stop). It is
   unavailable while the coils, the holding or the input registers fail. Together they
   replace the tap water start and stop sensors and the `enable_tap_water` binary sensor;
   the cooling's start and stop sensors stay.
@@ -243,12 +248,12 @@ entities.
   with device class `problem` of the parts the pump has, so an absent part's alarms don't
   count; they are all discrete inputs, so the alarm is unavailable while those fail to
   refresh.
-- Enabled by default: the heating climate, the hot water heater and its start
+- Enabled by default: the climate, the hot water heater and its reheat-below
   temperature, the measured temperatures of the heating circuit (brine and condenser in
   and out, discharge pipe, outdoor, room), operational mode (a select), running demand
   1, compressor gear, speed, operating hours and whether it runs, heat output and power
-  consumption, the immersion heater step and whether the external heater runs, the hot
-  water top temperature, and the electric meter's phase powers. The refrigerant circuit
+  consumption, the immersion heater step and whether the external heater runs, and the
+  electric meter's phase powers. The refrigerant circuit
   (liquid line, suction gas, dew and bubble points, superheat, subcooling, pressures) is
   disabled by default. So are the heating system's supply and return line temperatures: a
   pump without system sensors reads them as unknown.

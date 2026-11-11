@@ -417,7 +417,7 @@
         "name": "Power consumption control mode"
       },
       "start_temperature": {
-        "name": "Start temperature"
+        "name": "Reheat below"
       }
     },
     "select": {

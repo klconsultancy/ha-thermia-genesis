@@ -95,8 +95,8 @@ class ThermiaGenesisHotWater(CoordinatorEntity[ThermiaGenesisCoordinator], Water
 
     @property
     def current_temperature(self) -> float | None:
-        """The weighted hot water temperature."""
-        return self.coordinator.pump.tap_water.weighted_temperature
+        """The temperature at the top of the tank, what the tap gives."""
+        return self.coordinator.pump.tap_water.top_temperature
 
     @property
     def target_temperature(self) -> float | None:

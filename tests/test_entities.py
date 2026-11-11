@@ -92,7 +92,7 @@ async def test_enabled_by_default(
         "binary_sensor.thermia_genesis_alarm",
         "button.thermia_genesis_reset_alarms",
         "climate.heating",
-        "number.hot_water_start_temperature",
+        "number.hot_water_reheat_below",
         "select.thermia_genesis_operational_mode",
         "sensor.heat_pump_unit_brine_in_temperature",
         "sensor.heat_pump_unit_brine_out_temperature",
@@ -107,7 +107,6 @@ async def test_enabled_by_default(
         "sensor.heat_pump_unit_outdoor_temperature",
         "sensor.heat_pump_unit_power_consumption",
         "sensor.heat_pump_unit_room_temperature",
-        "sensor.hot_water_top_temperature",
         "sensor.thermia_genesis_running_demand_1",
         "water_heater.hot_water",
     ]

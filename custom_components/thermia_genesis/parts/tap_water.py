@@ -15,7 +15,8 @@ from ..descriptions import (
 )
 
 SENSORS: tuple[Sensor, ...] = (
-    temperature("top_temperature", enabled=True),
+    # Disabled: the water heater shows it (docs/design.md).
+    temperature("top_temperature"),
     temperature("lower_temperature"),
     temperature("weighted_temperature"),
     percentage("valve_position"),
