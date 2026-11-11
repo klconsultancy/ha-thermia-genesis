@@ -48,9 +48,11 @@ entry: its entities and their history are kept.
   what you need.
 - A climate on the main device: the room temperature, the comfort wheel as the target,
   and heating on or off. Cooling is to join it as HVAC modes later.
-- A **Hot water** water heater: the water temperature, the stop temperature as the
-  target, and hot water on or off. The start temperature is a number next to it, and must
-  stay below the stop: to raise both, set the stop first; to lower both, the start first.
+- A **Hot water** water heater: the temperature at the top of the tank (what the tap
+  gives), the stop temperature as the target, and hot water on or off. **Reheat below**
+  is a number next to it: the pump heats the water again once it drops below it. It must
+  stay below the stop: to raise both, set the stop first; to lower both, reheat-below
+  first.
 - A **Reset alarms** button on the main device.
 - The **Operational mode** (off, standby, on auto) as a select on the main device.
 - **Power consumption control** (disabled by default): the control mode (0–3) and the

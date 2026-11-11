@@ -42,7 +42,7 @@ if TYPE_CHECKING:
     from modbus_connection.model import UpdateReport
 
 HOT_WATER = "water_heater.hot_water"
-START = "number.hot_water_start_temperature"
+START = "number.hot_water_reheat_below"
 
 
 @pytest.fixture
@@ -93,10 +93,13 @@ async def test_heats_the_water_to_the_stop_temperature(
 
     heater = state(hass, HOT_WATER)
     assert heater.state == STATE_HEAT_PUMP
-    assert heater.attributes["current_temperature"] == 48.9  # 48.86, shown in tenths
+    # The top temperature, what the tap gives: 49.35, shown in tenths.
+    assert heater.attributes["current_temperature"] == 49.4
     assert heater.attributes[ATTR_TEMPERATURE] == 55.0
-    assert heater.attributes["target_temp_low"] == 45.0
-    assert heater.attributes["target_temp_high"] == 55.0
+    # One target only: with a low and a high, the card draws a range whose low handle
+    # sets the target, so moving the start would move the stop (docs/design.md).
+    assert heater.attributes["target_temp_low"] is None
+    assert heater.attributes["target_temp_high"] is None
     assert (heater.attributes["min_temp"], heater.attributes["max_temp"]) == (35, 60)
     assert heater.attributes["target_temp_step"] == 0.5
 
@@ -278,7 +281,7 @@ async def test_sets_the_stop_while_the_start_is_unknown(
     assert pump_unit.holding[23] == 5000
 
 
-@pytest.mark.parametrize(("space", "address"), [("holding", 23), ("input", 17), ("coil", 8)])
+@pytest.mark.parametrize(("space", "address"), [("holding", 23), ("input", 15), ("coil", 8)])
 async def test_is_unavailable_while_a_register_space_it_reads_fails(
     hass: HomeAssistant,
     entry: MockConfigEntry,

@@ -49,10 +49,11 @@ async def async_setup_entry(
 
 
 class ThermiaGenesisHotWater(CoordinatorEntity[ThermiaGenesisCoordinator], WaterHeaterEntity):
-    """The hot water: heated from the start temperature (a number) up to the stop temperature.
+    """The hot water: reheated below a number, "Reheat below", up to the stop temperature.
 
-    The target is the stop temperature; the start and stop show as the low and high target,
-    which Home Assistant's water heater can't set.
+    The target is the stop temperature. It has no low and high target: they read as a range,
+    but a water heater sets only its one target, so on 0.3.0-rc.1 changing the low value
+    set the stop.
     """
 
     _attr_has_entity_name = True
@@ -95,22 +96,12 @@ class ThermiaGenesisHotWater(CoordinatorEntity[ThermiaGenesisCoordinator], Water
 
     @property
     def current_temperature(self) -> float | None:
-        """The weighted hot water temperature."""
-        return self.coordinator.pump.tap_water.weighted_temperature
+        """The temperature at the top of the tank, what the tap gives."""
+        return self.coordinator.pump.tap_water.top_temperature
 
     @property
     def target_temperature(self) -> float | None:
         """The temperature the pump stops heating the water at."""
-        return self.coordinator.pump.tap_water.stop_temperature
-
-    @property
-    def target_temperature_low(self) -> float | None:
-        """The temperature the pump starts heating the water at."""
-        return self.coordinator.pump.tap_water.start_temperature
-
-    @property
-    def target_temperature_high(self) -> float | None:
-        """The temperature the pump stops heating the water at, as the high target."""
         return self.coordinator.pump.tap_water.stop_temperature
 
     async def async_set_temperature(self, **kwargs: Any) -> None:  # noqa: ANN401

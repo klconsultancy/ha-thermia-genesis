@@ -80,7 +80,7 @@
       "message": "De warmtepomp heeft de wijziging niet overgenomen: {error}"
     },
     "start_not_below_stop": {
-      "message": "De starttemperatuur ({start} °C) moet lager zijn dan de stoptemperatuur ({stop} °C)."
+      "message": "Opwarmen onder ({start} °C) moet lager zijn dan de doeltemperatuur van het warm water ({stop} °C)."
     }
   },
   "issues": {
@@ -417,7 +417,7 @@
         "name": "Modus verbruiksregeling"
       },
       "start_temperature": {
-        "name": "Starttemperatuur"
+        "name": "Opwarmen onder"
       }
     },
     "select": {
