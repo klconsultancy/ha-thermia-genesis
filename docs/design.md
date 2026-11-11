@@ -173,9 +173,9 @@ entities.
 - One climate for the house (enabled, on the pump's main device, named after it:
   `climate.thermia_genesis`, unique id `{entry_id}_climate`). A climate is a zone, and the
   pump heats and cools the same rooms, switching by itself: passive cooling (coil 33) is
-  to join as HVAC modes `cool` and `heat_cool` once the library writes it (python-thermia-genesis#70) and the
-  meaning of the cooling start and stop temperatures (holding 105/106) is verified; until
-  then it offers `heat` and `off`. It shows the room temperature
+  to join as HVAC modes `cool` and `heat_cool` once the library writes it
+  (python-thermia-genesis#70) and the meaning of the cooling start and stop temperatures
+  (holding 105/106) is verified; until then it offers `heat` and `off`. It shows the room temperature
   (`heat_pump.room_temperature`), the comfort wheel as target (`heat.comfort_wheel_setting`)
   and heating on or off as HVAC mode `heat`/`off` (`heat_pump.enable_heat`). Its min and
   max come from the library's `Between`, falling back to Home Assistant's defaults without
