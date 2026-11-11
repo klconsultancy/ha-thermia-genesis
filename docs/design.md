@@ -57,7 +57,7 @@ entities.
 - A second entry for the same host and port is refused (`_async_abort_entries_match`).
 - Entity unique ids are `f"{entry_id}_{subsystem}_{field}"`, stable for the life of the
   entry. An entity that stands for no single field has its own: `{entry_id}_alarm`,
-  `{entry_id}_reset_alarms`, `{entry_id}_<part>_climate`.
+  `{entry_id}_reset_alarms`, `{entry_id}_climate`, `{entry_id}_tap_water_water_heater`.
 
 ## Devices
 
@@ -166,9 +166,16 @@ entities.
     library declares a setting writable, it becomes a `number`, `select`, `switch` or part
     of a `climate` entity (milestone 0.3.0), and the old sensor goes. A config entry
     migration removes it: each release that removes entities raises the entry's minor
-    version, so it runs once per entry; 1.2 holds every removal of 0.3.0. Once in core,
+    version, so it runs once per entry; 1.2 and 1.3 hold the removals of 0.3.0 (1.3 the
+    climate of 0.3.0-rc.1, which sat on the heating device). Every step runs again from
+    any older version, which is safe since removing is. Once in core,
     removing an entity would need a deprecation period with a repair issue first.
-- Climate "Heating" (enabled, on the heating device, named after it): the room temperature
+- One climate for the house (enabled, on the pump's main device, named after it:
+  `climate.thermia_genesis`, unique id `{entry_id}_climate`). A climate is a zone, and the
+  pump heats and cools the same rooms, switching by itself: passive cooling (coil 33) is
+  to join as HVAC modes `cool` and `heat_cool` once the library writes it
+  (python-thermia-genesis#70) and the meaning of the cooling start and stop temperatures
+  (holding 105/106) is verified; until then it offers `heat` and `off`. It shows the room temperature
   (`heat_pump.room_temperature`), the comfort wheel as target (`heat.comfort_wheel_setting`)
   and heating on or off as HVAC mode `heat`/`off` (`heat_pump.enable_heat`). Its min and
   max come from the library's `Between`, falling back to Home Assistant's defaults without
@@ -242,7 +249,7 @@ entities.
   with device class `problem` of the parts the pump has, so an absent part's alarms don't
   count; they are all discrete inputs, so the alarm is unavailable while those fail to
   refresh.
-- Enabled by default: the heating climate, the hot water heater and its start
+- Enabled by default: the climate, the hot water heater and its start
   temperature, the measured temperatures of the heating circuit (brine and condenser in
   and out, discharge pipe, outdoor, room), operational mode (a select), running demand
   1, compressor gear, speed, operating hours and whether it runs, heat output and power

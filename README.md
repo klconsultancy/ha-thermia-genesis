@@ -46,8 +46,8 @@ entry: its entities and their history are kept.
   temperatures, the compressor, the heaters and the operational mode. The rest (settings,
   individual alarms, the refrigerant circuit, the energy statistics) is disabled; enable
   what you need.
-- A **Heating** climate: the room temperature, the comfort wheel as the target, and
-  heating on or off.
+- A climate on the main device: the room temperature, the comfort wheel as the target,
+  and heating on or off. Cooling is to join it as HVAC modes later.
 - A **Hot water** water heater: the water temperature, the stop temperature as the
   target, and hot water on or off. The start temperature is a number next to it, and must
   stay below the stop: to raise both, set the stop first; to lower both, the start first.

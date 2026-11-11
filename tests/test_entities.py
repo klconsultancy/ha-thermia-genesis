@@ -94,7 +94,7 @@ async def test_enabled_by_default(
         "binary_sensor.thermia_genesis_running_demand_heating",
         "binary_sensor.thermia_genesis_running_demand_hot_water",
         "button.thermia_genesis_reset_alarms",
-        "climate.heating",
+        "climate.thermia_genesis",
         "number.hot_water_start_temperature",
         "select.thermia_genesis_operational_mode",
         "sensor.heat_pump_unit_brine_in_temperature",
