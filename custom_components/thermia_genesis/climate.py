@@ -1,4 +1,4 @@
-"""Climates: the heating circuit, set with the comfort wheel."""
+"""Climates: the house, heated by the pump and set with the comfort wheel."""
 
 from typing import TYPE_CHECKING, Any
 
@@ -45,12 +45,12 @@ async def async_setup_entry(
     entry: ThermiaGenesisConfigEntry,
     async_add_entities: AddConfigEntryEntitiesCallback,
 ) -> None:
-    """Add the heating climate."""
+    """Add the house's climate."""
     async_add_entities([ThermiaGenesisHeating(entry.runtime_data)])
 
 
 class ThermiaGenesisHeating(CoordinatorEntity[ThermiaGenesisCoordinator], ClimateEntity):
-    """The heating circuit: the room temperature, the comfort wheel and heating on or off."""
+    """The house: the room temperature, the comfort wheel and heating on or off."""
 
     _attr_has_entity_name = True
     _attr_name = None

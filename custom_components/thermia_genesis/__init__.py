@@ -57,7 +57,7 @@ async def async_migrate_entry(hass: HomeAssistant, entry: ThermiaGenesisConfigEn
     Each step removes entities, which is safe to repeat, so the steps need no guard.
     """
     # 1.2 and 1.3 (0.3.0): the writable entities replace the sensors of the fields they
-    # write.
+    # write (1.2), and the climate moved to the main device (1.3).
     _async_remove_entities(
         hass,
         entry,

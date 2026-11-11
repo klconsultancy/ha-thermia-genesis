@@ -351,3 +351,4 @@ async def test_an_entry_from_the_first_release_candidate_drops_the_heating_clima
 
     assert entity_registry.async_get_entity_id("climate", DOMAIN, unique_id) is None
     assert entry.minor_version == 3
+    assert hass.states.get(HEATING) is not None
