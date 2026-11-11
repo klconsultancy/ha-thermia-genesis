@@ -22,6 +22,14 @@ SENSORS: tuple[Sensor, ...] = (
     enumeration("queued_demand_5", Demand),
 )
 
-BINARY_SENSORS: tuple[BinarySensor, ...] = members("running_demands", RunningDemands)
+# When the pump heats the house or the water, or runs an anti-legionella cycle: for the
+# history and for automations (docs/design.md).
+BINARY_SENSORS: tuple[BinarySensor, ...] = members(
+    "running_demands",
+    RunningDemands,
+    enabled=frozenset(
+        {RunningDemands.HEAT, RunningDemands.HOT_WATER, RunningDemands.ANTI_LEGIONELLA}
+    ),
+)
 
 SELECTS: tuple[Select, ...] = (choice("operational_mode", enabled=True),)

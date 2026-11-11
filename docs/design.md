@@ -259,8 +259,13 @@ entities.
   disabled by default. So are the heating system's supply and return line temperatures: a
   pump without system sensors reads them as unknown.
   A set point of an absent part (the buffer tank's) can read 0.0; it is disabled, so it
-  stays out of sight. Everything else (queued demands, PID values, flags, settings,
-  individual alarms) is disabled by default.
+  stays out of sight. Of the running demands, heating, hot water and anti-legionella are
+  enabled: when the pump heats the house or the water, which a water heater can't show
+  (it has no action, unlike a climate), and when it runs an anti-legionella cycle. The
+  1.3 migration enables them on an older entry where the integration had disabled them,
+  never where the user did; enabled-by-default only reaches new registry entries.
+  Everything else (queued demands, PID values, the other flags, settings, individual
+  alarms) is disabled by default.
 - Coils and holding registers (settings) and the alarm inputs have entity category
   `diagnostic`; a setting has no state class, so it stays out of the long-term statistics.
 - Entity names come from translations (`has_entity_name`), in English and Dutch.
