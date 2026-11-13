@@ -1,5 +1,33 @@
 # Changelog
 
+## [0.3.0](https://github.com/klconsultancy/ha-thermia-genesis/compare/v0.2.0...v0.3.0) (2026-11-13)
+
+
+### ⚠ BREAKING CHANGES
+
+* climate.heating (0.3.0-rc.1 only) becomes climate.thermia_genesis; the config entry migration (1.3) removes the old one.
+* water_heater.hot_water and number.hot_water_start_temperature replace sensor.hot_water_start_temperature, sensor.hot_water_stop_temperature and binary_sensor.heat_pump_unit_hot_water_enabled (all disabled by default); the config entry migration (1.2) removes them.
+* number.heat_pump_unit_power_consumption_control_mode and number.heat_pump_unit_input_power_limit replace the sensors of the same name (disabled by default); the config entry migration (1.2) removes them.
+* the button replaces binary_sensor.heat_pump_unit_alarm_reset_pending (disabled by default); the config entry migration (1.2) removes it.
+* select.thermia_genesis_operational_mode replaces sensor.thermia_genesis_operational_mode; the config entry migration (1.2) removes the sensor.
+* the climate replaces sensor.heating_comfort_wheel and binary_sensor.heat_pump_unit_heating_enabled; a config entry migration (1.2) removes them. Use climate.heating instead.
+
+### Features
+
+* add a button that resets the alarms ([#58](https://github.com/klconsultancy/ha-thermia-genesis/issues/58)) ([09d76c6](https://github.com/klconsultancy/ha-thermia-genesis/commit/09d76c67253a9b1b0af9aed6def487d975799d44))
+* add a heating climate ([#55](https://github.com/klconsultancy/ha-thermia-genesis/issues/55)) ([db9d4e9](https://github.com/klconsultancy/ha-thermia-genesis/commit/db9d4e9946f6385afa4f258fc6a48faa70fdd53b))
+* enable the heating, hot water and anti-legionella demands ([#63](https://github.com/klconsultancy/ha-thermia-genesis/issues/63)) ([23bad11](https://github.com/klconsultancy/ha-thermia-genesis/commit/23bad11928c4eba49434c998fc85e6dc82ef68ce))
+* put the climate on the main device ([#62](https://github.com/klconsultancy/ha-thermia-genesis/issues/62)) ([b8dbc8a](https://github.com/klconsultancy/ha-thermia-genesis/commit/b8dbc8a8fb83829c4607c382c0efaff919ccbab1))
+* set power consumption control with numbers ([#59](https://github.com/klconsultancy/ha-thermia-genesis/issues/59)) ([a6ebcd0](https://github.com/klconsultancy/ha-thermia-genesis/commit/a6ebcd06f816c31c495d1b0293274f9a849ef04c))
+* set the operational mode with a select ([#57](https://github.com/klconsultancy/ha-thermia-genesis/issues/57)) ([c2badfe](https://github.com/klconsultancy/ha-thermia-genesis/commit/c2badfe7a51af710dc02790dbdbfc02d1437e030))
+* show the hot water as a water heater ([#60](https://github.com/klconsultancy/ha-thermia-genesis/issues/60)) ([b5e1992](https://github.com/klconsultancy/ha-thermia-genesis/commit/b5e19924e561b3bb535940f23c40cd07750614cb))
+* show the Thermia brand icon ([#47](https://github.com/klconsultancy/ha-thermia-genesis/issues/47)) ([fe9f1da](https://github.com/klconsultancy/ha-thermia-genesis/commit/fe9f1da9b59aa6d612131760b8a6191b80da00f3))
+
+
+### Bug Fixes
+
+* give the water heater one target, and show the top temperature ([#64](https://github.com/klconsultancy/ha-thermia-genesis/issues/64)) ([493b2df](https://github.com/klconsultancy/ha-thermia-genesis/commit/493b2df5d1510fefd6c44fa8b39a0672938cb63f))
+
 ## [0.2.0](https://github.com/klconsultancy/ha-thermia-genesis/compare/v0.1.0...v0.2.0) (2026-11-09)
 
 
