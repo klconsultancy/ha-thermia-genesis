@@ -1,0 +1,31 @@
+name: Claude review
+
+# Claude reviews every pull request against this repository's rules: CLAUDE.md, AGENTS.md
+# and the files they import, plus the design and the glossary below (AGENTS.md only links
+# those, so they are passed explicitly). The rules come from the base branch. Claude posts
+# inline comments and one summary per push, never approves, and skips drafts, bots and
+# forks. The logic lives in the organization's reusable workflow; the reviews run on the
+# organization secret CLAUDE_CODE_OAUTH_TOKEN, through the Claude GitHub App.
+#
+# Not a required check. A pull request that adds or changes this file is red: the app only
+# grants its token for a caller identical to main's.
+on:
+  pull_request:
+    types: [opened, synchronize, ready_for_review, reopened]
+
+permissions: {}
+
+jobs:
+  review:
+    name: Review
+    permissions:
+      actions: read # find the last successful review
+      contents: read
+      pull-requests: read
+      issues: read
+      id-token: write # the action authenticates as the Claude GitHub App
+    uses: klconsultancy/workflows/.github/workflows/claude-review.yml@e6939b6be36b833baf87de0ce25c0ff4cac96b2f # v1.0.0
+    with:
+      guidelines: docs/design.md CONTEXT.md
+    secrets:
+      CLAUDE_CODE_OAUTH_TOKEN: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
