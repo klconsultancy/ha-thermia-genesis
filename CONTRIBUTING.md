@@ -24,7 +24,7 @@ Never write to a real heat pump from a test: use `modbus_connection`'s mock unit
 ## Pull requests
 
 - Keep a pull request to one change, with tests.
-- CI (lint, type check, tests, hassfest, HACS, dependency review and CodeQL) must pass before merging.
+- CI (lint, type check, tests, hassfest, HACS, dependency review and CodeQL; zizmor when a workflow changes) must pass before merging.
 - Pull requests are squash-merged, so the pull request title becomes the commit message on `main`. Write it as a [Conventional Commit](https://www.conventionalcommits.org/) with a short imperative description, such as `feat: add the pool entities`: release-please derives the next version and the changelog from these titles. Use `feat!:` or a `BREAKING CHANGE:` footer for a change that breaks existing entities or configuration.
 
 By contributing you agree that your contribution is licensed under the [MIT license](LICENSE), and you agree to follow the [Code of Conduct](CODE_OF_CONDUCT.md).

@@ -1,0 +1,21 @@
+name: zizmor
+
+# Audits this repository's workflows (unpinned actions, too-wide permissions, template
+# injection, credentials left in a checkout) with the organization's reusable workflow, at
+# the zizmor version pinned there. It runs when anything under .github/ changes, a move of
+# that workflow's pin (and so of zizmor's version) included. Not a required check: it does
+# not run on every pull request.
+on:
+  pull_request:
+    paths: [".github/**"]
+  push:
+    branches: [main]
+    paths: [".github/**"]
+
+permissions: {}
+
+jobs:
+  zizmor:
+    permissions:
+      contents: read
+    uses: klconsultancy/workflows/.github/workflows/zizmor.yml@5488c03eb4249425edfe6a692185ab73fa748df3 # main
