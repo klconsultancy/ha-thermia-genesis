@@ -15,7 +15,7 @@ from homeassistant.const import (
     STATE_UNKNOWN,
 )
 from modbus_connection.exceptions import IllegalDataAddressError, ServerDeviceBusyError
-from pytest_homeassistant_custom_component.common import MockConfigEntry, async_fire_time_changed
+from pytest_homeassistant.common import MockConfigEntry, async_fire_time_changed
 
 from custom_components.thermia_genesis.const import CONF_UNIT_ID, DOMAIN
 

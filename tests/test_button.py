@@ -8,7 +8,7 @@ from homeassistant.components.button.const import SERVICE_PRESS
 from homeassistant.const import ATTR_ENTITY_ID, CONF_HOST, CONF_PORT, STATE_UNAVAILABLE
 from homeassistant.exceptions import HomeAssistantError
 from modbus_connection.exceptions import ModbusConnectionError, ServerDeviceFailureError
-from pytest_homeassistant_custom_component.common import MockConfigEntry
+from pytest_homeassistant.common import MockConfigEntry
 
 from custom_components.thermia_genesis.const import CONF_UNIT_ID, DOMAIN
 

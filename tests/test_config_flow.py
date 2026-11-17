@@ -7,7 +7,7 @@ from homeassistant.data_entry_flow import FlowResultType
 from homeassistant.exceptions import HomeAssistantError
 from modbus_connection import ModbusTcpParams
 from modbus_connection.exceptions import IllegalDataAddressError, ModbusConnectionError
-from pytest_homeassistant_custom_component.common import MockConfigEntry
+from pytest_homeassistant.common import MockConfigEntry
 
 from custom_components.thermia_genesis.const import CONF_UNIT_ID, DOMAIN
 

@@ -13,14 +13,17 @@ dependencies = ["thermia-genesis==0.5.0"]
 dev = [
   "mypy",
   "prek",
-  # Pins the matching homeassistant, pytest, pytest-asyncio, pytest-cov and syrupy.
-  "pytest-homeassistant-custom-component==0.13.375",
+  # Home Assistant's own test package: pins the matching homeassistant, pytest,
+  # pytest-asyncio and syrupy. It replaces pytest-homeassistant-custom-component, which
+  # stopped at Home Assistant 2026.10.
+  "pytest-homeassistant==2026.11.2",
+  "pytest-cov",
   "ruff",
   # The requirements of Home Assistant's modbus integration, at the versions the pinned
   # homeassistant release installs at runtime.
-  "modbus-connection[tmodbus]==4.12.4",
+  "modbus-connection[tmodbus]==4.12.7",
   "pymodbus==3.13.1",
-  "tmodbus==0.6.2",
+  "tmodbus==1.1.0",
 ]
 
 [tool.uv]
@@ -69,13 +72,14 @@ explicit_package_bases = true
 
 [[tool.mypy.overrides]]
 # Ships no py.typed marker.
-module = ["pytest_homeassistant_custom_component.*"]
+module = ["pytest_homeassistant.*"]
 ignore_missing_imports = true
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
 asyncio_default_fixture_loop_scope = "function"
-addopts = "--strict-markers --cov --cov-report=term-missing"
+# Home Assistant installs its httpx alias before respx loads (pytest-homeassistant's README).
+addopts = "-p no:respx --strict-markers --cov --cov-report=term-missing"
 testpaths = ["tests"]
 
 [tool.coverage.run]

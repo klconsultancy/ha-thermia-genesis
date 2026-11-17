@@ -9,7 +9,7 @@ from homeassistant.const import CONF_HOST, CONF_PORT, STATE_UNAVAILABLE, STATE_U
 from homeassistant.helpers import device_registry as dr
 from homeassistant.helpers import entity_registry as er
 from modbus_connection.exceptions import IllegalDataAddressError, ServerDeviceBusyError
-from pytest_homeassistant_custom_component.common import (
+from pytest_homeassistant.common import (
     MockConfigEntry,
     async_fire_time_changed,
     snapshot_platform,
@@ -74,6 +74,20 @@ async def test_entities(
         await setup(hass, entry)
 
     await snapshot_platform(hass, entity_registry, snapshot, entry.entry_id)
+
+
+async def test_entities_use_no_deprecated_api(
+    hass: HomeAssistant, entry: MockConfigEntry, caplog: pytest.LogCaptureFixture
+) -> None:
+    await setup(hass, entry)
+
+    deprecated = [
+        record.getMessage()
+        for record in caplog.records
+        if record.name.startswith("custom_components.thermia_genesis")
+        and "deprecated" in record.getMessage()
+    ]
+    assert deprecated == []
 
 
 async def test_enabled_by_default(

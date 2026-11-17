@@ -22,13 +22,15 @@ entities.
 
 ## Home Assistant version
 
-- Minimum 2026.10.0 (`hacs.json`). `homeassistant.components.modbus.async_get_unit` exists
-  since 2026.9, but 2026.9 ships `modbus-connection` 4.10.0, which lacks the `Device` model
-  the library builds on. 2026.10.0 ships 4.12.3, the library's lower bound.
+- Minimum 2026.11.0 (`hacs.json`): the climate and the water heater use the `native_*`
+  temperature API, which 2026.11 introduced (the old one stops working in 2027.11).
+  `homeassistant.components.modbus.async_get_unit` exists since 2026.9, but 2026.9 ships
+  `modbus-connection` 4.10.0, which lacks the `Device` model the library builds on;
+  4.12.3, the library's lower bound, came with 2026.10.0.
 - The library is installed next to the `modbus` integration's exact `modbus-connection`
   pin, so it must accept a wide range; its CI tests the lower bound.
 - Python 3.14, Home Assistant's own requirement. Tests run against the Home Assistant
-  version that `pytest-homeassistant-custom-component` pins.
+  version that `pytest-homeassistant` pins.
 
 ## Connection
 
@@ -296,7 +298,9 @@ entities.
 
 ## Tooling and process
 
-- Tests use `pytest-homeassistant-custom-component`, `modbus_connection`'s mock unit and a
+- Tests use `pytest-homeassistant` (Home Assistant's own test package, released with each
+  Home Assistant version; it replaced `pytest-homeassistant-custom-component`, which stopped
+  at 2026.10), `modbus_connection`'s mock unit and a
   copy of the library's Calibra 7 fixture; entity states are checked with syrupy snapshots.
   An end-to-end test goes through the real `async_get_unit` to an in-process `tmodbus`
   server. Tests never touch a real pump.
@@ -304,8 +308,8 @@ entities.
   test keeps them in step, and Renovate bumps both in one pull request. The requirements of
   Home Assistant's `modbus` integration are development dependencies pinned to the versions
   of the tested Home Assistant release; Renovate leaves them alone, and a test compares
-  them with the installed `modbus` manifest, so a new `pytest-homeassistant-custom-component`
-  (a newer Home Assistant) fails until they follow, by hand on Renovate's branch.
+  them with the installed `modbus` manifest, so a new `pytest-homeassistant` (a newer Home
+  Assistant) fails until they follow, by hand on Renovate's branch.
 - `translations/en.json` is `strings.json` with its references resolved, and the Dutch
   translation has exactly its keys; tests check both.
 - uv (with a committed `uv.lock`; the project is not a package), ruff (`ALL` rules), mypy

@@ -8,7 +8,7 @@ from homeassistant.const import CONF_HOST, CONF_PORT
 from homeassistant.exceptions import HomeAssistantError, ServiceValidationError
 from homeassistant.helpers.update_coordinator import REQUEST_REFRESH_DEFAULT_COOLDOWN
 from modbus_connection.exceptions import ModbusConnectionError, ServerDeviceFailureError
-from pytest_homeassistant_custom_component.common import MockConfigEntry, async_fire_time_changed
+from pytest_homeassistant.common import MockConfigEntry, async_fire_time_changed
 from thermia_genesis.v17_1.heat import Heat
 from thermia_genesis.v17_1.heat_pump_unit import HeatPumpUnit
 

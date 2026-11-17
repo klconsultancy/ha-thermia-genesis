@@ -18,7 +18,7 @@ from homeassistant.const import (
 )
 from homeassistant.exceptions import HomeAssistantError, ServiceValidationError
 from modbus_connection.exceptions import ServerDeviceBusyError, ServerDeviceFailureError
-from pytest_homeassistant_custom_component.common import MockConfigEntry, async_fire_time_changed
+from pytest_homeassistant.common import MockConfigEntry, async_fire_time_changed
 
 from custom_components.thermia_genesis.const import CONF_UNIT_ID, DOMAIN
 

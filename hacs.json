@@ -1,6 +1,6 @@
 {
   "name": "Thermia Genesis",
-  "homeassistant": "2026.10.0",
+  "homeassistant": "2026.11.0",
   "zip_release": true,
   "filename": "thermia_genesis.zip"
 }
