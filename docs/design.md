@@ -313,7 +313,8 @@ entities.
   the HACS validation.
 - Every change goes through a pull request with a Conventional Commits title. release-please
   turns merged commits into a release PR; merging it tags `vX.Y.Z` and creates the GitHub
-  Release HACS installs from. It also bumps the version in `manifest.json`.
+  Release HACS installs from, as a draft until its zip is attached (see the zip below). It
+  also bumps the version in `manifest.json`.
 - The brand icon ships in `custom_components/thermia_genesis/brand/` (`icon.png` 256 px,
   `icon@2x.png` 512 px), which Home Assistant and HACS show for a custom integration. It is
   the Thermia logo that home-assistant/brands already holds for CJNE/thermiagenesis. The
@@ -328,5 +329,10 @@ entities.
   workflow builds for every release and release candidate: the integration's files at the
   zip's root, with the tag's version written into `manifest.json`. So an rc shows as
   `0.3.0-rc.3` in Home Assistant, not as the last stable version. HACS only offers releases
-  that carry the zip; the ones before 0.3.0 have none.
+  that carry the zip; the ones before 0.3.0 have none. A release and an rc's pre-release
+  start as a draft (`draft` and `force-tag-creation` in `release-please-config.json`; the
+  tag is made at once because release-please needs it to find the previous release), get
+  the zip, and are published only then, so an immutable release still takes the zip. A
+  draft whose zip fails stays a draft and HACS never offers it: fix the cause and re-run
+  the failed jobs.
 - Development happens in the devcontainer, in a git worktree under `.worktrees/<branch>`.
