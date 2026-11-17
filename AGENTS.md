@@ -15,6 +15,11 @@ terms before changing code.
   never push to `main` (see Commands).
 - PR titles and squash commits follow Conventional Commits (`feat:`, `fix:`, `docs:`,
   `test:`, `refactor:`, `build:`, `ci:`, `chore:`). They drive release-please.
+- The merge queue squashes a pull request into its title alone. Mark a breaking change with
+  `!` in the title. When the release note needs more than the title, add the commit message,
+  with its `BREAKING CHANGE:` footer, to the pull request body between
+  `BEGIN_COMMIT_OVERRIDE` and `END_COMMIT_OVERRIDE`: release-please reads it from there,
+  also after the merge.
 - A release candidate is a tag `vX.Y.Z-rc.N` on `main`, pushed by an admin; the release
   workflow makes it a GitHub pre-release, which HACS offers as a beta. Never make one with
   `release-as` and `prerelease` in `release-please-config.json`: release-please would count
