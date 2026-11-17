@@ -7,6 +7,9 @@ name: PR title
 on:
   pull_request:
     types: [opened, edited, synchronize, reopened]
+  # A required check of the merge queue: it must report on the queue's merge group too.
+  # The title was checked on the pull request; the group has none to check.
+  merge_group:
 
 permissions: {}
 
