@@ -36,7 +36,7 @@ from homeassistant.exceptions import ServiceValidationError
 from homeassistant.helpers import device_registry as dr
 from homeassistant.util.unit_system import US_CUSTOMARY_SYSTEM
 from modbus_connection.exceptions import IllegalDataAddressError, ServerDeviceBusyError
-from pytest_homeassistant_custom_component.common import MockConfigEntry, async_fire_time_changed
+from pytest_homeassistant.common import MockConfigEntry, async_fire_time_changed
 from thermia_genesis.subsystem import Field
 
 from custom_components.thermia_genesis.const import CONF_UNIT_ID, DOMAIN

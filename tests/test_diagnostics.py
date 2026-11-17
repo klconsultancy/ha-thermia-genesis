@@ -7,8 +7,8 @@ from typing import TYPE_CHECKING
 import pytest
 from homeassistant.const import CONF_HOST, CONF_PORT
 from modbus_connection.exceptions import ModbusConnectionError, ServerDeviceBusyError
-from pytest_homeassistant_custom_component.common import MockConfigEntry, async_fire_time_changed
-from pytest_homeassistant_custom_component.components.diagnostics import (
+from pytest_homeassistant.common import MockConfigEntry, async_fire_time_changed
+from pytest_homeassistant.components.diagnostics import (
     get_diagnostics_for_config_entry,
 )
 
@@ -22,7 +22,7 @@ if TYPE_CHECKING:
     from freezegun.api import FrozenDateTimeFactory
     from homeassistant.core import HomeAssistant
     from modbus_connection.mock import MockModbusUnit
-    from pytest_homeassistant_custom_component.typing import ClientSessionGenerator
+    from pytest_homeassistant.typing import ClientSessionGenerator
 
 HOST = "10.64.30.14"
 

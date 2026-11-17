@@ -10,7 +10,7 @@ Home Assistant's own Modbus connection.
 
 ## Requirements
 
-- Home Assistant 2026.10 or later
+- Home Assistant 2026.11 or later
 - A heat pump with Genesis firmware 17.1 and Modbus TCP enabled
 
 ## Installation

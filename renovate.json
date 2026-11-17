@@ -49,13 +49,13 @@
       "groupName": "dev dependencies"
     },
     {
-      "description": "pytest-homeassistant-custom-component pins the Home Assistant release the tests run against, and with it the requirements of its modbus integration below. A new one goes on its own, so the modbus pins can follow by hand on the same branch when test_manifest asks for it.",
-      "matchPackageNames": ["pytest-homeassistant-custom-component"],
+      "description": "pytest-homeassistant pins the Home Assistant release the tests run against, and with it the requirements of its modbus integration below. A new one goes on its own, so the modbus pins can follow by hand on the same branch when test_manifest asks for it.",
+      "matchPackageNames": ["pytest-homeassistant"],
       "semanticCommitType": "build",
       "groupName": "home assistant"
     },
     {
-      "description": "The requirements of Home Assistant's modbus integration, at the versions the tested Home Assistant release installs. They follow pytest-homeassistant-custom-component, not their own releases (docs/design.md).",
+      "description": "The requirements of Home Assistant's modbus integration, at the versions the tested Home Assistant release installs. They follow pytest-homeassistant, not their own releases (docs/design.md).",
       "matchPackageNames": ["modbus-connection", "pymodbus", "tmodbus"],
       "enabled": false
     },

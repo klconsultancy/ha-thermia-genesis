@@ -54,7 +54,7 @@ class ThermiaGenesisHeating(CoordinatorEntity[ThermiaGenesisCoordinator], Climat
 
     _attr_has_entity_name = True
     _attr_name = None
-    _attr_temperature_unit = UnitOfTemperature.CELSIUS
+    _attr_native_temperature_unit = UnitOfTemperature.CELSIUS
     _attr_target_temperature_step = TARGET_STEP
     _attr_hvac_modes = [HVACMode.OFF, HVACMode.HEAT]  # noqa: RUF012
     _attr_supported_features = (
@@ -85,12 +85,12 @@ class ThermiaGenesisHeating(CoordinatorEntity[ThermiaGenesisCoordinator], Climat
         return super().available and not any(group in failed for group in self._groups)
 
     @property
-    def current_temperature(self) -> float | None:
+    def native_current_temperature(self) -> float | None:
         """The room temperature."""
         return self.coordinator.pump.heat_pump.room_temperature
 
     @property
-    def target_temperature(self) -> float | None:
+    def native_target_temperature(self) -> float | None:
         """The comfort wheel setting."""
         return self.coordinator.pump.heat.comfort_wheel_setting
 

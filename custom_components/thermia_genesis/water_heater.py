@@ -58,7 +58,7 @@ class ThermiaGenesisHotWater(CoordinatorEntity[ThermiaGenesisCoordinator], Water
 
     _attr_has_entity_name = True
     _attr_name = None
-    _attr_temperature_unit = UnitOfTemperature.CELSIUS
+    _attr_native_temperature_unit = UnitOfTemperature.CELSIUS
     _attr_target_temperature_step = TARGET_STEP
     _attr_operation_list = [STATE_OFF, STATE_HEAT_PUMP]  # noqa: RUF012
     _attr_supported_features = (
@@ -95,12 +95,12 @@ class ThermiaGenesisHotWater(CoordinatorEntity[ThermiaGenesisCoordinator], Water
         return STATE_HEAT_PUMP if enabled else STATE_OFF
 
     @property
-    def current_temperature(self) -> float | None:
+    def native_current_temperature(self) -> float | None:
         """The temperature at the top of the tank, what the tap gives."""
         return self.coordinator.pump.tap_water.top_temperature
 
     @property
-    def target_temperature(self) -> float | None:
+    def native_target_temperature(self) -> float | None:
         """The temperature the pump stops heating the water at."""
         return self.coordinator.pump.tap_water.stop_temperature
 
