@@ -19,9 +19,9 @@ permissions: {}
 jobs:
   release:
     permissions: {} # both jobs act as the app
-    uses: klconsultancy/workflows/.github/workflows/release-please.yml@c9502596494c47704b890d5cc66de73c06ba93d8 # main
+    uses: klconsultancy/workflows/.github/workflows/release-please.yml@5488c03eb4249425edfe6a692185ab73fa748df3 # main
     with:
       app-client-id: ${{ vars.RELEASE_APP_CLIENT_ID }}
-      release-candidates: true
+      create-prerelease: true
     secrets:
       RELEASE_APP_PRIVATE_KEY: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}
