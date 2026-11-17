@@ -1,0 +1,23 @@
+name: Renovate
+
+# Runs every day, so security fixes come at once and open pull requests are kept up to
+# date; other updates wait for the schedule in renovate.json. Renovate runs in the
+# organization's reusable workflow, as the klconsultancy-renovate-bot app instead of
+# GITHUB_TOKEN: its pull requests run CI, and its merges run the workflows on main,
+# release-please's among them.
+on:
+  schedule:
+    - cron: "0 5 * * *"
+  workflow_dispatch:
+
+permissions: {}
+
+jobs:
+  renovate:
+    permissions:
+      contents: read
+    uses: klconsultancy/workflows/.github/workflows/renovate.yml@e6939b6be36b833baf87de0ce25c0ff4cac96b2f # v1.0.0
+    with:
+      app-client-id: ${{ vars.RENOVATE_APP_CLIENT_ID }}
+    secrets:
+      RENOVATE_APP_PRIVATE_KEY: ${{ secrets.RENOVATE_APP_PRIVATE_KEY }}

@@ -1,0 +1,39 @@
+name: Bug report
+description: Something does not work as expected
+labels: [bug]
+body:
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: input
+    id: model
+    attributes:
+      label: Heat pump model
+      placeholder: Calibra 7
+    validations:
+      required: true
+  - type: input
+    id: firmware
+    attributes:
+      label: Genesis firmware version
+      description: The software version of the Thermia Genesis device in Home Assistant.
+      placeholder: 17.1.11
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Integration and Home Assistant version
+      placeholder: 0.1.0 on 2026.10.4
+    validations:
+      required: true
+  - type: textarea
+    id: diagnostics
+    attributes:
+      label: Diagnostics or logs
+      description: Attach the diagnostics of the Thermia Genesis entry, or paste debug logs.
+      render: text

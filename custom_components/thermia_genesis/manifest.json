@@ -1,0 +1,24 @@
+{
+  "domain": "thermia_genesis",
+  "name": "Thermia Genesis",
+  "codeowners": [
+    "@kristoflemmens"
+  ],
+  "config_flow": true,
+  "dependencies": [
+    "modbus"
+  ],
+  "documentation": "https://github.com/klconsultancy/ha-thermia-genesis",
+  "integration_type": "device",
+  "iot_class": "local_polling",
+  "issue_tracker": "https://github.com/klconsultancy/ha-thermia-genesis/issues",
+  "loggers": [
+    "modbus_connection",
+    "thermia_genesis",
+    "tmodbus"
+  ],
+  "requirements": [
+    "thermia-genesis==0.5.0"
+  ],
+  "version": "0.2.0"
+}
