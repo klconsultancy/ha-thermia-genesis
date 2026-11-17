@@ -9,6 +9,11 @@ name: Release
 # "release tags" ruleset): the reusable workflow turns it into a GitHub pre-release, which
 # HACS offers to users who enabled beta versions. release-please doesn't see it, so the
 # final release's notes still cover everything since the last stable release.
+#
+# Every release and release candidate gets thermia_genesis.zip, which HACS installs
+# (`zip_release` in hacs.json): the integration's files at the zip's root, with the tag's
+# version in manifest.json. In the repository the manifest only changes with a release
+# pull request, so an rc's own checkout still says the last stable version.
 on:
   push:
     branches: [main]
@@ -18,10 +23,16 @@ permissions: {}
 
 jobs:
   release:
-    permissions: {} # both jobs act as the app
+    permissions: {} # its jobs act as the app
     uses: klconsultancy/workflows/.github/workflows/release-please.yml@e6939b6be36b833baf87de0ce25c0ff4cac96b2f # v1.0.0
     with:
       app-client-id: ${{ vars.RELEASE_APP_CLIENT_ID }}
       create-prerelease: true
+      assets-command: |
+        cd custom_components/thermia_genesis
+        jq --arg version "${TAG#v}" '.version = $version' manifest.json > manifest.json.new
+        mv manifest.json.new manifest.json
+        zip -r -X ../../thermia_genesis.zip . -x '*/__pycache__/*'
+      assets: thermia_genesis.zip
     secrets:
       RELEASE_APP_PRIVATE_KEY: ${{ secrets.RELEASE_APP_PRIVATE_KEY }}
