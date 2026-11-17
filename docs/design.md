@@ -322,5 +322,11 @@ entities.
   workflow turns it into a GitHub pre-release, which HACS offers to users who enabled beta
   versions. release-please doesn't see it, so the final notes still cover everything since
   the last stable release (PhoenixContactCharx learned this with 2.0.0). The rc's
-  `manifest.json` keeps the last stable version, since only release-please bumps it.
+  `manifest.json` in the repository keeps the last stable version, since only
+  release-please bumps it.
+- HACS installs `thermia_genesis.zip` (`zip_release` in `hacs.json`), which the release
+  workflow builds for every release and release candidate: the integration's files at the
+  zip's root, with the tag's version written into `manifest.json`. So an rc shows as
+  `0.3.0-rc.3` in Home Assistant, not as the last stable version. HACS only offers releases
+  that carry the zip; the ones before 0.3.0 have none.
 - Development happens in the devcontainer, in a git worktree under `.worktrees/<branch>`.
