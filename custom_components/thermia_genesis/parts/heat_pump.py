@@ -27,7 +27,7 @@ SENSORS: tuple[Sensor, ...] = (
     measurement("compressor_available_gears", precision=0),
     measurement("compressor_speed", "rpm", precision=0, enabled=True),
     percentage("compressor_speed_percent"),
-    measurement("compressor_start_restriction_timer"),
+    measurement("compressor_start_restriction_timer", "s", SensorDeviceClass.DURATION, precision=0),
     measurement("compressor_current_gear", precision=0, enabled=True),
     operating_hours("compressor_operating_hours", enabled=True),
     percentage("expansion_valve_opening_degree"),

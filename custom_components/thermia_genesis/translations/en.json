@@ -962,7 +962,8 @@
           "evu": "EVU (blocked)",
           "normal": "Normal",
           "comfort": "Comfort",
-          "boost": "Boost"
+          "boost": "Boost",
+          "power_limit": "Power limit"
         }
       },
       "software_version_major": {

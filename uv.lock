@@ -1216,7 +1216,7 @@ dev = [
 ]
 
 [package.metadata]
-requires-dist = [{ name = "thermia-genesis", specifier = "==0.5.0" }]
+requires-dist = [{ name = "thermia-genesis", specifier = "==0.6.0" }]
 
 [package.metadata.requires-dev]
 dev = [
@@ -3201,14 +3201,14 @@ wheels = [
 
 [[package]]
 name = "thermia-genesis"
-version = "0.5.0"
+version = "0.6.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "modbus-connection" },
 ]
-sdist = { url = "https://files.pythonhosted.org/packages/1c/6c/7a85f470d58c4e06daa999935fa7a7bf91d28a4027bc5b653333d8fc6263/thermia_genesis-0.5.0.tar.gz", hash = "sha256:6f26c480fb473ffcae94e3c8d0f098cf803cb34c41dd412f1186d27be096c32f", size = 17836, upload-time = "2026-11-10T12:52:08.26Z" }
+sdist = { url = "https://files.pythonhosted.org/packages/03/37/ca515ddbb4a1bac3a8af7af040c1558db942f092ef02d55a17db3ccb025d/thermia_genesis-0.6.0.tar.gz", hash = "sha256:2db64fbcce5dfa7b0a2f43928f737653efb63795bf3cdd9ec86b65c868dbd979", size = 17907, upload-time = "2026-11-19T07:20:43.563Z" }
 wheels = [
-    { url = "https://files.pythonhosted.org/packages/c7/fd/caf727574c5553398b669aa12241f790ed608d1ae78bfac1c96e85da9886/thermia_genesis-0.5.0-py3-none-any.whl", hash = "sha256:41f740d520f9146fd924730171aeebe4c1bfd4acced170640c9946f36e5f2d8e", size = 24080, upload-time = "2026-11-10T12:52:07.058Z" },
+    { url = "https://files.pythonhosted.org/packages/53/38/235797c0e6fc85ce58019818137fc37048325d9dd79620dca105dc401dfd/thermia_genesis-0.6.0-py3-none-any.whl", hash = "sha256:258a055e8d0def0064fd8ed823e1f1f666e181786ebdd85416c4ce29b3931737", size = 24164, upload-time = "2026-11-19T07:20:42.507Z" },
 ]
 
 [[package]]

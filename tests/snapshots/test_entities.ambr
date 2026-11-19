@@ -7750,8 +7750,11 @@
     'name': None,
     'object_id_base': 'Compressor start restriction timer',
     'options': dict({
+      'sensor': dict({
+        'suggested_display_precision': 0,
+      }),
     }),
-    'original_device_class': None,
+    'original_device_class': <SensorDeviceClass.DURATION: 'duration'>,
     'original_icon': None,
     'original_name': 'Compressor start restriction timer',
     'platform': 'thermia_genesis',
@@ -7760,14 +7763,16 @@
     'supported_features': 0,
     'translation_key': 'compressor_start_restriction_timer',
     'unique_id': '01JTHERMIAGENESIS000000000_heat_pump_compressor_start_restriction_timer',
-    'unit_of_measurement': None,
+    'unit_of_measurement': <UnitOfTime.SECONDS: 's'>,
   })
 # ---
 # name: test_entities[sensor][sensor.heat_pump_unit_compressor_start_restriction_timer-state]
   StateSnapshot({
     'attributes': ReadOnlyDict({
+      <EntityStateAttribute.DEVICE_CLASS: 'device_class'>: 'duration',
       <EntityStateAttribute.FRIENDLY_NAME: 'friendly_name'>: 'Heat pump unit Compressor start restriction timer',
       <SensorEntityCapabilityAttribute.STATE_CLASS: 'state_class'>: <SensorStateClass.MEASUREMENT: 'measurement'>,
+      <EntityStateAttribute.UNIT_OF_MEASUREMENT: 'unit_of_measurement'>: <UnitOfTime.SECONDS: 's'>,
     }),
     'context': <ANY>,
     'entity_id': 'sensor.heat_pump_unit_compressor_start_restriction_timer',
@@ -10130,6 +10135,7 @@
         'normal',
         'comfort',
         'boost',
+        'power_limit',
       ]),
     }),
     'config_entry_id': <ANY>,
@@ -10172,6 +10178,7 @@
         'normal',
         'comfort',
         'boost',
+        'power_limit',
       ]),
     }),
     'context': <ANY>,

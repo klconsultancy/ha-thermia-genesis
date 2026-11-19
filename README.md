@@ -11,7 +11,7 @@ Home Assistant's own Modbus connection.
 ## Requirements
 
 - Home Assistant 2026.10 or later
-- A heat pump with Genesis firmware 17.1 and Modbus TCP enabled
+- A heat pump with Genesis firmware 17.1 or 18.0 and Modbus TCP enabled
 
 ## Installation
 
@@ -65,8 +65,8 @@ entry: its entities and their history are kept.
 
   So 0 undoes either, but 1 caps power in one mode and asks for more heat in the other.
   On a pump without a configured mode the values probably do nothing. The **Smart grid
-  mode** sensor (disabled by default) shows the active SG-Ready mode; it may not reflect a
-  PL/LU limit. A limit set too low stops the compressor. Not yet tested: whether the limit
+  mode** sensor (disabled by default) shows the active SG-Ready mode, and power limit
+  while a PL/LU limit applies. A limit set too low stops the compressor. Not yet tested: whether the limit
   covers the immersion heater, and whether it lapses when nothing writes it any more.
   Write only when the value changes: whether the pump stores these registers in memory
   that wears out is unknown.
